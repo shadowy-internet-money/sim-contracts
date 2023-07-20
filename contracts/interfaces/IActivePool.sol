@@ -13,4 +13,5 @@ interface IActivePool is IPool {
 
     // --- Functions ---
     function sendWSTETH(address _account, uint _amount) external;
+    function receiveWSTETH(uint amount) external;
 }

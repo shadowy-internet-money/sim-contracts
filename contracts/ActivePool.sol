@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import './interfaces/IActivePool.sol';
+import './interfaces/IDefaultPool.sol';
 import "./dependencies/CheckContract.sol";
 
 /*
@@ -81,9 +82,12 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
         emit EtherSent(_account, _amount);
 
         IERC20(WSTETHAddress).transfer(_account, _amount);
+        if (_account == defaultPoolAddress) {
+            IDefaultPool(defaultPoolAddress).receiveWSTETH(_amount);
+        }
     }
 
-    function receiveWSTETH(uint amount) external payable {
+    function receiveWSTETH(uint amount) external {
         _requireCallerIsBorrowerOperationsOrDefaultPool();
         WSTETH = WSTETH + amount;
         emit ActivePoolWSTETHBalanceUpdated(WSTETH);

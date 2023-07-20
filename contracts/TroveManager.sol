@@ -22,7 +22,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
     IStabilityPool public override stabilityPool;
 
-    address gasPoolAddress;
+//    address gasPoolAddress;
 
     ICollSurplusPool collSurplusPool;
 
@@ -173,7 +173,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         IVe ve;
         ISortedTroves sortedTroves;
         ICollSurplusPool collSurplusPool;
-        address gasPoolAddress;
+//        address gasPoolAddress;
     }
     // --- Variable container structs for redemptions ---
 
@@ -209,7 +209,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         address _activePoolAddress,
         address _defaultPoolAddress,
         address _stabilityPoolAddress,
-        address _gasPoolAddress,
+//        address _gasPoolAddress,
         address _collSurplusPoolAddress,
         address _priceFeedAddress,
         address _simTokenAddress,
@@ -225,7 +225,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _checkContract(_activePoolAddress);
         _checkContract(_defaultPoolAddress);
         _checkContract(_stabilityPoolAddress);
-        _checkContract(_gasPoolAddress);
+//        _checkContract(_gasPoolAddress);
         _checkContract(_collSurplusPoolAddress);
         _checkContract(_priceFeedAddress);
         _checkContract(_simTokenAddress);
@@ -237,7 +237,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         activePool = IActivePool(_activePoolAddress);
         defaultPool = IDefaultPool(_defaultPoolAddress);
         stabilityPool = IStabilityPool(_stabilityPoolAddress);
-        gasPoolAddress = _gasPoolAddress;
+//        gasPoolAddress = _gasPoolAddress;
         collSurplusPool = ICollSurplusPool(_collSurplusPoolAddress);
         priceFeed = IPriceFeed(_priceFeedAddress);
         simToken = ISIMToken(_simTokenAddress);
@@ -249,7 +249,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         emit ActivePoolAddressChanged(_activePoolAddress);
         emit DefaultPoolAddressChanged(_defaultPoolAddress);
         emit StabilityPoolAddressChanged(_stabilityPoolAddress);
-        emit GasPoolAddressChanged(_gasPoolAddress);
+//        emit GasPoolAddressChanged(_gasPoolAddress);
         emit CollSurplusPoolAddressChanged(_collSurplusPoolAddress);
         emit PriceFeedAddressChanged(_priceFeedAddress);
         emit SIMTokenAddressChanged(_simTokenAddress);
@@ -472,8 +472,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             ISIMToken(address(0)),
             IVe(address(0)),
             sortedTroves,
-            ICollSurplusPool(address(0)),
-            address(0)
+            ICollSurplusPool(address(0))/*,
+            address(0)*/
         );
         IStabilityPool stabilityPoolCached = stabilityPool;
 
@@ -905,8 +905,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             simToken,
             ve,
             sortedTroves,
-            collSurplusPool,
-            gasPoolAddress
+            collSurplusPool/*,
+            gasPoolAddress*/
         );
         RedemptionTotals memory totals;
 

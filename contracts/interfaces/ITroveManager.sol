@@ -19,7 +19,7 @@ interface ITroveManager is IBase {
     event ActivePoolAddressChanged(address _activePoolAddress);
     event DefaultPoolAddressChanged(address _defaultPoolAddress);
     event StabilityPoolAddressChanged(address _stabilityPoolAddress);
-    event GasPoolAddressChanged(address _gasPoolAddress);
+//    event GasPoolAddressChanged(address _gasPoolAddress);
     event CollSurplusPoolAddressChanged(address _collSurplusPoolAddress);
     event SortedTrovesAddressChanged(address _sortedTrovesAddress);
     event SHADYTokenAddressChanged(address _shadyTokenAddress);
@@ -44,7 +44,7 @@ interface ITroveManager is IBase {
         address _activePoolAddress,
         address _defaultPoolAddress,
         address _stabilityPoolAddress,
-        address _gasPoolAddress,
+//        address _gasPoolAddress,
         address _collSurplusPoolAddress,
         address _priceFeedAddress,
         address _simTokenAddress,

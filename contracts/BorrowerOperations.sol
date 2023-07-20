@@ -142,9 +142,11 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     // --- Borrower Trove Operations ---
 
-    function openTrove(uint _maxFeePercentage, uint _SIMAmount, address _upperHint, address _lowerHint) external payable override {
+    function openTrove(uint amount, uint _maxFeePercentage, uint _SIMAmount, address _upperHint, address _lowerHint) external payable override {
         ContractsCache memory contractsCache = ContractsCache(troveManager, activePool, simToken);
         LocalVariables_openTrove memory vars;
+
+        IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), amount);
 
         vars.price = priceFeed.fetchPrice();
         bool isRecoveryMode = _checkRecoveryMode(vars.price);
@@ -165,20 +167,20 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         vars.compositeDebt = _getCompositeDebt(vars.netDebt);
         assert(vars.compositeDebt > 0);
 
-        vars.ICR = LiquityMath._computeCR(msg.value, vars.compositeDebt, vars.price);
-        vars.NICR = LiquityMath._computeNominalCR(msg.value, vars.compositeDebt);
+        vars.ICR = LiquityMath._computeCR(amount, vars.compositeDebt, vars.price);
+        vars.NICR = LiquityMath._computeNominalCR(amount, vars.compositeDebt);
 
         if (isRecoveryMode) {
             _requireICRisAboveCCR(vars.ICR);
         } else {
             _requireICRisAboveMCR(vars.ICR);
-            uint newTCR = _getNewTCRFromTroveChange(msg.value, true, vars.compositeDebt, true, vars.price);  // bools: coll increase, debt increase
+            uint newTCR = _getNewTCRFromTroveChange(amount, true, vars.compositeDebt, true, vars.price);  // bools: coll increase, debt increase
             _requireNewTCRisAboveCCR(newTCR);
         }
 
         // Set the trove struct's properties
         contractsCache.troveManager.setTroveStatus(msg.sender, 1);
-        contractsCache.troveManager.increaseTroveColl(msg.sender, msg.value);
+        contractsCache.troveManager.increaseTroveColl(msg.sender, amount);
         contractsCache.troveManager.increaseTroveDebt(msg.sender, vars.compositeDebt);
 
         contractsCache.troveManager.updateTroveRewardSnapshots(msg.sender);
@@ -189,12 +191,12 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         emit TroveCreated(msg.sender, vars.arrayIndex);
 
         // Move the ether to the Active Pool, and mint the SIMAmount to the borrower
-        _activePoolAddColl(contractsCache.activePool, msg.value);
+        _activePoolAddColl(contractsCache.activePool, amount);
         _withdrawSIM(contractsCache.activePool, contractsCache.simToken, msg.sender, _SIMAmount, vars.netDebt);
         // Move the SIM gas compensation to the Gas Pool
 //        _withdrawSIM(contractsCache.activePool, contractsCache.simToken, gasPoolAddress, SIM_GAS_COMPENSATION, SIM_GAS_COMPENSATION);
 
-        emit TroveUpdated(msg.sender, vars.compositeDebt, msg.value, vars.stake, uint8(BorrowerOperation.openTrove));
+        emit TroveUpdated(msg.sender, vars.compositeDebt, amount, vars.stake, uint8(BorrowerOperation.openTrove));
         emit SIMBorrowingFeePaid(msg.sender, vars.SIMFee);
     }
 
@@ -438,6 +440,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     // Send WSTETH to Active Pool and increase its recorded WSTETH balance
     function _activePoolAddColl(IActivePool _activePool, uint _amount) internal {
         IERC20(WSTETHAddress).transfer(address(_activePool), _amount);
+        _activePool.receiveWSTETH(_amount);
 //        (bool success, ) = address(_activePool).call{value: _amount}("");
 //        require(success, "BorrowerOps: Sending WSTETH to ActivePool failed");
     }
@@ -465,7 +468,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     }
 
     function _requireNonZeroAdjustment(uint _collWithdrawal, uint _SIMChange) internal view {
-        require(msg.value != 0 || _collWithdrawal != 0 || _SIMChange != 0, "BorrowerOps: There must be either a collateral change or a debt change");
+        require(IERC20(WSTETHAddress).balanceOf(address(this)) != 0 || _collWithdrawal != 0 || _SIMChange != 0, "BorrowerOps: There must be either a collateral change or a debt change");
     }
 
     function _requireTroveisActive(ITroveManager _troveManager, address _borrower) internal view {

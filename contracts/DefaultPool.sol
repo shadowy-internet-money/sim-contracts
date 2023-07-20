@@ -74,7 +74,7 @@ contract DefaultPool is Ownable, CheckContract, IDefaultPool {
         IERC20(WSTETHAddress).transfer(activePool, _amount);
     }
 
-    function receiveWSTETH(uint amount) external payable {
+    function receiveWSTETH(uint amount) external {
         _requireCallerIsActivePool();
         WSTETH += amount;
         emit DefaultPoolWSTETHBalanceUpdated(WSTETH);

@@ -12,4 +12,5 @@ interface IDefaultPool is IPool {
 
     // --- Functions ---
     function sendWSTETHToActivePool(uint _amount) external;
+    function receiveWSTETH(uint amount) external;
 }
