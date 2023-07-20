@@ -25,7 +25,7 @@ interface ITroveManager is IBase {
     event SHADYTokenAddressChanged(address _shadyTokenAddress);
     event SHADYStakingAddressChanged(address _shadyStakingAddress);
 
-    event Liquidation(uint _liquidatedDebt, uint _liquidatedColl, uint _collGasCompensation, uint _SIMGasCompensation);
+    event Liquidation(uint _liquidatedDebt, uint _liquidatedColl, uint _collGasCompensation/*, uint _SIMGasCompensation*/);
     event Redemption(uint _attemptedSIMAmount, uint _actualSIMAmount, uint _WSTETHSent, uint _WSTETHFee);
     event TroveUpdated(address indexed _borrower, uint _debt, uint _coll, uint stake, uint8 operation);
     event TroveLiquidated(address indexed _borrower, uint _debt, uint _coll, uint8 operation);

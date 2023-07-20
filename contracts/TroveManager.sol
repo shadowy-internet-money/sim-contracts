@@ -146,7 +146,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint entireTroveDebt;
         uint entireTroveColl;
         uint collGasCompensation;
-        uint SIMGasCompensation;
+//        uint SIMGasCompensation;
         uint debtToOffset;
         uint collToSendToSP;
         uint debtToRedistribute;
@@ -158,7 +158,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint totalCollInSequence;
         uint totalDebtInSequence;
         uint totalCollGasCompensation;
-        uint totalSIMGasCompensation;
+//        uint totalSIMGasCompensation;
         uint totalDebtToOffset;
         uint totalCollToSendToSP;
         uint totalDebtToRedistribute;
@@ -304,7 +304,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _removeStake(_borrower);
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(singleLiquidation.entireTroveColl);
-        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
+//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
         uint collToLiquidate = singleLiquidation.entireTroveColl - singleLiquidation.collGasCompensation;
 
         (singleLiquidation.debtToOffset,
@@ -339,7 +339,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         vars.pendingCollReward) = getEntireDebtAndColl(_borrower);
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(singleLiquidation.entireTroveColl);
-        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
+//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
         vars.collToLiquidate = singleLiquidation.entireTroveColl - singleLiquidation.collGasCompensation;
 
         // If ICR <= 100%, purely redistribute the Trove across all active Troves
@@ -452,7 +452,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint cappedCollPortion = _entireTroveDebt * MCR / _price;
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(cappedCollPortion);
-        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
+//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
 
         singleLiquidation.debtToOffset = _entireTroveDebt;
         singleLiquidation.collToSendToSP = cappedCollPortion - singleLiquidation.collGasCompensation;
@@ -506,10 +506,10 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
         vars.liquidatedDebt = totals.totalDebtInSequence;
         vars.liquidatedColl = totals.totalCollInSequence - totals.totalCollGasCompensation - totals.totalCollSurplus;
-        emit Liquidation(vars.liquidatedDebt, vars.liquidatedColl, totals.totalCollGasCompensation, totals.totalSIMGasCompensation);
+        emit Liquidation(vars.liquidatedDebt, vars.liquidatedColl, totals.totalCollGasCompensation/*, totals.totalSIMGasCompensation*/);
 
         // Send gas compensation to caller
-        _sendGasCompensation(contractsCache.activePool, msg.sender, totals.totalSIMGasCompensation, totals.totalCollGasCompensation);
+        _sendGasCompensation(contractsCache.activePool, msg.sender, /*totals.totalSIMGasCompensation,*/ totals.totalCollGasCompensation);
     }
 
     /*
@@ -645,10 +645,10 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
         vars.liquidatedDebt = totals.totalDebtInSequence;
         vars.liquidatedColl = totals.totalCollInSequence - totals.totalCollGasCompensation - totals.totalCollSurplus;
-        emit Liquidation(vars.liquidatedDebt, vars.liquidatedColl, totals.totalCollGasCompensation, totals.totalSIMGasCompensation);
+        emit Liquidation(vars.liquidatedDebt, vars.liquidatedColl, totals.totalCollGasCompensation/*, totals.totalSIMGasCompensation*/);
 
         // Send gas compensation to caller
-        _sendGasCompensation(activePoolCached, msg.sender, totals.totalSIMGasCompensation, totals.totalCollGasCompensation);
+        _sendGasCompensation(activePoolCached, msg.sender, /*totals.totalSIMGasCompensation,*/ totals.totalCollGasCompensation);
     }
 
     /*
@@ -748,7 +748,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
         // Tally all the values with their respective running totals
         newTotals.totalCollGasCompensation = oldTotals.totalCollGasCompensation + singleLiquidation.collGasCompensation;
-        newTotals.totalSIMGasCompensation = oldTotals.totalSIMGasCompensation + singleLiquidation.SIMGasCompensation;
+//        newTotals.totalSIMGasCompensation = oldTotals.totalSIMGasCompensation + singleLiquidation.SIMGasCompensation;
         newTotals.totalDebtInSequence = oldTotals.totalDebtInSequence + singleLiquidation.entireTroveDebt;
         newTotals.totalCollInSequence = oldTotals.totalCollInSequence + singleLiquidation.entireTroveColl;
         newTotals.totalDebtToOffset = oldTotals.totalDebtToOffset + singleLiquidation.debtToOffset;
@@ -760,10 +760,10 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         return newTotals;
     }
 
-    function _sendGasCompensation(IActivePool _activePool, address _liquidator, uint _SIM, uint _WSTETH) internal {
-        if (_SIM > 0) {
+    function _sendGasCompensation(IActivePool _activePool, address _liquidator, /*uint _SIM,*/ uint _WSTETH) internal {
+        /*if (_SIM > 0) {
             simToken.returnFromPool(gasPoolAddress, _liquidator, _SIM);
-        }
+        }*/
 
         if (_WSTETH > 0) {
             _activePool.sendWSTETH(_liquidator, _WSTETH);
@@ -792,7 +792,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         internal returns (SingleRedemptionValues memory singleRedemption)
     {
         // Determine the remaining amount (lot) to be redeemed, capped by the entire debt of the Trove minus the liquidation reserve
-        singleRedemption.SIMLot = LiquityMath._min(_maxSIMamount, Troves[_borrower].debt - SIM_GAS_COMPENSATION);
+        singleRedemption.SIMLot = LiquityMath._min(_maxSIMamount, Troves[_borrower].debt/* - SIM_GAS_COMPENSATION*/);
 
         // Get the WSTETHLot of equivalent value in USD
         singleRedemption.WSTETHLot = singleRedemption.SIMLot * DECIMAL_PRECISION / _price;
@@ -801,11 +801,11 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint newDebt = (Troves[_borrower].debt) - singleRedemption.SIMLot;
         uint newColl = (Troves[_borrower].coll) - singleRedemption.WSTETHLot;
 
-        if (newDebt == SIM_GAS_COMPENSATION) {
+        if (newDebt == 0/*SIM_GAS_COMPENSATION*/) {
             // No debt left in the Trove (except for the liquidation reserve), therefore the trove gets closed
             _removeStake(_borrower);
             _closeTrove(_borrower, Status.closedByRedemption);
-            _redeemCloseTrove(_contractsCache, _borrower, SIM_GAS_COMPENSATION, newColl);
+            _redeemCloseTrove(_contractsCache, _borrower, /*SIM_GAS_COMPENSATION,*/ newColl);
             emit TroveUpdated(_borrower, 0, 0, 0, uint8(TroveManagerOperation.redeemCollateral));
 
         } else {
@@ -841,15 +841,13 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
     /*
     * Called when a full redemption occurs, and closes the trove.
-    * The redeemer swaps (debt - liquidation reserve) SIM for (debt - liquidation reserve) worth of WSTETH, so the SIM liquidation reserve left corresponds to the remaining debt.
-    * In order to close the trove, the SIM liquidation reserve is burned, and the corresponding debt is removed from the active pool.
     * The debt recorded on the trove's struct is zero'd elswhere, in _closeTrove.
     * Any surplus WSTETH left in the trove, is sent to the Coll surplus pool, and can be later claimed by the borrower.
     */
-    function _redeemCloseTrove(ContractsCache memory _contractsCache, address _borrower, uint _SIM, uint _WSTETH) internal {
-        _contractsCache.simToken.burn(gasPoolAddress, _SIM);
+    function _redeemCloseTrove(ContractsCache memory _contractsCache, address _borrower, /*uint _SIM, */uint _WSTETH) internal {
+//        _contractsCache.simToken.burn(gasPoolAddress, _SIM);
         // Update Active Pool SIM, and send WSTETH to account
-        _contractsCache.activePool.decreaseSIMDebt(_SIM);
+//        _contractsCache.activePool.decreaseSIMDebt(_SIM);
 
         // send WSTETH from Active Pool to CollSurplus Pool
         _contractsCache.collSurplusPool.accountSurplus(_borrower, _WSTETH);

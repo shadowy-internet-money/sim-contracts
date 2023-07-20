@@ -15,7 +15,7 @@ interface IBorrowerOperations {
     event PriceFeedAddressChanged(address  _newPriceFeedAddress);
     event SortedTrovesAddressChanged(address _sortedTrovesAddress);
     event SIMTokenAddressChanged(address _simTokenAddress);
-    event SHADYStakingAddressChanged(address _shadyStakingAddress);
+    event VeAddressChanged(address _VeAddress);
 
     event TroveCreated(address indexed _borrower, uint arrayIndex);
     event TroveUpdated(address indexed _borrower, uint _debt, uint _coll, uint stake, uint8 operation);
@@ -38,7 +38,7 @@ interface IBorrowerOperations {
 
     function openTrove(uint _maxFee, uint _SIMAmount, address _upperHint, address _lowerHint) external payable;
 
-    function addColl(address _upperHint, address _lowerHint) external payable;
+    function addColl(uint amount, address _upperHint, address _lowerHint) external;
 
     function moveWSTETHGainToTrove(address _user, address _upperHint, address _lowerHint) external payable;
 

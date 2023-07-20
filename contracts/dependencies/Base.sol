@@ -22,7 +22,7 @@ contract Base is BaseMath, IBase {
     uint constant public CCR = 1500000000000000000; // 150%
 
     // Amount of SIM to be locked in gas pool on opening troves
-    uint constant public SIM_GAS_COMPENSATION = 200e18;
+//    uint constant public SIM_GAS_COMPENSATION = 200e18;
 
     // Minimum amount of net SIM debt a trove must have
     uint constant public MIN_NET_DEBT = 1800e18;
@@ -42,11 +42,11 @@ contract Base is BaseMath, IBase {
 
     // Returns the composite debt (drawn debt + gas compensation) of a trove, for the purpose of ICR calculation
     function _getCompositeDebt(uint _debt) internal pure returns (uint) {
-        return _debt + SIM_GAS_COMPENSATION;
+        return _debt/* + SIM_GAS_COMPENSATION*/;
     }
 
     function _getNetDebt(uint _debt) internal pure returns (uint) {
-        return _debt + SIM_GAS_COMPENSATION;
+        return _debt/* + SIM_GAS_COMPENSATION*/;
     }
 
     // Return the amount of ETH to be drawn from a trove's collateral and sent as gas compensation.
