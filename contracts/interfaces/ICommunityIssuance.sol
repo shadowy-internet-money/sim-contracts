@@ -4,10 +4,10 @@ pragma solidity ^0.8.19;
 interface ICommunityIssuance { 
     
     // --- Events ---
-    
-    event SHADYTokenAddressSet(address shadyTokenAddress);
-    event StabilityPoolAddressSet(address stabilityPoolAddress);
-    event TotalSHADYIssuedUpdated(uint totalSHADYIssued);
+
+    event SHADYTokenAddressSet(address _shadyTokenAddress);
+    event StabilityPoolAddressSet(address _stabilityPoolAddress);
+    event TotalSHADYIssuedUpdated(uint _totalSHADYIssued);
 
     // --- Functions ---
 
