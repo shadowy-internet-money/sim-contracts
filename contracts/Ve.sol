@@ -15,7 +15,7 @@ contract Ve is IVe {
     }
 
     function increaseF_SIM(uint _SIMFee) external {
-        console.log('increaseF_SIM', _SIMFee);
+//        console.log('increaseF_SIM', _SIMFee);
         F_SIM += _SIMFee;
     }
 }

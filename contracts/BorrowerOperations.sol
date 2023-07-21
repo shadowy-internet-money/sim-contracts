@@ -229,7 +229,10 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         _adjustTrove(msg.sender, 0, _SIMAmount, false, _upperHint, _lowerHint, 0);
     }
 
-    function adjustTrove(uint _maxFeePercentage, uint _collWithdrawal, uint _SIMChange, bool _isDebtIncrease, address _upperHint, address _lowerHint) external payable override {
+    function adjustTrove(uint addColAmount, uint _maxFeePercentage, uint _collWithdrawal, uint _SIMChange, bool _isDebtIncrease, address _upperHint, address _lowerHint) external payable override {
+        if (addColAmount > 0) {
+            IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), addColAmount);
+        }
         _adjustTrove(msg.sender, _collWithdrawal, _SIMChange, _isDebtIncrease, _upperHint, _lowerHint, _maxFeePercentage);
     }
 
@@ -241,6 +244,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     * If both are positive, it will revert.
     */
     function _adjustTrove(address _borrower, uint _collWithdrawal, uint _SIMChange, bool _isDebtIncrease, address _upperHint, address _lowerHint, uint _maxFeePercentage) internal {
+        // todo maybe better to add addCol param instead read balance
         ContractsCache memory contractsCache = ContractsCache(troveManager, activePool, simToken);
         LocalVariables_adjustTrove memory vars;
 
@@ -460,7 +464,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     // --- 'Require' wrapper functions ---
 
     function _requireSingularCollChange(uint _collWithdrawal) internal view {
-        require(msg.value == 0 || _collWithdrawal == 0, "BorrowerOperations: Cannot withdraw and add coll");
+        require(IERC20(WSTETHAddress).balanceOf(address(this)) == 0 || _collWithdrawal == 0, "BorrowerOperations: Cannot withdraw and add coll");
     }
 
     function _requireCallerIsBorrower(address _borrower) internal view {

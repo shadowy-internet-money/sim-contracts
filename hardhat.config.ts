@@ -1,5 +1,9 @@
 import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+import "@typechain/hardhat";
+import "@nomiclabs/hardhat-ethers";
+import "@nomiclabs/hardhat-truffle5";
+import "@nomiclabs/hardhat-web3";
+import "@nomicfoundation/hardhat-network-helpers";
 import "hardhat-contract-sizer";
 
 const config: HardhatUserConfig = {
@@ -10,6 +14,11 @@ const config: HardhatUserConfig = {
         enabled: true,
         runs: 100,
       },
+    },
+  },
+  networks: {
+    hardhat: {
+      loggingEnabled: false,
     },
   },
 };
