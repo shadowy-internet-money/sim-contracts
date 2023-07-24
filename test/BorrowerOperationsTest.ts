@@ -44,25 +44,8 @@ describe('BorrowerOperations', async () => {
     const getNetBorrowingAmount = async (debtWithFee: BigNumber) => th.getNetBorrowingAmount(contracts, debtWithFee)
     const getOpenTroveLUSDAmount = async (totalDebt: BigNumber) => th.getOpenTroveLUSDAmount(contracts, totalDebt)
 
-    async function deployFixture() {
-        const signers = await ethers.getSigners();
-        const [bountyAddress, lpRewardsAddress, multisig] = [signers[17].address, signers[18].address,signers[19].address]
-        const contracts = await DeploymentHelper.deployCore()
-        contracts.troveManager = await (await ethers.getContractFactory("TroveManagerTester")).deploy() as TroveManagerTester
-        contracts.borrowerOperations = await (await ethers.getContractFactory("BorrowerOperationsTester")).deploy() as BorrowerOperationsTester
-        contracts.simToken = await (await ethers.getContractFactory("SIMTokenTester")).deploy(contracts.troveManager.address, contracts.stabilityPool.address, contracts.borrowerOperations.address) as SIMTokenTester
-        const shadyContracts = await DeploymentHelper.deploySHADY(bountyAddress, lpRewardsAddress, multisig)
-        await DeploymentHelper.connectSHADYContracts(shadyContracts)
-        await DeploymentHelper.connectCoreContracts(contracts, shadyContracts)
-        await DeploymentHelper.connectSHADYContractsToCore(shadyContracts, contracts)
-
-        await TestHelper.mintWSTETH(contracts.wstETHMock, signers.map(s => s.address))
-
-        return {contracts, signers, bountyAddress, lpRewardsAddress, multisig}
-    }
-
     beforeEach(async () => {
-        const f = await loadFixture(deployFixture);
+        const f = await loadFixture(DeploymentHelper.deployFixture);
         [
             owner, alice, bob, carol, dennis, whale,
             A, B, C, D, E, F, G, H,

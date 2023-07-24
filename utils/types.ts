@@ -36,3 +36,12 @@ export interface IOpenTroveParams {
     ICR?: any
     extraParams?: any
 }
+
+export interface IWithdrawSIMParams {
+    maxFeePercentage?: any
+    lusdAmount?: any
+    ICR?: any
+    upperHint?: any
+    lowerHint?: any
+    extraParams?: any
+}

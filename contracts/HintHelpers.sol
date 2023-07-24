@@ -86,7 +86,7 @@ contract HintHelpers is Base, Ownable, CheckContract {
             _maxIterations = type(uint).max;
         }
 
-        while (currentTroveuser != address(0) && remainingSIM > 0 && _maxIterations-- > 0) {
+        while (currentTroveuser != address(0) && remainingSIM > 0 && --_maxIterations > 0) {
             uint netSIMDebt = _getNetDebt(troveManager.getTroveDebt(currentTroveuser)) + troveManager.getPendingSIMDebtReward(currentTroveuser);
 
             if (netSIMDebt > remainingSIM) {

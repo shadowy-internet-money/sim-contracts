@@ -1,16 +1,17 @@
-import {IContracts, IOpenTroveParams} from "./types";
+import {IContracts, IOpenTroveParams, IWithdrawSIMParams} from "./types";
 import {
     WSTETHMock,
 } from "../typechain-types";
 import {assert, ethers} from "hardhat";
-import {BigNumber, ContractTransaction} from "ethers";
+import {Event, BigNumber, ContractTransaction} from "ethers";
 import {parseUnits} from "ethers/lib/utils";
+import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
 
 export class TestHelper {
     static ZERO_ADDRESS = '0x' + '0'.repeat(40)
     static maxBytes32 = '0x' + 'f'.repeat(64)
     static _100pct = '1000000000000000000'
-    static latestRandomSeed = 31337
+    static latestRandomSeed = BigNumber.from(31337)
 
     static TimeValues = {
         SECONDS_IN_ONE_MINUTE:  60,
@@ -82,9 +83,9 @@ export class TestHelper {
         if (!upperHint) upperHint = this.ZERO_ADDRESS
         if (!lowerHint) lowerHint = this.ZERO_ADDRESS
 
-        const minDebt = await contracts.borrowerOperations.MIN_NET_DEBT()
+        const minDebt = parseUnits('2000')/*await contracts.borrowerOperations.MIN_NET_DEBT()*/
         const MIN_DEBT = (
-            await this.getNetBorrowingAmount(contracts, (minDebt).add(minDebt.div(100)))
+            await this.getNetBorrowingAmount(contracts, minDebt/*.add(minDebt.div(100))*/)
         ).add(this.toBN(1)) // add 1 to avoid rounding issues
         const lusdAmount = MIN_DEBT.add(extraLUSDAmount)
 
@@ -170,6 +171,12 @@ export class TestHelper {
         }
     }
 
+    static async gasUsed(tx: ContractTransaction) {
+        const receipt = await tx.wait()
+        const gas = receipt.gasUsed
+        return gas
+    }
+
     static async getEventArgByIndex(tx: ContractTransaction, eventName: string, argIndex: number) {
         const receipt = await tx.wait()
         // @ts-ignore
@@ -181,6 +188,27 @@ export class TestHelper {
             }
         }
         throw (`The transaction logs do not contain event ${eventName}`)
+    }
+
+    static async getEmittedRedemptionValues(redemptionTx: ContractTransaction) {
+        const receipt = await redemptionTx.wait()
+        // @ts-ignore
+        for (let i = 0; i < receipt.events.length; i++) {
+            // @ts-ignore
+            if (receipt.events[i].event === "Redemption") {
+                // @ts-ignore
+                const LUSDAmount = receipt.events[i].args[0]
+                // @ts-ignore
+                const totalLUSDRedeemed = receipt.events[i].args[1]
+                // @ts-ignore
+                const totalETHDrawn = receipt.events[i].args[2]
+                // @ts-ignore
+                const ETHFee = receipt.events[i].args[3]
+
+                return [LUSDAmount, totalLUSDRedeemed, totalETHDrawn, ETHFee]
+            }
+        }
+        throw ("The transaction logs do not contain a redemption event")
     }
 
     static async getEmittedLiquidationValues(liquidationTx: ContractTransaction) {
@@ -196,7 +224,7 @@ export class TestHelper {
                 // @ts-ignore
                 const collGasComp = receipt.events[i].args[2]
                 // @ts-ignore
-                const lusdGasComp = receipt.events[i].args[3]
+                const lusdGasComp = BigNumber.from(0)/*receipt.events[i].args[3]*/
 
                 return [liquidatedDebt, liquidatedColl, collGasComp, lusdGasComp]
             }
@@ -224,13 +252,124 @@ export class TestHelper {
         throw (`The transaction logs do not contain event ${eventName} and arg ${argName}`)
     }
 
+    static async getAllEventsByName(tx: ContractTransaction, eventName: string) {
+        const receipt = await tx.wait()
+        const events = []
+        // @ts-ignore
+        for (let i = 0; i < receipt.events.length; i++) {
+            // @ts-ignore
+            if (receipt.events[i].event === eventName) {
+                // @ts-ignore
+                events.push(receipt.events[i])
+            }
+        }
+        return events
+    }
+
+    static getDebtAndCollFromTroveUpdatedEvents(troveUpdatedEvents: Event[], address:string) {
+        // @ts-ignore
+        const event = troveUpdatedEvents.filter(event => event.args[0] === address)[0]
+        // @ts-ignore
+        return [event.args[1], event.args[2]]
+    }
+
     static async getOpenTroveLUSDAmount(contracts: IContracts, totalDebt: BigNumber) {
         return this.getNetBorrowingAmount(contracts, totalDebt)
+    }
+
+    static async withdrawLUSD(contracts: IContracts, {
+        maxFeePercentage,
+        lusdAmount,
+        ICR,
+        upperHint,
+        lowerHint,
+        extraParams
+    }: IWithdrawSIMParams) {
+        const signers = await ethers.getSigners()
+        let signer = signers[0]
+        if (extraParams?.from) {
+            signer = extraParams.from
+        }
+
+        if (!maxFeePercentage) maxFeePercentage = this._100pct
+        if (!upperHint) upperHint = this.ZERO_ADDRESS
+        if (!lowerHint) lowerHint = this.ZERO_ADDRESS
+
+        assert(!(lusdAmount && ICR) && (lusdAmount || ICR), "Specify either lusd amount or target ICR, but not both")
+
+        let increasedTotalDebt
+        if (ICR) {
+            assert(extraParams.from?.address, "A from account is needed")
+            const { debt, coll } = await contracts.troveManager.getEntireDebtAndColl(extraParams.from.address)
+            const price = await contracts.priceFeedMock.getPrice()
+            const targetDebt = coll.mul(price).div(ICR)
+            assert(targetDebt > debt, "ICR is already greater than or equal to target")
+            increasedTotalDebt = targetDebt.sub(debt)
+            lusdAmount = await this.getNetBorrowingAmount(contracts, increasedTotalDebt)
+        } else {
+            increasedTotalDebt = await this.getAmountWithBorrowingFee(contracts, lusdAmount)
+        }
+
+        await contracts.borrowerOperations.connect(signer).withdrawSIM(maxFeePercentage, lusdAmount, upperHint, lowerHint)
+
+        return {
+            lusdAmount,
+            increasedTotalDebt
+        }
+    }
+
+    static async getAmountWithBorrowingFee(contracts: IContracts, lusdAmount: BigNumber) {
+        const fee = await contracts.troveManager.getBorrowingFee(lusdAmount)
+        return lusdAmount.add(fee)
+    }
+
+    static applyLiquidationFee(ethAmount: BigNumber) {
+        return ethAmount.mul(this.toBN(this.dec(995, 15))).div(MoneyValues._1e18BN)
+    }
+
+    static async redeemCollateral(redeemer: SignerWithAddress, contracts: IContracts, LUSDAmount: string, gasPrice: string|number = 0, maxFee = this._100pct) {
+        const price = await contracts.priceFeedMock.getPrice()
+        const tx = await this.performRedemptionTx(redeemer, price, contracts, LUSDAmount, maxFee)
+        // const gas = await this.gasUsed(tx)
+        return tx
+    }
+
+    static async redeemCollateralAndGetTxObject(redeemer: SignerWithAddress, contracts: IContracts, LUSDAmount: string, gasPrice: string|number = '0', maxFee = this._100pct) {
+        const price = await contracts.priceFeedMock.getPrice()
+        const tx = await this.performRedemptionTx(redeemer, price, contracts, LUSDAmount, maxFee)
+        return tx
+    }
+
+    static async performRedemptionTx(redeemer: SignerWithAddress, price: BigNumber, contracts: IContracts, LUSDAmount: string, maxFee = '0') {
+        const redemptionhint = await contracts.hintHelpers.getRedemptionHints(LUSDAmount, price, 0)
+
+        const firstRedemptionHint = redemptionhint[0]
+        const partialRedemptionNewICR = redemptionhint[1]
+
+        const {
+            hintAddress: approxPartialRedemptionHint,
+            latestRandomSeed
+        } = await contracts.hintHelpers.getApproxHint(partialRedemptionNewICR, 50, this.latestRandomSeed)
+        this.latestRandomSeed = latestRandomSeed
+
+        const exactPartialRedemptionHint = (await contracts.sortedTroves.findInsertPosition(partialRedemptionNewICR,
+            approxPartialRedemptionHint,
+            approxPartialRedemptionHint))
+
+        const tx = await contracts.troveManager.connect(redeemer).redeemCollateral(LUSDAmount,
+            firstRedemptionHint,
+            exactPartialRedemptionHint[0],
+            exactPartialRedemptionHint[1],
+            partialRedemptionNewICR,
+            0, maxFee
+        )
+
+        return tx
     }
 }
 
 
-const MoneyValues = {
+export const MoneyValues = {
     negative_5e17: "-" + ethers.utils.parseUnits('5', 17),
     negative_1e18: "-" + ethers.utils.parseUnits('1'),
     negative_10e18: "-" + ethers.utils.parseUnits('10'),

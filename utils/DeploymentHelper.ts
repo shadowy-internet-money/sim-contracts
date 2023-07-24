@@ -6,8 +6,9 @@ import {
     CollSurplusPool, CommunityIssuance,
     DefaultPool, HintHelpers, LockupContractFactory, PriceFeedMock, SIMToken, SortedTroves,
     StabilityPool,
-    TroveManager, WSTETHMock, Ve, SHADYToken
+    TroveManager, WSTETHMock, Ve, SHADYToken, TroveManagerTester, BorrowerOperationsTester, SIMTokenTester
 } from "../typechain-types";
+import {TestHelper} from "./TestHelper";
 
 export class DeploymentHelper {
     static async deploySHADY(bountyAddress: string, lpRewardsAddress: string, multisigAddress: string): Promise<ISHADYContracts> {
@@ -136,5 +137,22 @@ export class DeploymentHelper {
             shadyContracts.shadyToken.address,
             coreContracts.stabilityPool.address
         )
+    }
+
+    static async deployFixture() {
+        const signers = await ethers.getSigners();
+        const [bountyAddress, lpRewardsAddress, multisig] = [signers[17].address, signers[18].address,signers[19].address]
+        const contracts = await DeploymentHelper.deployCore()
+        contracts.troveManager = await (await ethers.getContractFactory("TroveManagerTester")).deploy() as TroveManagerTester
+        contracts.borrowerOperations = await (await ethers.getContractFactory("BorrowerOperationsTester")).deploy() as BorrowerOperationsTester
+        contracts.simToken = await (await ethers.getContractFactory("SIMTokenTester")).deploy(contracts.troveManager.address, contracts.stabilityPool.address, contracts.borrowerOperations.address) as SIMTokenTester
+        const shadyContracts = await DeploymentHelper.deploySHADY(bountyAddress, lpRewardsAddress, multisig)
+        await DeploymentHelper.connectSHADYContracts(shadyContracts)
+        await DeploymentHelper.connectCoreContracts(contracts, shadyContracts)
+        await DeploymentHelper.connectSHADYContractsToCore(shadyContracts, contracts)
+
+        await TestHelper.mintWSTETH(contracts.wstETHMock, signers.map(s => s.address))
+
+        return {contracts, signers, bountyAddress, lpRewardsAddress, multisig}
     }
 }

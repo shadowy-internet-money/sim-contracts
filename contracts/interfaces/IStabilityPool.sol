@@ -194,4 +194,5 @@ interface IStabilityPool {
      * Only callable by Active Pool, it just accounts for WSTETH received
      * receive() external payable;
      */
+    function receiveWSTETH(uint amount) external;
 }

@@ -286,7 +286,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         return totalSIMDeposits;
     }
 
-    function receiveWSTETH(uint amount) external payable {
+    function receiveWSTETH(uint amount) external {
         _requireCallerIsActivePool();
         WSTETH += amount;
         emit StabilityPoolWSTETHBalanceUpdated(WSTETH);

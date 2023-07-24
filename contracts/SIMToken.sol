@@ -42,6 +42,21 @@ contract SIMToken is ERC20, ERC20Permit, CheckContract, ISIMToken {
         _burn(account_, amount_);
     }
 
+    function transfer(address to, uint256 amount) public virtual override (ERC20, IERC20) returns (bool) {
+        _requireValidRecipient(to);
+        address owner = _msgSender();
+        _transfer(owner, to, amount);
+        return true;
+    }
+
+    function transferFrom(address from, address to, uint256 amount) public virtual override (ERC20, IERC20) returns (bool) {
+        _requireValidRecipient(to);
+        address spender = _msgSender();
+        _spendAllowance(from, spender, amount);
+        _transfer(from, to, amount);
+        return true;
+    }
+
     function sendToPool(address sender_,  address poolAddress_, uint256 amount_) external override {
         _requireCallerIsStabilityPool();
         _transfer(sender_, poolAddress_, amount_);
@@ -50,12 +65,6 @@ contract SIMToken is ERC20, ERC20Permit, CheckContract, ISIMToken {
     function returnFromPool(address poolAddress_, address receiver_, uint256 amount_) external override {
         _requireCallerIsTroveMorSP();
         _transfer(poolAddress_, receiver_, amount_);
-    }
-
-    // --- hooks ---
-
-    function _beforeTokenTransfer(address, address to, uint256) internal virtual override {
-        _requireValidRecipient(to);
     }
 
     // --- 'require' functions ---
