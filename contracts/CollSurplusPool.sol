@@ -85,7 +85,7 @@ contract CollSurplusPool is Ownable, CheckContract, ICollSurplusPool {
         IERC20(WSTETHAddress).transfer(_account, claimableColl);
     }
 
-    function receiveWSTETH(uint amount) external payable {
+    function receiveWSTETH(uint amount) external {
         _requireCallerIsActivePool();
         WSTETH += amount;
     }

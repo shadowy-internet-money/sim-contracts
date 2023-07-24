@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import './interfaces/IActivePool.sol';
 import './interfaces/IDefaultPool.sol';
 import './interfaces/IStabilityPool.sol';
+import './interfaces/ICollSurplusPool.sol';
 import "./dependencies/CheckContract.sol";
 
 /*
@@ -23,6 +24,7 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
     address public troveManagerAddress;
     address public stabilityPoolAddress;
     address public defaultPoolAddress;
+    address public collSurplusPoolAddress;
     uint256 internal WSTETH;  // deposited ether tracker
     uint256 internal SIMDebt;
 
@@ -33,7 +35,8 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
         address _borrowerOperationsAddress,
         address _troveManagerAddress,
         address _stabilityPoolAddress,
-        address _defaultPoolAddress
+        address _defaultPoolAddress,
+        address _collSurplusPoolAddress
     )
         external
         onlyOwner
@@ -43,12 +46,14 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
         _checkContract(_troveManagerAddress);
         _checkContract(_stabilityPoolAddress);
         _checkContract(_defaultPoolAddress);
+        _checkContract(_collSurplusPoolAddress);
 
         WSTETHAddress = _WSTETHAddress;
         borrowerOperationsAddress = _borrowerOperationsAddress;
         troveManagerAddress = _troveManagerAddress;
         stabilityPoolAddress = _stabilityPoolAddress;
         defaultPoolAddress = _defaultPoolAddress;
+        collSurplusPoolAddress = _collSurplusPoolAddress;
 
         emit WSTETHAddressChanged(_WSTETHAddress);
         emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);
@@ -88,6 +93,9 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
         }
         if (_account == stabilityPoolAddress) {
             IStabilityPool(stabilityPoolAddress).receiveWSTETH(_amount);
+        }
+        if (_account == collSurplusPoolAddress) {
+            ICollSurplusPool(collSurplusPoolAddress).receiveWSTETH(_amount);
         }
     }
 

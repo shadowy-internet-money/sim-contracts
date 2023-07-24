@@ -12,7 +12,7 @@ import {BigNumber} from "ethers";
 import {loadFixture} from "@nomicfoundation/hardhat-network-helpers";
 import {DeploymentHelper} from "../utils/DeploymentHelper";
 import {assert, ethers} from "hardhat";
-import {formatUnits, parseUnits} from "ethers/lib/utils";
+import {parseUnits} from "ethers/lib/utils";
 
 const th = TestHelper
 const dec = th.dec

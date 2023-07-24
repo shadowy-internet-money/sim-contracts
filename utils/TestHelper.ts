@@ -1,5 +1,6 @@
 import {IContracts, IOpenTroveParams, IWithdrawSIMParams} from "./types";
 import {
+    TroveManagerTester,
     WSTETHMock,
 } from "../typechain-types";
 import {assert, ethers} from "hardhat";
@@ -365,6 +366,11 @@ export class TestHelper {
         )
 
         return tx
+    }
+
+    static async ICRbetween100and110(account: SignerWithAddress, troveManager: TroveManagerTester, price: BigNumber) {
+        const ICR = await troveManager.getCurrentICR(account.address, price)
+        return (ICR.gt(MoneyValues._ICR100)) && (ICR.lt(MoneyValues._MCR))
     }
 }
 
