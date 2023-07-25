@@ -139,11 +139,11 @@ export class TestHelper {
         return contracts.troveManager.checkRecoveryMode(price)
     }
 
-    static getDifference(x: BigNumber, y: BigNumber) {
-        // const x_BN = web3.utils.toBN(x)
-        // const y_BN = web3.utils.toBN(y)
+    static getDifference(x: BigNumber|string, y: BigNumber|string) {
+        const xBn = typeof x == 'string' ? this.toBN(x) : x
+        const yBn = typeof y == 'string' ? this.toBN(y) : y
 
-        return Number(x.sub(y).abs())
+        return Number(xBn.sub(yBn).abs())
     }
 
     static async getTCR(contracts: IContracts) {
@@ -274,8 +274,9 @@ export class TestHelper {
         return [event.args[1], event.args[2]]
     }
 
-    static async getOpenTroveLUSDAmount(contracts: IContracts, totalDebt: BigNumber) {
-        return this.getNetBorrowingAmount(contracts, totalDebt)
+    static async getOpenTroveLUSDAmount(contracts: IContracts, totalDebt: BigNumber|string) {
+        const totalDebtBn = typeof totalDebt == 'string' ? this.toBN(totalDebt) : totalDebt
+        return this.getNetBorrowingAmount(contracts, totalDebtBn)
     }
 
     static async withdrawLUSD(contracts: IContracts, {
