@@ -372,6 +372,18 @@ export class TestHelper {
         const ICR = await troveManager.getCurrentICR(account.address, price)
         return (ICR.gt(MoneyValues._ICR100)) && (ICR.lt(MoneyValues._MCR))
     }
+
+    static async getEntireCollAndDebt(contracts: IContracts, account: SignerWithAddress) {
+        // console.log(`account: ${account}`)
+        const rawColl = (await contracts.troveManager.Troves(account.address))[1]
+        const rawDebt = (await contracts.troveManager.Troves(account.address))[0]
+        const pendingETHReward = await contracts.troveManager.getPendingWSTETHReward(account.address)
+        const pendingLUSDDebtReward = await contracts.troveManager.getPendingSIMDebtReward(account.address)
+        const entireColl = rawColl.add(pendingETHReward)
+        const entireDebt = rawDebt.add(pendingLUSDDebtReward)
+
+        return { entireColl, entireDebt }
+    }
 }
 
 
