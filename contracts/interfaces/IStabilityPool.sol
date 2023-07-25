@@ -136,7 +136,7 @@ interface IStabilityPool {
      * ---
      * Front end makes a one-time selection of kickback rate upon registering
      */
-    function registerFrontEnd(uint _kickbackRate) external;
+//    function registerFrontEnd(uint _kickbackRate) external;
 
     /*
      * Initial checks:
@@ -175,7 +175,7 @@ interface IStabilityPool {
     /*
      * Return the SHADY gain earned by the front end.
      */
-    function getFrontEndSHADYGain(address _frontEnd) external view returns (uint);
+//    function getFrontEndSHADYGain(address _frontEnd) external view returns (uint);
 
     /*
      * Return the user's compounded deposit.
@@ -187,7 +187,7 @@ interface IStabilityPool {
      *
      * The front end's compounded stake is equal to the sum of its depositors' compounded deposits.
      */
-    function getCompoundedFrontEndStake(address _frontEnd) external view returns (uint);
+//    function getCompoundedFrontEndStake(address _frontEnd) external view returns (uint);
 
     /*
      * Fallback function

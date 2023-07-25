@@ -154,6 +154,6 @@ export class DeploymentHelper {
 
         await TestHelper.mintWSTETH(contracts.wstETHMock, signers.map(s => s.address))
 
-        return {contracts, signers, bountyAddress, lpRewardsAddress, multisig}
+        return {contracts, shadyContracts, signers, bountyAddress, lpRewardsAddress, multisig}
     }
 }

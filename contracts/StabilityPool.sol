@@ -165,10 +165,10 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
    // --- Data structures ---
 
-    struct FrontEnd {
+    /*struct FrontEnd {
         uint kickbackRate;
         bool registered;
-    }
+    }*/
 
     struct Deposit {
         uint initialValue;
@@ -186,9 +186,9 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     mapping (address => Deposit) public deposits;  // depositor address -> Deposit struct
     mapping (address => Snapshots) public depositSnapshots;  // depositor address -> snapshots struct
 
-    mapping (address => FrontEnd) public frontEnds;  // front end address -> FrontEnd struct
-    mapping (address => uint) public frontEndStakes; // front end address -> last recorded total deposits, tagged with that front end
-    mapping (address => Snapshots) public frontEndSnapshots; // front end address -> snapshots struct
+//    mapping (address => FrontEnd) public frontEnds;  // front end address -> FrontEnd struct
+//    mapping (address => uint) public frontEndStakes; // front end address -> last recorded total deposits, tagged with that front end
+//    mapping (address => Snapshots) public frontEndSnapshots; // front end address -> snapshots struct
 
     /*  Product 'P': Running product by which to multiply an initial deposit, in order to find the current compounded deposit,
     * after a series of liquidations have occurred, each of which cancel some SIM debt with the deposit.
@@ -302,9 +302,9 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     * - Sends the tagged front end's accumulated SHADY gains to the tagged front end
     * - Increases deposit and tagged front end's stake, and takes new snapshots for each.
     */
-    function provideToSP(uint _amount, address _frontEndTag) external override {
-        _requireFrontEndIsRegisteredOrZero(_frontEndTag);
-        _requireFrontEndNotRegistered(msg.sender);
+    function provideToSP(uint _amount, address /*_frontEndTag*/) external override {
+//        _requireFrontEndIsRegisteredOrZero(_frontEndTag);
+//        _requireFrontEndNotRegistered(msg.sender);
         _requireNonZeroAmount(_amount);
 
         uint initialDeposit = deposits[msg.sender].initialValue;
@@ -313,20 +313,20 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
         _triggerSHADYIssuance(communityIssuanceCached);
 
-        if (initialDeposit == 0) {_setFrontEndTag(msg.sender, _frontEndTag);}
+//        if (initialDeposit == 0) {_setFrontEndTag(msg.sender, _frontEndTag);}
         uint depositorWSTETHGain = getDepositorWSTETHGain(msg.sender);
         uint compoundedSIMDeposit = getCompoundedSIMDeposit(msg.sender);
         uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log
 
         // First pay out any SHADY gains
-        address frontEnd = deposits[msg.sender].frontEndTag;
-        _payOutSHADYGains(communityIssuanceCached, msg.sender, frontEnd);
+//        address frontEnd = deposits[msg.sender].frontEndTag;
+        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);
 
         // Update front end stake
-        uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
+        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
         uint newFrontEndStake = compoundedFrontEndStake + _amount;
         _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);
-        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);
+        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/
 
         _sendSIMtoStabilityPool(msg.sender, _amount);
 
@@ -365,14 +365,14 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log
 
         // First pay out any SHADY gains
-        address frontEnd = deposits[msg.sender].frontEndTag;
-        _payOutSHADYGains(communityIssuanceCached, msg.sender, frontEnd);
+//        address frontEnd = deposits[msg.sender].frontEndTag;
+        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);
         
         // Update front end stake
-        uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
+        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
         uint newFrontEndStake = compoundedFrontEndStake - SIMtoWithdraw;
         _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);
-        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);
+        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/
 
         _sendSIMToDepositor(msg.sender, SIMtoWithdraw);
 
@@ -409,14 +409,14 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log
 
         // First pay out any SHADY gains
-        address frontEnd = deposits[msg.sender].frontEndTag;
-        _payOutSHADYGains(communityIssuanceCached, msg.sender, frontEnd);
+//        address frontEnd = deposits[msg.sender].frontEndTag;
+        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);
 
         // Update front end stake
-        uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
+        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
         uint newFrontEndStake = compoundedFrontEndStake;
         _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);
-        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);
+        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/
 
         _updateDepositAndSnapshots(msg.sender, compoundedSIMDeposit);
 
@@ -430,7 +430,8 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         emit StabilityPoolWSTETHBalanceUpdated(WSTETH);
         emit WSTETHSent(msg.sender, depositorWSTETHGain);
 
-        borrowerOperations.moveWSTETHGainToTrove{ value: depositorWSTETHGain }(msg.sender, _upperHint, _lowerHint);
+        IERC20(WSTETHAddress).transfer(address(borrowerOperations), depositorWSTETHGain);
+        borrowerOperations.moveWSTETHGainToTrove/*{ value: depositorWSTETHGain }*/(msg.sender, _upperHint, _lowerHint);
     }
 
     // --- SHADY issuance functions ---
@@ -660,14 +661,14 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         uint initialDeposit = deposits[_depositor].initialValue;
         if (initialDeposit == 0) {return 0;}
 
-        address frontEndTag = deposits[_depositor].frontEndTag;
+//        address frontEndTag = deposits[_depositor].frontEndTag;
 
         /*
         * If not tagged with a front end, the depositor gets a 100% cut of what their deposit earned.
         * Otherwise, their cut of the deposit's earnings is equal to the kickbackRate, set by the front end through
         * which they made their deposit.
         */
-        uint kickbackRate = frontEndTag == address(0) ? DECIMAL_PRECISION : frontEnds[frontEndTag].kickbackRate;
+        uint kickbackRate = /*frontEndTag == address(0) ? */DECIMAL_PRECISION/* : frontEnds[frontEndTag].kickbackRate*/;
 
         Snapshots memory snapshots = depositSnapshots[_depositor];
 
@@ -682,7 +683,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     *
     * D0 is the last recorded value of the front end's total tagged deposits.
     */
-    function getFrontEndSHADYGain(address _frontEnd) public view override returns (uint) {
+    /*function getFrontEndSHADYGain(address _frontEnd) public view override returns (uint) {
         uint frontEndStake = frontEndStakes[_frontEnd];
         if (frontEndStake == 0) { return 0; }
 
@@ -693,7 +694,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
         uint SHADYGain = frontEndShare * _getSHADYGainFromSnapshots(frontEndStake, snapshots) / DECIMAL_PRECISION;
         return SHADYGain;
-    }
+    }*/
 
     function _getSHADYGainFromSnapshots(uint initialStake, Snapshots memory snapshots) internal view returns (uint) {
        /*
@@ -737,7 +738,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     *
     * The front end's compounded stake is equal to the sum of its depositors' compounded deposits.
     */
-    function getCompoundedFrontEndStake(address _frontEnd) public view override returns (uint) {
+    /*function getCompoundedFrontEndStake(address _frontEnd) public view override returns (uint) {
         uint frontEndStake = frontEndStakes[_frontEnd];
         if (frontEndStake == 0) { return 0; }
 
@@ -745,7 +746,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
         uint compoundedFrontEndStake = _getCompoundedStakeFromSnapshots(frontEndStake, snapshots);
         return compoundedFrontEndStake;
-    }
+    }*/
 
     // Internal function, used to calculcate compounded deposits and compounded front end stakes.
     function _getCompoundedStakeFromSnapshots(
@@ -823,7 +824,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     // --- External Front End functions ---
 
     // Front end makes a one-time selection of kickback rate upon registering
-    function registerFrontEnd(uint _kickbackRate) external override {
+    /*function registerFrontEnd(uint _kickbackRate) external override {
         _requireFrontEndNotRegistered(msg.sender);
         _requireUserHasNoDeposit(msg.sender);
         _requireValidKickbackRate(_kickbackRate);
@@ -832,21 +833,21 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         frontEnds[msg.sender].registered = true;
 
         emit FrontEndRegistered(msg.sender, _kickbackRate);
-    }
+    }*/
 
     // --- Stability Pool Deposit Functionality ---
 
-    function _setFrontEndTag(address _depositor, address _frontEndTag) internal {
+    /*function _setFrontEndTag(address _depositor, address _frontEndTag) internal {
         deposits[_depositor].frontEndTag = _frontEndTag;
         emit FrontEndTagSet(_depositor, _frontEndTag);
-    }
+    }*/
 
 
     function _updateDepositAndSnapshots(address _depositor, uint _newValue) internal {
         deposits[_depositor].initialValue = _newValue;
 
         if (_newValue == 0) {
-            delete deposits[_depositor].frontEndTag;
+//            delete deposits[_depositor].frontEndTag;
             delete depositSnapshots[_depositor];
             emit DepositSnapshotUpdated(_depositor, 0, 0, 0);
             return;
@@ -869,7 +870,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         emit DepositSnapshotUpdated(_depositor, currentP, currentS, currentG);
     }
 
-    function _updateFrontEndStakeAndSnapshots(address _frontEnd, uint _newValue) internal {
+    /*function _updateFrontEndStakeAndSnapshots(address _frontEnd, uint _newValue) internal {
         frontEndStakes[_frontEnd] = _newValue;
 
         if (_newValue == 0) {
@@ -892,15 +893,15 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         frontEndSnapshots[_frontEnd].epoch = currentEpochCached;
 
         emit FrontEndSnapshotUpdated(_frontEnd, currentP, currentG);
-    }
+    }*/
 
-    function _payOutSHADYGains(ICommunityIssuance _communityIssuance, address _depositor, address _frontEnd) internal {
+    function _payOutSHADYGains(ICommunityIssuance _communityIssuance, address _depositor/*, address _frontEnd*/) internal {
         // Pay out front end's SHADY gain
-        if (_frontEnd != address(0)) {
+        /*if (_frontEnd != address(0)) {
             uint frontEndSHADYGain = getFrontEndSHADYGain(_frontEnd);
             _communityIssuance.sendSHADY(_frontEnd, frontEndSHADYGain);
             emit SHADYPaidToFrontEnd(_frontEnd, frontEndSHADYGain);
-        }
+        }*/
 
         // Pay out depositor's SHADY gain
         uint depositorSHADYGain = getDepositorSHADYGain(_depositor);
@@ -947,14 +948,14 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         require(WSTETHGain > 0, "StabilityPool: caller must have non-zero WSTETH Gain");
     }
 
-    function _requireFrontEndNotRegistered(address _address) internal view {
+    /*function _requireFrontEndNotRegistered(address _address) internal view {
         require(!frontEnds[_address].registered, "StabilityPool: must not already be a registered front end");
-    }
+    }*/
 
-     function _requireFrontEndIsRegisteredOrZero(address _address) internal view {
+     /*function _requireFrontEndIsRegisteredOrZero(address _address) internal view {
         require(frontEnds[_address].registered || _address == address(0),
             "StabilityPool: Tag must be a registered front end, or the zero address");
-    }
+    }*/
 
     function  _requireValidKickbackRate(uint _kickbackRate) internal pure {
         require (_kickbackRate <= DECIMAL_PRECISION, "StabilityPool: Kickback rate must be in range [0,1]");
