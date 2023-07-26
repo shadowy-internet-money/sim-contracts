@@ -1659,7 +1659,7 @@ describe('TroveManager - in Recovery Mode', async () => {
     th.assertIsApproximatelyEqual(bob_balanceAfter, bob_expectedBalance.add(th.toBN(bob_remainingCollateral)))
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Bob re-opens the trove, price 200, total debt 80 LUSD, ICR = 120% (lowest one)
     // Dennis redeems 30, so Bob has a surplus of (200 * 0.48 - 30) / 200 = 0.33 ETH
@@ -1687,7 +1687,7 @@ describe('TroveManager - in Recovery Mode', async () => {
 
     // --- TEST ---
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Dennis redeems 40, so Bob has a surplus of (200 * 1 - 40) / 200 = 0.8 ETH
     await th.redeemCollateral(dennis, contracts, B_netDebt.toString(), GAS_PRICE)

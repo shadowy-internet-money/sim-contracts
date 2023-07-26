@@ -2392,7 +2392,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Dennis redeems 20 LUSD
     // Don't pay for gas, as it makes it easier to calculate the received Ether
@@ -2478,7 +2478,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Dennis redeems 20 LUSD
     // Don't pay for gas, as it makes it easier to calculate the received Ether
@@ -2554,7 +2554,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Dennis redeems 20 LUSD
     // Don't pay for gas, as it makes it easier to calculate the received Ether
@@ -2636,7 +2636,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Dennis redeems 20 LUSD
     // Don't pay for gas, as it makes it easier to calculate the received Ether
@@ -2696,7 +2696,7 @@ describe('TroveManager', async () => {
     const { lusdAmount: F_lusdAmount } = await openTrove({ ICR: toBN(dec(200, 18)), extraLUSDAmount: redemptionAmount.mul(toBN(2)), extraParams: { from: flyn } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Flyn redeems collateral
     await troveManager.connect(flyn).redeemCollateral(redemptionAmount, alice.address, alice.address, alice.address, 0, 0, th._100pct)
@@ -2753,7 +2753,7 @@ describe('TroveManager', async () => {
     const { lusdAmount: F_lusdAmount } = await openTrove({ ICR: toBN(dec(200, 18)), extraLUSDAmount: redemptionAmount.mul(toBN(2)), extraParams: { from: flyn } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Flyn redeems collateral with only two iterations
     await troveManager.connect(flyn).redeemCollateral(attemptedRedemptionAmount, alice.address, alice.address, alice.address, 0, 2, th._100pct)
@@ -2795,7 +2795,7 @@ describe('TroveManager', async () => {
     await troveManager.setBaseRate(0) 
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // LUSD redemption is 55000 US
     const LUSDRedemption = dec(55000, 18)
@@ -2826,7 +2826,7 @@ describe('TroveManager', async () => {
     await troveManager.setBaseRate(0) 
 
     // Skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // LUSD redemption is 55000 LUSD
     const LUSDRedemption = dec(55000, 18)
@@ -2890,7 +2890,7 @@ describe('TroveManager', async () => {
       )
 
       // skip bootstrapping phase
-      await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+      await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
       // Alice redeems 1 LUSD from Carol's Trove
       await troveManager.connect(alice).redeemCollateral(
@@ -2958,7 +2958,7 @@ describe('TroveManager', async () => {
     const carol_ETHBalance_Before = toBN(await web3.eth.getBalance(carol))
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const redemptionTx = await troveManager.redeemCollateral(
       amount,
@@ -3003,7 +3003,7 @@ describe('TroveManager', async () => {
     // --- TEST --- 
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     await troveManager.connect(carol).redeemCollateral(
       A_debt,
@@ -3050,7 +3050,7 @@ describe('TroveManager', async () => {
     await openTrove({ ICR: toBN(dec(100, 18)), extraLUSDAmount: dec(10, 18), extraParams: { from: whale } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const tx = await troveManager.connect(dennis).redeemCollateral(
       redemptionAmount,
@@ -3091,7 +3091,7 @@ describe('TroveManager', async () => {
     assert.isTrue(TCR.lt(toBN('1100000000000000000')))
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     await assertRevert(th.redeemCollateral(carol, contracts, dec(270, 18), GAS_PRICE), "TroveManager: Cannot redeem when TCR < MCR")
   });
@@ -3109,7 +3109,7 @@ describe('TroveManager', async () => {
     await openTrove({ ICR: toBN(dec(200, 16)), extraParams: { from: dennis } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Erin attempts to redeem with _amount = 0
     const redemptionTxPromise = troveManager.connect(erin).redeemCollateral(0, erin.address, erin.address, erin.address, 0, 0, th._100pct)
@@ -3123,7 +3123,7 @@ describe('TroveManager', async () => {
     await openTrove({ ICR: toBN(dec(400, 16)), extraLUSDAmount: dec(40, 18), extraParams: { from: D } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     await assertRevert(th.redeemCollateralAndGetTxObject(A, contracts, dec(10, 18), GAS_PRICE ,dec(2, 18)), "Max fee percentage must be between 0.5% and 100%")
     await assertRevert(th.redeemCollateralAndGetTxObject(A, contracts, dec(10, 18), GAS_PRICE, '1000000000000000001'), "Max fee percentage must be between 0.5% and 100%")
@@ -3136,7 +3136,7 @@ describe('TroveManager', async () => {
     await openTrove({ ICR: toBN(dec(400, 16)), extraLUSDAmount: dec(40, 18), extraParams: { from: D } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     await assertRevert(th.redeemCollateralAndGetTxObject(A, contracts, dec(10, 18), GAS_PRICE, '0'), "Max fee percentage must be between 0.5% and 100%")
     await assertRevert(th.redeemCollateralAndGetTxObject(A, contracts, dec(10, 18), GAS_PRICE, '1'), "Max fee percentage must be between 0.5% and 100%")
@@ -3156,7 +3156,7 @@ describe('TroveManager', async () => {
     await troveManager.setBaseRate(0) 
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const attemptedLUSDRedemption = expectedTotalSupply.div(toBN(25))
 
@@ -3188,7 +3188,7 @@ describe('TroveManager', async () => {
     await troveManager.setBaseRate(0) 
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // LUSD redemption fee with 10% of the supply will be 0.5% + 1/(10*2)
     const attemptedLUSDRedemption = expectedTotalSupply.div(toBN(10))
@@ -3277,7 +3277,7 @@ describe('TroveManager', async () => {
     assert.isTrue(ETHinSP.gte(mv._zeroBN))
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Erin redeems LUSD
     await th.redeemCollateral(erin, contracts, redemptionAmount.toString(), th._100pct)
@@ -3339,7 +3339,7 @@ describe('TroveManager', async () => {
     const price = await priceFeed.getPrice()
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Erin attempts to redeem 400 LUSD
     const {
@@ -3410,7 +3410,7 @@ describe('TroveManager', async () => {
     let partialRedemptionHintNICR
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Erin tries to redeem 1000 LUSD
     try {
@@ -3560,7 +3560,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const redemption_1 = await troveManager.connect(erin).redeemCollateral(
       _120_LUSD,
@@ -3698,7 +3698,7 @@ describe('TroveManager', async () => {
     )
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // Bob attempts to redeem his ill-gotten 101 LUSD, from a system that has 100 LUSD outstanding debt
     try {
@@ -3726,7 +3726,7 @@ describe('TroveManager', async () => {
     assert.equal((await troveManager.baseRate()).toString(), '0')
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const A_balanceBefore = await simToken.balanceOf(A.address)
 
@@ -3793,7 +3793,7 @@ describe('TroveManager', async () => {
     await openTrove({ ICR: toBN(dec(180, 16)), extraLUSDAmount: dec(100, 18), extraParams: { from: C } })
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     const A_balanceBefore = await simToken.balanceOf(A.address)
 
@@ -4170,7 +4170,7 @@ describe('TroveManager', async () => {
     const redemptionAmount = A_netDebt.add(B_netDebt).add(C_netDebt).add(partialAmount)
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // whale redeems LUSD.  Expect this to fully redeem A, B, C, and partially redeem 15 LUSD from D.
     const redemptionTx = await th.redeemCollateralAndGetTxObject(whale, contracts, redemptionAmount.toString(), GAS_PRICE, th._100pct)
@@ -4296,7 +4296,7 @@ describe('TroveManager', async () => {
     // --- TEST ---
 
     // skip bootstrapping phase
-    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 2)
+    await th.fastForwardTime(timeValues.SECONDS_IN_ONE_WEEK * 5)
 
     // keep redeeming until we get the base rate to the ceiling of 100%
     for (let i = 0; i < 2; i++) {
