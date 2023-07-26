@@ -9,7 +9,7 @@ import './interfaces/IBorrowerOperations.sol';
 import './interfaces/ITroveManager.sol';
 import './interfaces/ISIMToken.sol';
 import './interfaces/ISortedTroves.sol';
-import "./interfaces/ICommunityIssuance.sol";
+import "./interfaces/IIssuance.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
@@ -156,7 +156,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     // Needed to check if there are pending liquidations
     ISortedTroves public sortedTroves;
 
-    ICommunityIssuance public communityIssuance;
+    IIssuance public communityIssuance;
 
     uint256 internal WSTETH;  // deposited ether tracker
 
@@ -263,7 +263,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         simToken = ISIMToken(_simTokenAddress);
         sortedTroves = ISortedTroves(_sortedTrovesAddress);
         priceFeed = IPriceFeed(_priceFeedAddress);
-        communityIssuance = ICommunityIssuance(_communityIssuanceAddress);
+        communityIssuance = IIssuance(_communityIssuanceAddress);
 
         emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);
         emit TroveManagerAddressChanged(_troveManagerAddress);
@@ -309,7 +309,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
         uint initialDeposit = deposits[msg.sender].initialValue;
 
-        ICommunityIssuance communityIssuanceCached = communityIssuance;
+        IIssuance communityIssuanceCached = communityIssuance;
 
         _triggerSHADYIssuance(communityIssuanceCached);
 
@@ -354,7 +354,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         uint initialDeposit = deposits[msg.sender].initialValue;
         _requireUserHasDeposit(initialDeposit);
 
-        ICommunityIssuance communityIssuanceCached = communityIssuance;
+        IIssuance communityIssuanceCached = communityIssuance;
 
         _triggerSHADYIssuance(communityIssuanceCached);
 
@@ -399,7 +399,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         _requireUserHasTrove(msg.sender);
         _requireUserHasWSTETHGain(msg.sender);
 
-        ICommunityIssuance communityIssuanceCached = communityIssuance;
+        IIssuance communityIssuanceCached = communityIssuance;
 
         _triggerSHADYIssuance(communityIssuanceCached);
 
@@ -436,7 +436,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
 
     // --- SHADY issuance functions ---
 
-    function _triggerSHADYIssuance(ICommunityIssuance _communityIssuance) internal {
+    function _triggerSHADYIssuance(IIssuance _communityIssuance) internal {
         uint SHADYIssuance = _communityIssuance.issueSHADY();
        _updateG(SHADYIssuance);
     }
@@ -895,7 +895,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         emit FrontEndSnapshotUpdated(_frontEnd, currentP, currentG);
     }*/
 
-    function _payOutSHADYGains(ICommunityIssuance _communityIssuance, address _depositor/*, address _frontEnd*/) internal {
+    function _payOutSHADYGains(IIssuance _communityIssuance, address _depositor/*, address _frontEnd*/) internal {
         // Pay out front end's SHADY gain
         /*if (_frontEnd != address(0)) {
             uint frontEndSHADYGain = getFrontEndSHADYGain(_frontEnd);

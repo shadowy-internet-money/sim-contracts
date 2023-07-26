@@ -1,10 +1,24 @@
 import {
     ActivePool,
     BorrowerOperations,
-    CollSurplusPool, CommunityIssuance,
-    DefaultPool, HintHelpers, LockupContractFactory, PriceFeedMock, SHADYToken, SIMToken, SortedTroves,
+    CollSurplusPool,
+    CommunityIssuance,
+    DefaultPool,
+    HintHelpers,
+    LockupContractFactory,
+    PriceFeedMock,
+    SHADYToken,
+    SIMToken,
+    SortedTroves,
     StabilityPool,
-    TroveManager, WSTETHMock, Ve, TroveManagerTester, BorrowerOperationsTester, SIMTokenTester
+    TroveManager,
+    WSTETHMock,
+    Ve,
+    TroveManagerTester,
+    BorrowerOperationsTester,
+    SIMTokenTester,
+    StabilityPoolTester,
+    CommunityIssuanceTester
 } from "../typechain-types";
 
 export interface IContracts {
@@ -23,7 +37,7 @@ export interface IContracts {
 
 export interface ISHADYContracts {
     shadyToken: SHADYToken
-    communityIssuance: CommunityIssuance
+    communityIssuance: CommunityIssuance|CommunityIssuanceTester
     lockupContractFactory: LockupContractFactory
     ve: Ve
 }

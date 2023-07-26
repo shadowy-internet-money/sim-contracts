@@ -3,17 +3,30 @@ import {ethers} from "hardhat";
 import {
     ActivePool,
     BorrowerOperations,
-    CollSurplusPool, CommunityIssuance,
-    DefaultPool, HintHelpers, LockupContractFactory, PriceFeedMock, SIMToken, SortedTroves,
+    CollSurplusPool,
+    CommunityIssuance,
+    DefaultPool,
+    HintHelpers,
+    LockupContractFactory,
+    PriceFeedMock,
+    SIMToken,
+    SortedTroves,
     StabilityPool,
-    TroveManager, WSTETHMock, Ve, SHADYToken, TroveManagerTester, BorrowerOperationsTester, SIMTokenTester
+    TroveManager,
+    WSTETHMock,
+    Ve,
+    SHADYToken,
+    TroveManagerTester,
+    BorrowerOperationsTester,
+    SIMTokenTester,
+    CommunityIssuanceTester
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
 export class DeploymentHelper {
     static async deploySHADY(bountyAddress: string, lpRewardsAddress: string, multisigAddress: string): Promise<ISHADYContracts> {
         const
-            communityIssuance = await (await ethers.getContractFactory("CommunityIssuance")).deploy() as CommunityIssuance,
+            communityIssuance = await (await ethers.getContractFactory("CommunityIssuanceTester")).deploy() as CommunityIssuanceTester,
             lockupContractFactory = await (await ethers.getContractFactory("LockupContractFactory")).deploy() as LockupContractFactory,
             ve = await (await ethers.getContractFactory("Ve")).deploy() as Ve
 
