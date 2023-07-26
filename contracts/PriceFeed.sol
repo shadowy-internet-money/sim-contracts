@@ -143,7 +143,7 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
                 }
 
                 // If Pyth is frozen or working, remember API3 froze, and switch to Pyth
-                _changeStatus(Status.usingPythAPI3Untrusted);
+                _changeStatus(Status.usingPythAPI3Frozen);
                
                 if (_pythIsFrozen(pythPrice)) {
                     return lastGoodPrice;
