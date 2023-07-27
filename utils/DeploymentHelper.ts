@@ -19,7 +19,7 @@ import {
     BorrowerOperationsTester,
     SIMTokenTester,
     CommunityIssuanceTester,
-    LiquidityRewardsIssuance
+    LiquidityRewardsIssuance, SHADYTokenTester
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
@@ -36,14 +36,14 @@ export class DeploymentHelper {
             liquidityRewardsIssuance,
             lockupContractFactory,
             ve,
-            shadyToken: await (await ethers.getContractFactory("SHADYToken")).deploy(
+            shadyToken: await (await ethers.getContractFactory("SHADYTokenTester")).deploy(
                 communityIssuance.address,
                 liquidityRewardsIssuance.address,
                 ve.address,
                 lockupContractFactory.address,
                 bountyAddress,
                 multisigAddress
-            ) as SHADYToken,
+            ) as SHADYTokenTester,
         }
     }
 
