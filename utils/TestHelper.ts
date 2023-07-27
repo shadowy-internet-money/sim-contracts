@@ -1,5 +1,6 @@
 import {IContracts, IOpenTroveParams, IWithdrawSIMParams} from "./types";
 import {
+    LockupContract__factory,
     TroveManagerTester,
     WSTETHMock,
 } from "../typechain-types";
@@ -384,6 +385,23 @@ export class TestHelper {
         const entireDebt = rawDebt.add(pendingLUSDDebtReward)
 
         return { entireColl, entireDebt }
+    }
+
+    static async getLCAddressFromDeploymentTx(deployedLCTx: ContractTransaction) {
+        const receipt = await deployedLCTx.wait()
+        // @ts-ignore
+        return receipt.events[1].args[0]
+    }
+
+    static async getLCFromDeploymentTx(deployedLCTx: ContractTransaction) {
+        const deployedLCAddress = await this.getLCAddressFromDeploymentTx(deployedLCTx)  // grab addr of deployed contract from event
+        const LC = await this.getLCFromAddress(deployedLCAddress)
+        return LC
+    }
+
+    static async getLCFromAddress(LCAddress:string) {
+        const LC = LockupContract__factory.connect(LCAddress, ethers.provider)
+        return LC
     }
 }
 

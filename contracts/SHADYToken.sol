@@ -14,44 +14,45 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     uint internal immutable deploymentStartTime;
     address public immutable multisigAddress;
     address public immutable communityIssuanceAddress;
+    address public immutable liquidityRewardsIssuanceAddress;
     address public immutable veAddress;
-    uint internal immutable lpRewardsEntitlement;
     ILockupContractFactory public immutable lockupContractFactory;
 
     // --- Functions ---
 
     constructor(
         address communityIssuanceAddress_,
+        address liquidityRewardsIssuanceAddress_,
         address veAddress_,
         address lockupFactoryAddress_,
-        address bountyAddress_,
-        address lpRewardsAddress_,
+        address spenderAddress_,
         address multisigAddress_
     ) ERC20("Shady", "SHADY") ERC20Permit("Shady") {
         _checkContract(communityIssuanceAddress_);
+        _checkContract(liquidityRewardsIssuanceAddress_);
         _checkContract(veAddress_);
         _checkContract(lockupFactoryAddress_);
 
         multisigAddress = multisigAddress_;
         deploymentStartTime  = block.timestamp;
         communityIssuanceAddress = communityIssuanceAddress_;
+        liquidityRewardsIssuanceAddress = liquidityRewardsIssuanceAddress_;
         veAddress = veAddress_;
         lockupContractFactory = ILockupContractFactory(lockupFactoryAddress_);
 
         // --- Initial SHADY allocations ---
 
-        uint bountyEntitlement = _1_MILLION * 2; // Allocate 2 million for bounties/hackathons
-        _mint(bountyAddress_, bountyEntitlement);
-
-        uint depositorsEntitlement = _1_MILLION * 32; // Allocate 32 million to the algorithmic issuance schedule
+        uint depositorsEntitlement = _1_MILLION * 30; // Allocate 30 million to the algorithmic issuance schedule
         _mint(communityIssuanceAddress_, depositorsEntitlement);
 
-        uint _lpRewardsEntitlement = _1_MILLION * 4 / 3;  // Allocate 1.33 million for LP rewards
-        lpRewardsEntitlement = _lpRewardsEntitlement;
-        _mint(lpRewardsAddress_, _lpRewardsEntitlement);
+        uint lpRewardsEntitlement = _1_MILLION * 30; // Allocate 30 million to the algorithmic issuance schedule
+        _mint(liquidityRewardsIssuanceAddress_, lpRewardsEntitlement);
 
-        // Allocate the remainder to the Multisig: (100 - 2 - 32 - 1.33) million = 64.66 million
-        uint multisigEntitlement = _1_MILLION * 100 - bountyEntitlement - depositorsEntitlement - _lpRewardsEntitlement;
+        uint _spenderEntitlement = _1_MILLION * 14;  // Allocate 14 million for Public Sale, Community Reserve and initial liquidity
+        _mint(spenderAddress_, _spenderEntitlement);
+
+        // Allocate the remainder to the Multisig: (100 - 30 - 30 - 14) million = 26 million
+        uint multisigEntitlement = _1_MILLION * 100 - depositorsEntitlement - lpRewardsEntitlement - _spenderEntitlement;
         _mint(multisigAddress_, multisigEntitlement);
     }
 
@@ -59,10 +60,6 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
 
     function getDeploymentStartTime() external view override returns (uint256) {
         return deploymentStartTime;
-    }
-
-    function getLpRewardsEntitlement() external view override returns (uint256) {
-        return lpRewardsEntitlement;
     }
 
     function approve(address spender, uint256 amount) public virtual override (ERC20, IERC20) returns (bool) {
@@ -143,8 +140,9 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         );
         require(
             _recipient != communityIssuanceAddress &&
+            _recipient != liquidityRewardsIssuanceAddress &&
             _recipient != veAddress,
-            "SHADY: Cannot transfer tokens directly to the community issuance or ve contract"
+            "SHADY: Cannot transfer tokens directly to an issuance or ve contract"
         );
     }
 

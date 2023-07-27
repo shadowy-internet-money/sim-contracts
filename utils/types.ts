@@ -17,8 +17,8 @@ import {
     TroveManagerTester,
     BorrowerOperationsTester,
     SIMTokenTester,
-    StabilityPoolTester,
-    CommunityIssuanceTester
+    CommunityIssuanceTester,
+    LiquidityRewardsIssuance
 } from "../typechain-types";
 
 export interface IContracts {
@@ -38,6 +38,7 @@ export interface IContracts {
 export interface ISHADYContracts {
     shadyToken: SHADYToken
     communityIssuance: CommunityIssuance|CommunityIssuanceTester
+    liquidityRewardsIssuance: LiquidityRewardsIssuance
     lockupContractFactory: LockupContractFactory
     ve: Ve
 }

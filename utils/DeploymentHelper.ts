@@ -4,7 +4,6 @@ import {
     ActivePool,
     BorrowerOperations,
     CollSurplusPool,
-    CommunityIssuance,
     DefaultPool,
     HintHelpers,
     LockupContractFactory,
@@ -19,27 +18,30 @@ import {
     TroveManagerTester,
     BorrowerOperationsTester,
     SIMTokenTester,
-    CommunityIssuanceTester
+    CommunityIssuanceTester,
+    LiquidityRewardsIssuance
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
 export class DeploymentHelper {
-    static async deploySHADY(bountyAddress: string, lpRewardsAddress: string, multisigAddress: string): Promise<ISHADYContracts> {
+    static async deploySHADY(bountyAddress: string, multisigAddress: string): Promise<ISHADYContracts> {
         const
             communityIssuance = await (await ethers.getContractFactory("CommunityIssuanceTester")).deploy() as CommunityIssuanceTester,
+            liquidityRewardsIssuance = await (await ethers.getContractFactory("LiquidityRewardsIssuance")).deploy() as LiquidityRewardsIssuance,
             lockupContractFactory = await (await ethers.getContractFactory("LockupContractFactory")).deploy() as LockupContractFactory,
             ve = await (await ethers.getContractFactory("Ve")).deploy() as Ve
 
         return {
             communityIssuance,
+            liquidityRewardsIssuance,
             lockupContractFactory,
             ve,
             shadyToken: await (await ethers.getContractFactory("SHADYToken")).deploy(
                 communityIssuance.address,
+                liquidityRewardsIssuance.address,
                 ve.address,
                 lockupContractFactory.address,
                 bountyAddress,
-                lpRewardsAddress,
                 multisigAddress
             ) as SHADYToken,
         }
@@ -160,7 +162,7 @@ export class DeploymentHelper {
         contracts.troveManager = await (await ethers.getContractFactory("TroveManagerTester")).deploy() as TroveManagerTester
         contracts.borrowerOperations = await (await ethers.getContractFactory("BorrowerOperationsTester")).deploy() as BorrowerOperationsTester
         contracts.simToken = await (await ethers.getContractFactory("SIMTokenTester")).deploy(contracts.troveManager.address, contracts.stabilityPool.address, contracts.borrowerOperations.address) as SIMTokenTester
-        const shadyContracts = await DeploymentHelper.deploySHADY(bountyAddress, lpRewardsAddress, multisig)
+        const shadyContracts = await DeploymentHelper.deploySHADY(bountyAddress, multisig)
         await DeploymentHelper.connectSHADYContracts(shadyContracts)
         await DeploymentHelper.connectCoreContracts(contracts, shadyContracts)
         await DeploymentHelper.connectSHADYContractsToCore(shadyContracts, contracts)
