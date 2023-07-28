@@ -5,6 +5,10 @@
   "repository": "https://github.com/shadowy-internet-money/sim-contracts.git",
   "author": "Alien Deployer <m@a17.name>",
   "license": "MIT",
+  "scripts": {
+    "test": "hardhat test",
+    "coverage": "hardhat coverage"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
     "@nomiclabs/hardhat-ethers": "^2.2.3",

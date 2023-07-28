@@ -1,4 +1,4 @@
-import {assert, ethers} from "hardhat";
+import {assert} from "hardhat";
 import {
     ActivePool,
     BorrowerOperationsTester, DefaultPool,
@@ -18,7 +18,6 @@ const th = TestHelper
 const dec = th.dec
 const toBN = th.toBN
 const assertRevert = th.assertRevert
-const timeValues = th.TimeValues
 const ZERO_ADDRESS = th.ZERO_ADDRESS
 
 describe('BorrowerOperations', async () => {
@@ -617,7 +616,7 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_1.gt(toBN('0')))
 
         // 2 hours pass
-        th.fastForwardTime(7200)
+        await th.fastForwardTime(7200)
 
         // D withdraws LUSD
         await borrowerOperations.connect(D).withdrawSIM(th._100pct, dec(1, 18), A.address, A.address)
@@ -627,7 +626,7 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_2.lt(baseRate_1))
 
         // 1 hour passes
-        th.fastForwardTime(3600)
+        await th.fastForwardTime(3600)
 
         // E withdraws LUSD
         await borrowerOperations.connect(E).withdrawSIM(th._100pct, dec(1, 18), A.address, A.address)
@@ -764,7 +763,7 @@ describe('BorrowerOperations', async () => {
         assert.equal(baseRate_1.toString(), '0')
 
         // 2 hours pass
-        th.fastForwardTime(7200)
+        await th.fastForwardTime(7200)
 
         // D withdraws LUSD
         await borrowerOperations.connect(D).withdrawSIM(th._100pct, dec(37, 18), A.address, A.address)
@@ -774,7 +773,7 @@ describe('BorrowerOperations', async () => {
         assert.equal(baseRate_2.toString(), '0')
 
         // 1 hour passes
-        th.fastForwardTime(3600)
+        await th.fastForwardTime(3600)
 
         // E opens trove 
         await borrowerOperations.connect(E).withdrawSIM(th._100pct, dec(12, 18), A.address, A.address)
@@ -801,7 +800,7 @@ describe('BorrowerOperations', async () => {
         const lastFeeOpTime_1 = await troveManager.lastFeeOperationTime()
 
         // 10 seconds pass
-        th.fastForwardTime(10)
+        await th.fastForwardTime(10)
 
         // Borrower C triggers a fee
         await borrowerOperations.connect(C).withdrawSIM(th._100pct, dec(1, 18), C.address, C.address)
@@ -813,7 +812,7 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(lastFeeOpTime_2.eq(lastFeeOpTime_1))
 
         // 60 seconds passes
-        th.fastForwardTime(60)
+        await th.fastForwardTime(60)
 
         // Check that now, at least one minute has passed since lastFeeOpTime_1
         const timeNow = await th.getLatestBlockTimestamp()
@@ -844,13 +843,13 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_1.gt(toBN('0')))
 
         // 30 seconds pass
-        th.fastForwardTime(30)
+        await th.fastForwardTime(30)
 
         // Borrower C triggers a fee, before decay interval has passed
         await borrowerOperations.connect(C).withdrawSIM(th._100pct, dec(1, 18), C.address, C.address)
 
         // 30 seconds pass
-        th.fastForwardTime(30)
+        await th.fastForwardTime(30)
 
         // Borrower C triggers another fee
         await borrowerOperations.connect(C).withdrawSIM(th._100pct, dec(1, 18), C.address, C.address)
@@ -1464,7 +1463,7 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_1.gt(toBN('0')))
 
         // 2 hours pass
-        th.fastForwardTime(7200)
+        await th.fastForwardTime(7200)
 
         // D adjusts trove
         await borrowerOperations.connect(D).adjustTrove(0, th._100pct, 0, dec(37, 18), true, D.address, D.address)
@@ -1474,7 +1473,7 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_2.lt(baseRate_1))
 
         // 1 hour passes
-        th.fastForwardTime(3600)
+        await th.fastForwardTime(3600)
 
         // E adjusts trove
         await borrowerOperations.connect(D).adjustTrove(0, th._100pct, 0, dec(37, 15), true, E.address, E.address)
@@ -1602,7 +1601,7 @@ describe('BorrowerOperations', async () => {
         await borrowerOperations.connect(C).adjustTrove(0, th._100pct, 0, dec(1, 18), true, C.address, C.address)
 
         // 1 minute passes
-        th.fastForwardTime(60)
+        await th.fastForwardTime(60)
 
         // Borrower C triggers another fee
         await borrowerOperations.connect(C).adjustTrove(0, th._100pct, 0, dec(1, 18), true, C.address, C.address)
@@ -1831,7 +1830,7 @@ describe('BorrowerOperations', async () => {
         assert.equal(baseRate_1.toString(), '0')
 
         // 2 hours pass
-        th.fastForwardTime(7200)
+        await th.fastForwardTime(7200)
 
         const DUSDBalanceBefore = await simToken.balanceOf(D.address)
 
@@ -3273,14 +3272,14 @@ describe('BorrowerOperations', async () => {
         assert.isTrue(baseRate_1.gt(toBN('0')))
 
         // 59 minutes pass
-        th.fastForwardTime(3540)
+        await th.fastForwardTime(3540)
 
         // Assume Borrower also owns accounts D and E
         // Borrower triggers a fee, before decay interval has passed
         await openTrove({ extraLUSDAmount: toBN(dec(1, 18)), ICR: toBN(dec(2, 18)), extraParams: { from: D } })
 
         // 1 minute pass
-        th.fastForwardTime(3540)
+        await th.fastForwardTime(3540)
 
         // Borrower triggers another fee
         await openTrove({ extraLUSDAmount: toBN(dec(1, 18)), ICR: toBN(dec(2, 18)), extraParams: { from: E } })

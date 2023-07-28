@@ -157,8 +157,8 @@ export class TestHelper {
     }
 
     static async fastForwardTime(seconds:number) {
-        await ethers.provider.send("evm_increaseTime", [seconds])
-        await ethers.provider.send("evm_mine", [])
+        const now = await this.getLatestBlockTimestamp()
+        await ethers.provider.send("evm_mine", [now + (seconds > 0 ? seconds : 1)])
     }
 
     static async getLatestBlockTimestamp() {
