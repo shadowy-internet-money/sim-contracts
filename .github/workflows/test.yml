@@ -1,0 +1,29 @@
+name: Test
+
+env:
+  CI: true
+  FORCE_COLOR: true
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+        env:
+          # Workaround for https://github.com/actions/setup-node/issues/317
+          FORCE_COLOR: 0
+
+      - run: yarn install --immutable
+
+      - name: Test contracts
+        run: yarn test
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
