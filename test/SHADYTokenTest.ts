@@ -2,13 +2,10 @@ import {assert} from "hardhat";
 import {TestHelper} from "../utils/TestHelper";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
 import {CommunityIssuance, SHADYTokenTester, Ve} from "../typechain-types";
-import {ecsign} from "ethereumjs-util";
-import {defaultAbiCoder, hexlify, keccak256, solidityPack, toUtf8Bytes} from "ethers/lib/utils";
+import {hexlify} from "ethers/lib/utils";
 import {loadFixture} from "@nomicfoundation/hardhat-network-helpers";
 import {DeploymentHelper} from "../utils/DeploymentHelper";
-
-// the second account our hardhatenv creates (for EOA A)
-// from https://github.com/liquity/dev/blob/main/packages/contracts/hardhatAccountsList2k.js#L3
+import {PermitHelper} from "../utils/PermitHelper";
 
 const th = TestHelper
 const toBN = th.toBN
@@ -22,6 +19,7 @@ describe('SHADY token', async () => {
   let approve: {owner: string, spender: string, value: number}
   // Create the approval tx data, for use in permit()
 
+  // the first account our hardhatenv creates (for owner)
   const A_PrivateKey = '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80'
 
   let contracts
@@ -32,40 +30,6 @@ describe('SHADY token', async () => {
   let tokenName: string
   let chainId: string
   const tokenVersion = '1'
-
-  const sign = (digest:string, privateKey:string) => {
-    return ecsign(Buffer.from(digest.slice(2), 'hex'), Buffer.from(privateKey.slice(2), 'hex'))
-  }
-
-  const PERMIT_TYPEHASH = keccak256(
-    toUtf8Bytes('Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)')
-  )
-
-  // Gets the EIP712 domain separator
-  const getDomainSeparator = (name:string, contractAddress:string, chainId:string, version:string) => {
-    return keccak256(defaultAbiCoder.encode(['bytes32', 'bytes32', 'bytes32', 'uint256', 'address'],
-      [
-        keccak256(toUtf8Bytes('EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)')),
-        keccak256(toUtf8Bytes(name)),
-        keccak256(toUtf8Bytes(version)),
-        parseInt(chainId), contractAddress.toLowerCase()
-      ]))
-  }
-
-  // Returns the EIP712 hash which should be signed by the user
-  // in order to make a call to `permit`
-  const getPermitDigest = (name: string, address: string, chainId:string, version:string,
-    owner:string, spender:string, value:number,
-    nonce:string, deadline:number) => {
-
-    const DOMAIN_SEPARATOR = getDomainSeparator(name, address, chainId, version)
-    return keccak256(solidityPack(['bytes1', 'bytes1', 'bytes32', 'bytes32'],
-      ['0x19', '0x01', DOMAIN_SEPARATOR,
-        keccak256(defaultAbiCoder.encode(
-          ['bytes32', 'address', 'address', 'uint256', 'uint256', 'uint256'],
-          [PERMIT_TYPEHASH, owner, spender, value, nonce, deadline])),
-      ]))
-  }
 
   const mintToABC = async () => {
     // mint some tokens
@@ -78,14 +42,14 @@ describe('SHADY token', async () => {
     const nonce = (await shadyTokenTester.nonces(approve.owner)).toString()
 
     // Get the EIP712 digest
-    const digest = getPermitDigest(
+    const digest = PermitHelper.getPermitDigest(
       tokenName, shadyTokenTester.address,
       chainId, tokenVersion,
       approve.owner, approve.spender,
       approve.value, nonce, deadline
     )
 
-    const { v, r, s } = sign(digest, A_PrivateKey)
+    const { v, r, s } = PermitHelper.sign(digest, A_PrivateKey)
 
     const tx = shadyTokenTester.permit(
       approve.owner, approve.spender, approve.value,
@@ -141,11 +105,6 @@ describe('SHADY token', async () => {
     const symbol = await shadyTokenTester.symbol()
     assert.equal(symbol, "SHADY")
   })
-
-  /*it("version(): returns the token contract's version", async () => {
-    const version = await shadyTokenTester.version()
-    assert.equal(version, "1")
-  })*/
 
   it("decimal(): returns the number of decimal digits used", async () => {
     const decimals = await shadyTokenTester.decimals()
@@ -318,7 +277,7 @@ describe('SHADY token', async () => {
 
   it('Initializes DOMAIN_SEPARATOR correctly', async () => {
     assert.equal(await shadyTokenTester.domainSeparator(),
-      getDomainSeparator(tokenName, shadyTokenTester.address, chainId, tokenVersion))
+      PermitHelper.getDomainSeparator(tokenName, shadyTokenTester.address, chainId, tokenVersion))
   })
 
   it('Initial nonce for a given address is 0', async function () {

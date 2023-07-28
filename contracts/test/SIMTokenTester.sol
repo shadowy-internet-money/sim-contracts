@@ -42,4 +42,15 @@ contract SIMTokenTester is SIMToken {
     function callInternalApprove(address owner, address spender, uint256 amount) external {
         _approve(owner, spender, amount);
     }
+
+    function getChainId() external view returns (uint256 chainID) {
+        //return _chainID(); // it’s private
+        assembly {
+            chainID := chainid()
+        }
+    }
+
+    function domainSeparator() external view returns (bytes32) {
+        return _domainSeparatorV4();
+    }
 }
