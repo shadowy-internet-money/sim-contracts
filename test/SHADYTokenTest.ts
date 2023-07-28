@@ -1,7 +1,7 @@
 import {assert} from "hardhat";
 import {TestHelper} from "../utils/TestHelper";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
-import {CommunityIssuance, SHADYTokenTester, Ve} from "../typechain-types";
+import {CommunityIssuance, SHADYTokenTester, Ve, VeTester} from "../typechain-types";
 import {hexlify} from "ethers/lib/utils";
 import {loadFixture} from "@nomicfoundation/hardhat-network-helpers";
 import {DeploymentHelper} from "../utils/DeploymentHelper";
@@ -24,7 +24,7 @@ describe('SHADY token', async () => {
 
   let contracts
   let shadyTokenTester: SHADYTokenTester
-  let ve: Ve
+  let ve: VeTester
   let communityIssuance: CommunityIssuance
 
   let tokenName: string
@@ -64,7 +64,7 @@ describe('SHADY token', async () => {
     contracts = f.contracts;
     [,,,A, B, C, D] = f.signers
 
-    ve = f.shadyContracts.ve
+    ve = f.shadyContracts.ve as VeTester
     shadyTokenTester = f.shadyContracts.shadyToken as SHADYTokenTester
     communityIssuance = f.shadyContracts.communityIssuance as CommunityIssuance
 
@@ -263,13 +263,13 @@ describe('SHADY token', async () => {
     const lqtyStakingBalanceBefore = await shadyTokenTester.balanceOf(ve.address)
     assert.equal(lqtyStakingBalanceBefore.toString(), '0')
 
-    await shadyTokenTester.connect(A).transfer(B.address, dec(37, 18))
-    // await shadyTokenTester.unprotectedSendToVe(A.address, )
+    // await shadyTokenTester.connect(A).transfer(B.address, dec(37, 18))
+    await ve.unprotectedCallSHADYSendToVe(shadyTokenTester.address, A.address, dec(37, 18))
 
     // Check caller and SHADYStaking balance before
     const A_BalanceAfter = await shadyTokenTester.balanceOf(A.address)
     assert.equal(A_BalanceAfter.toString(), dec(113, 18))
-    const lqtyStakingBalanceAfter = await shadyTokenTester.balanceOf(B.address)
+    const lqtyStakingBalanceAfter = await shadyTokenTester.balanceOf(ve.address)
     assert.equal(lqtyStakingBalanceAfter.toString(), dec(37, 18))
   })
 

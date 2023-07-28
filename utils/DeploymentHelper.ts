@@ -13,13 +13,11 @@ import {
     StabilityPool,
     TroveManager,
     WSTETHMock,
-    Ve,
-    SHADYToken,
     TroveManagerTester,
     BorrowerOperationsTester,
     SIMTokenTester,
     CommunityIssuanceTester,
-    LiquidityRewardsIssuance, SHADYTokenTester
+    LiquidityRewardsIssuance, SHADYTokenTester, VeTester
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
@@ -29,7 +27,7 @@ export class DeploymentHelper {
             communityIssuance = await (await ethers.getContractFactory("CommunityIssuanceTester")).deploy() as CommunityIssuanceTester,
             liquidityRewardsIssuance = await (await ethers.getContractFactory("LiquidityRewardsIssuance")).deploy() as LiquidityRewardsIssuance,
             lockupContractFactory = await (await ethers.getContractFactory("LockupContractFactory")).deploy() as LockupContractFactory,
-            ve = await (await ethers.getContractFactory("Ve")).deploy() as Ve
+            ve = await (await ethers.getContractFactory("VeTester")).deploy() as VeTester
 
         return {
             communityIssuance,

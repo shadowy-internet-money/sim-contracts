@@ -116,7 +116,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
             _requireRecipientIsRegisteredLC(to);
         }
 
-        if (from != address(0)) {
+        if (from != address(0) && msg.sender != veAddress) {
             _requireValidRecipient(to);
         }
     }

@@ -178,6 +178,43 @@ describe('PriceFeed', async () => {
     assert.equal(price.toString(), '12345678900000000000')
   })
 
+  it("C1 api3Working: API3 broken by zero price, Pyth broken: bothOraclesUntrusted, use lastGoodPrice", async () => {
+    await setAddresses()
+    const statusBefore = await priceFeed.status()
+    assert.equal(statusBefore.toString(), '0') // status 0: API3 working
+
+    await api3ProxyMock.setPrice(0)
+    await priceFeed.setLastGoodPrice(dec(999, 18))
+
+    await pythMock.setPrice(0)
+
+    await priceFeed.fetchPrice()
+    const statusAfter = await priceFeed.status()
+    assert.equal(statusAfter.toString(), '3') // status 3: bothOraclesUntrusted
+
+    let price = await priceFeed.lastGoodPrice()
+    assert.equal(price.toString(), dec(999, 18))
+  })
+
+  it("C1 api3Working: API3 broken by zero price, Pyth frozen: usingPythAPI3Untrusted, use lastGoodPrice", async () => {
+    await setAddresses()
+    const statusBefore = await priceFeed.status()
+    assert.equal(statusBefore.toString(), '0') // status 0: API3 working
+
+    await pythMock.setPrice(dec(999, 8))
+    await api3ProxyMock.setPrice(0)
+    await priceFeed.setLastGoodPrice(dec(999, 18))
+
+    await th.fastForwardTime(14400) // Fast forward 4 hours
+
+    await priceFeed.fetchPrice()
+    const statusAfter = await priceFeed.status()
+    assert.equal(statusAfter.toString(), '1') // status 1: usingPythAPI3Untrusted
+
+    let price = await priceFeed.lastGoodPrice()
+    assert.equal(price.toString(), dec(999, 18))
+  })
+
   it("C1 api3Working: API3 broken by zero price, Pyth working: use Pyth price", async () => {
     await setAddresses()
     const statusBefore = await priceFeed.status()
@@ -1080,6 +1117,28 @@ describe('PriceFeed', async () => {
 
     const price = await priceFeed.lastGoodPrice()
     assert.equal(price.toString(), dec(999, 18))
+  })
+
+  it("C4 usingPythAPI3Frozen: when API3 is live and Pyth become frozen, return lastGoodPrice", async () => {
+    await setAddresses()
+    await priceFeed.setStatus(2) // status 2: using Pyth, API3 frozen
+
+    await priceFeed.setLastGoodPrice(dec(50, 18))
+
+    await th.fastForwardTime(14400) // Fast forward 4 hours
+
+    // check Pyth price timestamp is out of date by > 4 hours
+    const now = await th.getLatestBlockTimestamp()
+    const tellorUpdateTime = await pythMock.getUpdateTime()
+    assert.isTrue(tellorUpdateTime.lt(toBN(now).sub(toBN(14400))))
+
+    await api3ProxyMock.setPrice(dec(999, 18))
+    await api3ProxyMock.setUpdateTime(now)
+
+    await priceFeed.fetchPrice()
+
+    const price = await priceFeed.lastGoodPrice()
+    assert.equal(price.toString(), dec(50, 18))
   })
 
   it("C4 usingPythAPI3Frozen: when API3 still frozen and Pyth breaks, switch to usingAPI3PythUntrusted", async () => {

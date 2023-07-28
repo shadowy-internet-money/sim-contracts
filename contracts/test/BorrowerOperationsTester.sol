@@ -39,9 +39,9 @@ contract BorrowerOperationsTester is BorrowerOperations {
         return _getNewTCRFromTroveChange(_collChange, isCollIncrease, _debtChange, isDebtIncrease, _price);
     }
 
-    function getUSDValue(uint _coll, uint _price) external pure returns (uint) {
+    /*function getUSDValue(uint _coll, uint _price) external pure returns (uint) {
         return _getUSDValue(_coll, _price);
-    }
+    }*/
 
     function callInternalAdjustLoan
     (
@@ -54,5 +54,13 @@ contract BorrowerOperationsTester is BorrowerOperations {
         external 
     {
         _adjustTrove(_borrower, _collWithdrawal, _debtChange, _isDebtIncrease, _upperHint, _lowerHint, DECIMAL_PRECISION / 1000 * 5);
+    }
+
+    function increaseSIMDebtOnActivePool(uint amount_) external {
+        activePool.increaseSIMDebt(amount_);
+    }
+
+    function decreaseSIMDebtOnActivePool(uint amount_) external {
+        activePool.decreaseSIMDebt(amount_);
     }
 }

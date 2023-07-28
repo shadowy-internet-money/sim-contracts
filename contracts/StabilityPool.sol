@@ -930,10 +930,10 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         require(_initialDeposit > 0, 'StabilityPool: User must have a non-zero deposit');
     }
 
-     function _requireUserHasNoDeposit(address _address) internal view {
+     /*function _requireUserHasNoDeposit(address _address) internal view {
         uint initialDeposit = deposits[_address].initialValue;
         require(initialDeposit == 0, 'StabilityPool: User must have no deposit');
-    }
+    }*/
 
     function _requireNonZeroAmount(uint _amount) internal pure {
         require(_amount > 0, 'StabilityPool: Amount must be non-zero');
@@ -957,7 +957,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
             "StabilityPool: Tag must be a registered front end, or the zero address");
     }*/
 
-    function  _requireValidKickbackRate(uint _kickbackRate) internal pure {
+    /*function  _requireValidKickbackRate(uint _kickbackRate) internal pure {
         require (_kickbackRate <= DECIMAL_PRECISION, "StabilityPool: Kickback rate must be in range [0,1]");
-    }
+    }*/
 }

@@ -3628,6 +3628,12 @@ describe('BorrowerOperations', async () => {
             .add(await troveManager.getBorrowingFee(LUSDRequest))
             /*.add(LUSD_GAS_COMPENSATION)*/
 
+        const expectedDebtDecay = LUSDRequest
+            .add(await troveManager.getBorrowingFeeWithDecay(LUSDRequest))
+        /*.add(LUSD_GAS_COMPENSATION)*/
+
+        assert.equal(expectedDebt.toString(), expectedDebtDecay.toString())
+
         const debt_After = await getTroveEntireDebt(alice.address)
         const coll_After = await getTroveEntireColl(alice.address)
         const status_After = await troveManager.getTroveStatus(alice.address)

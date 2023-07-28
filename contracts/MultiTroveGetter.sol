@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-
 import "./TroveManager.sol";
 import "./SortedTroves.sol";
 
-/*  Helper contract for grabbing Trove data for the front end. Not part of the core Liquity system. */
+/*  Helper contract for grabbing Trove data for the front end. Not part of the core system. */
 contract MultiTroveGetter {
     struct CombinedTroveData {
         address owner;

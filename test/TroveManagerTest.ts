@@ -3810,7 +3810,7 @@ describe('TroveManager', async () => {
     const lastFeeOpTime_1 = await troveManager.lastFeeOperationTime()
 
     // 45 seconds pass
-    th.fastForwardTime(45)
+    await th.fastForwardTime(45)
 
     // Borrower A triggers a fee
     await th.redeemCollateral(A, contracts, dec(1, 18), GAS_PRICE)

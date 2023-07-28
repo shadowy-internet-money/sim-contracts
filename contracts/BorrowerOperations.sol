@@ -372,11 +372,11 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         return SIMFee;
     }
 
-    function _getUSDValue(uint _coll, uint _price) internal pure returns (uint) {
+    /*function _getUSDValue(uint _coll, uint _price) internal pure returns (uint) {
         uint usdValue = _price * _coll / DECIMAL_PRECISION;
 
         return usdValue;
-    }
+    }*/
 
     function _getCollChange(
         uint _collReceived,
@@ -467,9 +467,9 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         require(IERC20(WSTETHAddress).balanceOf(address(this)) == 0 || _collWithdrawal == 0, "BorrowerOperations: Cannot withdraw and add coll");
     }
 
-    function _requireCallerIsBorrower(address _borrower) internal view {
+    /*function _requireCallerIsBorrower(address _borrower) internal view {
         require(msg.sender == _borrower, "BorrowerOps: Caller must be the borrower for a withdrawal");
-    }
+    }*/
 
     function _requireNonZeroAdjustment(uint _collWithdrawal, uint _SIMChange) internal view {
         require(IERC20(WSTETHAddress).balanceOf(address(this)) != 0 || _collWithdrawal != 0 || _SIMChange != 0, "BorrowerOps: There must be either a collateral change or a debt change");
@@ -661,7 +661,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         return newTCR;
     }
 
-    function getCompositeDebt(uint _debt) external pure override returns (uint) {
+    /*function getCompositeDebt(uint _debt) external pure override returns (uint) {
         return _getCompositeDebt(_debt);
-    }
+    }*/
 }

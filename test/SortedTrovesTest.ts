@@ -206,6 +206,11 @@ describe('SortedTroves', async () => {
       assert.equal(hints2[0], B.address )
       assert.equal(hints2[1], C.address )
     })
+
+    it("validInsertPosition getter", async () => {
+      const r = await sortedTroves.validInsertPosition(0, th.ZERO_ADDRESS, th.ZERO_ADDRESS)
+      assert.isTrue(r)
+    })
   })
 
   describe('SortedTroves with mock dependencies', () => {

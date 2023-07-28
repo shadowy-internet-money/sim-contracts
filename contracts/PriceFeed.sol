@@ -108,7 +108,7 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
     * it uses the last good price seen by SIM.
     *
     */
-    function fetchPrice() external override returns (uint) {
+    function fetchPrice() external override returns (uint price) {
         (int224 api3Value, uint32 api3Timestamp) = _getAPI3Response();
         PythStructs.Price memory pythPrice = _getPythResponse();
 
@@ -230,7 +230,7 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
                 }
 
                 // If both are frozen, just use lastGoodPrice
-                if (_pythIsBroken(pythPrice)) {
+                if (_pythIsFrozen(pythPrice)) {
                     return lastGoodPrice;
                 }
 
@@ -244,7 +244,7 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
                 return _storeAPI3Price(api3Value);
             }
 
-             // If API3 is live and Pyth is frozen, just use last good price (no status change) since we have no basis for comparison
+            // If API3 is live and Pyth is frozen, just use last good price (no status change) since we have no basis for comparison
             if (_pythIsFrozen(pythPrice)) {
                 return lastGoodPrice;
             }
@@ -284,8 +284,6 @@ contract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {
             // return API3 price (no status change)
             return _storeAPI3Price(api3Value);
         }
-
-        return 0;
     }
 
     // --- Helper functions ---
