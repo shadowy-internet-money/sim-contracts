@@ -3025,7 +3025,7 @@ describe('BorrowerOperations', async () => {
         const txBPromise = borrowerOperations.connect(B).openTrove(dec(100, 30), th._100pct, await getNetBorrowingAmount(MIN_NET_DEBT.sub(toBN(1))), B.address, B.address)
         await assertRevert(txBPromise, "revert")
 
-        const txCPromise = borrowerOperations.connect(C).openTrove(dec(100, 30), th._100pct, MIN_NET_DEBT.sub(toBN(dec(173, 18))), C.address, C.address)
+        const txCPromise = borrowerOperations.connect(C).openTrove(dec(100, 30), th._100pct, MIN_NET_DEBT.sub(toBN(dec(1, 17))), C.address, C.address)
         await assertRevert(txCPromise, "revert")
     })
 
