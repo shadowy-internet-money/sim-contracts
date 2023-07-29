@@ -21,11 +21,11 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     ITroveManager public troveManager;
 
-    address stabilityPoolAddress;
+    address public stabilityPoolAddress;
 
 //    address gasPoolAddress;
 
-    ICollSurplusPool collSurplusPool;
+    ICollSurplusPool public collSurplusPool;
 
     IVe public ve;
     address public veAddress;
@@ -34,6 +34,8 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     // A doubly linked list of Troves, sorted by their collateral ratios
     ISortedTroves public sortedTroves;
+
+    address public feeReceiver;
 
     /* --- Variable container structs  ---
 
@@ -92,7 +94,8 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         address _priceFeedAddress,
         address _sortedTrovesAddress,
         address _simTokenAddress,
-        address _veAddress
+        address _veAddress,
+        address _feeReceiver
     )
     external
     override
@@ -125,6 +128,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         simToken = ISIMToken(_simTokenAddress);
         veAddress = _veAddress;
         ve = IVe(_veAddress);
+        feeReceiver = _feeReceiver;
 
         emit TroveManagerAddressChanged(_troveManagerAddress);
         emit ActivePoolAddressChanged(_activePoolAddress);
@@ -365,9 +369,13 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
         _requireUserAcceptsFee(SIMFee, _SIMAmount, _maxFeePercentage);
 
-        // Send fee to LQTY staking contract
-        ve.increaseF_SIM(SIMFee);
-        _simToken.mint(veAddress, SIMFee);
+        // Send half of fee to Ve contract
+        uint half = SIMFee / 2;
+        ve.increaseF_SIM(half);
+        _simToken.mint(veAddress, half);
+
+        // Send half of fee to feeReceiver
+        _simToken.mint(feeReceiver, SIMFee - half);
 
         return SIMFee;
     }

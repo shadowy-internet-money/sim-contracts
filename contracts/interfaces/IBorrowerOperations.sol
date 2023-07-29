@@ -33,7 +33,8 @@ interface IBorrowerOperations {
         address _priceFeedAddress,
         address _sortedTrovesAddress,
         address _simTokenAddress,
-        address _shadyStakingAddress
+        address _shadyStakingAddress,
+        address _feeReceiver
     ) external;
 
     function openTrove(uint amount, uint _maxFee, uint _SIMAmount, address _upperHint, address _lowerHint) external payable;
