@@ -17,7 +17,14 @@ import {
     BorrowerOperationsTester,
     SIMTokenTester,
     CommunityIssuanceTester,
-    LiquidityRewardsIssuance, SHADYTokenTester, VeTester
+    LiquidityRewardsIssuance,
+    SHADYTokenTester,
+    VeTester,
+    Controller,
+    ProxyControlled,
+    Controller__factory,
+    VeLogo,
+    VeTester__factory
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
@@ -27,7 +34,21 @@ export class DeploymentHelper {
             communityIssuance = await (await ethers.getContractFactory("CommunityIssuanceTester")).deploy() as CommunityIssuanceTester,
             liquidityRewardsIssuance = await (await ethers.getContractFactory("LiquidityRewardsIssuance")).deploy() as LiquidityRewardsIssuance,
             lockupContractFactory = await (await ethers.getContractFactory("LockupContractFactory")).deploy() as LockupContractFactory,
-            ve = await (await ethers.getContractFactory("VeTester")).deploy() as VeTester
+            veLogoLib = await (await ethers.getContractFactory("VeLogo")).deploy() as VeLogo,
+            veLogic = await (await ethers.getContractFactory("VeTester", {
+                libraries: {
+                    'VeLogo': veLogoLib.address,
+                }
+            })).deploy() as VeTester
+
+        const controllerLogic = await (await ethers.getContractFactory("Controller")).deploy() as Controller
+        const controllerProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
+        await controllerProxy.initProxy(controllerLogic.address)
+        const controller = Controller__factory.connect(controllerProxy.address, (await ethers.getSigners())[0])
+
+        const veProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
+        await veProxy.initProxy(veLogic.address)
+        const ve = VeTester__factory.connect(veProxy.address, (await ethers.getSigners())[0])
 
         return {
             communityIssuance,
@@ -42,11 +63,14 @@ export class DeploymentHelper {
                 bountyAddress,
                 multisigAddress
             ) as SHADYTokenTester,
+            controller,
+            multisigAddress,
         }
     }
 
     static async connectSHADYContracts(shadyContracts: ISHADYContracts) {
         await shadyContracts.lockupContractFactory.setSHADYTokenAddress(shadyContracts.shadyToken.address)
+        await shadyContracts.controller.init(shadyContracts.multisigAddress)
     }
 
     static async deployCore(): Promise<IContracts> {
@@ -146,7 +170,12 @@ export class DeploymentHelper {
     }
 
     static async connectSHADYContractsToCore(shadyContracts: ISHADYContracts, coreContracts: IContracts) {
-        // todo connect ve
+        await shadyContracts.ve.setAddresses(
+            coreContracts.troveManager.address,
+            coreContracts.borrowerOperations.address,
+            shadyContracts.shadyToken.address,
+            shadyContracts.controller.address
+        )
 
         await shadyContracts.communityIssuance.setAddresses(
             shadyContracts.shadyToken.address,

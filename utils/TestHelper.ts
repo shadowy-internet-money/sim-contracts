@@ -4,7 +4,7 @@ import {
     TroveManagerTester,
     WSTETHMock,
 } from "../typechain-types";
-import {assert, ethers} from "hardhat";
+import hre, {assert, ethers} from "hardhat";
 import {Event, BigNumber, ContractTransaction} from "ethers";
 import {parseUnits} from "ethers/lib/utils";
 import {SignerWithAddress} from "@nomiclabs/hardhat-ethers/signers";
@@ -26,6 +26,22 @@ export class TestHelper {
         MINUTES_IN_ONE_WEEK:    60 * 24 * 7,
         MINUTES_IN_ONE_MONTH:   60 * 24 * 30,
         MINUTES_IN_ONE_YEAR:    60 * 24 * 365
+    }
+
+    static MAX_UINT = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
+
+    public static async impersonate(address: string) {
+        await hre.network.provider.request({
+            method: "hardhat_impersonateAccount",
+            params: [address],
+        });
+
+        await hre.network.provider.request({
+            method: "hardhat_setBalance",
+            params: [address, "0x1431E0FAE6D7217CAA0000000"],
+        });
+        // console.log('address impersonated', address);
+        return ethers.getSigner(address);
     }
 
     static dec(val: any, scale: any): string {
@@ -159,6 +175,14 @@ export class TestHelper {
     static async fastForwardTime(seconds:number) {
         const now = await this.getLatestBlockTimestamp()
         await ethers.provider.send("evm_mine", [now + (seconds > 0 ? seconds : 1)])
+    }
+
+    static async advanceNBlocks(n: number) {
+        const start = Date.now();
+        await ethers.provider.send('evm_increaseTime', [+(n * 2.35).toFixed(0)]);
+        for (let i = 0; i < n; i++) {
+            await ethers.provider.send('evm_mine', []);
+        }
     }
 
     static async getLatestBlockTimestamp() {

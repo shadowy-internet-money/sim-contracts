@@ -18,7 +18,7 @@ import {
     BorrowerOperationsTester,
     SIMTokenTester,
     CommunityIssuanceTester,
-    LiquidityRewardsIssuance, SHADYTokenTester, VeTester
+    LiquidityRewardsIssuance, SHADYTokenTester, VeTester, Controller
 } from "../typechain-types";
 
 export interface IContracts {
@@ -41,6 +41,8 @@ export interface ISHADYContracts {
     liquidityRewardsIssuance: LiquidityRewardsIssuance
     lockupContractFactory: LockupContractFactory
     ve: Ve|VeTester
+    controller: Controller
+    multisigAddress: string
 }
 
 export interface IOpenTroveParams {
