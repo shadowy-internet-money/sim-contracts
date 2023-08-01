@@ -42,8 +42,8 @@ describe('Issuance arithmetic tests', async () => {
     console.log(`issuance fraction before: ${issuanceFractionBefore}`)
     const blockTimestampBefore = th.toBN(await th.getLatestBlockTimestamp())
 
-    // progress time 10 seconds
-    await th.fastForwardTime(10)
+    // progress time 6 seconds
+    await th.fastForwardTime(6)
 
     const issuanceFractionAfter = await communityIssuanceTester.getCumulativeIssuanceFraction()
     const blockTimestampAfter = th.toBN(await th.getLatestBlockTimestamp())
