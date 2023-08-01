@@ -23,7 +23,7 @@ interface ITroveManager is IBase {
     event CollSurplusPoolAddressChanged(address _collSurplusPoolAddress);
     event SortedTrovesAddressChanged(address _sortedTrovesAddress);
     event SHADYTokenAddressChanged(address _shadyTokenAddress);
-    event SHADYStakingAddressChanged(address _shadyStakingAddress);
+    event WSTETHVeDistibutorAddressChanged(address _shadyStakingAddress);
 
     event Liquidation(uint _liquidatedDebt, uint _liquidatedColl, uint _collGasCompensation/*, uint _SIMGasCompensation*/);
     event Redemption(uint _attemptedSIMAmount, uint _actualSIMAmount, uint _WSTETHSent, uint _WSTETHFee);
@@ -56,7 +56,7 @@ interface ITroveManager is IBase {
     function stabilityPool() external view returns (IStabilityPool);
     function simToken() external view returns (ISIMToken);
     function shadyToken() external view returns (ISHADYToken);
-    function ve() external view returns (IVe);
+    function wstETHVeDistributor() external view returns (address);
 
     function getTroveOwnersCount() external view returns (uint);
 

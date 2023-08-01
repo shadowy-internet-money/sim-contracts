@@ -17,9 +17,9 @@ interface IVe {
         uint blk; // block
     }
 
-    function increaseF_WSTETH(uint _WSTETHFee) external;
+//    function increaseF_WSTETH(uint _WSTETHFee) external;
 
-    function increaseF_SIM(uint _SIMFee) external;
+//    function increaseF_SIM(uint _SIMFee) external;
 
     function lockedAmounts(uint veId, address stakingToken) external view returns (uint);
 

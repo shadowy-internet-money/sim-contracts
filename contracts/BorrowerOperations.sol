@@ -8,7 +8,7 @@ import "./interfaces/ITroveManager.sol";
 import "./interfaces/ISIMToken.sol";
 import "./interfaces/ICollSurplusPool.sol";
 import "./interfaces/ISortedTroves.sol";
-import "./interfaces/IVe.sol";
+//import "./interfaces/IVe.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
@@ -27,8 +27,9 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     ICollSurplusPool public collSurplusPool;
 
-    IVe public ve;
-    address public veAddress;
+//    IVe public ve;
+//    address public veAddress;
+    address public simVeDistributor;
 
     ISIMToken public simToken;
 
@@ -94,7 +95,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         address _priceFeedAddress,
         address _sortedTrovesAddress,
         address _simTokenAddress,
-        address _veAddress,
+        address _simVeDistributorAddress,
         address _feeReceiver
     )
     external
@@ -114,7 +115,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         _checkContract(_priceFeedAddress);
         _checkContract(_sortedTrovesAddress);
         _checkContract(_simTokenAddress);
-        _checkContract(_veAddress);
+        _checkContract(_simVeDistributorAddress);
 
         WSTETHAddress = _WSTETHAddress;
         troveManager = ITroveManager(_troveManagerAddress);
@@ -126,8 +127,9 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         priceFeed = IPriceFeed(_priceFeedAddress);
         sortedTroves = ISortedTroves(_sortedTrovesAddress);
         simToken = ISIMToken(_simTokenAddress);
-        veAddress = _veAddress;
-        ve = IVe(_veAddress);
+//        veAddress = _veAddress;
+//        ve = IVe(_veAddress);
+        simVeDistributor = _simVeDistributorAddress;
         feeReceiver = _feeReceiver;
 
         emit TroveManagerAddressChanged(_troveManagerAddress);
@@ -139,7 +141,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         emit PriceFeedAddressChanged(_priceFeedAddress);
         emit SortedTrovesAddressChanged(_sortedTrovesAddress);
         emit SIMTokenAddressChanged(_simTokenAddress);
-        emit VeAddressChanged(_veAddress);
+        emit SimVeDistributorAddressChanged(_simVeDistributorAddress);
 
         renounceOwnership();
     }
@@ -371,8 +373,8 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
         // Send half of fee to Ve contract
         uint half = SIMFee / 2;
-        ve.increaseF_SIM(half);
-        _simToken.mint(veAddress, half);
+//        ve.increaseF_SIM(half);
+        _simToken.mint(simVeDistributor, half);
 
         // Send half of fee to feeReceiver
         _simToken.mint(feeReceiver, SIMFee - half);

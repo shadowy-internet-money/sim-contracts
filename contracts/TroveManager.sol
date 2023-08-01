@@ -9,7 +9,7 @@ import "./interfaces/ICollSurplusPool.sol";
 import "./interfaces/ISIMToken.sol";
 import "./interfaces/ISortedTroves.sol";
 import "./interfaces/ISHADYToken.sol";
-import "./interfaces/IVe.sol";
+//import "./interfaces/IVe.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
@@ -30,7 +30,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
     ISHADYToken public override shadyToken;
 
-    IVe public override ve;
+//    IVe public override ve;
+    address public override wstETHVeDistributor;
 
     // A doubly linked list of Troves, sorted by their sorted by their collateral ratios
     ISortedTroves public sortedTroves;
@@ -170,7 +171,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         IActivePool activePool;
         IDefaultPool defaultPool;
         ISIMToken simToken;
-        IVe ve;
+//        IVe ve;
         ISortedTroves sortedTroves;
         ICollSurplusPool collSurplusPool;
 //        address gasPoolAddress;
@@ -215,7 +216,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         address _simTokenAddress,
         address _sortedTrovesAddress,
         address _shadyTokenAddress,
-        address _veAddress
+        address _wstEthVeDistributor
     )
         external
         override
@@ -231,7 +232,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _checkContract(_simTokenAddress);
         _checkContract(_sortedTrovesAddress);
         _checkContract(_shadyTokenAddress);
-        _checkContract(_veAddress);
+        _checkContract(_wstEthVeDistributor);
 
         borrowerOperationsAddress = _borrowerOperationsAddress;
         activePool = IActivePool(_activePoolAddress);
@@ -243,7 +244,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         simToken = ISIMToken(_simTokenAddress);
         sortedTroves = ISortedTroves(_sortedTrovesAddress);
         shadyToken = ISHADYToken(_shadyTokenAddress);
-        ve = IVe(_veAddress);
+        wstETHVeDistributor = _wstEthVeDistributor;
 
         emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);
         emit ActivePoolAddressChanged(_activePoolAddress);
@@ -255,7 +256,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         emit SIMTokenAddressChanged(_simTokenAddress);
         emit SortedTrovesAddressChanged(_sortedTrovesAddress);
         emit SHADYTokenAddressChanged(_shadyTokenAddress);
-        emit SHADYStakingAddressChanged(_veAddress);
+        emit WSTETHVeDistibutorAddressChanged(_wstEthVeDistributor);
 
         renounceOwnership();
     }
@@ -470,7 +471,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             activePool,
             defaultPool,
             ISIMToken(address(0)),
-            IVe(address(0)),
+//            IVe(address(0)),
             sortedTroves,
             ICollSurplusPool(address(0))/*,
             address(0)*/
@@ -903,7 +904,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             activePool,
             defaultPool,
             simToken,
-            ve,
+//            ve,
             sortedTroves,
             collSurplusPool/*,
             gasPoolAddress*/
@@ -973,8 +974,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _requireUserAcceptsFee(totals.WSTETHFee, totals.totalWSTETHDrawn, _maxFeePercentage);
 
         // Send the WSTETH fee to the SHADY staking contract
-        contractsCache.activePool.sendWSTETH(address(contractsCache.ve), totals.WSTETHFee);
-        contractsCache.ve.increaseF_WSTETH(totals.WSTETHFee);
+        contractsCache.activePool.sendWSTETH(address(wstETHVeDistributor), totals.WSTETHFee);
+//        contractsCache.ve.increaseF_WSTETH(totals.WSTETHFee);
 
         totals.WSTETHToSendToRedeemer = totals.totalWSTETHDrawn - totals.WSTETHFee;
 

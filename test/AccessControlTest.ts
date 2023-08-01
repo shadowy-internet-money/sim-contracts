@@ -486,17 +486,6 @@ describe('Access Control: Liquity functions with the caller restricted to Liquit
     })
   })
 
-  describe('Ve', async () => {
-    it("increaseF_SIM(): reverts when caller is not TroveManager", async () => {
-      try {
-        const txAlice = await ve.connect(alice).increaseF_SIM(dec(1, 18))
-        
-      } catch (err) {
-        assert.include(err?.toString(), "revert")
-      }
-    })
-  })
-
   describe('SHADYToken', async () => {
     it("sendToVe(): reverts when caller is not the Ve", async () => {
       // Check multisig has some SHADY

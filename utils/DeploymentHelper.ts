@@ -24,13 +24,14 @@ import {
     ProxyControlled,
     Controller__factory,
     VeLogo,
-    VeTester__factory
+    VeTester__factory, VeDistributor, VeDistributor__factory
 } from "../typechain-types";
 import {TestHelper} from "./TestHelper";
 
 export class DeploymentHelper {
     static async deploySHADY(bountyAddress: string, multisigAddress: string): Promise<ISHADYContracts> {
         const
+            signer = (await ethers.getSigners())[0],
             communityIssuance = await (await ethers.getContractFactory("CommunityIssuanceTester")).deploy() as CommunityIssuanceTester,
             liquidityRewardsIssuance = await (await ethers.getContractFactory("LiquidityRewardsIssuance")).deploy() as LiquidityRewardsIssuance,
             lockupContractFactory = await (await ethers.getContractFactory("LockupContractFactory")).deploy() as LockupContractFactory,
@@ -39,16 +40,25 @@ export class DeploymentHelper {
                 libraries: {
                     'VeLogo': veLogoLib.address,
                 }
-            })).deploy() as VeTester
+            })).deploy() as VeTester,
+            veDistributorLogic = await (await ethers.getContractFactory("VeDistributor")).deploy() as VeDistributor
 
         const controllerLogic = await (await ethers.getContractFactory("Controller")).deploy() as Controller
         const controllerProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
         await controllerProxy.initProxy(controllerLogic.address)
-        const controller = Controller__factory.connect(controllerProxy.address, (await ethers.getSigners())[0])
+        const controller = Controller__factory.connect(controllerProxy.address, signer)
 
         const veProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
         await veProxy.initProxy(veLogic.address)
-        const ve = VeTester__factory.connect(veProxy.address, (await ethers.getSigners())[0])
+        const ve = VeTester__factory.connect(veProxy.address, signer)
+
+        const simVeDistributorProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
+        await simVeDistributorProxy.initProxy(veDistributorLogic.address)
+        const simVeDistributor = VeDistributor__factory.connect(simVeDistributorProxy.address, signer)
+
+        const wstETHVeDistributorProxy = await (await ethers.getContractFactory("ProxyControlled")).deploy() as ProxyControlled
+        await wstETHVeDistributorProxy.initProxy(veDistributorLogic.address)
+        const wstETHVeDistributor = VeDistributor__factory.connect(wstETHVeDistributorProxy.address, signer)
 
         return {
             communityIssuance,
@@ -65,6 +75,8 @@ export class DeploymentHelper {
             ) as SHADYTokenTester,
             controller,
             multisigAddress,
+            simVeDistributor,
+            wstETHVeDistributor,
         }
     }
 
@@ -113,7 +125,7 @@ export class DeploymentHelper {
             contracts.simToken.address,
             contracts.sortedTroves.address,
             shadyContracts.shadyToken.address,
-            shadyContracts.ve.address
+            shadyContracts.wstETHVeDistributor.address
         )
 
         await contracts.borrowerOperations.setAddresses(
@@ -126,7 +138,7 @@ export class DeploymentHelper {
             contracts.priceFeedMock.address,
             contracts.sortedTroves.address,
             contracts.simToken.address,
-            shadyContracts.ve.address,
+            shadyContracts.simVeDistributor.address,
             feeReceiver
         )
 
@@ -181,6 +193,9 @@ export class DeploymentHelper {
             shadyContracts.shadyToken.address,
             coreContracts.stabilityPool.address
         )
+
+        await shadyContracts.simVeDistributor.init(shadyContracts.controller.address, shadyContracts.ve.address, coreContracts.simToken.address)
+        await shadyContracts.wstETHVeDistributor.init(shadyContracts.controller.address, shadyContracts.ve.address, coreContracts.wstETHMock.address)
     }
 
     static async deployFixture() {

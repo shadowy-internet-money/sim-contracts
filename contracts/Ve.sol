@@ -70,8 +70,8 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
     //                Keep names and ordering!
     //                 Add only in the bottom.
     // *************************************************************
-    uint public F_WSTETH;  // Running sum of WSTETH fees
-    uint public F_SIM; // Running sum of SIM fees
+//    uint public F_WSTETH;  // Running sum of WSTETH fees
+//    uint public F_SIM; // Running sum of SIM fees
     address public troveManagerAddress;
     address public borrowerOperationsAddress;
     address public shadyAddress;
@@ -260,17 +260,17 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
     // *************************************************************
     //                        CDP ACTIONS
     // *************************************************************
-    function increaseF_WSTETH(uint _WSTETHFee) external {
+/*    function increaseF_WSTETH(uint _WSTETHFee) external {
         _requireCallerIsTroveManager();
         console.log('increaseF_WSTETH', _WSTETHFee);
         F_WSTETH += _WSTETHFee;
-    }
+    }*/
 
-    function increaseF_SIM(uint _SIMFee) external {
+    /*function increaseF_SIM(uint _SIMFee) external {
         _requireCallerIsBorrowerOperations();
         console.log('increaseF_SIM', _SIMFee);
         F_SIM += _SIMFee;
-    }
+    }*/
 
     // *************************************************************
     //                        VIEWS

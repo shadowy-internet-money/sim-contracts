@@ -15,7 +15,7 @@ interface IBorrowerOperations {
     event PriceFeedAddressChanged(address  _newPriceFeedAddress);
     event SortedTrovesAddressChanged(address _sortedTrovesAddress);
     event SIMTokenAddressChanged(address _simTokenAddress);
-    event VeAddressChanged(address _VeAddress);
+    event SimVeDistributorAddressChanged(address _VeAddress);
 
     event TroveCreated(address indexed _borrower, uint arrayIndex);
     event TroveUpdated(address indexed _borrower, uint _debt, uint _coll, uint stake, uint8 operation);
