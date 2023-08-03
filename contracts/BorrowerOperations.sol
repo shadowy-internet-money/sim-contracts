@@ -8,7 +8,7 @@ import "./interfaces/ITroveManager.sol";
 import "./interfaces/ISIMToken.sol";
 import "./interfaces/ICollSurplusPool.sol";
 import "./interfaces/ISortedTroves.sol";
-//import "./interfaces/IVe.sol";
+import "./interfaces/IVeDistributor.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
@@ -23,12 +23,8 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     address public stabilityPoolAddress;
 
-//    address gasPoolAddress;
-
     ICollSurplusPool public collSurplusPool;
 
-//    IVe public ve;
-//    address public veAddress;
     address public simVeDistributor;
 
     ISIMToken public simToken;
@@ -90,7 +86,6 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         address _activePoolAddress,
         address _defaultPoolAddress,
         address _stabilityPoolAddress,
-//        address _gasPoolAddress,
         address _collSurplusPoolAddress,
         address _priceFeedAddress,
         address _sortedTrovesAddress,
@@ -110,7 +105,6 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         _checkContract(_activePoolAddress);
         _checkContract(_defaultPoolAddress);
         _checkContract(_stabilityPoolAddress);
-//        _checkContract(_gasPoolAddress);
         _checkContract(_collSurplusPoolAddress);
         _checkContract(_priceFeedAddress);
         _checkContract(_sortedTrovesAddress);
@@ -122,13 +116,10 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         activePool = IActivePool(_activePoolAddress);
         defaultPool = IDefaultPool(_defaultPoolAddress);
         stabilityPoolAddress = _stabilityPoolAddress;
-//        gasPoolAddress = _gasPoolAddress;
         collSurplusPool = ICollSurplusPool(_collSurplusPoolAddress);
         priceFeed = IPriceFeed(_priceFeedAddress);
         sortedTroves = ISortedTroves(_sortedTrovesAddress);
         simToken = ISIMToken(_simTokenAddress);
-//        veAddress = _veAddress;
-//        ve = IVe(_veAddress);
         simVeDistributor = _simVeDistributorAddress;
         feeReceiver = _feeReceiver;
 
@@ -136,7 +127,6 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         emit ActivePoolAddressChanged(_activePoolAddress);
         emit DefaultPoolAddressChanged(_defaultPoolAddress);
         emit StabilityPoolAddressChanged(_stabilityPoolAddress);
-//        emit GasPoolAddressChanged(_gasPoolAddress);
         emit CollSurplusPoolAddressChanged(_collSurplusPoolAddress);
         emit PriceFeedAddressChanged(_priceFeedAddress);
         emit SortedTrovesAddressChanged(_sortedTrovesAddress);
@@ -199,8 +189,6 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         // Move the ether to the Active Pool, and mint the SIMAmount to the borrower
         _activePoolAddColl(contractsCache.activePool, amount);
         _withdrawSIM(contractsCache.activePool, contractsCache.simToken, msg.sender, _SIMAmount, vars.netDebt);
-        // Move the SIM gas compensation to the Gas Pool
-//        _withdrawSIM(contractsCache.activePool, contractsCache.simToken, gasPoolAddress, SIM_GAS_COMPENSATION, SIM_GAS_COMPENSATION);
 
         emit TroveUpdated(msg.sender, vars.compositeDebt, amount, vars.stake, uint8(BorrowerOperation.openTrove));
         emit SIMBorrowingFeePaid(msg.sender, vars.SIMFee);
@@ -215,13 +203,11 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     // Send WSTETH as collateral to a trove. Called by only the Stability Pool.
     function moveWSTETHGainToTrove(address _borrower, address _upperHint, address _lowerHint) external payable override {
         _requireCallerIsStabilityPool();
-        // todo
         _adjustTrove(_borrower, 0, 0, false, _upperHint, _lowerHint, 0);
     }
 
     // Withdraw WSTETH collateral from a trove
     function withdrawColl(uint _collWithdrawal, address _upperHint, address _lowerHint) external override {
-        // todo
         _adjustTrove(msg.sender, _collWithdrawal, 0, false, _upperHint, _lowerHint, 0);
     }
 
@@ -348,8 +334,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         emit TroveUpdated(msg.sender, 0, 0, 0, uint8(BorrowerOperation.closeTrove));
 
         // Burn the repaid SIM from the user's balance and the gas compensation from the Gas Pool
-        _repaySIM(activePoolCached, simTokenCached, msg.sender, debt/*.sub(SIM_GAS_COMPENSATION)*/);
-//        _repaySIM(activePoolCached, simTokenCached, gasPoolAddress, SIM_GAS_COMPENSATION);
+        _repaySIM(activePoolCached, simTokenCached, msg.sender, debt);
 
         // Send the collateral back to the user
         activePoolCached.sendWSTETH(msg.sender, coll);
@@ -373,8 +358,8 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
         // Send half of fee to Ve contract
         uint half = SIMFee / 2;
-//        ve.increaseF_SIM(half);
         _simToken.mint(simVeDistributor, half);
+        IVeDistributor(simVeDistributor).checkpoint();
 
         // Send half of fee to feeReceiver
         _simToken.mint(feeReceiver, SIMFee - half);
@@ -455,8 +440,6 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     function _activePoolAddColl(IActivePool _activePool, uint _amount) internal {
         IERC20(WSTETHAddress).transfer(address(_activePool), _amount);
         _activePool.receiveWSTETH(_amount);
-//        (bool success, ) = address(_activePool).call{value: _amount}("");
-//        require(success, "BorrowerOps: Sending WSTETH to ActivePool failed");
     }
 
     // Issue the specified amount of SIM to _account and increases the total active debt (_netDebtIncrease potentially includes a SIMFee)

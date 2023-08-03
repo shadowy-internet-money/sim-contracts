@@ -9,9 +9,10 @@ import "./interfaces/ICollSurplusPool.sol";
 import "./interfaces/ISIMToken.sol";
 import "./interfaces/ISortedTroves.sol";
 import "./interfaces/ISHADYToken.sol";
-//import "./interfaces/IVe.sol";
+import "./interfaces/IVeDistributor.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
+import "./VeDistributor.sol";
 
 contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
     string constant public NAME = "TroveManager";
@@ -22,15 +23,12 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
     IStabilityPool public override stabilityPool;
 
-//    address gasPoolAddress;
-
-    ICollSurplusPool collSurplusPool;
+    ICollSurplusPool public collSurplusPool;
 
     ISIMToken public override simToken;
 
     ISHADYToken public override shadyToken;
 
-//    IVe public override ve;
     address public override wstETHVeDistributor;
 
     // A doubly linked list of Troves, sorted by their sorted by their collateral ratios
@@ -147,7 +145,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint entireTroveDebt;
         uint entireTroveColl;
         uint collGasCompensation;
-//        uint SIMGasCompensation;
         uint debtToOffset;
         uint collToSendToSP;
         uint debtToRedistribute;
@@ -159,7 +156,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint totalCollInSequence;
         uint totalDebtInSequence;
         uint totalCollGasCompensation;
-//        uint totalSIMGasCompensation;
         uint totalDebtToOffset;
         uint totalCollToSendToSP;
         uint totalDebtToRedistribute;
@@ -171,10 +167,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         IActivePool activePool;
         IDefaultPool defaultPool;
         ISIMToken simToken;
-//        IVe ve;
         ISortedTroves sortedTroves;
         ICollSurplusPool collSurplusPool;
-//        address gasPoolAddress;
     }
     // --- Variable container structs for redemptions ---
 
@@ -210,7 +204,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         address _activePoolAddress,
         address _defaultPoolAddress,
         address _stabilityPoolAddress,
-//        address _gasPoolAddress,
         address _collSurplusPoolAddress,
         address _priceFeedAddress,
         address _simTokenAddress,
@@ -226,7 +219,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _checkContract(_activePoolAddress);
         _checkContract(_defaultPoolAddress);
         _checkContract(_stabilityPoolAddress);
-//        _checkContract(_gasPoolAddress);
         _checkContract(_collSurplusPoolAddress);
         _checkContract(_priceFeedAddress);
         _checkContract(_simTokenAddress);
@@ -238,7 +230,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         activePool = IActivePool(_activePoolAddress);
         defaultPool = IDefaultPool(_defaultPoolAddress);
         stabilityPool = IStabilityPool(_stabilityPoolAddress);
-//        gasPoolAddress = _gasPoolAddress;
         collSurplusPool = ICollSurplusPool(_collSurplusPoolAddress);
         priceFeed = IPriceFeed(_priceFeedAddress);
         simToken = ISIMToken(_simTokenAddress);
@@ -250,7 +241,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         emit ActivePoolAddressChanged(_activePoolAddress);
         emit DefaultPoolAddressChanged(_defaultPoolAddress);
         emit StabilityPoolAddressChanged(_stabilityPoolAddress);
-//        emit GasPoolAddressChanged(_gasPoolAddress);
         emit CollSurplusPoolAddressChanged(_collSurplusPoolAddress);
         emit PriceFeedAddressChanged(_priceFeedAddress);
         emit SIMTokenAddressChanged(_simTokenAddress);
@@ -305,7 +295,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         _removeStake(_borrower);
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(singleLiquidation.entireTroveColl);
-//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
         uint collToLiquidate = singleLiquidation.entireTroveColl - singleLiquidation.collGasCompensation;
 
         (singleLiquidation.debtToOffset,
@@ -340,7 +329,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         vars.pendingCollReward) = getEntireDebtAndColl(_borrower);
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(singleLiquidation.entireTroveColl);
-//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
         vars.collToLiquidate = singleLiquidation.entireTroveColl - singleLiquidation.collGasCompensation;
 
         // If ICR <= 100%, purely redistribute the Trove across all active Troves
@@ -453,7 +441,6 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint cappedCollPortion = _entireTroveDebt * MCR / _price;
 
         singleLiquidation.collGasCompensation = _getCollGasCompensation(cappedCollPortion);
-//        singleLiquidation.SIMGasCompensation = SIM_GAS_COMPENSATION;
 
         singleLiquidation.debtToOffset = _entireTroveDebt;
         singleLiquidation.collToSendToSP = cappedCollPortion - singleLiquidation.collGasCompensation;
@@ -793,7 +780,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         internal returns (SingleRedemptionValues memory singleRedemption)
     {
         // Determine the remaining amount (lot) to be redeemed, capped by the entire debt of the Trove minus the liquidation reserve
-        singleRedemption.SIMLot = LiquityMath._min(_maxSIMamount, Troves[_borrower].debt/* - SIM_GAS_COMPENSATION*/);
+        singleRedemption.SIMLot = LiquityMath._min(_maxSIMamount, Troves[_borrower].debt);
 
         // Get the WSTETHLot of equivalent value in USD
         singleRedemption.WSTETHLot = singleRedemption.SIMLot * DECIMAL_PRECISION / _price;
@@ -802,13 +789,12 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         uint newDebt = (Troves[_borrower].debt) - singleRedemption.SIMLot;
         uint newColl = (Troves[_borrower].coll) - singleRedemption.WSTETHLot;
 
-        if (newDebt == 0/*SIM_GAS_COMPENSATION*/) {
+        if (newDebt == 0) {
             // No debt left in the Trove (except for the liquidation reserve), therefore the trove gets closed
             _removeStake(_borrower);
             _closeTrove(_borrower, Status.closedByRedemption);
-            _redeemCloseTrove(_contractsCache, _borrower, /*SIM_GAS_COMPENSATION,*/ newColl);
+            _redeemCloseTrove(_contractsCache, _borrower, newColl);
             emit TroveUpdated(_borrower, 0, 0, 0, uint8(TroveManagerOperation.redeemCollateral));
-
         } else {
             uint newNICR = LiquityMath._computeNominalCR(newColl, newDebt);
 
@@ -845,11 +831,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
     * The debt recorded on the trove's struct is zero'd elswhere, in _closeTrove.
     * Any surplus WSTETH left in the trove, is sent to the Coll surplus pool, and can be later claimed by the borrower.
     */
-    function _redeemCloseTrove(ContractsCache memory _contractsCache, address _borrower, /*uint _SIM, */uint _WSTETH) internal {
-//        _contractsCache.simToken.burn(gasPoolAddress, _SIM);
-        // Update Active Pool SIM, and send WSTETH to account
-//        _contractsCache.activePool.decreaseSIMDebt(_SIM);
-
+    function _redeemCloseTrove(ContractsCache memory _contractsCache, address _borrower, uint _WSTETH) internal {
         // send WSTETH from Active Pool to CollSurplus Pool
         _contractsCache.collSurplusPool.accountSurplus(_borrower, _WSTETH);
         _contractsCache.activePool.sendWSTETH(address(_contractsCache.collSurplusPool), _WSTETH);
@@ -904,10 +886,8 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             activePool,
             defaultPool,
             simToken,
-//            ve,
             sortedTroves,
-            collSurplusPool/*,
-            gasPoolAddress*/
+            collSurplusPool
         );
         RedemptionTotals memory totals;
 
@@ -973,9 +953,9 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
         _requireUserAcceptsFee(totals.WSTETHFee, totals.totalWSTETHDrawn, _maxFeePercentage);
 
-        // Send the WSTETH fee to the SHADY staking contract
-        contractsCache.activePool.sendWSTETH(address(wstETHVeDistributor), totals.WSTETHFee);
-//        contractsCache.ve.increaseF_WSTETH(totals.WSTETHFee);
+        // Send the WSTETH fee to the VeDistributor contract
+        contractsCache.activePool.sendWSTETH(wstETHVeDistributor, totals.WSTETHFee);
+        IVeDistributor(wstETHVeDistributor).checkpoint();
 
         totals.WSTETHToSendToRedeemer = totals.totalWSTETHDrawn - totals.WSTETHFee;
 
