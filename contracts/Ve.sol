@@ -70,8 +70,6 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
     //                Keep names and ordering!
     //                 Add only in the bottom.
     // *************************************************************
-//    uint public F_WSTETH;  // Running sum of WSTETH fees
-//    uint public F_SIM; // Running sum of SIM fees
     address public troveManagerAddress;
     address public borrowerOperationsAddress;
     address public shadyAddress;
@@ -106,8 +104,6 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
 
     // --- LOCK
 
-    /// @dev veId -> Attachments counter. With positive counter user unable to transfer NFT
-//    mapping(uint => uint) public override attachments;
     /// @dev veId -> votes counter. With votes NFT unable to transfer
     /// deprecated
     mapping(uint => uint) public _deprecated_voted;
@@ -250,28 +246,6 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
         emit StakingTokenAdded(token, weight);
     }
 
-    /*function changeTokenFarmingAllowanceStatus(address _token, bool status) external {
-        require(isGovernance(msg.sender), "FORBIDDEN");
-        require(tokenFarmingStatus[_token] != status);
-        tokenFarmingStatus[_token] = status;
-    }*/
-
-
-    // *************************************************************
-    //                        CDP ACTIONS
-    // *************************************************************
-/*    function increaseF_WSTETH(uint _WSTETHFee) external {
-        _requireCallerIsTroveManager();
-        console.log('increaseF_WSTETH', _WSTETHFee);
-        F_WSTETH += _WSTETHFee;
-    }*/
-
-    /*function increaseF_SIM(uint _SIMFee) external {
-        _requireCallerIsBorrowerOperations();
-        console.log('increaseF_SIM', _SIMFee);
-        F_SIM += _SIMFee;
-    }*/
-
     // *************************************************************
     //                        VIEWS
     // *************************************************************
@@ -389,11 +363,6 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
         return _pointHistory[_loc];
     }
 
-    /*function isVoted(uint _tokenId) public view override returns (bool) {
-        return IVoter(voter()).votedVaultsLength(_tokenId) != 0
-            || IPlatformVoter(platformVoter()).veVotesLength(_tokenId) != 0;
-    }*/
-
     // *************************************************************
     //                        NFT LOGIC
     // *************************************************************
@@ -476,10 +445,6 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
         require(isApprovedOrOwner(_sender, _tokenId), "NOT_OWNER");
         require(_to != address(0), "WRONG_INPUT");
         // from address will be checked in _removeTokenFrom()
-
-        /*if (attachments[_tokenId] != 0 || isVoted(_tokenId)) {
-            _detachAll(_tokenId, _from);
-        }*/
 
         if (_idToApprovals[_tokenId] != address(0)) {
             // Reset approvals
@@ -1393,15 +1358,4 @@ contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC72
         _removeTokenFrom(owner, _tokenId);
         emit Transfer(owner, address(0), _tokenId);
     }
-
-
-    function _requireCallerIsTroveManager() internal view {
-        require(msg.sender == troveManagerAddress, "Ve: Caller is not the TroveManager");
-    }
-
-    function _requireCallerIsBorrowerOperations() internal view {
-        require(msg.sender == borrowerOperationsAddress, "Ve: Caller is not the BorrowerOperations");
-    }
-
-
 }
