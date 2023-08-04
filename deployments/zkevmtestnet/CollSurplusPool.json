@@ -1,0 +1,452 @@
+{
+  "address": "0x7f1Ea9A4986F354372c49826e28E733693f4f577",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newActivePoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ActivePoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newBorrowerOperationsAddress",
+          "type": "address"
+        }
+      ],
+      "name": "BorrowerOperationsAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "CollBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "EtherSent",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newTroveManagerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TroveManagerAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newWSTETHAddress",
+          "type": "address"
+        }
+      ],
+      "name": "WSTETHAddressChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WSTETHAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "accountSurplus",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "activePoolAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "borrowerOperationsAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        }
+      ],
+      "name": "claimColl",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        }
+      ],
+      "name": "getCollateral",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWSTETH",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "receiveWSTETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_WSTETHAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_borrowerOperationsAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_troveManagerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_activePoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setAddresses",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "troveManagerAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x0ed469fa94f40e4d0abf4b08210fc86801a69359a07907501246e58040598ce0",
+  "receipt": {
+    "to": null,
+    "from": "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
+    "contractAddress": "0x7f1Ea9A4986F354372c49826e28E733693f4f577",
+    "transactionIndex": 0,
+    "gasUsed": "679476",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000100800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000480000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x2080cbc47f350ef62ad7952e11192bc797b6a12e398873bd28b1d717a382b7df",
+    "transactionHash": "0x0ed469fa94f40e4d0abf4b08210fc86801a69359a07907501246e58040598ce0",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 1960820,
+        "transactionHash": "0x0ed469fa94f40e4d0abf4b08210fc86801a69359a07907501246e58040598ce0",
+        "address": "0x7f1Ea9A4986F354372c49826e28E733693f4f577",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000088888887c3ebd4a33e34a15db4254c74c75e5d4a"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0x2080cbc47f350ef62ad7952e11192bc797b6a12e398873bd28b1d717a382b7df"
+      }
+    ],
+    "blockNumber": 1960820,
+    "cumulativeGasUsed": "679476",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b29cd153aaed98a3f3bb92c92603933d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newActivePoolAddress\",\"type\":\"address\"}],\"name\":\"ActivePoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newBorrowerOperationsAddress\",\"type\":\"address\"}],\"name\":\"BorrowerOperationsAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"}],\"name\":\"CollBalanceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"EtherSent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newTroveManagerAddress\",\"type\":\"address\"}],\"name\":\"TroveManagerAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newWSTETHAddress\",\"type\":\"address\"}],\"name\":\"WSTETHAddressChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NAME\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WSTETHAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"accountSurplus\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"activePoolAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowerOperationsAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"}],\"name\":\"claimColl\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"}],\"name\":\"getCollateral\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getWSTETH\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"receiveWSTETH\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_WSTETHAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_borrowerOperationsAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_troveManagerAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_activePoolAddress\",\"type\":\"address\"}],\"name\":\"setAddresses\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"troveManagerAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/CollSurplusPool.sol\":\"CollSurplusPool\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/CollSurplusPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"./interfaces/ICollSurplusPool.sol\\\";\\nimport \\\"./dependencies/CheckContract.sol\\\";\\n\\n\\ncontract CollSurplusPool is Ownable, CheckContract, ICollSurplusPool {\\n    string constant public NAME = \\\"CollSurplusPool\\\";\\n\\n    address public WSTETHAddress;\\n    address public borrowerOperationsAddress;\\n    address public troveManagerAddress;\\n    address public activePoolAddress;\\n\\n    // deposited ether tracker\\n    uint256 internal WSTETH;\\n    // Collateral surplus claimable by trove owners\\n    mapping (address => uint) internal balances;\\n    \\n    // --- Contract setters ---\\n\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress\\n    )\\n        external\\n        override\\n        onlyOwner\\n    {\\n        _checkContract(_WSTETHAddress);\\n        _checkContract(_borrowerOperationsAddress);\\n        _checkContract(_troveManagerAddress);\\n        _checkContract(_activePoolAddress);\\n\\n        WSTETHAddress = _WSTETHAddress;\\n        borrowerOperationsAddress = _borrowerOperationsAddress;\\n        troveManagerAddress = _troveManagerAddress;\\n        activePoolAddress = _activePoolAddress;\\n\\n        emit WSTETHAddressChanged(_WSTETHAddress);\\n        emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);\\n        emit TroveManagerAddressChanged(_troveManagerAddress);\\n        emit ActivePoolAddressChanged(_activePoolAddress);\\n\\n        renounceOwnership();\\n    }\\n\\n    /* Returns the WSTETH state variable at ActivePool address.\\n       Not necessarily equal to the raw ether balance - ether can be forcibly sent to contracts. */\\n    function getWSTETH() external view override returns (uint) {\\n        return WSTETH;\\n    }\\n\\n    function getCollateral(address _account) external view override returns (uint) {\\n        return balances[_account];\\n    }\\n\\n    // --- Pool functionality ---\\n\\n    function accountSurplus(address _account, uint _amount) external override {\\n        _requireCallerIsTroveManager();\\n\\n        uint newAmount = balances[_account] + _amount;\\n        balances[_account] = newAmount;\\n\\n        emit CollBalanceUpdated(_account, newAmount);\\n    }\\n\\n    function claimColl(address _account) external override {\\n        _requireCallerIsBorrowerOperations();\\n        uint claimableColl = balances[_account];\\n        require(claimableColl > 0, \\\"CollSurplusPool: No collateral available to claim\\\");\\n\\n        balances[_account] = 0;\\n        emit CollBalanceUpdated(_account, 0);\\n\\n        WSTETH -= claimableColl;\\n        emit EtherSent(_account, claimableColl);\\n\\n        IERC20(WSTETHAddress).transfer(_account, claimableColl);\\n    }\\n\\n    function receiveWSTETH(uint amount) external {\\n        _requireCallerIsActivePool();\\n        WSTETH += amount;\\n    }\\n\\n    // --- 'require' functions ---\\n\\n    function _requireCallerIsBorrowerOperations() internal view {\\n        require(\\n            msg.sender == borrowerOperationsAddress,\\n            \\\"CollSurplusPool: Caller is not Borrower Operations\\\");\\n    }\\n\\n    function _requireCallerIsTroveManager() internal view {\\n        require(\\n            msg.sender == troveManagerAddress,\\n            \\\"CollSurplusPool: Caller is not TroveManager\\\");\\n    }\\n\\n    function _requireCallerIsActivePool() internal view {\\n        require(\\n            msg.sender == activePoolAddress,\\n            \\\"CollSurplusPool: Caller is not Active Pool\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x6d3f4661affab45de862ef17a5847179762965e788d85e0a262bb839bda0396a\",\"license\":\"MIT\"},\"contracts/dependencies/CheckContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ncontract CheckContract {\\n    /**\\n     * Check that the account is an already deployed non-destroyed contract.\\n     */\\n    function _checkContract(address account_) internal view {\\n        require(account_ != address(0), \\\"Account cannot be zero address\\\");\\n\\n        uint256 size;\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly { size := extcodesize(account_) }\\n        require(size > 0, \\\"Account code size cannot be zero\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x6282e853a7b31ee8bbbb4008869300bf900f7f43610f5b4be9499d40549b207a\",\"license\":\"MIT\"},\"contracts/interfaces/ICollSurplusPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ninterface ICollSurplusPool {\\n\\n    // --- Events ---\\n\\n    event WSTETHAddressChanged(address _newWSTETHAddress);\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n\\n    event CollBalanceUpdated(address indexed _account, uint _newBalance);\\n    event EtherSent(address _to, uint _amount);\\n\\n    // --- Contract setters ---\\n\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress\\n    ) external;\\n\\n    function getWSTETH() external view returns (uint);\\n\\n    function getCollateral(address _account) external view returns (uint);\\n\\n    function accountSurplus(address _account, uint _amount) external;\\n\\n    function claimColl(address _account) external;\\n\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x8ec9e63e51efe61f20e4f3088f69dc2d16aece7bb651cd03be199cbcc50a49bf\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061001a3361001f565b61006f565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b610ade8061007e6000396000f3fe608060405234801561001057600080fd5b50600436106100ca5760003560e01c80639b56d6c91161007c5780639b56d6c91461015e578063a3f4df7e14610187578063b08bc722146101c2578063b32beb5b146101d5578063b7f8cf9b146101e8578063dbb0c61a146101fb578063f2fde38b1461020e57600080fd5b80633f10abab146100cf5780634a945f8d146100e45780635617c5c7146100f75780635a4d28bb14610120578063715018a614610133578063864069e41461013b5780638da5cb5b1461014d575b600080fd5b6100e26100dd366004610929565b610221565b005b6100e26100f2366004610953565b6102ab565b60015461010a906001600160a01b031681565b60405161011791906109a7565b60405180910390f35b60035461010a906001600160a01b031681565b6100e261040c565b6005545b604051908152602001610117565b6000546001600160a01b031661010a565b61013f61016c3660046109bb565b6001600160a01b031660009081526006602052604090205490565b6101b56040518060400160405280600f81526020016e10dbdb1b14dd5c9c1b1d5cd41bdbdb608a1b81525081565b60405161011791906109dd565b60045461010a906001600160a01b031681565b6100e26101e33660046109bb565b610420565b60025461010a906001600160a01b031681565b6100e2610209366004610a2b565b6105cf565b6100e261021c3660046109bb565b6105f1565b61022961066a565b6001600160a01b03821660009081526006602052604081205461024d908390610a5a565b6001600160a01b0384166000818152600660205260409081902083905551919250907ff0393a34d05e6567686ad4e097f9d9d2781565957394f1f0d984e5d8e6378f209061029e9084815260200190565b60405180910390a2505050565b6102b36106d8565b6102bc84610732565b6102c583610732565b6102ce82610732565b6102d781610732565b600180546001600160a01b038087166001600160a01b031992831617909255600280548684169083161790556003805485841690831617905560048054928416929091169190911790556040517f93f162485267c0964263151ca9faf9640ba9e5587e78253262023562891b2d75906103519086906109a7565b60405180910390a17f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed9858360405161038891906109a7565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a5678826040516103bf91906109a7565b60405180910390a17f78f058b189175430c48dc02699e3a0031ea4ff781536dc2fab847de4babdd882816040516103f691906109a7565b60405180910390a161040661040c565b50505050565b6104146106d8565b61041e60006107db565b565b61042861082b565b6001600160a01b038116600090815260066020526040902054806104ad5760405162461bcd60e51b815260206004820152603160248201527f436f6c6c537572706c7573506f6f6c3a204e6f20636f6c6c61746572616c20616044820152707661696c61626c6520746f20636c61696d60781b60648201526084015b60405180910390fd5b6001600160a01b0382166000818152600660209081526040808320839055519182527ff0393a34d05e6567686ad4e097f9d9d2781565957394f1f0d984e5d8e6378f20910160405180910390a2806005600082825461050c9190610a73565b9091555050604080516001600160a01b0384168152602081018390527f6109e2559dfa766aaec7118351d48a523f0a4157f49c8d68749c8ac41318ad12910160405180910390a160015460405163a9059cbb60e01b81526001600160a01b038481166004830152602482018490529091169063a9059cbb906044016020604051808303816000875af11580156105a6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105ca9190610a86565b505050565b6105d76108a0565b80600560008282546105e99190610a5a565b909155505050565b6105f96106d8565b6001600160a01b03811661065e5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084016104a4565b610667816107db565b50565b6003546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152602b60248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f74205460448201526a3937bb32a6b0b730b3b2b960a91b60648201526084016104a4565b6000546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657260448201526064016104a4565b6001600160a01b0381166107885760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f2061646472657373000060448201526064016104a4565b803b806107d75760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f60448201526064016104a4565b5050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152603260248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f7420426044820152716f72726f776572204f7065726174696f6e7360701b60648201526084016104a4565b6004546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152602a60248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f74204160448201526918dd1a5d9948141bdbdb60b21b60648201526084016104a4565b80356001600160a01b038116811461092457600080fd5b919050565b6000806040838503121561093c57600080fd5b6109458361090d565b946020939093013593505050565b6000806000806080858703121561096957600080fd5b6109728561090d565b93506109806020860161090d565b925061098e6040860161090d565b915061099c6060860161090d565b905092959194509250565b6001600160a01b0391909116815260200190565b6000602082840312156109cd57600080fd5b6109d68261090d565b9392505050565b600060208083528351808285015260005b81811015610a0a578581018301518582016040015282016109ee565b506000604082860101526040601f19601f8301168501019250505092915050565b600060208284031215610a3d57600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610a6d57610a6d610a44565b92915050565b81810381811115610a6d57610a6d610a44565b600060208284031215610a9857600080fd5b815180151581146109d657600080fdfea26469706673582212208ba12dd635ced87d1bf59eb33e0f62a6a715b85f5881a150f8eeef4f3151dd1564736f6c63430008130033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100ca5760003560e01c80639b56d6c91161007c5780639b56d6c91461015e578063a3f4df7e14610187578063b08bc722146101c2578063b32beb5b146101d5578063b7f8cf9b146101e8578063dbb0c61a146101fb578063f2fde38b1461020e57600080fd5b80633f10abab146100cf5780634a945f8d146100e45780635617c5c7146100f75780635a4d28bb14610120578063715018a614610133578063864069e41461013b5780638da5cb5b1461014d575b600080fd5b6100e26100dd366004610929565b610221565b005b6100e26100f2366004610953565b6102ab565b60015461010a906001600160a01b031681565b60405161011791906109a7565b60405180910390f35b60035461010a906001600160a01b031681565b6100e261040c565b6005545b604051908152602001610117565b6000546001600160a01b031661010a565b61013f61016c3660046109bb565b6001600160a01b031660009081526006602052604090205490565b6101b56040518060400160405280600f81526020016e10dbdb1b14dd5c9c1b1d5cd41bdbdb608a1b81525081565b60405161011791906109dd565b60045461010a906001600160a01b031681565b6100e26101e33660046109bb565b610420565b60025461010a906001600160a01b031681565b6100e2610209366004610a2b565b6105cf565b6100e261021c3660046109bb565b6105f1565b61022961066a565b6001600160a01b03821660009081526006602052604081205461024d908390610a5a565b6001600160a01b0384166000818152600660205260409081902083905551919250907ff0393a34d05e6567686ad4e097f9d9d2781565957394f1f0d984e5d8e6378f209061029e9084815260200190565b60405180910390a2505050565b6102b36106d8565b6102bc84610732565b6102c583610732565b6102ce82610732565b6102d781610732565b600180546001600160a01b038087166001600160a01b031992831617909255600280548684169083161790556003805485841690831617905560048054928416929091169190911790556040517f93f162485267c0964263151ca9faf9640ba9e5587e78253262023562891b2d75906103519086906109a7565b60405180910390a17f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed9858360405161038891906109a7565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a5678826040516103bf91906109a7565b60405180910390a17f78f058b189175430c48dc02699e3a0031ea4ff781536dc2fab847de4babdd882816040516103f691906109a7565b60405180910390a161040661040c565b50505050565b6104146106d8565b61041e60006107db565b565b61042861082b565b6001600160a01b038116600090815260066020526040902054806104ad5760405162461bcd60e51b815260206004820152603160248201527f436f6c6c537572706c7573506f6f6c3a204e6f20636f6c6c61746572616c20616044820152707661696c61626c6520746f20636c61696d60781b60648201526084015b60405180910390fd5b6001600160a01b0382166000818152600660209081526040808320839055519182527ff0393a34d05e6567686ad4e097f9d9d2781565957394f1f0d984e5d8e6378f20910160405180910390a2806005600082825461050c9190610a73565b9091555050604080516001600160a01b0384168152602081018390527f6109e2559dfa766aaec7118351d48a523f0a4157f49c8d68749c8ac41318ad12910160405180910390a160015460405163a9059cbb60e01b81526001600160a01b038481166004830152602482018490529091169063a9059cbb906044016020604051808303816000875af11580156105a6573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906105ca9190610a86565b505050565b6105d76108a0565b80600560008282546105e99190610a5a565b909155505050565b6105f96106d8565b6001600160a01b03811661065e5760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084016104a4565b610667816107db565b50565b6003546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152602b60248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f74205460448201526a3937bb32a6b0b730b3b2b960a91b60648201526084016104a4565b6000546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657260448201526064016104a4565b6001600160a01b0381166107885760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f2061646472657373000060448201526064016104a4565b803b806107d75760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f60448201526064016104a4565b5050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152603260248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f7420426044820152716f72726f776572204f7065726174696f6e7360701b60648201526084016104a4565b6004546001600160a01b0316331461041e5760405162461bcd60e51b815260206004820152602a60248201527f436f6c6c537572706c7573506f6f6c3a2043616c6c6572206973206e6f74204160448201526918dd1a5d9948141bdbdb60b21b60648201526084016104a4565b80356001600160a01b038116811461092457600080fd5b919050565b6000806040838503121561093c57600080fd5b6109458361090d565b946020939093013593505050565b6000806000806080858703121561096957600080fd5b6109728561090d565b93506109806020860161090d565b925061098e6040860161090d565b915061099c6060860161090d565b905092959194509250565b6001600160a01b0391909116815260200190565b6000602082840312156109cd57600080fd5b6109d68261090d565b9392505050565b600060208083528351808285015260005b81811015610a0a578581018301518582016040015282016109ee565b506000604082860101526040601f19601f8301168501019250505092915050565b600060208284031215610a3d57600080fd5b5035919050565b634e487b7160e01b600052601160045260246000fd5b80820180821115610a6d57610a6d610a44565b92915050565b81810381811115610a6d57610a6d610a44565b600060208284031215610a9857600080fd5b815180151581146109d657600080fdfea26469706673582212208ba12dd635ced87d1bf59eb33e0f62a6a715b85f5881a150f8eeef4f3151dd1564736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 590,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 9059,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "WSTETHAddress",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 9061,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "borrowerOperationsAddress",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 9063,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "troveManagerAddress",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      },
+      {
+        "astId": 9065,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "activePoolAddress",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 9067,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "WSTETH",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9071,
+        "contract": "contracts/CollSurplusPool.sol:CollSurplusPool",
+        "label": "balances",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_mapping(t_address,t_uint256)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

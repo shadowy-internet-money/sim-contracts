@@ -1,0 +1,563 @@
+{
+  "address": "0xA1bDdeeEF252989729AF9d3676E78A6C5Ed40cAC",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newActivePoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ActivePoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_SIMDebt",
+          "type": "uint256"
+        }
+      ],
+      "name": "ActivePoolSIMDebtUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_WSTETH",
+          "type": "uint256"
+        }
+      ],
+      "name": "ActivePoolWSTETHBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newBorrowerOperationsAddress",
+          "type": "address"
+        }
+      ],
+      "name": "BorrowerOperationsAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newDefaultPoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "DefaultPoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "EtherSent",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "SIMBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newStabilityPoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "StabilityPoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newTroveManagerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TroveManagerAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newWSTETHAddress",
+          "type": "address"
+        }
+      ],
+      "name": "WSTETHAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "WSTETHBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WSTETHAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "borrowerOperationsAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collSurplusPoolAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "decreaseSIMDebt",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defaultPoolAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSIMDebt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWSTETH",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseSIMDebt",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "receiveWSTETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "sendWSTETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_WSTETHAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_borrowerOperationsAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_troveManagerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_stabilityPoolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_defaultPoolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_collSurplusPoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setAddresses",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "stabilityPoolAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "troveManagerAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x82cbd6d91d9bcf1142c736ab59e45fe9202ac8b22e4669bf8379acf8d1936107",
+  "receipt": {
+    "to": null,
+    "from": "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
+    "contractAddress": "0xA1bDdeeEF252989729AF9d3676E78A6C5Ed40cAC",
+    "transactionIndex": 0,
+    "gasUsed": "794053",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000100800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000001000000000000000000000000000000000000420000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000030000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x4c380cf92a007e3c10934b33d4a3cc898525dbec67a22f9003d0081b8f430c78",
+    "transactionHash": "0x82cbd6d91d9bcf1142c736ab59e45fe9202ac8b22e4669bf8379acf8d1936107",
+    "logs": [
+      {
+        "transactionIndex": 0,
+        "blockNumber": 1960817,
+        "transactionHash": "0x82cbd6d91d9bcf1142c736ab59e45fe9202ac8b22e4669bf8379acf8d1936107",
+        "address": "0xA1bDdeeEF252989729AF9d3676E78A6C5Ed40cAC",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000088888887c3ebd4a33e34a15db4254c74c75e5d4a"
+        ],
+        "data": "0x",
+        "logIndex": 0,
+        "blockHash": "0x4c380cf92a007e3c10934b33d4a3cc898525dbec67a22f9003d0081b8f430c78"
+      }
+    ],
+    "blockNumber": 1960817,
+    "cumulativeGasUsed": "794053",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b29cd153aaed98a3f3bb92c92603933d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newActivePoolAddress\",\"type\":\"address\"}],\"name\":\"ActivePoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_SIMDebt\",\"type\":\"uint256\"}],\"name\":\"ActivePoolSIMDebtUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_WSTETH\",\"type\":\"uint256\"}],\"name\":\"ActivePoolWSTETHBalanceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newBorrowerOperationsAddress\",\"type\":\"address\"}],\"name\":\"BorrowerOperationsAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newDefaultPoolAddress\",\"type\":\"address\"}],\"name\":\"DefaultPoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"EtherSent\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"}],\"name\":\"SIMBalanceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newStabilityPoolAddress\",\"type\":\"address\"}],\"name\":\"StabilityPoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newTroveManagerAddress\",\"type\":\"address\"}],\"name\":\"TroveManagerAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newWSTETHAddress\",\"type\":\"address\"}],\"name\":\"WSTETHAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"}],\"name\":\"WSTETHBalanceUpdated\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"NAME\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WSTETHAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowerOperationsAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"collSurplusPoolAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"decreaseSIMDebt\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"defaultPoolAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSIMDebt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getWSTETH\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"increaseSIMDebt\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"receiveWSTETH\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"sendWSTETH\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_WSTETHAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_borrowerOperationsAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_troveManagerAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_stabilityPoolAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_defaultPoolAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_collSurplusPoolAddress\",\"type\":\"address\"}],\"name\":\"setAddresses\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"stabilityPoolAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"troveManagerAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/ActivePool.sol\":\"ActivePool\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/ActivePool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport './interfaces/IActivePool.sol';\\nimport './interfaces/IDefaultPool.sol';\\nimport './interfaces/IStabilityPool.sol';\\nimport './interfaces/ICollSurplusPool.sol';\\nimport \\\"./dependencies/CheckContract.sol\\\";\\n\\n/*\\n * The Active Pool holds the WSTETH collateral and SIM debt (but not SIM tokens) for all active troves.\\n *\\n * When a trove is liquidated, it's WSTETH and SIM debt are transferred from the Active Pool, to either the\\n * Stability Pool, the Default Pool, or both, depending on the liquidation conditions.\\n *\\n */\\ncontract ActivePool is Ownable, CheckContract, IActivePool {\\n    string constant public NAME = \\\"ActivePool\\\";\\n\\n    address public WSTETHAddress;\\n    address public borrowerOperationsAddress;\\n    address public troveManagerAddress;\\n    address public stabilityPoolAddress;\\n    address public defaultPoolAddress;\\n    address public collSurplusPoolAddress;\\n    uint256 internal WSTETH;  // deposited ether tracker\\n    uint256 internal SIMDebt;\\n\\n    // --- Contract setters ---\\n\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _stabilityPoolAddress,\\n        address _defaultPoolAddress,\\n        address _collSurplusPoolAddress\\n    )\\n        external\\n        onlyOwner\\n    {\\n        _checkContract(_WSTETHAddress);\\n        _checkContract(_borrowerOperationsAddress);\\n        _checkContract(_troveManagerAddress);\\n        _checkContract(_stabilityPoolAddress);\\n        _checkContract(_defaultPoolAddress);\\n        _checkContract(_collSurplusPoolAddress);\\n\\n        WSTETHAddress = _WSTETHAddress;\\n        borrowerOperationsAddress = _borrowerOperationsAddress;\\n        troveManagerAddress = _troveManagerAddress;\\n        stabilityPoolAddress = _stabilityPoolAddress;\\n        defaultPoolAddress = _defaultPoolAddress;\\n        collSurplusPoolAddress = _collSurplusPoolAddress;\\n\\n        emit WSTETHAddressChanged(_WSTETHAddress);\\n        emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);\\n        emit TroveManagerAddressChanged(_troveManagerAddress);\\n        emit StabilityPoolAddressChanged(_stabilityPoolAddress);\\n        emit DefaultPoolAddressChanged(_defaultPoolAddress);\\n\\n        renounceOwnership();\\n    }\\n\\n    // --- Getters for public variables. Required by IPool interface ---\\n\\n    /*\\n    * Returns the WSTETH state variable.\\n    *\\n    *Not necessarily equal to the the contract's raw WSTETH balance - ether can be forcibly sent to contracts.\\n    */\\n    function getWSTETH() external view override returns (uint) {\\n        return WSTETH;\\n    }\\n\\n    function getSIMDebt() external view override returns (uint) {\\n        return SIMDebt;\\n    }\\n\\n    // --- Pool functionality ---\\n\\n    function sendWSTETH(address _account, uint _amount) external override {\\n        _requireCallerIsBOorTroveMorSP();\\n        WSTETH = WSTETH - _amount;\\n        emit ActivePoolWSTETHBalanceUpdated(WSTETH);\\n        emit EtherSent(_account, _amount);\\n\\n        IERC20(WSTETHAddress).transfer(_account, _amount);\\n        if (_account == defaultPoolAddress) {\\n            IDefaultPool(defaultPoolAddress).receiveWSTETH(_amount);\\n        }\\n        if (_account == stabilityPoolAddress) {\\n            IStabilityPool(stabilityPoolAddress).receiveWSTETH(_amount);\\n        }\\n        if (_account == collSurplusPoolAddress) {\\n            ICollSurplusPool(collSurplusPoolAddress).receiveWSTETH(_amount);\\n        }\\n    }\\n\\n    function receiveWSTETH(uint amount) external {\\n        _requireCallerIsBorrowerOperationsOrDefaultPool();\\n        WSTETH = WSTETH + amount;\\n        emit ActivePoolWSTETHBalanceUpdated(WSTETH);\\n    }\\n\\n    function increaseSIMDebt(uint _amount) external override {\\n        _requireCallerIsBOorTroveM();\\n        SIMDebt  = SIMDebt + _amount;\\n        emit ActivePoolSIMDebtUpdated(SIMDebt);\\n    }\\n\\n    function decreaseSIMDebt(uint _amount) external override {\\n        _requireCallerIsBOorTroveMorSP();\\n        SIMDebt = SIMDebt - _amount;\\n        emit ActivePoolSIMDebtUpdated(SIMDebt);\\n    }\\n\\n    // --- 'require' functions ---\\n\\n    function _requireCallerIsBorrowerOperationsOrDefaultPool() internal view {\\n        require(\\n            msg.sender == borrowerOperationsAddress ||\\n            msg.sender == defaultPoolAddress,\\n            \\\"ActivePool: Caller is neither BO nor Default Pool\\\");\\n    }\\n\\n    function _requireCallerIsBOorTroveMorSP() internal view {\\n        require(\\n            msg.sender == borrowerOperationsAddress ||\\n            msg.sender == troveManagerAddress ||\\n            msg.sender == stabilityPoolAddress,\\n            \\\"ActivePool: Caller is neither BorrowerOperations nor TroveManager nor StabilityPool\\\");\\n    }\\n\\n    function _requireCallerIsBOorTroveM() internal view {\\n        require(\\n            msg.sender == borrowerOperationsAddress ||\\n            msg.sender == troveManagerAddress,\\n            \\\"ActivePool: Caller is neither BorrowerOperations nor TroveManager\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x834e953f62fe841c1f4d21823349da7180a4e97c4e6da67ab488709f7a005b20\",\"license\":\"MIT\"},\"contracts/dependencies/CheckContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ncontract CheckContract {\\n    /**\\n     * Check that the account is an already deployed non-destroyed contract.\\n     */\\n    function _checkContract(address account_) internal view {\\n        require(account_ != address(0), \\\"Account cannot be zero address\\\");\\n\\n        uint256 size;\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly { size := extcodesize(account_) }\\n        require(size > 0, \\\"Account code size cannot be zero\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x6282e853a7b31ee8bbbb4008869300bf900f7f43610f5b4be9499d40549b207a\",\"license\":\"MIT\"},\"contracts/interfaces/IActivePool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IPool.sol\\\";\\n\\n\\ninterface IActivePool is IPool {\\n    // --- Events ---\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolSIMDebtUpdated(uint _SIMDebt);\\n    event ActivePoolWSTETHBalanceUpdated(uint _WSTETH);\\n\\n    // --- Functions ---\\n    function sendWSTETH(address _account, uint _amount) external;\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x43e7e6c53312584b369d356a350f2027530ad8c123cee37657b6f3d21cfcdfca\",\"license\":\"MIT\"},\"contracts/interfaces/ICollSurplusPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ninterface ICollSurplusPool {\\n\\n    // --- Events ---\\n\\n    event WSTETHAddressChanged(address _newWSTETHAddress);\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n\\n    event CollBalanceUpdated(address indexed _account, uint _newBalance);\\n    event EtherSent(address _to, uint _amount);\\n\\n    // --- Contract setters ---\\n\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress\\n    ) external;\\n\\n    function getWSTETH() external view returns (uint);\\n\\n    function getCollateral(address _account) external view returns (uint);\\n\\n    function accountSurplus(address _account, uint _amount) external;\\n\\n    function claimColl(address _account) external;\\n\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x8ec9e63e51efe61f20e4f3088f69dc2d16aece7bb651cd03be199cbcc50a49bf\",\"license\":\"MIT\"},\"contracts/interfaces/IDefaultPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IPool.sol\\\";\\n\\n\\ninterface IDefaultPool is IPool {\\n    // --- Events ---\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event DefaultPoolSIMDebtUpdated(uint _SIMDebt);\\n    event DefaultPoolWSTETHBalanceUpdated(uint _WSTETH);\\n\\n    // --- Functions ---\\n    function sendWSTETHToActivePool(uint _amount) external;\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x6f5fa0dbd6ea671d127969b2b0c8369f5a32e917dac9fa2eb67aa23313036e9f\",\"license\":\"MIT\"},\"contracts/interfaces/IPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n// Common interface for the Pools.\\ninterface IPool {\\n    \\n    // --- Events ---\\n    \\n    event WSTETHBalanceUpdated(uint _newBalance);\\n    event SIMBalanceUpdated(uint _newBalance);\\n    event WSTETHAddressChanged(address _newWSTETHAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n    event DefaultPoolAddressChanged(address _newDefaultPoolAddress);\\n    event StabilityPoolAddressChanged(address _newStabilityPoolAddress);\\n    event EtherSent(address _to, uint _amount);\\n\\n    // --- Functions ---\\n    \\n    function getWSTETH() external view returns (uint);\\n\\n    function getSIMDebt() external view returns (uint);\\n\\n    function increaseSIMDebt(uint _amount) external;\\n\\n    function decreaseSIMDebt(uint _amount) external;\\n}\\n\",\"keccak256\":\"0x75d5870d6307794574684881915ae899ba46f514e523f8672912ef908a1d1d85\",\"license\":\"MIT\"},\"contracts/interfaces/IStabilityPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/*\\n * The Stability Pool holds SIM tokens deposited by Stability Pool depositors.\\n *\\n * When a trove is liquidated, then depending on system conditions, some of its SIM debt gets offset with\\n * SIM in the Stability Pool:  that is, the offset debt evaporates, and an equal amount of SIM tokens in the Stability Pool is burned.\\n *\\n * Thus, a liquidation causes each depositor to receive a SIM loss, in proportion to their deposit as a share of total deposits.\\n * They also receive an WSTETH gain, as the WSTETH collateral of the liquidated trove is distributed among Stability depositors,\\n * in the same proportion.\\n *\\n * When a liquidation occurs, it depletes every deposit by the same fraction: for example, a liquidation that depletes 40%\\n * of the total SIM in the Stability Pool, depletes 40% of each deposit.\\n *\\n * A deposit that has experienced a series of liquidations is termed a \\\"compounded deposit\\\": each liquidation depletes the deposit,\\n * multiplying it by some factor in range ]0,1[\\n *\\n * Please see the implementation spec in the proof document, which closely follows on from the compounded deposit / WSTETH gain derivations:\\n * https://github.com/liquity/liquity/blob/master/papers/Scalable_Reward_Distribution_with_Compounding_Stakes.pdf\\n *\\n * --- SHADY ISSUANCE TO STABILITY POOL DEPOSITORS ---\\n *\\n * An SHADY issuance event occurs at every deposit operation, and every liquidation.\\n *\\n * Each deposit is tagged with the address of the front end through which it was made.\\n *\\n * All deposits earn a share of the issued SHADY in proportion to the deposit as a share of total deposits. The SHADY earned\\n * by a given deposit, is split between the depositor and the front end through which the deposit was made, based on the front end's kickbackRate.\\n *\\n * Please see the system Readme for an overview:\\n * https://github.com/liquity/dev/blob/main/README.md#lqty-issuance-to-stability-providers\\n */\\ninterface IStabilityPool {\\n\\n    // --- Events ---\\n    \\n    event StabilityPoolWSTETHBalanceUpdated(uint _newBalance);\\n    event StabilityPoolSIMBalanceUpdated(uint _newBalance);\\n\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n    event DefaultPoolAddressChanged(address _newDefaultPoolAddress);\\n    event SIMTokenAddressChanged(address _newSIMTokenAddress);\\n    event SortedTrovesAddressChanged(address _newSortedTrovesAddress);\\n    event PriceFeedAddressChanged(address _newPriceFeedAddress);\\n    event CommunityIssuanceAddressChanged(address _newCommunityIssuanceAddress);\\n\\n    event P_Updated(uint _P);\\n    event S_Updated(uint _S, uint128 _epoch, uint128 _scale);\\n    event G_Updated(uint _G, uint128 _epoch, uint128 _scale);\\n    event EpochUpdated(uint128 _currentEpoch);\\n    event ScaleUpdated(uint128 _currentScale);\\n\\n    event FrontEndRegistered(address indexed _frontEnd, uint _kickbackRate);\\n    event FrontEndTagSet(address indexed _depositor, address indexed _frontEnd);\\n\\n    event DepositSnapshotUpdated(address indexed _depositor, uint _P, uint _S, uint _G);\\n    event FrontEndSnapshotUpdated(address indexed _frontEnd, uint _P, uint _G);\\n    event UserDepositChanged(address indexed _depositor, uint _newDeposit);\\n    event FrontEndStakeChanged(address indexed _frontEnd, uint _newFrontEndStake, address _depositor);\\n\\n    event WSTETHGainWithdrawn(address indexed _depositor, uint _WSTETH, uint _SIMLoss);\\n    event SHADYPaidToDepositor(address indexed _depositor, uint _SHADY);\\n    event SHADYPaidToFrontEnd(address indexed _frontEnd, uint _SHADY);\\n    event WSTETHSent(address _to, uint _amount);\\n\\n    // --- Functions ---\\n\\n    /*\\n     * Called only once on init, to set addresses of other SIM contracts\\n     * Callable only by owner, renounces ownership at the end\\n     */\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress,\\n        address _SIMTokenAddress,\\n        address _sortedTrovesAddress,\\n        address _priceFeedAddress,\\n        address _communityIssuanceAddress\\n    ) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Frontend is registered or zero address\\n     * - Sender is not a registered frontend\\n     * - _amount is not zero\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Tags the deposit with the provided front end tag param, if it's a new deposit\\n     * - Sends depositor's accumulated gains (SHADY, WSTETH) to depositor\\n     * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n     * - Increases deposit and tagged front end's stake, and takes new snapshots for each.\\n     */\\n    function provideToSP(uint _amount, address _frontEndTag) external;\\n\\n    /*\\n     * Initial checks:\\n     * - _amount is zero or there are no under collateralized troves left in the system\\n     * - User has a non zero deposit\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Removes the deposit's front end tag if it is a full withdrawal\\n     * - Sends all depositor's accumulated gains (SHADY, WSTETH) to depositor\\n     * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n     * - Decreases deposit and tagged front end's stake, and takes new snapshots for each.\\n     *\\n     * If _amount > userDeposit, the user withdraws all of their compounded deposit.\\n     */\\n    function withdrawFromSP(uint _amount) external;\\n\\n    /*\\n     * Initial checks:\\n     * - User has a non zero deposit\\n     * - User has an open trove\\n     * - User has some WSTETH gain\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Sends all depositor's SHADY gain to  depositor\\n     * - Sends all tagged front end's SHADY gain to the tagged front end\\n     * - Transfers the depositor's entire WSTETH gain from the Stability Pool to the caller's trove\\n     * - Leaves their compounded deposit in the Stability Pool\\n     * - Updates snapshots for deposit and tagged front end stake\\n     */\\n    function withdrawWSTETHGainToTrove(address _upperHint, address _lowerHint) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Frontend (sender) not already registered\\n     * - User (sender) has no deposit\\n     * - _kickbackRate is in the range [0, 100%]\\n     * ---\\n     * Front end makes a one-time selection of kickback rate upon registering\\n     */\\n//    function registerFrontEnd(uint _kickbackRate) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Caller is TroveManager\\n     * ---\\n     * Cancels out the specified debt against the SIM contained in the Stability Pool (as far as possible)\\n     * and transfers the Trove's WSTETH collateral from ActivePool to StabilityPool.\\n     * Only called by liquidation functions in the TroveManager.\\n     */\\n    function offset(uint _debt, uint _coll) external;\\n\\n    /*\\n     * Returns the total amount of WSTETH held by the pool, accounted in an internal variable instead of `balance`,\\n     * to exclude edge cases like WSTETH received from a self-destruct.\\n     */\\n    function getWSTETH() external view returns (uint);\\n\\n    /*\\n     * Returns SIM held in the pool. Changes when users deposit/withdraw, and when Trove debt is offset.\\n     */\\n    function getTotalSIMDeposits() external view returns (uint);\\n\\n    /*\\n     * Calculates the WSTETH gain earned by the deposit since its last snapshots were taken.\\n     */\\n    function getDepositorWSTETHGain(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Calculate the SHADY gain earned by a deposit since its last snapshots were taken.\\n     * If not tagged with a front end, the depositor gets a 100% cut of what their deposit earned.\\n     * Otherwise, their cut of the deposit's earnings is equal to the kickbackRate, set by the front end through\\n     * which they made their deposit.\\n     */\\n    function getDepositorSHADYGain(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Return the SHADY gain earned by the front end.\\n     */\\n//    function getFrontEndSHADYGain(address _frontEnd) external view returns (uint);\\n\\n    /*\\n     * Return the user's compounded deposit.\\n     */\\n    function getCompoundedSIMDeposit(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Return the front end's compounded stake.\\n     *\\n     * The front end's compounded stake is equal to the sum of its depositors' compounded deposits.\\n     */\\n//    function getCompoundedFrontEndStake(address _frontEnd) external view returns (uint);\\n\\n    /*\\n     * Fallback function\\n     * Only callable by Active Pool, it just accounts for WSTETH received\\n     * receive() external payable;\\n     */\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x0e50659b56f98d22a2f9b9e373f1c4bee798060f6ca989ecea823628d39d99fb\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061001a3361001f565b61006f565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b610cf08061007e6000396000f3fe608060405234801561001057600080fd5b50600436106100eb5760003560e01c8063864069e411610092578063864069e4146101955780638da5cb5b146101a7578063a3f4df7e146101b8578063aac1846f146101ee578063b7f8cf9b14610201578063c7662fa514610214578063d5c37ac01461021c578063dbb0c61a1461022f578063f2fde38b1461024257600080fd5b80630b622ab2146100f05780632a9043ec146101195780635617c5c71461012c5780635a4d28bb1461013f5780636bfc0b79146101525780636cfb6bf914610167578063707cf39f1461017a578063715018a61461018d575b600080fd5b600454610103906001600160a01b031681565b6040516101109190610aff565b60405180910390f35b600654610103906001600160a01b031681565b600154610103906001600160a01b031681565b600354610103906001600160a01b031681565b610165610160366004610b13565b610255565b005b610165610175366004610b48565b6102a7565b610165610188366004610b13565b61046b565b610165610481565b6007545b604051908152602001610110565b6000546001600160a01b0316610103565b6101e16040518060400160405280600a8152602001691058dd1a5d99541bdbdb60b21b81525081565b6040516101109190610bbc565b600554610103906001600160a01b031681565b600254610103906001600160a01b031681565b600854610199565b61016561022a366004610c0a565b610495565b61016561023d366004610b13565b6106f9565b610165610250366004610c34565b610744565b61025d6107c2565b8060085461026b9190610c6c565b60088190556040519081527fcf001b551a0259431a03e514d4517ad4351940fbf1408b5bbc06d7d73800d94d906020015b60405180910390a150565b6102af610888565b6102b8866108e2565b6102c1856108e2565b6102ca846108e2565b6102d3836108e2565b6102dc826108e2565b6102e5816108e2565b600180546001600160a01b03199081166001600160a01b0389811691909117909255600280548216888416179055600380548216878416179055600480548216868416179055600580548216858416179055600680549091169183169190911790556040517f93f162485267c0964263151ca9faf9640ba9e5587e78253262023562891b2d7590610377908890610aff565b60405180910390a17f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed985856040516103ae9190610aff565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a5678846040516103e59190610aff565b60405180910390a17f82966d27eea39b038ee0fa30cd16532bb24f6e65d31cb58fb227aa5766cdcc7f8360405161041c9190610aff565b60405180910390a17f5ee0cae2f063ed938bb55046f6a932fb6ae792bf43624806bb90abe68a50be9b826040516104539190610aff565b60405180910390a1610463610481565b505050505050565b610473610987565b8060085461026b9190610c85565b610489610888565b6104936000610a26565b565b61049d6107c2565b806007546104ab9190610c6c565b60078190556040519081527fad43b1d82d90e6bdb02a7f83cc91209c520c7757e4a6a3cc33a789f37c8925af9060200160405180910390a1604080516001600160a01b0384168152602081018390527f6109e2559dfa766aaec7118351d48a523f0a4157f49c8d68749c8ac41318ad12910160405180910390a160015460405163a9059cbb60e01b81526001600160a01b038481166004830152602482018490529091169063a9059cbb906044016020604051808303816000875af1158015610578573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061059c9190610c98565b506005546001600160a01b039081169083160361061257600554604051636dd8630d60e11b8152600481018390526001600160a01b039091169063dbb0c61a90602401600060405180830381600087803b1580156105f957600080fd5b505af115801561060d573d6000803e3d6000fd5b505050505b6004546001600160a01b03908116908316036106855760048054604051636dd8630d60e11b81529182018390526001600160a01b03169063dbb0c61a90602401600060405180830381600087803b15801561066c57600080fd5b505af1158015610680573d6000803e3d6000fd5b505050505b6006546001600160a01b03908116908316036106f557600654604051636dd8630d60e11b8152600481018390526001600160a01b039091169063dbb0c61a90602401600060405180830381600087803b1580156106e157600080fd5b505af1158015610463573d6000803e3d6000fd5b5050565b610701610a76565b8060075461070f9190610c85565b60078190556040519081527fad43b1d82d90e6bdb02a7f83cc91209c520c7757e4a6a3cc33a789f37c8925af9060200161029c565b61074c610888565b6001600160a01b0381166107b65760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b6107bf81610a26565b50565b6002546001600160a01b03163314806107e557506003546001600160a01b031633145b806107fa57506004546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152605360248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220426f60448201527f72726f7765724f7065726174696f6e73206e6f722054726f76654d616e6167656064820152721c881b9bdc8814dd18589a5b1a5d1e541bdbdb606a1b608482015260a4016107ad565b6000546001600160a01b031633146104935760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657260448201526064016107ad565b6001600160a01b0381166109385760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f2061646472657373000060448201526064016107ad565b803b806106f55760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f60448201526064016107ad565b6002546001600160a01b03163314806109aa57506003546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152604160248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220426f60448201527f72726f7765724f7065726174696f6e73206e6f722054726f76654d616e6167656064820152603960f91b608482015260a4016107ad565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546001600160a01b0316331480610a9957506005546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152603160248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220424f604482015270081b9bdc88111959985d5b1d08141bdbdb607a1b60648201526084016107ad565b6001600160a01b0391909116815260200190565b600060208284031215610b2557600080fd5b5035919050565b80356001600160a01b0381168114610b4357600080fd5b919050565b60008060008060008060c08789031215610b6157600080fd5b610b6a87610b2c565b9550610b7860208801610b2c565b9450610b8660408801610b2c565b9350610b9460608801610b2c565b9250610ba260808801610b2c565b9150610bb060a08801610b2c565b90509295509295509295565b600060208083528351808285015260005b81811015610be957858101830151858201604001528201610bcd565b506000604082860101526040601f19601f8301168501019250505092915050565b60008060408385031215610c1d57600080fd5b610c2683610b2c565b946020939093013593505050565b600060208284031215610c4657600080fd5b610c4f82610b2c565b9392505050565b634e487b7160e01b600052601160045260246000fd5b81810381811115610c7f57610c7f610c56565b92915050565b80820180821115610c7f57610c7f610c56565b600060208284031215610caa57600080fd5b81518015158114610c4f57600080fdfea264697066735822122057c837530486e52873ce9e892894e05eacf9845ed4109625ade5e686ff2dd97d64736f6c63430008130033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100eb5760003560e01c8063864069e411610092578063864069e4146101955780638da5cb5b146101a7578063a3f4df7e146101b8578063aac1846f146101ee578063b7f8cf9b14610201578063c7662fa514610214578063d5c37ac01461021c578063dbb0c61a1461022f578063f2fde38b1461024257600080fd5b80630b622ab2146100f05780632a9043ec146101195780635617c5c71461012c5780635a4d28bb1461013f5780636bfc0b79146101525780636cfb6bf914610167578063707cf39f1461017a578063715018a61461018d575b600080fd5b600454610103906001600160a01b031681565b6040516101109190610aff565b60405180910390f35b600654610103906001600160a01b031681565b600154610103906001600160a01b031681565b600354610103906001600160a01b031681565b610165610160366004610b13565b610255565b005b610165610175366004610b48565b6102a7565b610165610188366004610b13565b61046b565b610165610481565b6007545b604051908152602001610110565b6000546001600160a01b0316610103565b6101e16040518060400160405280600a8152602001691058dd1a5d99541bdbdb60b21b81525081565b6040516101109190610bbc565b600554610103906001600160a01b031681565b600254610103906001600160a01b031681565b600854610199565b61016561022a366004610c0a565b610495565b61016561023d366004610b13565b6106f9565b610165610250366004610c34565b610744565b61025d6107c2565b8060085461026b9190610c6c565b60088190556040519081527fcf001b551a0259431a03e514d4517ad4351940fbf1408b5bbc06d7d73800d94d906020015b60405180910390a150565b6102af610888565b6102b8866108e2565b6102c1856108e2565b6102ca846108e2565b6102d3836108e2565b6102dc826108e2565b6102e5816108e2565b600180546001600160a01b03199081166001600160a01b0389811691909117909255600280548216888416179055600380548216878416179055600480548216868416179055600580548216858416179055600680549091169183169190911790556040517f93f162485267c0964263151ca9faf9640ba9e5587e78253262023562891b2d7590610377908890610aff565b60405180910390a17f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed985856040516103ae9190610aff565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a5678846040516103e59190610aff565b60405180910390a17f82966d27eea39b038ee0fa30cd16532bb24f6e65d31cb58fb227aa5766cdcc7f8360405161041c9190610aff565b60405180910390a17f5ee0cae2f063ed938bb55046f6a932fb6ae792bf43624806bb90abe68a50be9b826040516104539190610aff565b60405180910390a1610463610481565b505050505050565b610473610987565b8060085461026b9190610c85565b610489610888565b6104936000610a26565b565b61049d6107c2565b806007546104ab9190610c6c565b60078190556040519081527fad43b1d82d90e6bdb02a7f83cc91209c520c7757e4a6a3cc33a789f37c8925af9060200160405180910390a1604080516001600160a01b0384168152602081018390527f6109e2559dfa766aaec7118351d48a523f0a4157f49c8d68749c8ac41318ad12910160405180910390a160015460405163a9059cbb60e01b81526001600160a01b038481166004830152602482018490529091169063a9059cbb906044016020604051808303816000875af1158015610578573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061059c9190610c98565b506005546001600160a01b039081169083160361061257600554604051636dd8630d60e11b8152600481018390526001600160a01b039091169063dbb0c61a90602401600060405180830381600087803b1580156105f957600080fd5b505af115801561060d573d6000803e3d6000fd5b505050505b6004546001600160a01b03908116908316036106855760048054604051636dd8630d60e11b81529182018390526001600160a01b03169063dbb0c61a90602401600060405180830381600087803b15801561066c57600080fd5b505af1158015610680573d6000803e3d6000fd5b505050505b6006546001600160a01b03908116908316036106f557600654604051636dd8630d60e11b8152600481018390526001600160a01b039091169063dbb0c61a90602401600060405180830381600087803b1580156106e157600080fd5b505af1158015610463573d6000803e3d6000fd5b5050565b610701610a76565b8060075461070f9190610c85565b60078190556040519081527fad43b1d82d90e6bdb02a7f83cc91209c520c7757e4a6a3cc33a789f37c8925af9060200161029c565b61074c610888565b6001600160a01b0381166107b65760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b6107bf81610a26565b50565b6002546001600160a01b03163314806107e557506003546001600160a01b031633145b806107fa57506004546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152605360248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220426f60448201527f72726f7765724f7065726174696f6e73206e6f722054726f76654d616e6167656064820152721c881b9bdc8814dd18589a5b1a5d1e541bdbdb606a1b608482015260a4016107ad565b6000546001600160a01b031633146104935760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657260448201526064016107ad565b6001600160a01b0381166109385760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f2061646472657373000060448201526064016107ad565b803b806106f55760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f60448201526064016107ad565b6002546001600160a01b03163314806109aa57506003546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152604160248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220426f60448201527f72726f7765724f7065726174696f6e73206e6f722054726f76654d616e6167656064820152603960f91b608482015260a4016107ad565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6002546001600160a01b0316331480610a9957506005546001600160a01b031633145b6104935760405162461bcd60e51b815260206004820152603160248201527f416374697665506f6f6c3a2043616c6c6572206973206e65697468657220424f604482015270081b9bdc88111959985d5b1d08141bdbdb607a1b60648201526084016107ad565b6001600160a01b0391909116815260200190565b600060208284031215610b2557600080fd5b5035919050565b80356001600160a01b0381168114610b4357600080fd5b919050565b60008060008060008060c08789031215610b6157600080fd5b610b6a87610b2c565b9550610b7860208801610b2c565b9450610b8660408801610b2c565b9350610b9460608801610b2c565b9250610ba260808801610b2c565b9150610bb060a08801610b2c565b90509295509295509295565b600060208083528351808285015260005b81811015610be957858101830151858201604001528201610bcd565b506000604082860101526040601f19601f8301168501019250505092915050565b60008060408385031215610c1d57600080fd5b610c2683610b2c565b946020939093013593505050565b600060208284031215610c4657600080fd5b610c4f82610b2c565b9392505050565b634e487b7160e01b600052601160045260246000fd5b81810381811115610c7f57610c7f610c56565b92915050565b80820180821115610c7f57610c7f610c56565b600060208284031215610caa57600080fd5b81518015158114610c4f57600080fdfea264697066735822122057c837530486e52873ce9e892894e05eacf9845ed4109625ade5e686ff2dd97d64736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 590,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 6656,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "WSTETHAddress",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 6658,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "borrowerOperationsAddress",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      },
+      {
+        "astId": 6660,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "troveManagerAddress",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      },
+      {
+        "astId": 6662,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "stabilityPoolAddress",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 6664,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "defaultPoolAddress",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 6666,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "collSurplusPoolAddress",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 6668,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "WSTETH",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 6670,
+        "contract": "contracts/ActivePool.sol:ActivePool",
+        "label": "SIMDebt",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

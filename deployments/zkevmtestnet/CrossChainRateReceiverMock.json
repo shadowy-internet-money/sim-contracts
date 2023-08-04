@@ -1,0 +1,134 @@
+{
+  "address": "0xd4A5f0A6Bf09c1DC042254329ac144D99412f3a5",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "lastUpdated",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "rate_",
+          "type": "uint256"
+        }
+      ],
+      "name": "setRate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "setUpdateTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xae1553421181f29738802cf47614f9ae2e6454b613cbfc260bcdd07b3116f191",
+  "receipt": {
+    "to": null,
+    "from": "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
+    "contractAddress": "0xd4A5f0A6Bf09c1DC042254329ac144D99412f3a5",
+    "transactionIndex": 0,
+    "gasUsed": "139154",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8af797682c38ad73806917e5727e43cd70c2d6b97e1025adf7e7cdc827bae2fd",
+    "transactionHash": "0xae1553421181f29738802cf47614f9ae2e6454b613cbfc260bcdd07b3116f191",
+    "logs": [],
+    "blockNumber": 1961056,
+    "cumulativeGasUsed": "139154",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "b29cd153aaed98a3f3bb92c92603933d",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"lastUpdated\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"rate_\",\"type\":\"uint256\"}],\"name\":\"setRate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"name\":\"setUpdateTime\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/test/CrossChainRateReceiverMock.sol\":\"CrossChainRateReceiverMock\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"contracts/interfaces/ICrossChainRateReceiver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ninterface ICrossChainRateReceiver {\\n    function rate() external view returns (uint);\\n    function lastUpdated() external view returns (uint);\\n}\\n\",\"keccak256\":\"0x48c71d2335327c6ee25123c271f316d200153f9ad2a8bd59574854019811a990\",\"license\":\"MIT\"},\"contracts/test/CrossChainRateReceiverMock.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"../interfaces/ICrossChainRateReceiver.sol\\\";\\n\\ncontract CrossChainRateReceiverMock is ICrossChainRateReceiver {\\n    uint private _rate;\\n    uint private _timestamp;\\n    address private _owner;\\n\\n    constructor() {\\n        _owner = msg.sender;\\n    }\\n\\n    function rate() external view returns (uint) {\\n        return _rate;\\n    }\\n\\n    function lastUpdated() external view returns (uint) {\\n        return _timestamp;\\n    }\\n\\n    function setRate(uint rate_) external {\\n        require(msg.sender == _owner, \\\"Now owner\\\");\\n        _rate = rate_;\\n    }\\n\\n    function setUpdateTime(uint timestamp) external {\\n        _timestamp = timestamp;\\n    }\\n}\\n\",\"keccak256\":\"0x974cc2eb5d0b7b91810a9ea34027a7530ad4d391547711328fb32e4d7973c6a9\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50600280546001600160a01b03191633179055610125806100326000396000f3fe6080604052348015600f57600080fd5b506004361060465760003560e01c80632c4e722e14604b57806334fcf437146061578063bf73eea6146072578063d0b06f5d146082575b600080fd5b6000545b60405190815260200160405180910390f35b6070606c36600460d7565b6089565b005b6070607d36600460d7565b600155565b600154604f565b6002546001600160a01b0316331460d25760405162461bcd60e51b81526020600482015260096024820152682737bb9037bbb732b960b91b604482015260640160405180910390fd5b600055565b60006020828403121560e857600080fd5b503591905056fea2646970667358221220545584e294ed5ac30efd6f43e71c9c0236868446688a1d723bb049b6ce8cdb8e64736f6c63430008130033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060465760003560e01c80632c4e722e14604b57806334fcf437146061578063bf73eea6146072578063d0b06f5d146082575b600080fd5b6000545b60405190815260200160405180910390f35b6070606c36600460d7565b6089565b005b6070607d36600460d7565b600155565b600154604f565b6002546001600160a01b0316331460d25760405162461bcd60e51b81526020600482015260096024820152682737bb9037bbb732b960b91b604482015260640160405180910390fd5b600055565b60006020828403121560e857600080fd5b503591905056fea2646970667358221220545584e294ed5ac30efd6f43e71c9c0236868446688a1d723bb049b6ce8cdb8e64736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 29744,
+        "contract": "contracts/test/CrossChainRateReceiverMock.sol:CrossChainRateReceiverMock",
+        "label": "_rate",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 29746,
+        "contract": "contracts/test/CrossChainRateReceiverMock.sol:CrossChainRateReceiverMock",
+        "label": "_timestamp",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 29748,
+        "contract": "contracts/test/CrossChainRateReceiverMock.sol:CrossChainRateReceiverMock",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}
