@@ -3,6 +3,7 @@ pragma solidity ^0.8.19;
 
 import "./interfaces/ISHADYToken.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/LQTY/LockupContract.sol
 contract LockupContract {
     // --- Data ---
     string constant public NAME = "LockupContract";
@@ -47,7 +48,7 @@ contract LockupContract {
 
         ISHADYToken shadyTokenCached = shadyToken;
         uint SHADYBalance = shadyTokenCached.balanceOf(address(this));
-        shadyTokenCached.transfer(beneficiary, SHADYBalance);
+        require(shadyTokenCached.transfer(beneficiary, SHADYBalance));
         emit LockupContractEmptied(SHADYBalance);
     }
 

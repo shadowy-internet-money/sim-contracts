@@ -7,6 +7,7 @@ import "./interfaces/ISortedTroves.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/HintHelpers.sol
 contract HintHelpers is Base, Ownable, CheckContract {
     string constant public NAME = "HintHelpers";
 
