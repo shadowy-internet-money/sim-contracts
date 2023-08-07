@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 import "./dependencies/CheckContract.sol";
 import "./interfaces/ISIMToken.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/LUSDToken.sol
 contract SIMToken is ERC20, ERC20Permit, CheckContract, ISIMToken {
     address public immutable troveManagerAddress;
     address public immutable stabilityPoolAddress;

@@ -6,7 +6,7 @@ import "./dependencies/CheckContract.sol";
 import "./interfaces/ILockupContractFactory.sol";
 import "./LockupContract.sol";
 
-
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/LQTY/LockupContractFactory.sol
 contract LockupContractFactory is ILockupContractFactory, Ownable, CheckContract {
     // --- Data ---
     string constant public NAME = "LockupContractFactory";

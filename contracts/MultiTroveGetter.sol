@@ -4,6 +4,7 @@ pragma solidity ^0.8.19;
 import "./TroveManager.sol";
 import "./SortedTroves.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/MultiTroveGetter.sol
 /*  Helper contract for grabbing Trove data for the front end. Not part of the core system. */
 contract MultiTroveGetter {
     struct CombinedTroveData {

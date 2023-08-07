@@ -7,6 +7,7 @@ import "./dependencies/CheckContract.sol";
 import "./interfaces/ISHADYToken.sol";
 import "./interfaces/ILockupContractFactory.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/LQTY/LQTYToken.sol
 contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     uint internal constant ONE_YEAR_IN_SECONDS = 31536000;  // 60 * 60 * 24 * 365
     uint internal constant _1_MILLION = 1e24;    // 1e6 * 1e18 = 1e24
@@ -15,6 +16,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     address public immutable multisigAddress;
     address public immutable communityIssuanceAddress;
     address public immutable liquidityRewardsIssuanceAddress;
+    // todo remove
     address public immutable veAddress;
     ILockupContractFactory public immutable lockupContractFactory;
 
@@ -23,7 +25,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     constructor(
         address communityIssuanceAddress_,
         address liquidityRewardsIssuanceAddress_,
-        address veAddress_,
+        address veAddress_, // todo remove
         address lockupFactoryAddress_,
         address spenderAddress_,
         address multisigAddress_
@@ -37,7 +39,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         deploymentStartTime  = block.timestamp;
         communityIssuanceAddress = communityIssuanceAddress_;
         liquidityRewardsIssuanceAddress = liquidityRewardsIssuanceAddress_;
-        veAddress = veAddress_;
+        veAddress = veAddress_;// todo remove
         lockupContractFactory = ILockupContractFactory(lockupFactoryAddress_);
 
         // --- Initial SHADY allocations ---
@@ -97,6 +99,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         return true;
     }
 
+    // TODO remove
     function sendToVe(address _sender, uint256 _amount) external override {
         _requireCallerIsVe();
 
@@ -159,7 +162,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         require(!_callerIsMultisig(), "SHADY: caller must not be the multisig");
     }
 
-    function _requireCallerIsVe() internal view {
+    function _requireCallerIsVe() internal view { // todo remove
         require(msg.sender == veAddress, "SHADY: caller must be the ve contract");
     }
 }
