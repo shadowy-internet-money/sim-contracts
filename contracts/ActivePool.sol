@@ -10,6 +10,7 @@ import './interfaces/ICollSurplusPool.sol';
 import "./dependencies/CheckContract.sol";
 
 /*
+ * https://github.com/liquity/dev/blob/main/packages/contracts/contracts/ActivePool.sol
  * The Active Pool holds the WSTETH collateral and SIM debt (but not SIM tokens) for all active troves.
  *
  * When a trove is liquidated, it's WSTETH and SIM debt are transferred from the Active Pool, to either the
@@ -87,7 +88,7 @@ contract ActivePool is Ownable, CheckContract, IActivePool {
         emit ActivePoolWSTETHBalanceUpdated(WSTETH);
         emit EtherSent(_account, _amount);
 
-        IERC20(WSTETHAddress).transfer(_account, _amount);
+        require(IERC20(WSTETHAddress).transfer(_account, _amount));
         if (_account == defaultPoolAddress) {
             IDefaultPool(defaultPoolAddress).receiveWSTETH(_amount);
         }
