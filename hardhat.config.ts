@@ -9,6 +9,7 @@ import 'solidity-coverage'
 import {config as dotEnvConfig} from "dotenv";
 import "@nomicfoundation/hardhat-verify";
 import 'hardhat-deploy';
+import './scripts/hardhat-verify/verify1-task';
 
 dotEnvConfig()
 
