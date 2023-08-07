@@ -12,6 +12,7 @@ import "./interfaces/IVeDistributor.sol";
 import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/BorrowerOperations.sol
 contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations {
     string constant public NAME = "BorrowerOperations";
 
@@ -142,7 +143,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
         ContractsCache memory contractsCache = ContractsCache(troveManager, activePool, simToken);
         LocalVariables_openTrove memory vars;
 
-        IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), amount);
+        require(IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), amount));
 
         vars.price = priceFeed.fetchPrice();
         bool isRecoveryMode = _checkRecoveryMode(vars.price);
@@ -196,7 +197,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     // Send WSTETH as collateral to a trove
     function addColl(uint amount, address _upperHint, address _lowerHint) external override {
-        IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), amount);
+        require(IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), amount));
         _adjustTrove(msg.sender, 0, 0, false, _upperHint, _lowerHint, 0);
     }
 
@@ -223,20 +224,19 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     function adjustTrove(uint addColAmount, uint _maxFeePercentage, uint _collWithdrawal, uint _SIMChange, bool _isDebtIncrease, address _upperHint, address _lowerHint) external payable override {
         if (addColAmount > 0) {
-            IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), addColAmount);
+            require(IERC20(WSTETHAddress).transferFrom(msg.sender, address(this), addColAmount));
         }
         _adjustTrove(msg.sender, _collWithdrawal, _SIMChange, _isDebtIncrease, _upperHint, _lowerHint, _maxFeePercentage);
     }
 
     /*
-    * _adjustTrove(): Alongside a debt change, this function can perform either a collateral top-up or a collateral withdrawal. 
+    * _adjustTrove(): Alongside a debt change, this function can perform either a collateral top-up or a collateral withdrawal.
     *
     * It therefore expects either a positive msg.value, or a positive _collWithdrawal argument.
     *
     * If both are positive, it will revert.
     */
     function _adjustTrove(address _borrower, uint _collWithdrawal, uint _SIMChange, bool _isDebtIncrease, address _upperHint, address _lowerHint, uint _maxFeePercentage) internal {
-        // todo maybe better to add addCol param instead read balance
         ContractsCache memory contractsCache = ContractsCache(troveManager, activePool, simToken);
         LocalVariables_adjustTrove memory vars;
 
@@ -438,7 +438,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
 
     // Send WSTETH to Active Pool and increase its recorded WSTETH balance
     function _activePoolAddColl(IActivePool _activePool, uint _amount) internal {
-        IERC20(WSTETHAddress).transfer(address(_activePool), _amount);
+        require(IERC20(WSTETHAddress).transfer(address(_activePool), _amount));
         _activePool.receiveWSTETH(_amount);
     }
 
@@ -500,7 +500,7 @@ contract BorrowerOperations is Base, Ownable, CheckContract, IBorrowerOperations
     internal
     view
     {
-        /* 
+        /*
         *In Recovery Mode, only allow:
         *
         * - Pure collateral top-up
