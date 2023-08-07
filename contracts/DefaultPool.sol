@@ -8,6 +8,7 @@ import './interfaces/IActivePool.sol';
 import "./dependencies/CheckContract.sol";
 
 /*
+ * https://github.com/liquity/dev/blob/main/packages/contracts/contracts/DefaultPool.sol
  * The Default Pool holds the WSTETH and SIM debt (but not SIM tokens) from liquidations that have been redistributed
  * to active troves but not yet "applied", i.e. not yet recorded on a recipient active trove's struct.
  *
@@ -72,7 +73,7 @@ contract DefaultPool is Ownable, CheckContract, IDefaultPool {
         emit DefaultPoolWSTETHBalanceUpdated(WSTETH);
         emit EtherSent(activePool, _amount);
 
-        IERC20(WSTETHAddress).transfer(activePool, _amount);
+        require(IERC20(WSTETHAddress).transfer(activePool, _amount));
         IActivePool(activePool).receiveWSTETH(_amount);
     }
 

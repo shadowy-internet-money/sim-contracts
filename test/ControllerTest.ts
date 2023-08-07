@@ -7,7 +7,7 @@ import {loadFixture} from "@nomicfoundation/hardhat-network-helpers";
 
 const th = TestHelper
 const assertRevert = th.assertRevert
-const LOCK = 60 * 60 * 18;
+const LOCK = 60 * 60 * 48;
 
 describe("controller tests", function () {
   let multisigSigner: SignerWithAddress

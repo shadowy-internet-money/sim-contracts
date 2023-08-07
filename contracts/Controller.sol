@@ -35,12 +35,10 @@ contract Controller is ControllableV3, IController {
 
   /// @dev Version of this contract. Adjust manually on each code modification.
   string public constant CONTROLLER_VERSION = "1.0.0";
-  uint public constant TIME_LOCK = 18 hours;
+  uint public constant TIME_LOCK = 48 hours;
 
   // *************************************************************
   //                        VARIABLES
-  //                Keep names and ordering!
-  //                 Add only in the bottom.
   // *************************************************************
 
   address public override governance;
