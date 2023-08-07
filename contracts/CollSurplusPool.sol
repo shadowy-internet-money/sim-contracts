@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./interfaces/ICollSurplusPool.sol";
 import "./dependencies/CheckContract.sol";
 
-
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/CollSurplusPool.sol
 contract CollSurplusPool is Ownable, CheckContract, ICollSurplusPool {
     string constant public NAME = "CollSurplusPool";
 
@@ -19,7 +19,7 @@ contract CollSurplusPool is Ownable, CheckContract, ICollSurplusPool {
     uint256 internal WSTETH;
     // Collateral surplus claimable by trove owners
     mapping (address => uint) internal balances;
-    
+
     // --- Contract setters ---
 
     function setAddresses(
@@ -82,7 +82,7 @@ contract CollSurplusPool is Ownable, CheckContract, ICollSurplusPool {
         WSTETH -= claimableColl;
         emit EtherSent(_account, claimableColl);
 
-        IERC20(WSTETHAddress).transfer(_account, claimableColl);
+        require(IERC20(WSTETHAddress).transfer(_account, claimableColl));
     }
 
     function receiveWSTETH(uint amount) external {
