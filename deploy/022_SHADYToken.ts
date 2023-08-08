@@ -62,7 +62,6 @@ const func: DeployFunction = async function(hre: HardhatRuntimeEnvironment) {
         args: [
             communityIssuance.address,
             liquidityRewardsIssuance.address,
-            ve.address,
             lockupContractFactory.address,
             spender,
             multisig
