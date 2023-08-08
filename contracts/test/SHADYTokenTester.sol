@@ -8,14 +8,12 @@ contract SHADYTokenTester is SHADYToken {
     (
         address communityIssuanceAddress_,
         address liquidityRewardsIssuanceAddress_,
-        address veAddress_,
         address lockupFactoryAddress_,
         address spenderAddress_,
         address multisigAddress_
     ) SHADYToken(
     communityIssuanceAddress_,
     liquidityRewardsIssuanceAddress_,
-    veAddress_,
     lockupFactoryAddress_,
     spenderAddress_,
     multisigAddress_

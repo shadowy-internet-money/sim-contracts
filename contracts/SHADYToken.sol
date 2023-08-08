@@ -16,8 +16,6 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     address public immutable multisigAddress;
     address public immutable communityIssuanceAddress;
     address public immutable liquidityRewardsIssuanceAddress;
-    // todo remove
-    address public immutable veAddress;
     ILockupContractFactory public immutable lockupContractFactory;
 
     // --- Functions ---
@@ -25,21 +23,18 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
     constructor(
         address communityIssuanceAddress_,
         address liquidityRewardsIssuanceAddress_,
-        address veAddress_, // todo remove
         address lockupFactoryAddress_,
         address spenderAddress_,
         address multisigAddress_
     ) ERC20("Shady", "SHADY") ERC20Permit("Shady") {
         _checkContract(communityIssuanceAddress_);
         _checkContract(liquidityRewardsIssuanceAddress_);
-        _checkContract(veAddress_);
         _checkContract(lockupFactoryAddress_);
 
         multisigAddress = multisigAddress_;
         deploymentStartTime  = block.timestamp;
         communityIssuanceAddress = communityIssuanceAddress_;
         liquidityRewardsIssuanceAddress = liquidityRewardsIssuanceAddress_;
-        veAddress = veAddress_;// todo remove
         lockupContractFactory = ILockupContractFactory(lockupFactoryAddress_);
 
         // --- Initial SHADY allocations ---
@@ -99,18 +94,6 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         return true;
     }
 
-    // TODO remove
-    function sendToVe(address _sender, uint256 _amount) external override {
-        _requireCallerIsVe();
-
-        // Prevent the multisig from lock to ve
-        if (_isFirstYear()) {
-            _requireSenderIsNotMultisig(_sender);
-        }
-
-        _transfer(_sender, veAddress, _amount);
-    }
-
     // --- hooks ---
 
     function _beforeTokenTransfer(address from, address to, uint256) internal virtual override {
@@ -119,7 +102,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
             _requireRecipientIsRegisteredLC(to);
         }
 
-        if (from != address(0) && msg.sender != veAddress) {
+        if (from != address(0)) {
             _requireValidRecipient(to);
         }
     }
@@ -143,8 +126,7 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
         );
         require(
             _recipient != communityIssuanceAddress &&
-            _recipient != liquidityRewardsIssuanceAddress &&
-            _recipient != veAddress,
+            _recipient != liquidityRewardsIssuanceAddress,
             "SHADY: Cannot transfer tokens directly to an issuance or ve contract"
         );
     }
@@ -160,9 +142,5 @@ contract SHADYToken is ERC20, ERC20Permit, CheckContract, ISHADYToken {
 
     function _requireCallerIsNotMultisig() internal view {
         require(!_callerIsMultisig(), "SHADY: caller must not be the multisig");
-    }
-
-    function _requireCallerIsVe() internal view { // todo remove
-        require(msg.sender == veAddress, "SHADY: caller must be the ve contract");
     }
 }

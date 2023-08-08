@@ -68,7 +68,6 @@ export class DeploymentHelper {
             shadyToken: await (await ethers.getContractFactory("SHADYTokenTester")).deploy(
                 communityIssuance.address,
                 liquidityRewardsIssuance.address,
-                ve.address,
                 lockupContractFactory.address,
                 bountyAddress,
                 multisigAddress

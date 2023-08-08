@@ -253,7 +253,7 @@ describe('SHADY token', async () => {
     assert.equal(A_allowanceAfterDecrease.toString(), '0')
   })
 
-  it('sendToSHADYStaking(): changes balances of SHADYStaking and calling account by the correct amounts', async () => {
+  /*it('sendToSHADYStaking(): changes balances of SHADYStaking and calling account by the correct amounts', async () => {
     // mint some tokens to A
     await shadyTokenTester.unprotectedMint(A.address, dec(150, 18))
 
@@ -263,15 +263,15 @@ describe('SHADY token', async () => {
     const lqtyStakingBalanceBefore = await shadyTokenTester.balanceOf(ve.address)
     assert.equal(lqtyStakingBalanceBefore.toString(), '0')
 
-    // await shadyTokenTester.connect(A).transfer(B.address, dec(37, 18))
-    await ve.unprotectedCallSHADYSendToVe(shadyTokenTester.address, A.address, dec(37, 18))
+    await shadyTokenTester.connect(A).transfer(ve.address, dec(37, 18))
+    // await ve.unprotectedCallSHADYSendToVe(shadyTokenTester.address, A.address, dec(37, 18))
 
     // Check caller and SHADYStaking balance before
     const A_BalanceAfter = await shadyTokenTester.balanceOf(A.address)
     assert.equal(A_BalanceAfter.toString(), dec(113, 18))
     const lqtyStakingBalanceAfter = await shadyTokenTester.balanceOf(ve.address)
     assert.equal(lqtyStakingBalanceAfter.toString(), dec(37, 18))
-  })
+  })*/
 
   // EIP2612 tests
 

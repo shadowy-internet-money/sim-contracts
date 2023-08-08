@@ -486,7 +486,7 @@ describe('Access Control: Liquity functions with the caller restricted to Liquit
     })
   })
 
-  describe('SHADYToken', async () => {
+  /*describe('SHADYToken', async () => {
     it("sendToVe(): reverts when caller is not the Ve", async () => {
       // Check multisig has some SHADY
       assert.isTrue((await shadyToken.balanceOf(multisig)).gt(toBN('0')))
@@ -512,7 +512,7 @@ describe('Access Control: Liquity functions with the caller restricted to Liquit
         assert.include(err?.toString(), "revert")
       }
     })
-  })
+  })*/
 
   describe('CommunityIssuance', async () => {
     it("sendSHADY(): reverts when caller is not the StabilityPool", async () => {

@@ -13,7 +13,5 @@ interface ISHADYToken is IERC20, IERC20Permit {
 
     // --- Functions ---
 
-    function sendToVe(address sender_, uint amount_) external;
-
     function getDeploymentStartTime() external view returns (uint);
 }
