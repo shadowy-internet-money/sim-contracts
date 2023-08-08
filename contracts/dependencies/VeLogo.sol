@@ -4,6 +4,7 @@ pragma solidity 0.8.19;
 import ".//Base64.sol";
 import "./StringLib.sol";
 
+// https://github.com/tetu-io/tetu-contracts-v2/blob/master/contracts/ve/VeTetuLogo.sol
 /// @title Library for storing SVG image of veNFT.
 /// @author belbix
 library VeLogo {

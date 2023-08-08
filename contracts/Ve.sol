@@ -13,8 +13,8 @@ import "./dependencies/CheckContract.sol";
 import "./dependencies/FixedPointMathLib.sol";
 import "./dependencies/ControllableV3.sol";
 import "./dependencies/VeLogo.sol";
-import "hardhat/console.sol";
 
+// https://github.com/tetu-io/tetu-contracts-v2/blob/master/contracts/ve/VeTetu.sol
 contract Ve is ControllableV3, ReentrancyGuardUpgradeable, CheckContract, IERC721, IERC721Metadata, IVe {
     using SafeERC20 for IERC20;
     using FixedPointMathLib for uint;

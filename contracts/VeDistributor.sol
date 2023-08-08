@@ -9,6 +9,7 @@ import "./interfaces/IVe.sol";
 import "./interfaces/IVeDistributor.sol";
 import "./dependencies/ControllableV3.sol";
 
+// https://github.com/tetu-io/tetu-contracts-v2/blob/master/contracts/ve/VeDistributor.sol
 /// @title Contract for distributing rewards to ve holders.
 ///        Rewards will be staked to the veNFT without extending lock period.
 ///        Based on Solidly contract.
