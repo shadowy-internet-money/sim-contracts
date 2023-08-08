@@ -61,5 +61,8 @@ yarn coverage
 ```
 yarn deploy
 yarn deploy:zkevmtestnet
-...
+# verify VeLogo and VeLogic by hands with generated minimal inputs in tmp folder
+yarn verify-generate-inputs:zkevmtestnet
+# verify other contracts by API
+yarn verify:zkevmtestnet
 ```

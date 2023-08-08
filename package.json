@@ -10,6 +10,7 @@
     "coverage": "hardhat coverage",
     "deploy": "hardhat deploy",
     "deploy:zkevmtestnet": "hardhat deploy --network zkevmtestnet",
+    "verify-generate-inputs:zkevmtestnet": "hardhat run scripts/verify.ts --network zkevmtestnet",
     "verify:zkevmtestnet": "hardhat etherscan-verify --network zkevmtestnet --api-url https://api-testnet-zkevm.polygonscan.com"
   },
   "devDependencies": {
