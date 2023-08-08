@@ -14,6 +14,7 @@ import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 
 /*
+ * https://github.com/liquity/dev/blob/main/packages/contracts/contracts/StabilityPool.sol
  * The Stability Pool holds SIM tokens deposited by Stability Pool depositors.
  *
  * When a trove is liquidated, then depending on system conditions, some of its SIM debt gets offset with
@@ -367,7 +368,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         // First pay out any SHADY gains
 //        address frontEnd = deposits[msg.sender].frontEndTag;
         _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);
-        
+
         // Update front end stake
         /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);
         uint newFrontEndStake = compoundedFrontEndStake - SIMtoWithdraw;
@@ -430,7 +431,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         emit StabilityPoolWSTETHBalanceUpdated(WSTETH);
         emit WSTETHSent(msg.sender, depositorWSTETHGain);
 
-        IERC20(WSTETHAddress).transfer(address(borrowerOperations), depositorWSTETHGain);
+        require(IERC20(WSTETHAddress).transfer(address(borrowerOperations), depositorWSTETHGain));
         borrowerOperations.moveWSTETHGainToTrove/*{ value: depositorWSTETHGain }*/(msg.sender, _upperHint, _lowerHint);
     }
 
@@ -460,12 +461,12 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
     }
 
     function _computeSHADYPerUnitStaked(uint _SHADYIssuance, uint _totalSIMDeposits) internal returns (uint) {
-        /*  
-        * Calculate the SHADY-per-unit staked.  Division uses a "feedback" error correction, to keep the 
+        /*
+        * Calculate the SHADY-per-unit staked.  Division uses a "feedback" error correction, to keep the
         * cumulative error low in the running total G:
         *
-        * 1) Form a numerator which compensates for the floor division error that occurred the last time this 
-        * function was called.  
+        * 1) Form a numerator which compensates for the floor division error that occurred the last time this
+        * function was called.
         * 2) Calculate "per-unit-staked" ratio.
         * 3) Multiply the ratio back by its denominator, to reveal the current floor division error.
         * 4) Store this error for use in the next correction when this function is called.
@@ -810,7 +811,7 @@ contract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {
         emit StabilityPoolWSTETHBalanceUpdated(newWSTETH);
         emit WSTETHSent(msg.sender, _amount);
 
-        IERC20(WSTETHAddress).transfer(msg.sender, _amount);
+        require(IERC20(WSTETHAddress).transfer(msg.sender, _amount));
     }
 
     // Send SIM to user and decrease SIM in Pool

@@ -8,6 +8,7 @@ import "./interfaces/IBorrowerOperations.sol";
 import "./dependencies/CheckContract.sol";
 
 /*
+* https://github.com/liquity/dev/blob/main/packages/contracts/contracts/SortedTroves.sol
 * A sorted doubly linked list with nodes sorted in descending order.
 *
 * Nodes map to active Troves in the system - the ID property is the address of a Trove owner.
