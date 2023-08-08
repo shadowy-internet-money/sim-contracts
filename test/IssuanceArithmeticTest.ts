@@ -10,6 +10,7 @@ const th = TestHelper
 const timeValues = th.TimeValues
 const toBN = th.toBN
 const dec = th.dec
+const assertRevert = th.assertRevert
 
 describe('Issuance arithmetic tests', async () => {
   let contracts: IContracts
@@ -410,6 +411,8 @@ describe('Issuance arithmetic tests', async () => {
     )*/
 
     assert.isAtMost(th.getDifference(totalLQTYIssued, expectedTotalLQTYIssued), 1000000000000000)
+    await assertRevert(communityIssuanceTester.connect(await th.impersonate(stabilityPool.address)).sendSHADY(alice.address, totalLQTYIssued.add(1)), "Issuance: not enough issued SHADY")
+    await communityIssuanceTester.connect(await th.impersonate(stabilityPool.address)).sendSHADY(alice.address, totalLQTYIssued)
   })
 
   it("Total LQTY tokens issued is 2,373.69 after an hour", async () => {

@@ -104,7 +104,7 @@ abstract contract Issuance is IIssuance, Ownable, CheckContract, BaseMath {
 
     function sendSHADY(address _account, uint _SHADYamount) external override {
         _requireCallerIsIssuer();
-
+        require(SHADYSupplyCap - totalSHADYIssued + _SHADYamount <= shadyToken.balanceOf(address(this)), "Issuance: not enough issued SHADY");
         shadyToken.transfer(_account, _SHADYamount);
     }
 
