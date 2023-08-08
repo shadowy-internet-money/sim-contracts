@@ -14,6 +14,7 @@ import "./dependencies/Base.sol";
 import "./dependencies/CheckContract.sol";
 import "./VeDistributor.sol";
 
+// https://github.com/liquity/dev/blob/main/packages/contracts/contracts/TroveManager.sol
 contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
     string constant public NAME = "TroveManager";
 
@@ -335,7 +336,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         if (_ICR <= _100pct) {
             _movePendingTroveRewardsToActivePool(_activePool, _defaultPool, vars.pendingDebtReward, vars.pendingCollReward);
             _removeStake(_borrower);
-           
+
             singleLiquidation.debtToOffset = 0;
             singleLiquidation.collToSendToSP = 0;
             singleLiquidation.debtToRedistribute = singleLiquidation.entireTroveDebt;
@@ -344,7 +345,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
             _closeTrove(_borrower, Status.closedByLiquidation);
             emit TroveLiquidated(_borrower, singleLiquidation.entireTroveDebt, singleLiquidation.entireTroveColl, uint8(TroveManagerOperation.liquidateInRecoveryMode));
             emit TroveUpdated(_borrower, 0, 0, 0, uint8(TroveManagerOperation.liquidateInRecoveryMode));
-            
+
         // If 100% < ICR < MCR, offset as much as possible, and redistribute the remainder
         } else if ((_ICR > _100pct) && (_ICR < MCR)) {
              _movePendingTroveRewardsToActivePool(_activePool, _defaultPool, vars.pendingDebtReward, vars.pendingCollReward);
@@ -800,7 +801,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
             /*
             * If the provided hint is out of date, we bail since trying to reinsert without a good hint will almost
-            * certainly result in running out of gas. 
+            * certainly result in running out of gas.
             *
             * If the resultant net debt of the partial is less than the minimum, net debt we bail.
             */
@@ -1054,7 +1055,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
 
         return pendingWSTETHReward;
     }
-    
+
     // Get the borrower's pending accumulated SIM reward, earned by their stake
     function getPendingSIMDebtReward(address _borrower) public view override returns (uint) {
         uint snapshotSIMDebt = rewardSnapshots[_borrower].SIMDebt;
@@ -1076,7 +1077,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         * pending rewards
         */
         if (Troves[_borrower].status != Status.active) {return false;}
-       
+
         return (rewardSnapshots[_borrower].WSTETH < L_WSTETH);
     }
 
@@ -1316,7 +1317,7 @@ contract TroveManager is Base, Ownable, CheckContract, ITroveManager {
         // Update the baseRate state variable
         baseRate = newBaseRate;
         emit BaseRateUpdated(newBaseRate);
-        
+
         _updateLastFeeOpTime();
 
         return newBaseRate;
