@@ -1,0 +1,1548 @@
+{
+  "address": "0x74bBa28c13771FB32eD08e5522dfEc71ea8De48c",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newActivePoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "ActivePoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newBorrowerOperationsAddress",
+          "type": "address"
+        }
+      ],
+      "name": "BorrowerOperationsAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newCommunityIssuanceAddress",
+          "type": "address"
+        }
+      ],
+      "name": "CommunityIssuanceAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newDefaultPoolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "DefaultPoolAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_P",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_S",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_G",
+          "type": "uint256"
+        }
+      ],
+      "name": "DepositSnapshotUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_currentEpoch",
+          "type": "uint128"
+        }
+      ],
+      "name": "EpochUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_frontEnd",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_kickbackRate",
+          "type": "uint256"
+        }
+      ],
+      "name": "FrontEndRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_frontEnd",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_P",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_G",
+          "type": "uint256"
+        }
+      ],
+      "name": "FrontEndSnapshotUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_frontEnd",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newFrontEndStake",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "name": "FrontEndStakeChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_frontEnd",
+          "type": "address"
+        }
+      ],
+      "name": "FrontEndTagSet",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_G",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_epoch",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_scale",
+          "type": "uint128"
+        }
+      ],
+      "name": "G_Updated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_P",
+          "type": "uint256"
+        }
+      ],
+      "name": "P_Updated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newPriceFeedAddress",
+          "type": "address"
+        }
+      ],
+      "name": "PriceFeedAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_SHADY",
+          "type": "uint256"
+        }
+      ],
+      "name": "SHADYPaidToDepositor",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_frontEnd",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_SHADY",
+          "type": "uint256"
+        }
+      ],
+      "name": "SHADYPaidToFrontEnd",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newSIMTokenAddress",
+          "type": "address"
+        }
+      ],
+      "name": "SIMTokenAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_S",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_epoch",
+          "type": "uint128"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_scale",
+          "type": "uint128"
+        }
+      ],
+      "name": "S_Updated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint128",
+          "name": "_currentScale",
+          "type": "uint128"
+        }
+      ],
+      "name": "ScaleUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newSortedTrovesAddress",
+          "type": "address"
+        }
+      ],
+      "name": "SortedTrovesAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "StabilityPoolSIMBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newBalance",
+          "type": "uint256"
+        }
+      ],
+      "name": "StabilityPoolWSTETHBalanceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_newTroveManagerAddress",
+          "type": "address"
+        }
+      ],
+      "name": "TroveManagerAddressChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_newDeposit",
+          "type": "uint256"
+        }
+      ],
+      "name": "UserDepositChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_WSTETH",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_SIMLoss",
+          "type": "uint256"
+        }
+      ],
+      "name": "WSTETHGainWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "WSTETHSent",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "BORROWING_FEE_FLOOR",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "CCR",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "DECIMAL_PRECISION",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MCR",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MIN_NET_DEBT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "P",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "PERCENT_DIVISOR",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SCALE_FACTOR",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "WSTETHAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "_100pct",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "activePool",
+      "outputs": [
+        {
+          "internalType": "contract IActivePool",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "borrowerOperations",
+      "outputs": [
+        {
+          "internalType": "contract IBorrowerOperations",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "communityIssuance",
+      "outputs": [
+        {
+          "internalType": "contract IIssuance",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentEpoch",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentScale",
+      "outputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "defaultPool",
+      "outputs": [
+        {
+          "internalType": "contract IDefaultPool",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "depositSnapshots",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "S",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "P",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "G",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint128",
+          "name": "scale",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "epoch",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "deposits",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "initialValue",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "frontEndTag",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "name": "epochToScaleToG",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "",
+          "type": "uint128"
+        }
+      ],
+      "name": "epochToScaleToSum",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "name": "getCompoundedSIMDeposit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "name": "getDepositorSHADYGain",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_depositor",
+          "type": "address"
+        }
+      ],
+      "name": "getDepositorWSTETHGain",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEntireSystemColl",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "entireSystemColl",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getEntireSystemDebt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "entireSystemDebt",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalSIMDeposits",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getWSTETH",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastSHADYError",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastSIMLossError_Offset",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastWSTETHError_Offset",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_debtToOffset",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_collToAdd",
+          "type": "uint256"
+        }
+      ],
+      "name": "offset",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "priceFeed",
+      "outputs": [
+        {
+          "internalType": "contract IPriceFeed",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "provideToSP",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "receiveWSTETH",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_WSTETHAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_borrowerOperationsAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_troveManagerAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_activePoolAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_simTokenAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_sortedTrovesAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_priceFeedAddress",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_communityIssuanceAddress",
+          "type": "address"
+        }
+      ],
+      "name": "setAddresses",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "simToken",
+      "outputs": [
+        {
+          "internalType": "contract ISIMToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "sortedTroves",
+      "outputs": [
+        {
+          "internalType": "contract ISortedTroves",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "troveManager",
+      "outputs": [
+        {
+          "internalType": "contract ITroveManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawFromSP",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_upperHint",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_lowerHint",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawWSTETHGainToTrove",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x895d8e988565b8b6d1affe44b375ca4c51c88b830a73133d130c3d63ecba07fb",
+  "receipt": {
+    "to": null,
+    "from": "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
+    "contractAddress": "0x74bBa28c13771FB32eD08e5522dfEc71ea8De48c",
+    "transactionIndex": 12,
+    "gasUsed": "2413894",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000100800000000000000000000000000000000000000000000000000000000000000000000004000000000000000000080000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000001000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xae6360b53d37c2cee90d0b383e4d50607974dd52aa445512b47f57959d0f8cf3",
+    "transactionHash": "0x895d8e988565b8b6d1affe44b375ca4c51c88b830a73133d130c3d63ecba07fb",
+    "logs": [
+      {
+        "transactionIndex": 12,
+        "blockNumber": 9518027,
+        "transactionHash": "0x895d8e988565b8b6d1affe44b375ca4c51c88b830a73133d130c3d63ecba07fb",
+        "address": "0x74bBa28c13771FB32eD08e5522dfEc71ea8De48c",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000088888887c3ebd4a33e34a15db4254c74c75e5d4a"
+        ],
+        "data": "0x",
+        "logIndex": 26,
+        "blockHash": "0xae6360b53d37c2cee90d0b383e4d50607974dd52aa445512b47f57959d0f8cf3"
+      }
+    ],
+    "blockNumber": 9518027,
+    "cumulativeGasUsed": "4092651",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "4ec6f9376f02b1b14c8f28d3638a109e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newActivePoolAddress\",\"type\":\"address\"}],\"name\":\"ActivePoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newBorrowerOperationsAddress\",\"type\":\"address\"}],\"name\":\"BorrowerOperationsAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newCommunityIssuanceAddress\",\"type\":\"address\"}],\"name\":\"CommunityIssuanceAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newDefaultPoolAddress\",\"type\":\"address\"}],\"name\":\"DefaultPoolAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_P\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_S\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_G\",\"type\":\"uint256\"}],\"name\":\"DepositSnapshotUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_currentEpoch\",\"type\":\"uint128\"}],\"name\":\"EpochUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_frontEnd\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_kickbackRate\",\"type\":\"uint256\"}],\"name\":\"FrontEndRegistered\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_frontEnd\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_P\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_G\",\"type\":\"uint256\"}],\"name\":\"FrontEndSnapshotUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_frontEnd\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newFrontEndStake\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"}],\"name\":\"FrontEndStakeChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_frontEnd\",\"type\":\"address\"}],\"name\":\"FrontEndTagSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_G\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_epoch\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_scale\",\"type\":\"uint128\"}],\"name\":\"G_Updated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_P\",\"type\":\"uint256\"}],\"name\":\"P_Updated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newPriceFeedAddress\",\"type\":\"address\"}],\"name\":\"PriceFeedAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_SHADY\",\"type\":\"uint256\"}],\"name\":\"SHADYPaidToDepositor\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_frontEnd\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_SHADY\",\"type\":\"uint256\"}],\"name\":\"SHADYPaidToFrontEnd\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newSIMTokenAddress\",\"type\":\"address\"}],\"name\":\"SIMTokenAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_S\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_epoch\",\"type\":\"uint128\"},{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_scale\",\"type\":\"uint128\"}],\"name\":\"S_Updated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint128\",\"name\":\"_currentScale\",\"type\":\"uint128\"}],\"name\":\"ScaleUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newSortedTrovesAddress\",\"type\":\"address\"}],\"name\":\"SortedTrovesAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"}],\"name\":\"StabilityPoolSIMBalanceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newBalance\",\"type\":\"uint256\"}],\"name\":\"StabilityPoolWSTETHBalanceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_newTroveManagerAddress\",\"type\":\"address\"}],\"name\":\"TroveManagerAddressChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_newDeposit\",\"type\":\"uint256\"}],\"name\":\"UserDepositChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_WSTETH\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_SIMLoss\",\"type\":\"uint256\"}],\"name\":\"WSTETHGainWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"WSTETHSent\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"BORROWING_FEE_FLOOR\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"CCR\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DECIMAL_PRECISION\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MCR\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MIN_NET_DEBT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NAME\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"P\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"PERCENT_DIVISOR\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SCALE_FACTOR\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"WSTETHAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"_100pct\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"activePool\",\"outputs\":[{\"internalType\":\"contract IActivePool\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowerOperations\",\"outputs\":[{\"internalType\":\"contract IBorrowerOperations\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"communityIssuance\",\"outputs\":[{\"internalType\":\"contract IIssuance\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentEpoch\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"currentScale\",\"outputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"defaultPool\",\"outputs\":[{\"internalType\":\"contract IDefaultPool\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"depositSnapshots\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"S\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"P\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"G\",\"type\":\"uint256\"},{\"internalType\":\"uint128\",\"name\":\"scale\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"epoch\",\"type\":\"uint128\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"deposits\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"initialValue\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"frontEndTag\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"name\":\"epochToScaleToG\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"\",\"type\":\"uint128\"}],\"name\":\"epochToScaleToSum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"}],\"name\":\"getCompoundedSIMDeposit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"}],\"name\":\"getDepositorSHADYGain\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_depositor\",\"type\":\"address\"}],\"name\":\"getDepositorWSTETHGain\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEntireSystemColl\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"entireSystemColl\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEntireSystemDebt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"entireSystemDebt\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSIMDeposits\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getWSTETH\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastSHADYError\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastSIMLossError_Offset\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastWSTETHError_Offset\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_debtToOffset\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_collToAdd\",\"type\":\"uint256\"}],\"name\":\"offset\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"priceFeed\",\"outputs\":[{\"internalType\":\"contract IPriceFeed\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"provideToSP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"receiveWSTETH\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_WSTETHAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_borrowerOperationsAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_troveManagerAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_activePoolAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_simTokenAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_sortedTrovesAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_priceFeedAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_communityIssuanceAddress\",\"type\":\"address\"}],\"name\":\"setAddresses\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"simToken\",\"outputs\":[{\"internalType\":\"contract ISIMToken\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"sortedTroves\",\"outputs\":[{\"internalType\":\"contract ISortedTroves\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"troveManager\",\"outputs\":[{\"internalType\":\"contract ITroveManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"withdrawFromSP\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_upperHint\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_lowerHint\",\"type\":\"address\"}],\"name\":\"withdrawWSTETHGainToTrove\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/StabilityPool.sol\":\"StabilityPool\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/IERC20.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 standard as defined in the EIP.\\n */\\ninterface IERC20 {\\n    /**\\n     * @dev Emitted when `value` tokens are moved from one account (`from`) to\\n     * another (`to`).\\n     *\\n     * Note that `value` may be zero.\\n     */\\n    event Transfer(address indexed from, address indexed to, uint256 value);\\n\\n    /**\\n     * @dev Emitted when the allowance of a `spender` for an `owner` is set by\\n     * a call to {approve}. `value` is the new allowance.\\n     */\\n    event Approval(address indexed owner, address indexed spender, uint256 value);\\n\\n    /**\\n     * @dev Returns the amount of tokens in existence.\\n     */\\n    function totalSupply() external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the amount of tokens owned by `account`.\\n     */\\n    function balanceOf(address account) external view returns (uint256);\\n\\n    /**\\n     * @dev Moves `amount` tokens from the caller's account to `to`.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transfer(address to, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Returns the remaining number of tokens that `spender` will be\\n     * allowed to spend on behalf of `owner` through {transferFrom}. This is\\n     * zero by default.\\n     *\\n     * This value changes when {approve} or {transferFrom} are called.\\n     */\\n    function allowance(address owner, address spender) external view returns (uint256);\\n\\n    /**\\n     * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * IMPORTANT: Beware that changing an allowance with this method brings the risk\\n     * that someone may use both the old and the new allowance by unfortunate\\n     * transaction ordering. One possible solution to mitigate this race\\n     * condition is to first reduce the spender's allowance to 0 and set the\\n     * desired value afterwards:\\n     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729\\n     *\\n     * Emits an {Approval} event.\\n     */\\n    function approve(address spender, uint256 amount) external returns (bool);\\n\\n    /**\\n     * @dev Moves `amount` tokens from `from` to `to` using the\\n     * allowance mechanism. `amount` is then deducted from the caller's\\n     * allowance.\\n     *\\n     * Returns a boolean value indicating whether the operation succeeded.\\n     *\\n     * Emits a {Transfer} event.\\n     */\\n    function transferFrom(address from, address to, uint256 amount) external returns (bool);\\n}\\n\",\"keccak256\":\"0x287b55befed2961a7eabd7d7b1b2839cbca8a5b80ef8dcbb25ed3d4c2002c305\",\"license\":\"MIT\"},\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (token/ERC20/extensions/IERC20Permit.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Interface of the ERC20 Permit extension allowing approvals to be made via signatures, as defined in\\n * https://eips.ethereum.org/EIPS/eip-2612[EIP-2612].\\n *\\n * Adds the {permit} method, which can be used to change an account's ERC20 allowance (see {IERC20-allowance}) by\\n * presenting a message signed by the account. By not relying on {IERC20-approve}, the token holder account doesn't\\n * need to send a transaction, and thus is not required to hold Ether at all.\\n */\\ninterface IERC20Permit {\\n    /**\\n     * @dev Sets `value` as the allowance of `spender` over ``owner``'s tokens,\\n     * given ``owner``'s signed approval.\\n     *\\n     * IMPORTANT: The same issues {IERC20-approve} has related to transaction\\n     * ordering also apply here.\\n     *\\n     * Emits an {Approval} event.\\n     *\\n     * Requirements:\\n     *\\n     * - `spender` cannot be the zero address.\\n     * - `deadline` must be a timestamp in the future.\\n     * - `v`, `r` and `s` must be a valid `secp256k1` signature from `owner`\\n     * over the EIP712-formatted function arguments.\\n     * - the signature must use ``owner``'s current nonce (see {nonces}).\\n     *\\n     * For more information on the signature format, see the\\n     * https://eips.ethereum.org/EIPS/eip-2612#specification[relevant EIP\\n     * section].\\n     */\\n    function permit(\\n        address owner,\\n        address spender,\\n        uint256 value,\\n        uint256 deadline,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) external;\\n\\n    /**\\n     * @dev Returns the current nonce for `owner`. This value must be\\n     * included whenever a signature is generated for {permit}.\\n     *\\n     * Every successful call to {permit} increases ``owner``'s nonce by one. This\\n     * prevents a signature from being used multiple times.\\n     */\\n    function nonces(address owner) external view returns (uint256);\\n\\n    /**\\n     * @dev Returns the domain separator used in the encoding of the signature for {permit}, as defined by {EIP712}.\\n     */\\n    // solhint-disable-next-line func-name-mixedcase\\n    function DOMAIN_SEPARATOR() external view returns (bytes32);\\n}\\n\",\"keccak256\":\"0xec63854014a5b4f2b3290ab9103a21bdf902a508d0f41a8573fea49e98bf571a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/StabilityPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport './interfaces/IBorrowerOperations.sol';\\nimport './interfaces/IStabilityPool.sol';\\nimport './interfaces/IBorrowerOperations.sol';\\nimport './interfaces/ITroveManager.sol';\\nimport './interfaces/ISIMToken.sol';\\nimport './interfaces/ISortedTroves.sol';\\nimport \\\"./interfaces/IIssuance.sol\\\";\\nimport \\\"./dependencies/Base.sol\\\";\\nimport \\\"./dependencies/CheckContract.sol\\\";\\n\\n/*\\n * https://github.com/liquity/dev/blob/main/packages/contracts/contracts/StabilityPool.sol\\n * The Stability Pool holds SIM tokens deposited by Stability Pool depositors.\\n *\\n * When a trove is liquidated, then depending on system conditions, some of its SIM debt gets offset with\\n * SIM in the Stability Pool:  that is, the offset debt evaporates, and an equal amount of SIM tokens in the Stability Pool is burned.\\n *\\n * Thus, a liquidation causes each depositor to receive a SIM loss, in proportion to their deposit as a share of total deposits.\\n * They also receive an WSTETH gain, as the WSTETH collateral of the liquidated trove is distributed among Stability depositors,\\n * in the same proportion.\\n *\\n * When a liquidation occurs, it depletes every deposit by the same fraction: for example, a liquidation that depletes 40%\\n * of the total SIM in the Stability Pool, depletes 40% of each deposit.\\n *\\n * A deposit that has experienced a series of liquidations is termed a \\\"compounded deposit\\\": each liquidation depletes the deposit,\\n * multiplying it by some factor in range ]0,1[\\n *\\n *\\n * --- IMPLEMENTATION ---\\n *\\n * We use a highly scalable method of tracking deposits and WSTETH gains that has O(1) complexity.\\n *\\n * When a liquidation occurs, rather than updating each depositor's deposit and WSTETH gain, we simply update two state variables:\\n * a product P, and a sum S.\\n *\\n * A mathematical manipulation allows us to factor out the initial deposit, and accurately track all depositors' compounded deposits\\n * and accumulated WSTETH gains over time, as liquidations occur, using just these two variables P and S. When depositors join the\\n * Stability Pool, they get a snapshot of the latest P and S: P_t and S_t, respectively.\\n *\\n * The formula for a depositor's accumulated WSTETH gain is derived here:\\n * https://github.com/liquity/dev/blob/main/papers/Scalable_Reward_Distribution_with_Compounding_Stakes.pdf\\n *\\n * For a given deposit d_t, the ratio P/P_t tells us the factor by which a deposit has decreased since it joined the Stability Pool,\\n * and the term d_t * (S - S_t)/P_t gives us the deposit's total accumulated WSTETH gain.\\n *\\n * Each liquidation updates the product P and sum S. After a series of liquidations, a compounded deposit and corresponding WSTETH gain\\n * can be calculated using the initial deposit, the depositor\\u2019s snapshots of P and S, and the latest values of P and S.\\n *\\n * Any time a depositor updates their deposit (withdrawal, top-up) their accumulated WSTETH gain is paid out, their new deposit is recorded\\n * (based on their latest compounded deposit and modified by the withdrawal/top-up), and they receive new snapshots of the latest P and S.\\n * Essentially, they make a fresh deposit that overwrites the old one.\\n *\\n *\\n * --- SCALE FACTOR ---\\n *\\n * Since P is a running product in range ]0,1] that is always-decreasing, it should never reach 0 when multiplied by a number in range ]0,1[.\\n * Unfortunately, Solidity floor division always reaches 0, sooner or later.\\n *\\n * A series of liquidations that nearly empty the Pool (and thus each multiply P by a very small number in range ]0,1[ ) may push P\\n * to its 18 digit decimal limit, and round it to 0, when in fact the Pool hasn't been emptied: this would break deposit tracking.\\n *\\n * So, to track P accurately, we use a scale factor: if a liquidation would cause P to decrease to <1e-9 (and be rounded to 0 by Solidity),\\n * we first multiply P by 1e9, and increment a currentScale factor by 1.\\n *\\n * The added benefit of using 1e9 for the scale factor (rather than 1e18) is that it ensures negligible precision loss close to the \\n * scale boundary: when P is at its minimum value of 1e9, the relative precision loss in P due to floor division is only on the \\n * order of 1e-9. \\n *\\n * --- EPOCHS ---\\n *\\n * Whenever a liquidation fully empties the Stability Pool, all deposits should become 0. However, setting P to 0 would make P be 0\\n * forever, and break all future reward calculations.\\n *\\n * So, every time the Stability Pool is emptied by a liquidation, we reset P = 1 and currentScale = 0, and increment the currentEpoch by 1.\\n *\\n * --- TRACKING DEPOSIT OVER SCALE CHANGES AND EPOCHS ---\\n *\\n * When a deposit is made, it gets snapshots of the currentEpoch and the currentScale.\\n *\\n * When calculating a compounded deposit, we compare the current epoch to the deposit's epoch snapshot. If the current epoch is newer,\\n * then the deposit was present during a pool-emptying liquidation, and necessarily has been depleted to 0.\\n *\\n * Otherwise, we then compare the current scale to the deposit's scale snapshot. If they're equal, the compounded deposit is given by d_t * P/P_t.\\n * If it spans one scale change, it is given by d_t * P/(P_t * 1e9). If it spans more than one scale change, we define the compounded deposit\\n * as 0, since it is now less than 1e-9'th of its initial value (e.g. a deposit of 1 billion SIM has depleted to < 1 SIM).\\n *\\n *\\n *  --- TRACKING DEPOSITOR'S WSTETH GAIN OVER SCALE CHANGES AND EPOCHS ---\\n *\\n * In the current epoch, the latest value of S is stored upon each scale change, and the mapping (scale -> S) is stored for each epoch.\\n *\\n * This allows us to calculate a deposit's accumulated WSTETH gain, during the epoch in which the deposit was non-zero and earned WSTETH.\\n *\\n * We calculate the depositor's accumulated WSTETH gain for the scale at which they made the deposit, using the WSTETH gain formula:\\n * e_1 = d_t * (S - S_t) / P_t\\n *\\n * and also for scale after, taking care to divide the latter by a factor of 1e9:\\n * e_2 = d_t * S / (P_t * 1e9)\\n *\\n * The gain in the second scale will be full, as the starting point was in the previous scale, thus no need to subtract anything.\\n * The deposit therefore was present for reward events from the beginning of that second scale.\\n *\\n *        S_i-S_t + S_{i+1}\\n *      .<--------.------------>\\n *      .         .\\n *      . S_i     .   S_{i+1}\\n *   <--.-------->.<----------->\\n *   S_t.         .\\n *   <->.         .\\n *      t         .\\n *  |---+---------|-------------|-----...\\n *         i            i+1\\n *\\n * The sum of (e_1 + e_2) captures the depositor's total accumulated WSTETH gain, handling the case where their\\n * deposit spanned one scale change. We only care about gains across one scale change, since the compounded\\n * deposit is defined as being 0 once it has spanned more than one scale change.\\n *\\n *\\n * --- UPDATING P WHEN A LIQUIDATION OCCURS ---\\n *\\n * Please see the implementation spec in the proof document, which closely follows on from the compounded deposit / WSTETH gain derivations:\\n * https://github.com/liquity/liquity/blob/master/papers/Scalable_Reward_Distribution_with_Compounding_Stakes.pdf\\n *\\n *\\n * --- SHADY ISSUANCE TO STABILITY POOL DEPOSITORS ---\\n *\\n * An SHADY issuance event occurs at every deposit operation, and every liquidation.\\n *\\n * Each deposit is tagged with the address of the front end through which it was made.\\n *\\n * All deposits earn a share of the issued SHADY in proportion to the deposit as a share of total deposits. The SHADY earned\\n * by a given deposit, is split between the depositor and the front end through which the deposit was made, based on the front end's kickbackRate.\\n *\\n * Please see the system Readme for an overview:\\n * https://github.com/liquity/dev/blob/main/README.md#lqty-issuance-to-stability-providers\\n *\\n * We use the same mathematical product-sum approach to track SHADY gains for depositors, where 'G' is the sum corresponding to SHADY gains.\\n * The product P (and snapshot P_t) is re-used, as the ratio P/P_t tracks a deposit's depletion due to liquidations.\\n *\\n */\\ncontract StabilityPool is Base, Ownable, CheckContract, IStabilityPool {\\n    string constant public NAME = \\\"StabilityPool\\\";\\n\\n    address public WSTETHAddress;\\n\\n    IBorrowerOperations public borrowerOperations;\\n\\n    ITroveManager public troveManager;\\n\\n    ISIMToken public simToken;\\n\\n    // Needed to check if there are pending liquidations\\n    ISortedTroves public sortedTroves;\\n\\n    IIssuance public communityIssuance;\\n\\n    uint256 internal WSTETH;  // deposited ether tracker\\n\\n    // Tracker for SIM held in the pool. Changes when users deposit/withdraw, and when Trove debt is offset.\\n    uint256 internal totalSIMDeposits;\\n\\n   // --- Data structures ---\\n\\n    /*struct FrontEnd {\\n        uint kickbackRate;\\n        bool registered;\\n    }*/\\n\\n    struct Deposit {\\n        uint initialValue;\\n        address frontEndTag;\\n    }\\n\\n    struct Snapshots {\\n        uint S;\\n        uint P;\\n        uint G;\\n        uint128 scale;\\n        uint128 epoch;\\n    }\\n\\n    mapping (address => Deposit) public deposits;  // depositor address -> Deposit struct\\n    mapping (address => Snapshots) public depositSnapshots;  // depositor address -> snapshots struct\\n\\n//    mapping (address => FrontEnd) public frontEnds;  // front end address -> FrontEnd struct\\n//    mapping (address => uint) public frontEndStakes; // front end address -> last recorded total deposits, tagged with that front end\\n//    mapping (address => Snapshots) public frontEndSnapshots; // front end address -> snapshots struct\\n\\n    /*  Product 'P': Running product by which to multiply an initial deposit, in order to find the current compounded deposit,\\n    * after a series of liquidations have occurred, each of which cancel some SIM debt with the deposit.\\n    *\\n    * During its lifetime, a deposit's value evolves from d_t to d_t * P / P_t , where P_t\\n    * is the snapshot of P taken at the instant the deposit was made. 18-digit decimal.\\n    */\\n    uint public P = DECIMAL_PRECISION;\\n\\n    uint public constant SCALE_FACTOR = 1e9;\\n\\n    // Each time the scale of P shifts by SCALE_FACTOR, the scale is incremented by 1\\n    uint128 public currentScale;\\n\\n    // With each offset that fully empties the Pool, the epoch is incremented by 1\\n    uint128 public currentEpoch;\\n\\n    /* WSTETH Gain sum 'S': During its lifetime, each deposit d_t earns an WSTETH gain of ( d_t * [S - S_t] )/P_t, where S_t\\n    * is the depositor's snapshot of S taken at the time t when the deposit was made.\\n    *\\n    * The 'S' sums are stored in a nested mapping (epoch => scale => sum):\\n    *\\n    * - The inner mapping records the sum S at different scales\\n    * - The outer mapping records the (scale => sum) mappings, for different epochs.\\n    */\\n    mapping (uint128 => mapping(uint128 => uint)) public epochToScaleToSum;\\n\\n    /*\\n    * Similarly, the sum 'G' is used to calculate SHADY gains. During it's lifetime, each deposit d_t earns a SHADY gain of\\n    *  ( d_t * [G - G_t] )/P_t, where G_t is the depositor's snapshot of G taken at time t when  the deposit was made.\\n    *\\n    *  SHADY reward events occur are triggered by depositor operations (new deposit, topup, withdrawal), and liquidations.\\n    *  In each case, the SHADY reward is issued (i.e. G is updated), before other state changes are made.\\n    */\\n    mapping (uint128 => mapping(uint128 => uint)) public epochToScaleToG;\\n\\n    // Error tracker for the error correction in the SHADY issuance calculation\\n    uint public lastSHADYError;\\n    // Error trackers for the error correction in the offset calculation\\n    uint public lastWSTETHError_Offset;\\n    uint public lastSIMLossError_Offset;\\n\\n    // --- Contract setters ---\\n\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress,\\n        address _simTokenAddress,\\n        address _sortedTrovesAddress,\\n        address _priceFeedAddress,\\n        address _communityIssuanceAddress\\n    )\\n        external\\n        override\\n        onlyOwner\\n    {\\n        _checkContract(_WSTETHAddress);\\n        _checkContract(_borrowerOperationsAddress);\\n        _checkContract(_troveManagerAddress);\\n        _checkContract(_activePoolAddress);\\n        _checkContract(_simTokenAddress);\\n        _checkContract(_sortedTrovesAddress);\\n        _checkContract(_priceFeedAddress);\\n        _checkContract(_communityIssuanceAddress);\\n\\n        WSTETHAddress = _WSTETHAddress;\\n        borrowerOperations = IBorrowerOperations(_borrowerOperationsAddress);\\n        troveManager = ITroveManager(_troveManagerAddress);\\n        activePool = IActivePool(_activePoolAddress);\\n        simToken = ISIMToken(_simTokenAddress);\\n        sortedTroves = ISortedTroves(_sortedTrovesAddress);\\n        priceFeed = IPriceFeed(_priceFeedAddress);\\n        communityIssuance = IIssuance(_communityIssuanceAddress);\\n\\n        emit BorrowerOperationsAddressChanged(_borrowerOperationsAddress);\\n        emit TroveManagerAddressChanged(_troveManagerAddress);\\n        emit ActivePoolAddressChanged(_activePoolAddress);\\n        emit SIMTokenAddressChanged(_simTokenAddress);\\n        emit SortedTrovesAddressChanged(_sortedTrovesAddress);\\n        emit PriceFeedAddressChanged(_priceFeedAddress);\\n        emit CommunityIssuanceAddressChanged(_communityIssuanceAddress);\\n\\n        renounceOwnership();\\n    }\\n\\n    // --- Getters for public variables. Required by IPool interface ---\\n\\n    function getWSTETH() external view override returns (uint) {\\n        return WSTETH;\\n    }\\n\\n    function getTotalSIMDeposits() external view override returns (uint) {\\n        return totalSIMDeposits;\\n    }\\n\\n    function receiveWSTETH(uint amount) external {\\n        _requireCallerIsActivePool();\\n        WSTETH += amount;\\n        emit StabilityPoolWSTETHBalanceUpdated(WSTETH);\\n    }\\n\\n    // --- External Depositor Functions ---\\n\\n    /*  provideToSP():\\n    *\\n    * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n    * - Tags the deposit with the provided front end tag param, if it's a new deposit\\n    * - Sends depositor's accumulated gains (SHADY, WSTETH) to depositor\\n    * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n    * - Increases deposit and tagged front end's stake, and takes new snapshots for each.\\n    */\\n    function provideToSP(uint _amount, address /*_frontEndTag*/) external override {\\n//        _requireFrontEndIsRegisteredOrZero(_frontEndTag);\\n//        _requireFrontEndNotRegistered(msg.sender);\\n        _requireNonZeroAmount(_amount);\\n\\n        uint initialDeposit = deposits[msg.sender].initialValue;\\n\\n        IIssuance communityIssuanceCached = communityIssuance;\\n\\n        _triggerSHADYIssuance(communityIssuanceCached);\\n\\n//        if (initialDeposit == 0) {_setFrontEndTag(msg.sender, _frontEndTag);}\\n        uint depositorWSTETHGain = getDepositorWSTETHGain(msg.sender);\\n        uint compoundedSIMDeposit = getCompoundedSIMDeposit(msg.sender);\\n        uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log\\n\\n        // First pay out any SHADY gains\\n//        address frontEnd = deposits[msg.sender].frontEndTag;\\n        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);\\n\\n        // Update front end stake\\n        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);\\n        uint newFrontEndStake = compoundedFrontEndStake + _amount;\\n        _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);\\n        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/\\n\\n        _sendSIMtoStabilityPool(msg.sender, _amount);\\n\\n        uint newDeposit = compoundedSIMDeposit + _amount;\\n        _updateDepositAndSnapshots(msg.sender, newDeposit);\\n        emit UserDepositChanged(msg.sender, newDeposit);\\n\\n        emit WSTETHGainWithdrawn(msg.sender, depositorWSTETHGain, SIMLoss); // SIM Loss required for event log\\n\\n        _sendWSTETHGainToDepositor(depositorWSTETHGain);\\n     }\\n\\n    /*  withdrawFromSP():\\n    *\\n    * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n    * - Removes the deposit's front end tag if it is a full withdrawal\\n    * - Sends all depositor's accumulated gains (SHADY, WSTETH) to depositor\\n    * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n    * - Decreases deposit and tagged front end's stake, and takes new snapshots for each.\\n    *\\n    * If _amount > userDeposit, the user withdraws all of their compounded deposit.\\n    */\\n    function withdrawFromSP(uint _amount) external override {\\n        if (_amount !=0) {_requireNoUnderCollateralizedTroves();}\\n        uint initialDeposit = deposits[msg.sender].initialValue;\\n        _requireUserHasDeposit(initialDeposit);\\n\\n        IIssuance communityIssuanceCached = communityIssuance;\\n\\n        _triggerSHADYIssuance(communityIssuanceCached);\\n\\n        uint depositorWSTETHGain = getDepositorWSTETHGain(msg.sender);\\n\\n        uint compoundedSIMDeposit = getCompoundedSIMDeposit(msg.sender);\\n        uint SIMtoWithdraw = LiquityMath._min(_amount, compoundedSIMDeposit);\\n        uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log\\n\\n        // First pay out any SHADY gains\\n//        address frontEnd = deposits[msg.sender].frontEndTag;\\n        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);\\n\\n        // Update front end stake\\n        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);\\n        uint newFrontEndStake = compoundedFrontEndStake - SIMtoWithdraw;\\n        _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);\\n        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/\\n\\n        _sendSIMToDepositor(msg.sender, SIMtoWithdraw);\\n\\n        // Update deposit\\n        uint newDeposit = compoundedSIMDeposit - SIMtoWithdraw;\\n        _updateDepositAndSnapshots(msg.sender, newDeposit);\\n        emit UserDepositChanged(msg.sender, newDeposit);\\n\\n        emit WSTETHGainWithdrawn(msg.sender, depositorWSTETHGain, SIMLoss);  // SIM Loss required for event log\\n\\n        _sendWSTETHGainToDepositor(depositorWSTETHGain);\\n    }\\n\\n    /* withdrawWSTETHGainToTrove:\\n    * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n    * - Sends all depositor's SHADY gain to  depositor\\n    * - Sends all tagged front end's SHADY gain to the tagged front end\\n    * - Transfers the depositor's entire WSTETH gain from the Stability Pool to the caller's trove\\n    * - Leaves their compounded deposit in the Stability Pool\\n    * - Updates snapshots for deposit and tagged front end stake */\\n    function withdrawWSTETHGainToTrove(address _upperHint, address _lowerHint) external override {\\n        uint initialDeposit = deposits[msg.sender].initialValue;\\n        _requireUserHasDeposit(initialDeposit);\\n        _requireUserHasTrove(msg.sender);\\n        _requireUserHasWSTETHGain(msg.sender);\\n\\n        IIssuance communityIssuanceCached = communityIssuance;\\n\\n        _triggerSHADYIssuance(communityIssuanceCached);\\n\\n        uint depositorWSTETHGain = getDepositorWSTETHGain(msg.sender);\\n\\n        uint compoundedSIMDeposit = getCompoundedSIMDeposit(msg.sender);\\n        uint SIMLoss = initialDeposit - compoundedSIMDeposit; // Needed only for event log\\n\\n        // First pay out any SHADY gains\\n//        address frontEnd = deposits[msg.sender].frontEndTag;\\n        _payOutSHADYGains(communityIssuanceCached, msg.sender/*, frontEnd*/);\\n\\n        // Update front end stake\\n        /*uint compoundedFrontEndStake = getCompoundedFrontEndStake(frontEnd);\\n        uint newFrontEndStake = compoundedFrontEndStake;\\n        _updateFrontEndStakeAndSnapshots(frontEnd, newFrontEndStake);\\n        emit FrontEndStakeChanged(frontEnd, newFrontEndStake, msg.sender);*/\\n\\n        _updateDepositAndSnapshots(msg.sender, compoundedSIMDeposit);\\n\\n        /* Emit events before transferring WSTETH gain to Trove.\\n         This lets the event log make more sense (i.e. so it appears that first the WSTETH gain is withdrawn\\n        and then it is deposited into the Trove, not the other way around). */\\n        emit WSTETHGainWithdrawn(msg.sender, depositorWSTETHGain, SIMLoss);\\n        emit UserDepositChanged(msg.sender, compoundedSIMDeposit);\\n\\n        WSTETH -= depositorWSTETHGain;\\n        emit StabilityPoolWSTETHBalanceUpdated(WSTETH);\\n        emit WSTETHSent(msg.sender, depositorWSTETHGain);\\n\\n        require(IERC20(WSTETHAddress).transfer(address(borrowerOperations), depositorWSTETHGain));\\n        borrowerOperations.moveWSTETHGainToTrove/*{ value: depositorWSTETHGain }*/(msg.sender, _upperHint, _lowerHint);\\n    }\\n\\n    // --- SHADY issuance functions ---\\n\\n    function _triggerSHADYIssuance(IIssuance _communityIssuance) internal {\\n        uint SHADYIssuance = _communityIssuance.issueSHADY();\\n       _updateG(SHADYIssuance);\\n    }\\n\\n    function _updateG(uint _SHADYIssuance) internal {\\n        uint totalSIM = totalSIMDeposits; // cached to save an SLOAD\\n        /*\\n        * When total deposits is 0, G is not updated. In this case, the SHADY issued can not be obtained by later\\n        * depositors - it is missed out on, and remains in the balanceof the CommunityIssuance contract.\\n        *\\n        */\\n        if (totalSIM == 0 || _SHADYIssuance == 0) {return;}\\n\\n        uint SHADYPerUnitStaked;\\n        SHADYPerUnitStaked =_computeSHADYPerUnitStaked(_SHADYIssuance, totalSIM);\\n\\n        uint marginalSHADYGain = SHADYPerUnitStaked * P;\\n        epochToScaleToG[currentEpoch][currentScale] = epochToScaleToG[currentEpoch][currentScale] + marginalSHADYGain;\\n\\n        emit G_Updated(epochToScaleToG[currentEpoch][currentScale], currentEpoch, currentScale);\\n    }\\n\\n    function _computeSHADYPerUnitStaked(uint _SHADYIssuance, uint _totalSIMDeposits) internal returns (uint) {\\n        /*\\n        * Calculate the SHADY-per-unit staked.  Division uses a \\\"feedback\\\" error correction, to keep the\\n        * cumulative error low in the running total G:\\n        *\\n        * 1) Form a numerator which compensates for the floor division error that occurred the last time this\\n        * function was called.\\n        * 2) Calculate \\\"per-unit-staked\\\" ratio.\\n        * 3) Multiply the ratio back by its denominator, to reveal the current floor division error.\\n        * 4) Store this error for use in the next correction when this function is called.\\n        * 5) Note: static analysis tools complain about this \\\"division before multiplication\\\", however, it is intended.\\n        */\\n        uint SHADYNumerator = _SHADYIssuance * DECIMAL_PRECISION + lastSHADYError;\\n\\n        uint SHADYPerUnitStaked = SHADYNumerator / _totalSIMDeposits;\\n        lastSHADYError = SHADYNumerator - SHADYPerUnitStaked * _totalSIMDeposits;\\n\\n        return SHADYPerUnitStaked;\\n    }\\n\\n    // --- Liquidation functions ---\\n\\n    /*\\n    * Cancels out the specified debt against the SIM contained in the Stability Pool (as far as possible)\\n    * and transfers the Trove's WSTETH collateral from ActivePool to StabilityPool.\\n    * Only called by liquidation functions in the TroveManager.\\n    */\\n    function offset(uint _debtToOffset, uint _collToAdd) external override {\\n        _requireCallerIsTroveManager();\\n        uint totalSIM = totalSIMDeposits; // cached to save an SLOAD\\n        if (totalSIM == 0 || _debtToOffset == 0) { return; }\\n\\n        _triggerSHADYIssuance(communityIssuance);\\n\\n        (uint WSTETHGainPerUnitStaked,\\n            uint SIMLossPerUnitStaked) = _computeRewardsPerUnitStaked(_collToAdd, _debtToOffset, totalSIM);\\n\\n        _updateRewardSumAndProduct(WSTETHGainPerUnitStaked, SIMLossPerUnitStaked);  // updates S and P\\n\\n        _moveOffsetCollAndDebt(_collToAdd, _debtToOffset);\\n    }\\n\\n    // --- Offset helper functions ---\\n\\n    function _computeRewardsPerUnitStaked(\\n        uint _collToAdd,\\n        uint _debtToOffset,\\n        uint _totalSIMDeposits\\n    )\\n        internal\\n        returns (uint WSTETHGainPerUnitStaked, uint SIMLossPerUnitStaked)\\n    {\\n        /*\\n        * Compute the SIM and WSTETH rewards. Uses a \\\"feedback\\\" error correction, to keep\\n        * the cumulative error in the P and S state variables low:\\n        *\\n        * 1) Form numerators which compensate for the floor division errors that occurred the last time this \\n        * function was called.  \\n        * 2) Calculate \\\"per-unit-staked\\\" ratios.\\n        * 3) Multiply each ratio back by its denominator, to reveal the current floor division error.\\n        * 4) Store these errors for use in the next correction when this function is called.\\n        * 5) Note: static analysis tools complain about this \\\"division before multiplication\\\", however, it is intended.\\n        */\\n        uint WSTETHNumerator = _collToAdd * DECIMAL_PRECISION + lastWSTETHError_Offset;\\n\\n        assert(_debtToOffset <= _totalSIMDeposits);\\n        if (_debtToOffset == _totalSIMDeposits) {\\n            SIMLossPerUnitStaked = DECIMAL_PRECISION;  // When the Pool depletes to 0, so does each deposit \\n            lastSIMLossError_Offset = 0;\\n        } else {\\n            uint SIMLossNumerator = _debtToOffset * DECIMAL_PRECISION - lastSIMLossError_Offset;\\n            /*\\n            * Add 1 to make error in quotient positive. We want \\\"slightly too much\\\" SIM loss,\\n            * which ensures the error in any given compoundedSIMDeposit favors the Stability Pool.\\n            */\\n            SIMLossPerUnitStaked = SIMLossNumerator / _totalSIMDeposits + 1;\\n            lastSIMLossError_Offset = SIMLossPerUnitStaked * _totalSIMDeposits - SIMLossNumerator;\\n        }\\n\\n        WSTETHGainPerUnitStaked = WSTETHNumerator / _totalSIMDeposits;\\n        lastWSTETHError_Offset = WSTETHNumerator - WSTETHGainPerUnitStaked * _totalSIMDeposits;\\n\\n        return (WSTETHGainPerUnitStaked, SIMLossPerUnitStaked);\\n    }\\n\\n    // Update the Stability Pool reward sum S and product P\\n    function _updateRewardSumAndProduct(uint _WSTETHGainPerUnitStaked, uint _SIMLossPerUnitStaked) internal {\\n        uint currentP = P;\\n        uint newP;\\n\\n        assert(_SIMLossPerUnitStaked <= DECIMAL_PRECISION);\\n        /*\\n        * The newProductFactor is the factor by which to change all deposits, due to the depletion of Stability Pool SIM in the liquidation.\\n        * We make the product factor 0 if there was a pool-emptying. Otherwise, it is (1 - SIMLossPerUnitStaked)\\n        */\\n        uint newProductFactor = uint(DECIMAL_PRECISION) - _SIMLossPerUnitStaked;\\n\\n        uint128 currentScaleCached = currentScale;\\n        uint128 currentEpochCached = currentEpoch;\\n        uint currentS = epochToScaleToSum[currentEpochCached][currentScaleCached];\\n\\n        /*\\n        * Calculate the new S first, before we update P.\\n        * The WSTETH gain for any given depositor from a liquidation depends on the value of their deposit\\n        * (and the value of totalDeposits) prior to the Stability being depleted by the debt in the liquidation.\\n        *\\n        * Since S corresponds to WSTETH gain, and P to deposit loss, we update S first.\\n        */\\n        uint marginalWSTETHGain = _WSTETHGainPerUnitStaked * currentP;\\n        uint newS = currentS + marginalWSTETHGain;\\n        epochToScaleToSum[currentEpochCached][currentScaleCached] = newS;\\n        emit S_Updated(newS, currentEpochCached, currentScaleCached);\\n\\n        // If the Stability Pool was emptied, increment the epoch, and reset the scale and product P\\n        if (newProductFactor == 0) {\\n            currentEpoch = currentEpochCached + 1;\\n            emit EpochUpdated(currentEpoch);\\n            currentScale = 0;\\n            emit ScaleUpdated(currentScale);\\n            newP = DECIMAL_PRECISION;\\n\\n        // If multiplying P by a non-zero product factor would reduce P below the scale boundary, increment the scale\\n        } else if (currentP * newProductFactor / DECIMAL_PRECISION < SCALE_FACTOR) {\\n            newP = currentP * newProductFactor * SCALE_FACTOR / DECIMAL_PRECISION;\\n            currentScale = currentScaleCached + 1;\\n            emit ScaleUpdated(currentScale);\\n        } else {\\n            newP = currentP * newProductFactor / DECIMAL_PRECISION;\\n        }\\n\\n        assert(newP > 0);\\n        P = newP;\\n\\n        emit P_Updated(newP);\\n    }\\n\\n    function _moveOffsetCollAndDebt(uint _collToAdd, uint _debtToOffset) internal {\\n        IActivePool activePoolCached = activePool;\\n\\n        // Cancel the liquidated SIM debt with the SIM in the stability pool\\n        activePoolCached.decreaseSIMDebt(_debtToOffset);\\n        _decreaseSIM(_debtToOffset);\\n\\n        // Burn the debt that was successfully offset\\n        simToken.burn(address(this), _debtToOffset);\\n\\n        activePoolCached.sendWSTETH(address(this), _collToAdd);\\n    }\\n\\n    function _decreaseSIM(uint _amount) internal {\\n        uint newTotalSIMDeposits = totalSIMDeposits - _amount;\\n        totalSIMDeposits = newTotalSIMDeposits;\\n        emit StabilityPoolSIMBalanceUpdated(newTotalSIMDeposits);\\n    }\\n\\n    // --- Reward calculator functions for depositor and front end ---\\n\\n    /* Calculates the WSTETH gain earned by the deposit since its last snapshots were taken.\\n    * Given by the formula:  E = d0 * (S - S(0))/P(0)\\n    * where S(0) and P(0) are the depositor's snapshots of the sum S and product P, respectively.\\n    * d0 is the last recorded deposit value.\\n    */\\n    function getDepositorWSTETHGain(address _depositor) public view override returns (uint) {\\n        uint initialDeposit = deposits[_depositor].initialValue;\\n\\n        if (initialDeposit == 0) { return 0; }\\n\\n        Snapshots memory snapshots = depositSnapshots[_depositor];\\n\\n        uint WSTETHGain = _getWSTETHGainFromSnapshots(initialDeposit, snapshots);\\n        return WSTETHGain;\\n    }\\n\\n    function _getWSTETHGainFromSnapshots(uint initialDeposit, Snapshots memory snapshots) internal view returns (uint) {\\n        /*\\n        * Grab the sum 'S' from the epoch at which the stake was made. The WSTETH gain may span up to one scale change.\\n        * If it does, the second portion of the WSTETH gain is scaled by 1e9.\\n        * If the gain spans no scale change, the second portion will be 0.\\n        */\\n        uint128 epochSnapshot = snapshots.epoch;\\n        uint128 scaleSnapshot = snapshots.scale;\\n        uint S_Snapshot = snapshots.S;\\n        uint P_Snapshot = snapshots.P;\\n\\n        uint firstPortion = epochToScaleToSum[epochSnapshot][scaleSnapshot] - S_Snapshot;\\n        uint secondPortion = epochToScaleToSum[epochSnapshot][scaleSnapshot + 1] / SCALE_FACTOR;\\n\\n        uint WSTETHGain = initialDeposit * (firstPortion + secondPortion) / P_Snapshot / DECIMAL_PRECISION;\\n\\n        return WSTETHGain;\\n    }\\n\\n    /*\\n    * Calculate the SHADY gain earned by a deposit since its last snapshots were taken.\\n    * Given by the formula:  SHADY = d0 * (G - G(0))/P(0)\\n    * where G(0) and P(0) are the depositor's snapshots of the sum G and product P, respectively.\\n    * d0 is the last recorded deposit value.\\n    */\\n    function getDepositorSHADYGain(address _depositor) public view override returns (uint) {\\n        uint initialDeposit = deposits[_depositor].initialValue;\\n        if (initialDeposit == 0) {return 0;}\\n\\n//        address frontEndTag = deposits[_depositor].frontEndTag;\\n\\n        /*\\n        * If not tagged with a front end, the depositor gets a 100% cut of what their deposit earned.\\n        * Otherwise, their cut of the deposit's earnings is equal to the kickbackRate, set by the front end through\\n        * which they made their deposit.\\n        */\\n        uint kickbackRate = /*frontEndTag == address(0) ? */DECIMAL_PRECISION/* : frontEnds[frontEndTag].kickbackRate*/;\\n\\n        Snapshots memory snapshots = depositSnapshots[_depositor];\\n\\n        uint SHADYGain = kickbackRate * _getSHADYGainFromSnapshots(initialDeposit, snapshots) / DECIMAL_PRECISION;\\n\\n        return SHADYGain;\\n    }\\n\\n    /*\\n    * Return the SHADY gain earned by the front end. Given by the formula:  E = D0 * (G - G(0))/P(0)\\n    * where G(0) and P(0) are the depositor's snapshots of the sum G and product P, respectively.\\n    *\\n    * D0 is the last recorded value of the front end's total tagged deposits.\\n    */\\n    /*function getFrontEndSHADYGain(address _frontEnd) public view override returns (uint) {\\n        uint frontEndStake = frontEndStakes[_frontEnd];\\n        if (frontEndStake == 0) { return 0; }\\n\\n        uint kickbackRate = frontEnds[_frontEnd].kickbackRate;\\n        uint frontEndShare = uint(DECIMAL_PRECISION) - kickbackRate;\\n\\n        Snapshots memory snapshots = frontEndSnapshots[_frontEnd];\\n\\n        uint SHADYGain = frontEndShare * _getSHADYGainFromSnapshots(frontEndStake, snapshots) / DECIMAL_PRECISION;\\n        return SHADYGain;\\n    }*/\\n\\n    function _getSHADYGainFromSnapshots(uint initialStake, Snapshots memory snapshots) internal view returns (uint) {\\n       /*\\n        * Grab the sum 'G' from the epoch at which the stake was made. The SHADY gain may span up to one scale change.\\n        * If it does, the second portion of the SHADY gain is scaled by 1e9.\\n        * If the gain spans no scale change, the second portion will be 0.\\n        */\\n        uint128 epochSnapshot = snapshots.epoch;\\n        uint128 scaleSnapshot = snapshots.scale;\\n        uint G_Snapshot = snapshots.G;\\n        uint P_Snapshot = snapshots.P;\\n\\n        uint firstPortion = epochToScaleToG[epochSnapshot][scaleSnapshot] - G_Snapshot;\\n        uint secondPortion = epochToScaleToG[epochSnapshot][scaleSnapshot + 1] / SCALE_FACTOR;\\n\\n        uint SHADYGain = initialStake * (firstPortion + secondPortion) / P_Snapshot / DECIMAL_PRECISION;\\n\\n        return SHADYGain;\\n    }\\n\\n    // --- Compounded deposit and compounded front end stake ---\\n\\n    /*\\n    * Return the user's compounded deposit. Given by the formula:  d = d0 * P/P(0)\\n    * where P(0) is the depositor's snapshot of the product P, taken when they last updated their deposit.\\n    */\\n    function getCompoundedSIMDeposit(address _depositor) public view override returns (uint) {\\n        uint initialDeposit = deposits[_depositor].initialValue;\\n        if (initialDeposit == 0) { return 0; }\\n\\n        Snapshots memory snapshots = depositSnapshots[_depositor];\\n\\n        uint compoundedDeposit = _getCompoundedStakeFromSnapshots(initialDeposit, snapshots);\\n        return compoundedDeposit;\\n    }\\n\\n    /*\\n    * Return the front end's compounded stake. Given by the formula:  D = D0 * P/P(0)\\n    * where P(0) is the depositor's snapshot of the product P, taken at the last time\\n    * when one of the front end's tagged deposits updated their deposit.\\n    *\\n    * The front end's compounded stake is equal to the sum of its depositors' compounded deposits.\\n    */\\n    /*function getCompoundedFrontEndStake(address _frontEnd) public view override returns (uint) {\\n        uint frontEndStake = frontEndStakes[_frontEnd];\\n        if (frontEndStake == 0) { return 0; }\\n\\n        Snapshots memory snapshots = frontEndSnapshots[_frontEnd];\\n\\n        uint compoundedFrontEndStake = _getCompoundedStakeFromSnapshots(frontEndStake, snapshots);\\n        return compoundedFrontEndStake;\\n    }*/\\n\\n    // Internal function, used to calculcate compounded deposits and compounded front end stakes.\\n    function _getCompoundedStakeFromSnapshots(\\n        uint initialStake,\\n        Snapshots memory snapshots\\n    )\\n        internal\\n        view\\n        returns (uint)\\n    {\\n        uint snapshot_P = snapshots.P;\\n        uint128 scaleSnapshot = snapshots.scale;\\n        uint128 epochSnapshot = snapshots.epoch;\\n\\n        // If stake was made before a pool-emptying event, then it has been fully cancelled with debt -- so, return 0\\n        if (epochSnapshot < currentEpoch) { return 0; }\\n\\n        uint compoundedStake;\\n        uint128 scaleDiff = currentScale - scaleSnapshot;\\n\\n        /* Compute the compounded stake. If a scale change in P was made during the stake's lifetime,\\n        * account for it. If more than one scale change was made, then the stake has decreased by a factor of\\n        * at least 1e-9 -- so return 0.\\n        */\\n        if (scaleDiff == 0) {\\n            compoundedStake = initialStake * P / snapshot_P;\\n        } else if (scaleDiff == 1) {\\n            compoundedStake = initialStake * P / snapshot_P / SCALE_FACTOR;\\n        } else { // if scaleDiff >= 2\\n            compoundedStake = 0;\\n        }\\n\\n        /*\\n        * If compounded deposit is less than a billionth of the initial deposit, return 0.\\n        *\\n        * NOTE: originally, this line was in place to stop rounding errors making the deposit too large. However, the error\\n        * corrections should ensure the error in P \\\"favors the Pool\\\", i.e. any given compounded deposit should slightly less\\n        * than it's theoretical value.\\n        *\\n        * Thus it's unclear whether this line is still really needed.\\n        */\\n        if (compoundedStake < initialStake / 1e9) {return 0;}\\n\\n        return compoundedStake;\\n    }\\n\\n    // --- Sender functions for SIM deposit, WSTETH gains and SHADY gains ---\\n\\n    // Transfer the SIM tokens from the user to the Stability Pool's address, and update its recorded SIM\\n    function _sendSIMtoStabilityPool(address _address, uint _amount) internal {\\n        simToken.sendToPool(_address, address(this), _amount);\\n        uint newTotalSIMDeposits = totalSIMDeposits + _amount;\\n        totalSIMDeposits = newTotalSIMDeposits;\\n        emit StabilityPoolSIMBalanceUpdated(newTotalSIMDeposits);\\n    }\\n\\n    function _sendWSTETHGainToDepositor(uint _amount) internal {\\n        if (_amount == 0) {return;}\\n        uint newWSTETH = WSTETH - _amount;\\n        WSTETH = newWSTETH;\\n        emit StabilityPoolWSTETHBalanceUpdated(newWSTETH);\\n        emit WSTETHSent(msg.sender, _amount);\\n\\n        require(IERC20(WSTETHAddress).transfer(msg.sender, _amount));\\n    }\\n\\n    // Send SIM to user and decrease SIM in Pool\\n    function _sendSIMToDepositor(address _depositor, uint SIMWithdrawal) internal {\\n        if (SIMWithdrawal == 0) {return;}\\n\\n        simToken.returnFromPool(address(this), _depositor, SIMWithdrawal);\\n        _decreaseSIM(SIMWithdrawal);\\n    }\\n\\n    // --- External Front End functions ---\\n\\n    // Front end makes a one-time selection of kickback rate upon registering\\n    /*function registerFrontEnd(uint _kickbackRate) external override {\\n        _requireFrontEndNotRegistered(msg.sender);\\n        _requireUserHasNoDeposit(msg.sender);\\n        _requireValidKickbackRate(_kickbackRate);\\n\\n        frontEnds[msg.sender].kickbackRate = _kickbackRate;\\n        frontEnds[msg.sender].registered = true;\\n\\n        emit FrontEndRegistered(msg.sender, _kickbackRate);\\n    }*/\\n\\n    // --- Stability Pool Deposit Functionality ---\\n\\n    /*function _setFrontEndTag(address _depositor, address _frontEndTag) internal {\\n        deposits[_depositor].frontEndTag = _frontEndTag;\\n        emit FrontEndTagSet(_depositor, _frontEndTag);\\n    }*/\\n\\n\\n    function _updateDepositAndSnapshots(address _depositor, uint _newValue) internal {\\n        deposits[_depositor].initialValue = _newValue;\\n\\n        if (_newValue == 0) {\\n//            delete deposits[_depositor].frontEndTag;\\n            delete depositSnapshots[_depositor];\\n            emit DepositSnapshotUpdated(_depositor, 0, 0, 0);\\n            return;\\n        }\\n        uint128 currentScaleCached = currentScale;\\n        uint128 currentEpochCached = currentEpoch;\\n        uint currentP = P;\\n\\n        // Get S and G for the current epoch and current scale\\n        uint currentS = epochToScaleToSum[currentEpochCached][currentScaleCached];\\n        uint currentG = epochToScaleToG[currentEpochCached][currentScaleCached];\\n\\n        // Record new snapshots of the latest running product P, sum S, and sum G, for the depositor\\n        depositSnapshots[_depositor].P = currentP;\\n        depositSnapshots[_depositor].S = currentS;\\n        depositSnapshots[_depositor].G = currentG;\\n        depositSnapshots[_depositor].scale = currentScaleCached;\\n        depositSnapshots[_depositor].epoch = currentEpochCached;\\n\\n        emit DepositSnapshotUpdated(_depositor, currentP, currentS, currentG);\\n    }\\n\\n    /*function _updateFrontEndStakeAndSnapshots(address _frontEnd, uint _newValue) internal {\\n        frontEndStakes[_frontEnd] = _newValue;\\n\\n        if (_newValue == 0) {\\n            delete frontEndSnapshots[_frontEnd];\\n            emit FrontEndSnapshotUpdated(_frontEnd, 0, 0);\\n            return;\\n        }\\n\\n        uint128 currentScaleCached = currentScale;\\n        uint128 currentEpochCached = currentEpoch;\\n        uint currentP = P;\\n\\n        // Get G for the current epoch and current scale\\n        uint currentG = epochToScaleToG[currentEpochCached][currentScaleCached];\\n\\n        // Record new snapshots of the latest running product P and sum G for the front end\\n        frontEndSnapshots[_frontEnd].P = currentP;\\n        frontEndSnapshots[_frontEnd].G = currentG;\\n        frontEndSnapshots[_frontEnd].scale = currentScaleCached;\\n        frontEndSnapshots[_frontEnd].epoch = currentEpochCached;\\n\\n        emit FrontEndSnapshotUpdated(_frontEnd, currentP, currentG);\\n    }*/\\n\\n    function _payOutSHADYGains(IIssuance _communityIssuance, address _depositor/*, address _frontEnd*/) internal {\\n        // Pay out front end's SHADY gain\\n        /*if (_frontEnd != address(0)) {\\n            uint frontEndSHADYGain = getFrontEndSHADYGain(_frontEnd);\\n            _communityIssuance.sendSHADY(_frontEnd, frontEndSHADYGain);\\n            emit SHADYPaidToFrontEnd(_frontEnd, frontEndSHADYGain);\\n        }*/\\n\\n        // Pay out depositor's SHADY gain\\n        uint depositorSHADYGain = getDepositorSHADYGain(_depositor);\\n        _communityIssuance.sendSHADY(_depositor, depositorSHADYGain);\\n        emit SHADYPaidToDepositor(_depositor, depositorSHADYGain);\\n    }\\n\\n    // --- 'require' functions ---\\n\\n    function _requireCallerIsActivePool() internal view {\\n        require( msg.sender == address(activePool), \\\"StabilityPool: Caller is not ActivePool\\\");\\n    }\\n\\n    function _requireCallerIsTroveManager() internal view {\\n        require(msg.sender == address(troveManager), \\\"StabilityPool: Caller is not TroveManager\\\");\\n    }\\n\\n    function _requireNoUnderCollateralizedTroves() internal {\\n        uint price = priceFeed.fetchPrice();\\n        address lowestTrove = sortedTroves.getLast();\\n        uint ICR = troveManager.getCurrentICR(lowestTrove, price);\\n        require(ICR >= MCR, \\\"StabilityPool: Cannot withdraw while there are troves with ICR < MCR\\\");\\n    }\\n\\n    function _requireUserHasDeposit(uint _initialDeposit) internal pure {\\n        require(_initialDeposit > 0, 'StabilityPool: User must have a non-zero deposit');\\n    }\\n\\n     /*function _requireUserHasNoDeposit(address _address) internal view {\\n        uint initialDeposit = deposits[_address].initialValue;\\n        require(initialDeposit == 0, 'StabilityPool: User must have no deposit');\\n    }*/\\n\\n    function _requireNonZeroAmount(uint _amount) internal pure {\\n        require(_amount > 0, 'StabilityPool: Amount must be non-zero');\\n    }\\n\\n    function _requireUserHasTrove(address _depositor) internal view {\\n        require(troveManager.getTroveStatus(_depositor) == 1, \\\"StabilityPool: caller must have an active trove to withdraw WSTETHGain to\\\");\\n    }\\n\\n    function _requireUserHasWSTETHGain(address _depositor) internal view {\\n        uint WSTETHGain = getDepositorWSTETHGain(_depositor);\\n        require(WSTETHGain > 0, \\\"StabilityPool: caller must have non-zero WSTETH Gain\\\");\\n    }\\n\\n    /*function _requireFrontEndNotRegistered(address _address) internal view {\\n        require(!frontEnds[_address].registered, \\\"StabilityPool: must not already be a registered front end\\\");\\n    }*/\\n\\n     /*function _requireFrontEndIsRegisteredOrZero(address _address) internal view {\\n        require(frontEnds[_address].registered || _address == address(0),\\n            \\\"StabilityPool: Tag must be a registered front end, or the zero address\\\");\\n    }*/\\n\\n    /*function  _requireValidKickbackRate(uint _kickbackRate) internal pure {\\n        require (_kickbackRate <= DECIMAL_PRECISION, \\\"StabilityPool: Kickback rate must be in range [0,1]\\\");\\n    }*/\\n}\\n\",\"keccak256\":\"0x68a96c6e31c07fb75da16ccd002e5b3caeb62740a2b2331512171f004aae4c02\",\"license\":\"MIT\"},\"contracts/dependencies/Base.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./BaseMath.sol\\\";\\nimport \\\"./LiquityMath.sol\\\";\\nimport \\\"../interfaces/IActivePool.sol\\\";\\nimport \\\"../interfaces/IDefaultPool.sol\\\";\\nimport \\\"../interfaces/IPriceFeed.sol\\\";\\nimport \\\"../interfaces/IBase.sol\\\";\\n\\n/* \\n* Base contract for TroveManager, BorrowerOperations and StabilityPool. Contains global system constants and\\n* common functions. \\n*/\\ncontract Base is BaseMath, IBase {\\n    uint constant public _100pct = 1000000000000000000; // 1e18 == 100%\\n\\n    // Minimum collateral ratio for individual troves\\n    uint constant public MCR = 1100000000000000000; // 110%\\n\\n    // Critical system collateral ratio. If the system's total collateral ratio (TCR) falls below the CCR, Recovery Mode is triggered.\\n    uint constant public CCR = 1500000000000000000; // 150%\\n\\n    // Amount of SIM to be locked in gas pool on opening troves\\n//    uint constant public SIM_GAS_COMPENSATION = 200e18;\\n\\n    // Minimum amount of net SIM debt a trove must have\\n    uint constant public MIN_NET_DEBT = 1e18; //1800e18;\\n    // uint constant public MIN_NET_DEBT = 0;\\n\\n    uint constant public PERCENT_DIVISOR = 200; // dividing by 200 yields 0.5%\\n\\n    uint constant public BORROWING_FEE_FLOOR = DECIMAL_PRECISION / 1000 * 5; // 0.5%\\n\\n    IActivePool public activePool;\\n\\n    IDefaultPool public defaultPool;\\n\\n    IPriceFeed public override priceFeed;\\n\\n    // --- Gas compensation functions ---\\n\\n    // Returns the composite debt (drawn debt + gas compensation) of a trove, for the purpose of ICR calculation\\n    function _getCompositeDebt(uint _debt) internal pure returns (uint) {\\n        return _debt/* + SIM_GAS_COMPENSATION*/;\\n    }\\n\\n    function _getNetDebt(uint _debt) internal pure returns (uint) {\\n        return _debt/* + SIM_GAS_COMPENSATION*/;\\n    }\\n\\n    // Return the amount of ETH to be drawn from a trove's collateral and sent as gas compensation.\\n    function _getCollGasCompensation(uint _entireColl) internal pure returns (uint) {\\n        return _entireColl / PERCENT_DIVISOR;\\n    }\\n\\n    function getEntireSystemColl() public view returns (uint entireSystemColl) {\\n        uint activeColl = activePool.getWSTETH();\\n        uint liquidatedColl = defaultPool.getWSTETH();\\n\\n        return activeColl + liquidatedColl;\\n    }\\n\\n    function getEntireSystemDebt() public view returns (uint entireSystemDebt) {\\n        uint activeDebt = activePool.getSIMDebt();\\n        uint closedDebt = defaultPool.getSIMDebt();\\n\\n        return activeDebt + closedDebt;\\n    }\\n\\n    function _getTCR(uint _price) internal view returns (uint TCR) {\\n        uint entireSystemColl = getEntireSystemColl();\\n        uint entireSystemDebt = getEntireSystemDebt();\\n\\n        TCR = LiquityMath._computeCR(entireSystemColl, entireSystemDebt, _price);\\n\\n        return TCR;\\n    }\\n\\n    function _checkRecoveryMode(uint _price) internal view returns (bool) {\\n        uint TCR = _getTCR(_price);\\n\\n        return TCR < CCR;\\n    }\\n\\n    function _requireUserAcceptsFee(uint _fee, uint _amount, uint _maxFeePercentage) internal pure {\\n        uint feePercentage = _fee * DECIMAL_PRECISION / _amount;\\n        require(feePercentage <= _maxFeePercentage, \\\"Fee exceeded provided maximum\\\");\\n    }\\n}\\n\",\"keccak256\":\"0xd7cf2fa10d9ddc2236b243d16b8ae22c9c8ec15aee73e4c9b4d3d4054c9ed604\",\"license\":\"MIT\"},\"contracts/dependencies/BaseMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ncontract BaseMath {\\n    uint constant public DECIMAL_PRECISION = 1e18;\\n}\\n\",\"keccak256\":\"0xfbd2340d208377996fc6305a28a939c849d7337e8fa1789e3130b73106de1d9f\",\"license\":\"MIT\"},\"contracts/dependencies/CheckContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ncontract CheckContract {\\n    /**\\n     * Check that the account is an already deployed non-destroyed contract.\\n     */\\n    function _checkContract(address account_) internal view {\\n        require(account_ != address(0), \\\"Account cannot be zero address\\\");\\n\\n        uint256 size;\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly { size := extcodesize(account_) }\\n        require(size > 0, \\\"Account code size cannot be zero\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x6282e853a7b31ee8bbbb4008869300bf900f7f43610f5b4be9499d40549b207a\",\"license\":\"MIT\"},\"contracts/dependencies/LiquityMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nlibrary LiquityMath {\\n    uint internal constant DECIMAL_PRECISION = 1e18;\\n\\n    /* Precision for Nominal ICR (independent of price). Rationale for the value:\\n     *\\n     * - Making it \\u201ctoo high\\u201d could lead to overflows.\\n     * - Making it \\u201ctoo low\\u201d could lead to an ICR equal to zero, due to truncation from Solidity floor division. \\n     *\\n     * This value of 1e20 is chosen for safety: the NICR will only overflow for numerator > ~1e39 ETH,\\n     * and will only truncate to 0 if the denominator is at least 1e20 times greater than the numerator.\\n     *\\n     */\\n    uint internal constant NICR_PRECISION = 1e20;\\n\\n    function _min(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a < _b) ? _a : _b;\\n    }\\n\\n    function _max(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a >= _b) ? _a : _b;\\n    }\\n\\n    /* \\n    * Multiply two decimal numbers and use normal rounding rules:\\n    * -round product up if 19'th mantissa digit >= 5\\n    * -round product down if 19'th mantissa digit < 5\\n    *\\n    * Used only inside the exponentiation, _decPow().\\n    */\\n    function decMul(uint x, uint y) internal pure returns (uint decProd) {\\n        uint prod_xy = x * y;\\n\\n        decProd = (prod_xy + DECIMAL_PRECISION / 2) / DECIMAL_PRECISION;\\n    }\\n\\n    /* \\n    * _decPow: Exponentiation function for 18-digit decimal base, and integer exponent n.\\n    * \\n    * Uses the efficient \\\"exponentiation by squaring\\\" algorithm. O(log(n)) complexity. \\n    * \\n    * Called by two functions that represent time in units of minutes:\\n    * 1) TroveManager._calcDecayedBaseRate\\n    * 2) CommunityIssuance._getCumulativeIssuanceFraction \\n    * \\n    * The exponent is capped to avoid reverting due to overflow. The cap 525600000 equals\\n    * \\\"minutes in 1000 years\\\": 60 * 24 * 365 * 1000\\n    * \\n    * If a period of > 1000 years is ever used as an exponent in either of the above functions, the result will be\\n    * negligibly different from just passing the cap, since: \\n    *\\n    * In function 1), the decayed base rate will be 0 for 1000 years or > 1000 years\\n    * In function 2), the difference in tokens issued at 1000 years and any time > 1000 years, will be negligible\\n    */\\n    function _decPow(uint _base, uint _minutes) internal pure returns (uint) {\\n        // cap to avoid overflow\\n        if (_minutes > 525600000) {\\n            _minutes = 525600000;\\n        }\\n    \\n        if (_minutes == 0) {return DECIMAL_PRECISION;}\\n\\n        uint y = DECIMAL_PRECISION;\\n        uint x = _base;\\n        uint n = _minutes;\\n\\n        // Exponentiation-by-squaring\\n        while (n > 1) {\\n            if (n % 2 == 0) {\\n                x = decMul(x, x);\\n                n = n / 2;\\n            } else { // if (n % 2 != 0)\\n                y = decMul(x, y);\\n                x = decMul(x, x);\\n                n = (n - 1) / 2;\\n            }\\n        }\\n\\n        return decMul(x, y);\\n  }\\n\\n    function _getAbsoluteDifference(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a >= _b) ? _a - _b : _b - _a;\\n    }\\n\\n    function _computeNominalCR(uint _coll, uint _debt) internal pure returns (uint) {\\n        if (_debt > 0) {\\n            return _coll * NICR_PRECISION / _debt;\\n        }\\n        // Return the maximal value for uint256 if the Trove has a debt of 0. Represents \\\"infinite\\\" CR.\\n        else { // if (_debt == 0)\\n            return 2**256 - 1;\\n        }\\n    }\\n\\n    function _computeCR(uint _coll, uint _debt, uint _price) internal pure returns (uint) {\\n        if (_debt > 0) {\\n            uint newCollRatio = _coll * _price / _debt;\\n            return newCollRatio;\\n        }\\n        // Return the maximal value for uint256 if the Trove has a debt of 0. Represents \\\"infinite\\\" CR.\\n        else { // if (_debt == 0)\\n            return 2**256 - 1; \\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xdb9ed155e8331948da867a6e089052dff0a667e25119ff602c6b88099f53b0ba\",\"license\":\"MIT\"},\"contracts/interfaces/IActivePool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IPool.sol\\\";\\n\\n\\ninterface IActivePool is IPool {\\n    // --- Events ---\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolSIMDebtUpdated(uint _SIMDebt);\\n    event ActivePoolWSTETHBalanceUpdated(uint _WSTETH);\\n\\n    // --- Functions ---\\n    function sendWSTETH(address _account, uint _amount) external;\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x43e7e6c53312584b369d356a350f2027530ad8c123cee37657b6f3d21cfcdfca\",\"license\":\"MIT\"},\"contracts/interfaces/IBase.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IPriceFeed.sol\\\";\\n\\n\\ninterface IBase {\\n    function priceFeed() external view returns (IPriceFeed);\\n}\\n\",\"keccak256\":\"0x861429b40d61dfeedf3166fd9fabe1f2864a6e335784228ad83041f9c889d7fd\",\"license\":\"MIT\"},\"contracts/interfaces/IBorrowerOperations.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n// Common interface for the Trove Manager.\\ninterface IBorrowerOperations {\\n\\n    // --- Events ---\\n\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolAddressChanged(address _activePoolAddress);\\n    event DefaultPoolAddressChanged(address _defaultPoolAddress);\\n    event StabilityPoolAddressChanged(address _stabilityPoolAddress);\\n    event GasPoolAddressChanged(address _gasPoolAddress);\\n    event CollSurplusPoolAddressChanged(address _collSurplusPoolAddress);\\n    event PriceFeedAddressChanged(address  _newPriceFeedAddress);\\n    event SortedTrovesAddressChanged(address _sortedTrovesAddress);\\n    event SIMTokenAddressChanged(address _simTokenAddress);\\n    event SimVeDistributorAddressChanged(address _VeAddress);\\n\\n    event TroveCreated(address indexed _borrower, uint arrayIndex);\\n    event TroveUpdated(address indexed _borrower, uint _debt, uint _coll, uint stake, uint8 operation);\\n    event SIMBorrowingFeePaid(address indexed _borrower, uint _SIMFee);\\n\\n    // --- Functions ---\\n\\n    function setAddresses(\\n        address _troveManagerAddress,\\n        address _activePoolAddress,\\n        address _defaultPoolAddress,\\n        address _stabilityPoolAddress,\\n        address _gasPoolAddress,\\n        address _collSurplusPoolAddress,\\n        address _priceFeedAddress,\\n        address _sortedTrovesAddress,\\n        address _simTokenAddress,\\n        address _shadyStakingAddress,\\n        address _feeReceiver\\n    ) external;\\n\\n    function openTrove(uint amount, uint _maxFee, uint _SIMAmount, address _upperHint, address _lowerHint) external payable;\\n\\n    function addColl(uint amount, address _upperHint, address _lowerHint) external;\\n\\n    function moveWSTETHGainToTrove(address _user, address _upperHint, address _lowerHint) external payable;\\n\\n    function withdrawColl(uint _amount, address _upperHint, address _lowerHint) external;\\n\\n    function withdrawSIM(uint _maxFee, uint _amount, address _upperHint, address _lowerHint) external;\\n\\n    function repaySIM(uint _amount, address _upperHint, address _lowerHint) external;\\n\\n    function closeTrove() external;\\n\\n    function adjustTrove(uint addColAmount, uint _maxFee, uint _collWithdrawal, uint _debtChange, bool isDebtIncrease, address _upperHint, address _lowerHint) external payable;\\n\\n    function claimCollateral() external;\\n\\n//    function getCompositeDebt(uint _debt) external pure returns (uint);\\n}\\n\",\"keccak256\":\"0x1220371f708d0426c2deeab7ffcee6fff03f951a38b6a1f0f183921e9d76932c\",\"license\":\"MIT\"},\"contracts/interfaces/IDefaultPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IPool.sol\\\";\\n\\n\\ninterface IDefaultPool is IPool {\\n    // --- Events ---\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event DefaultPoolSIMDebtUpdated(uint _SIMDebt);\\n    event DefaultPoolWSTETHBalanceUpdated(uint _WSTETH);\\n\\n    // --- Functions ---\\n    function sendWSTETHToActivePool(uint _amount) external;\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x6f5fa0dbd6ea671d127969b2b0c8369f5a32e917dac9fa2eb67aa23313036e9f\",\"license\":\"MIT\"},\"contracts/interfaces/IIssuance.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ninterface IIssuance {\\n    \\n    // --- Events ---\\n\\n    event SHADYTokenAddressSet(address _shadyTokenAddress);\\n    event StabilityPoolAddressSet(address _stabilityPoolAddress);\\n    event TotalSHADYIssuedUpdated(uint _totalSHADYIssued);\\n\\n    // --- Functions ---\\n\\n    function setAddresses(address shadyTokenAddress_, address stabilityPoolAddress_) external;\\n\\n    function issueSHADY() external returns (uint);\\n\\n    function sendSHADY(address account_, uint shadyAmount_) external;\\n}\\n\",\"keccak256\":\"0x9a439634f0ad04cf564b2b65adfe2bcd2dfe879da466a413535e92cf1377bf2d\",\"license\":\"MIT\"},\"contracts/interfaces/IPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n// Common interface for the Pools.\\ninterface IPool {\\n    \\n    // --- Events ---\\n    \\n    event WSTETHBalanceUpdated(uint _newBalance);\\n    event SIMBalanceUpdated(uint _newBalance);\\n    event WSTETHAddressChanged(address _newWSTETHAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n    event DefaultPoolAddressChanged(address _newDefaultPoolAddress);\\n    event StabilityPoolAddressChanged(address _newStabilityPoolAddress);\\n    event EtherSent(address _to, uint _amount);\\n\\n    // --- Functions ---\\n    \\n    function getWSTETH() external view returns (uint);\\n\\n    function getSIMDebt() external view returns (uint);\\n\\n    function increaseSIMDebt(uint _amount) external;\\n\\n    function decreaseSIMDebt(uint _amount) external;\\n}\\n\",\"keccak256\":\"0x75d5870d6307794574684881915ae899ba46f514e523f8672912ef908a1d1d85\",\"license\":\"MIT\"},\"contracts/interfaces/IPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ninterface IPriceFeed {\\n\\n    // --- Events ---\\n    event LastGoodPriceUpdated(uint _lastGoodPrice);\\n   \\n    // --- Function ---\\n    function fetchPrice() external returns (uint);\\n}\\n\",\"keccak256\":\"0xd48e100d585578b5eec065f625881aa4539745a125c8a7052481b75fbc934901\",\"license\":\"MIT\"},\"contracts/interfaces/ISHADYToken.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol\\\";\\n\\ninterface ISHADYToken is IERC20, IERC20Permit {\\n    // --- Events ---\\n\\n    event CommunityIssuanceAddressSet(address communityIssuanceAddress);\\n    event VeAddressSet(address veAddress);\\n    event LockupContractFactoryAddressSet(address lockupContractFactoryAddress);\\n\\n    // --- Functions ---\\n\\n    function getDeploymentStartTime() external view returns (uint);\\n}\\n\",\"keccak256\":\"0x0bbd59d283d2bb3fe7e414bf7b72803221212720bd012f56d585470781e3b662\",\"license\":\"MIT\"},\"contracts/interfaces/ISIMToken.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/token/ERC20/IERC20.sol\\\";\\nimport \\\"@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol\\\";\\n\\ninterface ISIMToken is IERC20, IERC20Permit {\\n    // --- Events ---\\n\\n    event TroveManagerAddressChanged(address troveManagerAddress);\\n    event StabilityPoolAddressChanged(address newStabilityPoolAddress);\\n    event BorrowerOperationsAddressChanged(address newBorrowerOperationsAddress);\\n    event LUSDTokenBalanceUpdated(address user, uint amount);\\n\\n    // --- Functions ---\\n\\n    function mint(address account_, uint256 amount_) external;\\n\\n    function burn(address account_, uint256 amount_) external;\\n\\n    function sendToPool(address sender_, address poolAddress, uint256 amount_) external;\\n\\n    function returnFromPool(address poolAddress, address user, uint256 amount_) external;\\n}\\n\",\"keccak256\":\"0x295a4dba127380ef6b9ca9a3b9cbb762d10d6288a82e569bbdb562315f45656b\",\"license\":\"MIT\"},\"contracts/interfaces/ISortedTroves.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\n// Common interface for the SortedTroves Doubly Linked List.\\ninterface ISortedTroves {\\n\\n    // --- Events ---\\n\\n    event TroveManagerAddressChanged(address _troveManagerAddress);\\n    event SortedTrovesAddressChanged(address _sortedDoublyLLAddress);\\n    event BorrowerOperationsAddressChanged(address _borrowerOperationsAddress);\\n    event NodeAdded(address _id, uint _NICR);\\n    event NodeRemoved(address _id);\\n\\n    // --- Functions ---\\n    \\n    function setParams(uint256 _size, address _TroveManagerAddress, address _borrowerOperationsAddress) external;\\n\\n    function insert(address _id, uint256 _ICR, address _prevId, address _nextId) external;\\n\\n    function remove(address _id) external;\\n\\n    function reInsert(address _id, uint256 _newICR, address _prevId, address _nextId) external;\\n\\n    function contains(address _id) external view returns (bool);\\n\\n    function isFull() external view returns (bool);\\n\\n    function isEmpty() external view returns (bool);\\n\\n    function getSize() external view returns (uint256);\\n\\n    function getMaxSize() external view returns (uint256);\\n\\n    function getFirst() external view returns (address);\\n\\n    function getLast() external view returns (address);\\n\\n    function getNext(address _id) external view returns (address);\\n\\n    function getPrev(address _id) external view returns (address);\\n\\n    function validInsertPosition(uint256 _ICR, address _prevId, address _nextId) external view returns (bool);\\n\\n    function findInsertPosition(uint256 _ICR, address _prevId, address _nextId) external view returns (address, address);\\n}\\n\",\"keccak256\":\"0x79acb39627952e016fbf3ecd352a88bc662817f62f76357b6c737ee316949302\",\"license\":\"MIT\"},\"contracts/interfaces/IStabilityPool.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/*\\n * The Stability Pool holds SIM tokens deposited by Stability Pool depositors.\\n *\\n * When a trove is liquidated, then depending on system conditions, some of its SIM debt gets offset with\\n * SIM in the Stability Pool:  that is, the offset debt evaporates, and an equal amount of SIM tokens in the Stability Pool is burned.\\n *\\n * Thus, a liquidation causes each depositor to receive a SIM loss, in proportion to their deposit as a share of total deposits.\\n * They also receive an WSTETH gain, as the WSTETH collateral of the liquidated trove is distributed among Stability depositors,\\n * in the same proportion.\\n *\\n * When a liquidation occurs, it depletes every deposit by the same fraction: for example, a liquidation that depletes 40%\\n * of the total SIM in the Stability Pool, depletes 40% of each deposit.\\n *\\n * A deposit that has experienced a series of liquidations is termed a \\\"compounded deposit\\\": each liquidation depletes the deposit,\\n * multiplying it by some factor in range ]0,1[\\n *\\n * Please see the implementation spec in the proof document, which closely follows on from the compounded deposit / WSTETH gain derivations:\\n * https://github.com/liquity/liquity/blob/master/papers/Scalable_Reward_Distribution_with_Compounding_Stakes.pdf\\n *\\n * --- SHADY ISSUANCE TO STABILITY POOL DEPOSITORS ---\\n *\\n * An SHADY issuance event occurs at every deposit operation, and every liquidation.\\n *\\n * Each deposit is tagged with the address of the front end through which it was made.\\n *\\n * All deposits earn a share of the issued SHADY in proportion to the deposit as a share of total deposits. The SHADY earned\\n * by a given deposit, is split between the depositor and the front end through which the deposit was made, based on the front end's kickbackRate.\\n *\\n * Please see the system Readme for an overview:\\n * https://github.com/liquity/dev/blob/main/README.md#lqty-issuance-to-stability-providers\\n */\\ninterface IStabilityPool {\\n\\n    // --- Events ---\\n    \\n    event StabilityPoolWSTETHBalanceUpdated(uint _newBalance);\\n    event StabilityPoolSIMBalanceUpdated(uint _newBalance);\\n\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event TroveManagerAddressChanged(address _newTroveManagerAddress);\\n    event ActivePoolAddressChanged(address _newActivePoolAddress);\\n    event DefaultPoolAddressChanged(address _newDefaultPoolAddress);\\n    event SIMTokenAddressChanged(address _newSIMTokenAddress);\\n    event SortedTrovesAddressChanged(address _newSortedTrovesAddress);\\n    event PriceFeedAddressChanged(address _newPriceFeedAddress);\\n    event CommunityIssuanceAddressChanged(address _newCommunityIssuanceAddress);\\n\\n    event P_Updated(uint _P);\\n    event S_Updated(uint _S, uint128 _epoch, uint128 _scale);\\n    event G_Updated(uint _G, uint128 _epoch, uint128 _scale);\\n    event EpochUpdated(uint128 _currentEpoch);\\n    event ScaleUpdated(uint128 _currentScale);\\n\\n    event FrontEndRegistered(address indexed _frontEnd, uint _kickbackRate);\\n    event FrontEndTagSet(address indexed _depositor, address indexed _frontEnd);\\n\\n    event DepositSnapshotUpdated(address indexed _depositor, uint _P, uint _S, uint _G);\\n    event FrontEndSnapshotUpdated(address indexed _frontEnd, uint _P, uint _G);\\n    event UserDepositChanged(address indexed _depositor, uint _newDeposit);\\n    event FrontEndStakeChanged(address indexed _frontEnd, uint _newFrontEndStake, address _depositor);\\n\\n    event WSTETHGainWithdrawn(address indexed _depositor, uint _WSTETH, uint _SIMLoss);\\n    event SHADYPaidToDepositor(address indexed _depositor, uint _SHADY);\\n    event SHADYPaidToFrontEnd(address indexed _frontEnd, uint _SHADY);\\n    event WSTETHSent(address _to, uint _amount);\\n\\n    // --- Functions ---\\n\\n    /*\\n     * Called only once on init, to set addresses of other SIM contracts\\n     * Callable only by owner, renounces ownership at the end\\n     */\\n    function setAddresses(\\n        address _WSTETHAddress,\\n        address _borrowerOperationsAddress,\\n        address _troveManagerAddress,\\n        address _activePoolAddress,\\n        address _SIMTokenAddress,\\n        address _sortedTrovesAddress,\\n        address _priceFeedAddress,\\n        address _communityIssuanceAddress\\n    ) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Frontend is registered or zero address\\n     * - Sender is not a registered frontend\\n     * - _amount is not zero\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Tags the deposit with the provided front end tag param, if it's a new deposit\\n     * - Sends depositor's accumulated gains (SHADY, WSTETH) to depositor\\n     * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n     * - Increases deposit and tagged front end's stake, and takes new snapshots for each.\\n     */\\n    function provideToSP(uint _amount, address _frontEndTag) external;\\n\\n    /*\\n     * Initial checks:\\n     * - _amount is zero or there are no under collateralized troves left in the system\\n     * - User has a non zero deposit\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Removes the deposit's front end tag if it is a full withdrawal\\n     * - Sends all depositor's accumulated gains (SHADY, WSTETH) to depositor\\n     * - Sends the tagged front end's accumulated SHADY gains to the tagged front end\\n     * - Decreases deposit and tagged front end's stake, and takes new snapshots for each.\\n     *\\n     * If _amount > userDeposit, the user withdraws all of their compounded deposit.\\n     */\\n    function withdrawFromSP(uint _amount) external;\\n\\n    /*\\n     * Initial checks:\\n     * - User has a non zero deposit\\n     * - User has an open trove\\n     * - User has some WSTETH gain\\n     * ---\\n     * - Triggers a SHADY issuance, based on time passed since the last issuance. The SHADY issuance is shared between *all* depositors and front ends\\n     * - Sends all depositor's SHADY gain to  depositor\\n     * - Sends all tagged front end's SHADY gain to the tagged front end\\n     * - Transfers the depositor's entire WSTETH gain from the Stability Pool to the caller's trove\\n     * - Leaves their compounded deposit in the Stability Pool\\n     * - Updates snapshots for deposit and tagged front end stake\\n     */\\n    function withdrawWSTETHGainToTrove(address _upperHint, address _lowerHint) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Frontend (sender) not already registered\\n     * - User (sender) has no deposit\\n     * - _kickbackRate is in the range [0, 100%]\\n     * ---\\n     * Front end makes a one-time selection of kickback rate upon registering\\n     */\\n//    function registerFrontEnd(uint _kickbackRate) external;\\n\\n    /*\\n     * Initial checks:\\n     * - Caller is TroveManager\\n     * ---\\n     * Cancels out the specified debt against the SIM contained in the Stability Pool (as far as possible)\\n     * and transfers the Trove's WSTETH collateral from ActivePool to StabilityPool.\\n     * Only called by liquidation functions in the TroveManager.\\n     */\\n    function offset(uint _debt, uint _coll) external;\\n\\n    /*\\n     * Returns the total amount of WSTETH held by the pool, accounted in an internal variable instead of `balance`,\\n     * to exclude edge cases like WSTETH received from a self-destruct.\\n     */\\n    function getWSTETH() external view returns (uint);\\n\\n    /*\\n     * Returns SIM held in the pool. Changes when users deposit/withdraw, and when Trove debt is offset.\\n     */\\n    function getTotalSIMDeposits() external view returns (uint);\\n\\n    /*\\n     * Calculates the WSTETH gain earned by the deposit since its last snapshots were taken.\\n     */\\n    function getDepositorWSTETHGain(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Calculate the SHADY gain earned by a deposit since its last snapshots were taken.\\n     * If not tagged with a front end, the depositor gets a 100% cut of what their deposit earned.\\n     * Otherwise, their cut of the deposit's earnings is equal to the kickbackRate, set by the front end through\\n     * which they made their deposit.\\n     */\\n    function getDepositorSHADYGain(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Return the SHADY gain earned by the front end.\\n     */\\n//    function getFrontEndSHADYGain(address _frontEnd) external view returns (uint);\\n\\n    /*\\n     * Return the user's compounded deposit.\\n     */\\n    function getCompoundedSIMDeposit(address _depositor) external view returns (uint);\\n\\n    /*\\n     * Return the front end's compounded stake.\\n     *\\n     * The front end's compounded stake is equal to the sum of its depositors' compounded deposits.\\n     */\\n//    function getCompoundedFrontEndStake(address _frontEnd) external view returns (uint);\\n\\n    /*\\n     * Fallback function\\n     * Only callable by Active Pool, it just accounts for WSTETH received\\n     * receive() external payable;\\n     */\\n    function receiveWSTETH(uint amount) external;\\n}\\n\",\"keccak256\":\"0x0e50659b56f98d22a2f9b9e373f1c4bee798060f6ca989ecea823628d39d99fb\",\"license\":\"MIT\"},\"contracts/interfaces/ITroveManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"./IBase.sol\\\";\\nimport \\\"./IStabilityPool.sol\\\";\\nimport \\\"./ISIMToken.sol\\\";\\nimport \\\"./ISHADYToken.sol\\\";\\nimport \\\"./IVe.sol\\\";\\n\\n\\n// Common interface for the Trove Manager.\\ninterface ITroveManager is IBase {\\n    \\n    // --- Events ---\\n\\n    event BorrowerOperationsAddressChanged(address _newBorrowerOperationsAddress);\\n    event PriceFeedAddressChanged(address _newPriceFeedAddress);\\n    event SIMTokenAddressChanged(address _newSIMTokenAddress);\\n    event ActivePoolAddressChanged(address _activePoolAddress);\\n    event DefaultPoolAddressChanged(address _defaultPoolAddress);\\n    event StabilityPoolAddressChanged(address _stabilityPoolAddress);\\n//    event GasPoolAddressChanged(address _gasPoolAddress);\\n    event CollSurplusPoolAddressChanged(address _collSurplusPoolAddress);\\n    event SortedTrovesAddressChanged(address _sortedTrovesAddress);\\n    event SHADYTokenAddressChanged(address _shadyTokenAddress);\\n    event WSTETHVeDistibutorAddressChanged(address _shadyStakingAddress);\\n\\n    event Liquidation(uint _liquidatedDebt, uint _liquidatedColl, uint _collGasCompensation/*, uint _SIMGasCompensation*/);\\n    event Redemption(uint _attemptedSIMAmount, uint _actualSIMAmount, uint _WSTETHSent, uint _WSTETHFee);\\n    event TroveUpdated(address indexed _borrower, uint _debt, uint _coll, uint stake, uint8 operation);\\n    event TroveLiquidated(address indexed _borrower, uint _debt, uint _coll, uint8 operation);\\n    event BaseRateUpdated(uint _baseRate);\\n    event LastFeeOpTimeUpdated(uint _lastFeeOpTime);\\n    event TotalStakesUpdated(uint _newTotalStakes);\\n    event SystemSnapshotsUpdated(uint _totalStakesSnapshot, uint _totalCollateralSnapshot);\\n    event LTermsUpdated(uint _L_WSTETH, uint _L_SIMDebt);\\n    event TroveSnapshotsUpdated(uint _L_WSTETH, uint _L_SIMDebt);\\n    event TroveIndexUpdated(address _borrower, uint _newIndex);\\n\\n    // --- Functions ---\\n\\n    function setAddresses(\\n        address _borrowerOperationsAddress,\\n        address _activePoolAddress,\\n        address _defaultPoolAddress,\\n        address _stabilityPoolAddress,\\n//        address _gasPoolAddress,\\n        address _collSurplusPoolAddress,\\n        address _priceFeedAddress,\\n        address _simTokenAddress,\\n        address _sortedTrovesAddress,\\n        address _shadyTokenAddress,\\n        address _veAddress\\n    ) external;\\n\\n    function stabilityPool() external view returns (IStabilityPool);\\n    function simToken() external view returns (ISIMToken);\\n    function shadyToken() external view returns (ISHADYToken);\\n    function wstETHVeDistributor() external view returns (address);\\n\\n    function getTroveOwnersCount() external view returns (uint);\\n\\n    function getTroveFromTroveOwnersArray(uint _index) external view returns (address);\\n\\n    function getNominalICR(address _borrower) external view returns (uint);\\n    function getCurrentICR(address _borrower, uint _price) external view returns (uint);\\n\\n    function liquidate(address _borrower) external;\\n\\n    function liquidateTroves(uint _n) external;\\n\\n    function batchLiquidateTroves(address[] calldata _troveArray) external;\\n\\n    function redeemCollateral(\\n        uint _SIMAmount,\\n        address _firstRedemptionHint,\\n        address _upperPartialRedemptionHint,\\n        address _lowerPartialRedemptionHint,\\n        uint _partialRedemptionHintNICR,\\n        uint _maxIterations,\\n        uint _maxFee\\n    ) external;\\n\\n    function updateStakeAndTotalStakes(address _borrower) external returns (uint);\\n\\n    function updateTroveRewardSnapshots(address _borrower) external;\\n\\n    function addTroveOwnerToArray(address _borrower) external returns (uint index);\\n\\n    function applyPendingRewards(address _borrower) external;\\n\\n    function getPendingWSTETHReward(address _borrower) external view returns (uint);\\n\\n    function getPendingSIMDebtReward(address _borrower) external view returns (uint);\\n\\n     function hasPendingRewards(address _borrower) external view returns (bool);\\n\\n    function getEntireDebtAndColl(address _borrower) external view returns (\\n        uint debt,\\n        uint coll,\\n        uint pendingSIMDebtReward,\\n        uint pendingWSTETHReward\\n    );\\n\\n    function closeTrove(address _borrower) external;\\n\\n    function removeStake(address _borrower) external;\\n\\n    function getRedemptionRate() external view returns (uint);\\n    function getRedemptionRateWithDecay() external view returns (uint);\\n\\n    function getRedemptionFeeWithDecay(uint _WSTETHDrawn) external view returns (uint);\\n\\n    function getBorrowingRate() external view returns (uint);\\n    function getBorrowingRateWithDecay() external view returns (uint);\\n\\n    function getBorrowingFee(uint SIMDebt) external view returns (uint);\\n    function getBorrowingFeeWithDecay(uint _SIMDebt) external view returns (uint);\\n\\n    function decayBaseRateFromBorrowing() external;\\n\\n    function getTroveStatus(address _borrower) external view returns (uint);\\n    \\n    function getTroveStake(address _borrower) external view returns (uint);\\n\\n    function getTroveDebt(address _borrower) external view returns (uint);\\n\\n    function getTroveColl(address _borrower) external view returns (uint);\\n\\n    function setTroveStatus(address _borrower, uint num) external;\\n\\n    function increaseTroveColl(address _borrower, uint _collIncrease) external returns (uint);\\n\\n    function decreaseTroveColl(address _borrower, uint _collDecrease) external returns (uint); \\n\\n    function increaseTroveDebt(address _borrower, uint _debtIncrease) external returns (uint); \\n\\n    function decreaseTroveDebt(address _borrower, uint _collDecrease) external returns (uint); \\n\\n    function getTCR(uint _price) external view returns (uint);\\n\\n    function checkRecoveryMode(uint _price) external view returns (bool);\\n}\\n\",\"keccak256\":\"0x5437efa603b786cef94bc696b61ae9710570ea8feee29603f2e5efe83f9eab91\",\"license\":\"MIT\"},\"contracts/interfaces/IVe.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ninterface IVe {\\n    enum DepositType {\\n        DEPOSIT_FOR_TYPE,\\n        CREATE_LOCK_TYPE,\\n        INCREASE_LOCK_AMOUNT,\\n        INCREASE_UNLOCK_TIME,\\n        MERGE_TYPE\\n    }\\n\\n    struct Point {\\n        int128 bias;\\n        int128 slope; // # -dweight / dt\\n        uint ts;\\n        uint blk; // block\\n    }\\n\\n//    function increaseF_WSTETH(uint _WSTETHFee) external;\\n\\n//    function increaseF_SIM(uint _SIMFee) external;\\n\\n    function lockedAmounts(uint veId, address stakingToken) external view returns (uint);\\n\\n    function lockedDerivedAmount(uint veId) external view returns (uint);\\n\\n    function lockedEnd(uint veId) external view returns (uint);\\n\\n    function tokens(uint idx) external view returns (address);\\n\\n    function balanceOfNFT(uint) external view returns (uint);\\n\\n    function isApprovedOrOwner(address, uint) external view returns (bool);\\n\\n    function createLockFor(address _token, uint _value, uint _lockDuration, address _to) external returns (uint);\\n\\n    function userPointEpoch(uint tokenId) external view returns (uint);\\n\\n    function epoch() external view returns (uint);\\n\\n    function userPointHistory(uint tokenId, uint loc) external view returns (Point memory);\\n\\n    function pointHistory(uint loc) external view returns (Point memory);\\n\\n    function checkpoint() external;\\n\\n    function increaseAmount(address _token, uint _tokenId, uint _value) external;\\n\\n    function totalSupplyAt(uint _block) external view returns (uint);\\n}\",\"keccak256\":\"0x925d70778879890862a50bff1f150b79ad160ab7fd5549addf748b978b5628d8\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052670de0b6b3a7640000600e5534801561001c57600080fd5b506100263361002b565b61007d565b600380546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b6129d58061008c6000396000f3fe608060405234801561001057600080fd5b50600436106102745760003560e01c80637f7dde4a11610151578063a3f4df7e116100c3578063d540f25011610087578063d540f250146105a6578063d733cfd0146105b9578063dbb0c61a146105cc578063f2fde38b146105df578063f92d3433146105f2578063fc7e286d146105fa57600080fd5b8063a3f4df7e14610529578063a4e59ac814610562578063ae91875414610575578063ce4b5bbe14610588578063d3d6b2381461059357600080fd5b8063887105d311610115578063887105d3146104e15780638b8fbd92146104e95780638da5cb5b146104f257806395fb16bb146105035780639a6ec10a14610516578063a20baee61461027957600080fd5b80637f7dde4a146104165780637f9be6871461042957806382e0a57414610431578063864069e41461045c57806386da08241461046457600080fd5b80635f788d65116101ea578063741bef1a116101ae578063741bef1a1461039e57806376671808146103b157806377553ad4146103e35780637884eabf146103f6578063794e5724146103ff578063795d26c31461040e57600080fd5b80635f788d65146103675780636cce4c891461037a578063715018a61461038357806372fe25aa1461027957806374120d0d1461038b57600080fd5b80633cc742251161023c5780633cc74225146103015780633d83908a146103215780634870dd9a146103345780635617c5c71461033c5780635733d58f1461034f5780635d99aaa81461035e57600080fd5b80631bf435551461027957806327911ce41461029b57806328a0a04d146102ae5780632e54bf95146102d9578063335525ad146102ee575b600080fd5b610288670de0b6b3a764000081565b6040519081526020015b60405180910390f35b6102886102a93660046125c8565b610647565b6102886102bc366004612601565b601060209081526000928352604080842090915290825290205481565b6102ec6102e7366004612634565b6106e5565b005b6102ec6102fc36600461264d565b6107e2565b600154610314906001600160a01b031681565b604051610292919061266f565b600654610314906001600160a01b031681565b61028860c881565b600454610314906001600160a01b031681565b6102886714d1120d7b16000081565b61028860135481565b6102ec610375366004612683565b610844565b61028860125481565b6102ec61091b565b6102886103993660046125c8565b61092f565b600254610314906001600160a01b031681565b600f546103cb90600160801b90046001600160801b031681565b6040516001600160801b039091168152602001610292565b600554610314906001600160a01b031681565b61028860145481565b610288670f43fc2c04ee000081565b6102886109c4565b600054610314906001600160a01b031681565b600b54610288565b61028861043f366004612601565b601160209081526000928352604080842090915290825290205481565b600a54610288565b6104ad6104723660046125c8565b600d602052600090815260409020805460018201546002830154600390930154919290916001600160801b0380821691600160801b90041685565b604080519586526020860194909452928401919091526001600160801b03908116606084015216608082015260a001610292565b610288610ac0565b610288600e5481565b6003546001600160a01b0316610314565b600954610314906001600160a01b031681565b6102886105243660046125c8565b610b85565b6105556040518060400160405280600d81526020016c14dd18589a5b1a5d1e541bdbdb609a1b81525081565b60405161029291906126b3565b600f546103cb906001600160801b031681565b600854610314906001600160a01b031681565b610288633b9aca0081565b6102ec6105a1366004612701565b610c42565b600754610314906001600160a01b031681565b6102ec6105c736600461272f565b610e74565b6102ec6105da366004612634565b6110c8565b6102ec6105ed3660046125c8565b61110e565b61028861118c565b61062a6106083660046125c8565b600c60205260009081526040902080546001909101546001600160a01b031682565b604080519283526001600160a01b03909116602083015201610292565b6001600160a01b0381166000908152600c60205260408120548082036106705750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152906106dc83836111ae565b95945050505050565b80156106f3576106f3611296565b336000908152600c602052604090205461070c8161148c565b6009546001600160a01b0316610721816114f5565b600061072c33610647565b905060006107393361092f565b90506000610747868361156a565b9050600061075583876127ee565b90506107618533611582565b61076b3383611638565b600061077783856127ee565b905061078333826116b3565b60405181815233906000805160206129608339815191529060200160405180910390a260408051868152602081018490523391600080516020612940833981519152910160405180910390a26107d885611816565b5050505050505050565b6107ea611910565b600b548015806107f8575082155b1561080257505050565b600954610817906001600160a01b03166114f5565b60008061082584868561197c565b915091506108338282611a51565b61083d8486611d2a565b5050505050565b61084d82611e5c565b336000908152600c60205260409020546009546001600160a01b0316610872816114f5565b600061087d33610647565b9050600061088a3361092f565b9050600061089882866127ee565b90506108a48433611582565b6108ae3388611ebb565b60006108ba8884612801565b90506108c633826116b3565b60405181815233906000805160206129608339815191529060200160405180910390a260408051858152602081018490523391600080516020612940833981519152910160405180910390a26107d884611816565b610923611f71565b61092d6000611fcb565b565b6001600160a01b0381166000908152600c60205260408120548082036109585750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152906106dc838361201d565b600080546040805163c7662fa560e01b8152905183926001600160a01b03169163c7662fa59160048083019260209291908290030181865afa158015610a0e573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a329190612814565b90506000600160009054906101000a90046001600160a01b03166001600160a01b031663c7662fa56040518163ffffffff1660e01b8152600401602060405180830381865afa158015610a89573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610aad9190612814565b9050610ab98183612801565b9250505090565b60008054604080516321901a7960e21b8152905183926001600160a01b03169163864069e49160048083019260209291908290030181865afa158015610b0a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b2e9190612814565b90506000600160009054906101000a90046001600160a01b03166001600160a01b031663864069e46040518163ffffffff1660e01b8152600401602060405180830381865afa158015610a89573d6000803e3d6000fd5b6001600160a01b0381166000908152600c6020526040812054808203610bae5750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152670de0b6b3a76400009182610c24858461210d565b610c2e908561282d565b610c389190612844565b9695505050505050565b336000908152600c6020526040902054610c5b8161148c565b610c6433612185565b610c6d3361227d565b6009546001600160a01b0316610c82816114f5565b6000610c8d33610647565b90506000610c9a3361092f565b90506000610ca882866127ee565b9050610cb48433611582565b610cbe33836116b3565b60408051848152602081018390523391600080516020612940833981519152910160405180910390a260405182815233906000805160206129608339815191529060200160405180910390a282600a6000828254610d1c91906127ee565b9091555050600a546040519081526000805160206129808339815191529060200160405180910390a17ff20b16d543af92c697dee44db5345454068c1fffc7d371ebcc767da894b82b1b3384604051610d76929190612866565b60405180910390a16004805460055460405163a9059cbb60e01b81526001600160a01b039283169363a9059cbb93610db2931691889101612866565b6020604051808303816000875af1158015610dd1573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610df5919061287f565b610dfe57600080fd5b60055460405163023db76b60e31b81523360048201526001600160a01b0389811660248301528881166044830152909116906311edbb5890606401600060405180830381600087803b158015610e5357600080fd5b505af1158015610e67573d6000803e3d6000fd5b5050505050505050505050565b610e7c611f71565b610e85886122f7565b610e8e876122f7565b610e97866122f7565b610ea0856122f7565b610ea9846122f7565b610eb2836122f7565b610ebb826122f7565b610ec4816122f7565b600480546001600160a01b03199081166001600160a01b038b8116919091179092556005805482168a8416179055600680548216898416179055600080548216888416179055600780548216878416179055600880548216868416179055600280548216858416179055600980549091169183169190911790556040517f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed98590610f6e90899061266f565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a567886604051610fa5919061266f565b60405180910390a17f78f058b189175430c48dc02699e3a0031ea4ff781536dc2fab847de4babdd88285604051610fdc919061266f565b60405180910390a17f522d83e1b4d0586985996a5a2f3987e11187efba22d8ee8b185af633301082af84604051611013919061266f565b60405180910390a17f65f4cf077bc01e4742eb5ad98326f6e95b63548ea24b17f8d5e823111fe788008360405161104a919061266f565b60405180910390a17f8c537274438aa850a330284665d81a85dd38267d09e4050d416bfc94142db26482604051611081919061266f565b60405180910390a17f3055265812fb8447b9ada4a5d804ec43bd528ec40e89c952bbc7b85dc5ac6811816040516110b8919061266f565b60405180910390a16107d861091b565b6110d061239c565b80600a60008282546110e29190612801565b9091555050600a546040519081526000805160206129808339815191529060200160405180910390a150565b611116611f71565b6001600160a01b0381166111805760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b61118981611fcb565b50565b6111a06103e8670de0b6b3a7640000612844565b6111ab90600561282d565b81565b6080810151606082015182516020808501516001600160801b038086166000908152601084526040808220928716825291909352822054919493929185906111f79084906127ee565b6001600160801b038616600090815260106020526040812091925090633b9aca0090826112258860016128a1565b6001600160801b03166001600160801b03168152602001908152602001600020546112509190612844565b90506000670de0b6b3a7640000846112688486612801565b611272908d61282d565b61127c9190612844565b6112869190612844565b9750505050505050505b92915050565b60025460408051630fdb11cf60e01b815290516000926001600160a01b031691630fdb11cf916004808301926020929190829003018187875af11580156112e1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113059190612814565b90506000600860009054906101000a90046001600160a01b03166001600160a01b0316634d6228316040518163ffffffff1660e01b8152600401602060405180830381865afa15801561135c573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061138091906128c8565b600654604051630d293c7160e41b81529192506000916001600160a01b039091169063d293c710906113b89085908790600401612866565b602060405180830381865afa1580156113d5573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113f99190612814565b9050670f43fc2c04ee00008110156114875760405162461bcd60e51b8152602060048201526044602482018190527f53746162696c697479506f6f6c3a2043616e6e6f742077697468647261772077908201527f68696c65207468657265206172652074726f766573207769746820494352203c6064820152631026a1a960e11b608482015260a401611177565b505050565b600081116111895760405162461bcd60e51b815260206004820152603060248201527f53746162696c697479506f6f6c3a2055736572206d757374206861766520612060448201526f1b9bdb8b5e995c9bc819195c1bdcda5d60821b6064820152608401611177565b6000816001600160a01b031663586653e16040518163ffffffff1660e01b81526004016020604051808303816000875af1158015611537573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061155b9190612814565b905061156681612406565b5050565b6000818310611579578161157b565b825b9392505050565b600061158d82610b85565b60405163602820c160e11b81529091506001600160a01b0384169063c0504182906115be9085908590600401612866565b600060405180830381600087803b1580156115d857600080fd5b505af11580156115ec573d6000803e3d6000fd5b50505050816001600160a01b03167f3e278324444258dcdfa19e5252aeb99227e0f9992625af636bd7d24c19765fce8260405161162b91815260200190565b60405180910390a2505050565b80600003611644575050565b600754604051631062c15f60e11b81526001600160a01b03909116906320c582be90611678903090869086906004016128e5565b600060405180830381600087803b15801561169257600080fd5b505af11580156116a6573d6000803e3d6000fd5b5050505061156681612511565b6001600160a01b0382166000908152600c60205260408120829055819003611749576001600160a01b0382166000818152600d60209081526040808320838155600181018490556002810184905560030183905580518381529182018390528101919091527f2d6cc0bcdf72c9486f6451bde6b80f44066f4558f77f44dbfedbe7d8b295225a9060600160405180910390a25050565b600f54600e546001600160801b03600160801b808404821660008181526010602090815260408083209590971680835294815286822054838352601182528783208684528252878320546001600160a01b038b16808552600d84529389902060018101899055828155600281018290559585028717600390960195909555875187815291820181905296810184905293959194939192917f2d6cc0bcdf72c9486f6451bde6b80f44066f4558f77f44dbfedbe7d8b295225a9060600160405180910390a250505050505050565b806000036118215750565b600081600a5461183191906127ee565b600a8190556040518181529091506000805160206129808339815191529060200160405180910390a17ff20b16d543af92c697dee44db5345454068c1fffc7d371ebcc767da894b82b1b338360405161188b929190612866565b60405180910390a16004805460405163a9059cbb60e01b81526001600160a01b039091169163a9059cbb916118c4913391879101612866565b6020604051808303816000875af11580156118e3573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611907919061287f565b61156657600080fd5b6006546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820152602960248201527f53746162696c697479506f6f6c3a2043616c6c6572206973206e6f742054726f6044820152683b32a6b0b730b3b2b960b91b6064820152608401611177565b6000806000601354670de0b6b3a764000087611998919061282d565b6119a29190612801565b9050838511156119b4576119b4612909565b8385036119d0576000601455670de0b6b3a76400009150611a25565b6014546000906119e8670de0b6b3a76400008861282d565b6119f291906127ee565b90506119fe8582612844565b611a09906001612801565b925080611a16868561282d565b611a2091906127ee565b601455505b611a2f8482612844565b9250611a3b848461282d565b611a4590826127ee565b60135550935093915050565b600e546000670de0b6b3a7640000831115611a6e57611a6e612909565b6000611a8284670de0b6b3a76400006127ee565b600f546001600160801b03600160801b820481166000818152601060209081526040808320949095168083529390529283205493945090929091611ac6878a61282d565b90506000611ad48284612801565b6001600160801b038581166000818152601060209081526040808320948b16808452948252918290208590558151858152908101929092528101919091529091507fe12e2cd2c9afa8069203ca07e7eff1edce4a075686d0736a8e7e0d593597b2079060600160405180910390a185600003611bfe57611b558460016128a1565b600f80546001600160801b03908116600160801b93821684021791829055604051929091041681527fb50f0f59e7cb5b421dc77581c3a9919e3806e076e5fa78a874c3f120cb7d874d9060200160405180910390a1600f80546001600160801b0319169055604051600081527f1f9dfc70cd666adb18a39d60a797518f7b4febf4b6e24ef37d44f6e1e7219fbe9060200160405180910390a1670de0b6b3a76400009650611cd6565b633b9aca00670de0b6b3a7640000611c16888b61282d565b611c209190612844565b1015611cb657670de0b6b3a7640000633b9aca00611c3e888b61282d565b611c48919061282d565b611c529190612844565b9650611c5f8560016128a1565b600f80546001600160801b0319166001600160801b039290921691821790556040519081527f1f9dfc70cd666adb18a39d60a797518f7b4febf4b6e24ef37d44f6e1e7219fbe9060200160405180910390a1611cd6565b670de0b6b3a7640000611cc9878a61282d565b611cd39190612844565b96505b60008711611ce657611ce6612909565b600e8790556040518781527fc1a9618cb59ebca77cbdbc2949f126823c407ff13edb285fd0262519a9c18e8c9060200160405180910390a150505050505050505050565b600054604051636bfc0b7960e01b8152600481018390526001600160a01b03909116908190636bfc0b7990602401600060405180830381600087803b158015611d7257600080fd5b505af1158015611d86573d6000803e3d6000fd5b50505050611d9382612511565b600754604051632770a7eb60e21b81526001600160a01b0390911690639dc29fac90611dc59030908690600401612866565b600060405180830381600087803b158015611ddf57600080fd5b505af1158015611df3573d6000803e3d6000fd5b50506040516303570deb60e61b81526001600160a01b038416925063d5c37ac09150611e259030908790600401612866565b600060405180830381600087803b158015611e3f57600080fd5b505af1158015611e53573d6000803e3d6000fd5b50505050505050565b600081116111895760405162461bcd60e51b815260206004820152602660248201527f53746162696c697479506f6f6c3a20416d6f756e74206d757374206265206e6f6044820152656e2d7a65726f60d01b6064820152608401611177565b600754604051632ee65eeb60e21b81526001600160a01b039091169063bb997bac90611eef908590309086906004016128e5565b600060405180830381600087803b158015611f0957600080fd5b505af1158015611f1d573d6000803e3d6000fd5b50505050600081600b54611f319190612801565b600b8190556040518181529091507fd6f74bcc5370b4a9c7158c1e641f02563ccbe9f2e69f7eb20a80312a9378c1ac9060200160405180910390a1505050565b6003546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401611177565b600380546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b602081015160608201516080830151600f546000939291906001600160801b03600160801b9091048116908216101561205c5760009350505050611290565b600f5460009081906120789085906001600160801b031661291f565b9050806001600160801b03166000036120ab5784600e548961209a919061282d565b6120a49190612844565b91506120df565b806001600160801b03166001036120da57633b9aca0085600e548a6120d0919061282d565b61209a9190612844565b600091505b6120ed633b9aca0089612844565b82101561210257600095505050505050611290565b509695505050505050565b608081015160608201516040808401516020808601516001600160801b038087166000908152601184528581209187168152925292812054909493929085906121579084906127ee565b6001600160801b038616600090815260116020526040812091925090633b9aca0090826112258860016128a1565b6006546040516321e3780160e01b81526001600160a01b03909116906321e37801906121b590849060040161266f565b602060405180830381865afa1580156121d2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906121f69190612814565b6001146111895760405162461bcd60e51b815260206004820152604960248201527f53746162696c697479506f6f6c3a2063616c6c6572206d75737420686176652060448201527f616e206163746976652074726f766520746f207769746864726177205753544560648201526854484761696e20746f60b81b608482015260a401611177565b600061228882610647565b9050600081116115665760405162461bcd60e51b815260206004820152603460248201527f53746162696c697479506f6f6c3a2063616c6c6572206d7573742068617665206044820152733737b716bd32b937902ba9aa22aa241023b0b4b760611b6064820152608401611177565b6001600160a01b03811661234d5760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f206164647265737300006044820152606401611177565b803b806115665760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f6044820152606401611177565b6000546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820152602760248201527f53746162696c697479506f6f6c3a2043616c6c6572206973206e6f74204163746044820152661a5d99541bdbdb60ca1b6064820152608401611177565b600b54801580612414575081155b1561241d575050565b60006124298383612560565b90506000600e548261243b919061282d565b600f546001600160801b03600160801b82048116600090815260116020908152604080832093909416825291909152205490915061247a908290612801565b600f8054600160801b8082046001600160801b0390811660009081526011602081815260408084209685168452958152858320979097559454928304821680825294865283812092909116808252918552829020548251908152938401929092528201527f2d6127771b164a9cc8827d24b5955db2a77e7a81dac389107ebb8bce9fb649689060600160405180910390a150505050565b600081600b5461252191906127ee565b600b8190556040518181529091507fd6f74bcc5370b4a9c7158c1e641f02563ccbe9f2e69f7eb20a80312a9378c1ac9060200160405180910390a15050565b600080601254670de0b6b3a76400008561257a919061282d565b6125849190612801565b905060006125928483612844565b905061259e848261282d565b6125a890836127ee565b601255949350505050565b6001600160a01b038116811461118957600080fd5b6000602082840312156125da57600080fd5b813561157b816125b3565b80356001600160801b03811681146125fc57600080fd5b919050565b6000806040838503121561261457600080fd5b61261d836125e5565b915061262b602084016125e5565b90509250929050565b60006020828403121561264657600080fd5b5035919050565b6000806040838503121561266057600080fd5b50508035926020909101359150565b6001600160a01b0391909116815260200190565b6000806040838503121561269657600080fd5b8235915060208301356126a8816125b3565b809150509250929050565b600060208083528351808285015260005b818110156126e0578581018301518582016040015282016126c4565b506000604082860101526040601f19601f8301168501019250505092915050565b6000806040838503121561271457600080fd5b823561271f816125b3565b915060208301356126a8816125b3565b600080600080600080600080610100898b03121561274c57600080fd5b8835612757816125b3565b97506020890135612767816125b3565b96506040890135612777816125b3565b95506060890135612787816125b3565b94506080890135612797816125b3565b935060a08901356127a7816125b3565b925060c08901356127b7816125b3565b915060e08901356127c7816125b3565b809150509295985092959890939650565b634e487b7160e01b600052601160045260246000fd5b81810381811115611290576112906127d8565b80820180821115611290576112906127d8565b60006020828403121561282657600080fd5b5051919050565b8082028115828204841417611290576112906127d8565b60008261286157634e487b7160e01b600052601260045260246000fd5b500490565b6001600160a01b03929092168252602082015260400190565b60006020828403121561289157600080fd5b8151801515811461157b57600080fd5b6001600160801b038181168382160190808211156128c1576128c16127d8565b5092915050565b6000602082840312156128da57600080fd5b815161157b816125b3565b6001600160a01b039384168152919092166020820152604081019190915260600190565b634e487b7160e01b600052600160045260246000fd5b6001600160801b038281168282160390808211156128c1576128c16127d856fe5c4f8ecf7e676bbff1c4d48e979695d8266c95edc6aa6dd97512e13bfff42782bce78369dccab09eec1986f4d409ab09ffbb47d65423e5148fcf98411c5111c943c19c995f21be78ced6c13f0363f00ce5a7ef773cac2ff15f3095617ad98fd1a2646970667358221220939ca917f61f55c88107339ab4a938de0d60d9200492acd1ef1e2560bf64857c64736f6c63430008130033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106102745760003560e01c80637f7dde4a11610151578063a3f4df7e116100c3578063d540f25011610087578063d540f250146105a6578063d733cfd0146105b9578063dbb0c61a146105cc578063f2fde38b146105df578063f92d3433146105f2578063fc7e286d146105fa57600080fd5b8063a3f4df7e14610529578063a4e59ac814610562578063ae91875414610575578063ce4b5bbe14610588578063d3d6b2381461059357600080fd5b8063887105d311610115578063887105d3146104e15780638b8fbd92146104e95780638da5cb5b146104f257806395fb16bb146105035780639a6ec10a14610516578063a20baee61461027957600080fd5b80637f7dde4a146104165780637f9be6871461042957806382e0a57414610431578063864069e41461045c57806386da08241461046457600080fd5b80635f788d65116101ea578063741bef1a116101ae578063741bef1a1461039e57806376671808146103b157806377553ad4146103e35780637884eabf146103f6578063794e5724146103ff578063795d26c31461040e57600080fd5b80635f788d65146103675780636cce4c891461037a578063715018a61461038357806372fe25aa1461027957806374120d0d1461038b57600080fd5b80633cc742251161023c5780633cc74225146103015780633d83908a146103215780634870dd9a146103345780635617c5c71461033c5780635733d58f1461034f5780635d99aaa81461035e57600080fd5b80631bf435551461027957806327911ce41461029b57806328a0a04d146102ae5780632e54bf95146102d9578063335525ad146102ee575b600080fd5b610288670de0b6b3a764000081565b6040519081526020015b60405180910390f35b6102886102a93660046125c8565b610647565b6102886102bc366004612601565b601060209081526000928352604080842090915290825290205481565b6102ec6102e7366004612634565b6106e5565b005b6102ec6102fc36600461264d565b6107e2565b600154610314906001600160a01b031681565b604051610292919061266f565b600654610314906001600160a01b031681565b61028860c881565b600454610314906001600160a01b031681565b6102886714d1120d7b16000081565b61028860135481565b6102ec610375366004612683565b610844565b61028860125481565b6102ec61091b565b6102886103993660046125c8565b61092f565b600254610314906001600160a01b031681565b600f546103cb90600160801b90046001600160801b031681565b6040516001600160801b039091168152602001610292565b600554610314906001600160a01b031681565b61028860145481565b610288670f43fc2c04ee000081565b6102886109c4565b600054610314906001600160a01b031681565b600b54610288565b61028861043f366004612601565b601160209081526000928352604080842090915290825290205481565b600a54610288565b6104ad6104723660046125c8565b600d602052600090815260409020805460018201546002830154600390930154919290916001600160801b0380821691600160801b90041685565b604080519586526020860194909452928401919091526001600160801b03908116606084015216608082015260a001610292565b610288610ac0565b610288600e5481565b6003546001600160a01b0316610314565b600954610314906001600160a01b031681565b6102886105243660046125c8565b610b85565b6105556040518060400160405280600d81526020016c14dd18589a5b1a5d1e541bdbdb609a1b81525081565b60405161029291906126b3565b600f546103cb906001600160801b031681565b600854610314906001600160a01b031681565b610288633b9aca0081565b6102ec6105a1366004612701565b610c42565b600754610314906001600160a01b031681565b6102ec6105c736600461272f565b610e74565b6102ec6105da366004612634565b6110c8565b6102ec6105ed3660046125c8565b61110e565b61028861118c565b61062a6106083660046125c8565b600c60205260009081526040902080546001909101546001600160a01b031682565b604080519283526001600160a01b03909116602083015201610292565b6001600160a01b0381166000908152600c60205260408120548082036106705750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152906106dc83836111ae565b95945050505050565b80156106f3576106f3611296565b336000908152600c602052604090205461070c8161148c565b6009546001600160a01b0316610721816114f5565b600061072c33610647565b905060006107393361092f565b90506000610747868361156a565b9050600061075583876127ee565b90506107618533611582565b61076b3383611638565b600061077783856127ee565b905061078333826116b3565b60405181815233906000805160206129608339815191529060200160405180910390a260408051868152602081018490523391600080516020612940833981519152910160405180910390a26107d885611816565b5050505050505050565b6107ea611910565b600b548015806107f8575082155b1561080257505050565b600954610817906001600160a01b03166114f5565b60008061082584868561197c565b915091506108338282611a51565b61083d8486611d2a565b5050505050565b61084d82611e5c565b336000908152600c60205260409020546009546001600160a01b0316610872816114f5565b600061087d33610647565b9050600061088a3361092f565b9050600061089882866127ee565b90506108a48433611582565b6108ae3388611ebb565b60006108ba8884612801565b90506108c633826116b3565b60405181815233906000805160206129608339815191529060200160405180910390a260408051858152602081018490523391600080516020612940833981519152910160405180910390a26107d884611816565b610923611f71565b61092d6000611fcb565b565b6001600160a01b0381166000908152600c60205260408120548082036109585750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152906106dc838361201d565b600080546040805163c7662fa560e01b8152905183926001600160a01b03169163c7662fa59160048083019260209291908290030181865afa158015610a0e573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610a329190612814565b90506000600160009054906101000a90046001600160a01b03166001600160a01b031663c7662fa56040518163ffffffff1660e01b8152600401602060405180830381865afa158015610a89573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610aad9190612814565b9050610ab98183612801565b9250505090565b60008054604080516321901a7960e21b8152905183926001600160a01b03169163864069e49160048083019260209291908290030181865afa158015610b0a573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610b2e9190612814565b90506000600160009054906101000a90046001600160a01b03166001600160a01b031663864069e46040518163ffffffff1660e01b8152600401602060405180830381865afa158015610a89573d6000803e3d6000fd5b6001600160a01b0381166000908152600c6020526040812054808203610bae5750600092915050565b6001600160a01b0383166000908152600d60209081526040808320815160a08101835281548152600182015493810193909352600281015491830191909152600301546001600160801b038082166060840152600160801b909104166080820152670de0b6b3a76400009182610c24858461210d565b610c2e908561282d565b610c389190612844565b9695505050505050565b336000908152600c6020526040902054610c5b8161148c565b610c6433612185565b610c6d3361227d565b6009546001600160a01b0316610c82816114f5565b6000610c8d33610647565b90506000610c9a3361092f565b90506000610ca882866127ee565b9050610cb48433611582565b610cbe33836116b3565b60408051848152602081018390523391600080516020612940833981519152910160405180910390a260405182815233906000805160206129608339815191529060200160405180910390a282600a6000828254610d1c91906127ee565b9091555050600a546040519081526000805160206129808339815191529060200160405180910390a17ff20b16d543af92c697dee44db5345454068c1fffc7d371ebcc767da894b82b1b3384604051610d76929190612866565b60405180910390a16004805460055460405163a9059cbb60e01b81526001600160a01b039283169363a9059cbb93610db2931691889101612866565b6020604051808303816000875af1158015610dd1573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610df5919061287f565b610dfe57600080fd5b60055460405163023db76b60e31b81523360048201526001600160a01b0389811660248301528881166044830152909116906311edbb5890606401600060405180830381600087803b158015610e5357600080fd5b505af1158015610e67573d6000803e3d6000fd5b5050505050505050505050565b610e7c611f71565b610e85886122f7565b610e8e876122f7565b610e97866122f7565b610ea0856122f7565b610ea9846122f7565b610eb2836122f7565b610ebb826122f7565b610ec4816122f7565b600480546001600160a01b03199081166001600160a01b038b8116919091179092556005805482168a8416179055600680548216898416179055600080548216888416179055600780548216878416179055600880548216868416179055600280548216858416179055600980549091169183169190911790556040517f3ca631ffcd2a9b5d9ae18543fc82f58eb4ca33af9e6ab01b7a8e95331e6ed98590610f6e90899061266f565b60405180910390a17f143219c9e69b09e07e095fcc889b43d8f46ca892bba65f08dc3a0050869a567886604051610fa5919061266f565b60405180910390a17f78f058b189175430c48dc02699e3a0031ea4ff781536dc2fab847de4babdd88285604051610fdc919061266f565b60405180910390a17f522d83e1b4d0586985996a5a2f3987e11187efba22d8ee8b185af633301082af84604051611013919061266f565b60405180910390a17f65f4cf077bc01e4742eb5ad98326f6e95b63548ea24b17f8d5e823111fe788008360405161104a919061266f565b60405180910390a17f8c537274438aa850a330284665d81a85dd38267d09e4050d416bfc94142db26482604051611081919061266f565b60405180910390a17f3055265812fb8447b9ada4a5d804ec43bd528ec40e89c952bbc7b85dc5ac6811816040516110b8919061266f565b60405180910390a16107d861091b565b6110d061239c565b80600a60008282546110e29190612801565b9091555050600a546040519081526000805160206129808339815191529060200160405180910390a150565b611116611f71565b6001600160a01b0381166111805760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b60648201526084015b60405180910390fd5b61118981611fcb565b50565b6111a06103e8670de0b6b3a7640000612844565b6111ab90600561282d565b81565b6080810151606082015182516020808501516001600160801b038086166000908152601084526040808220928716825291909352822054919493929185906111f79084906127ee565b6001600160801b038616600090815260106020526040812091925090633b9aca0090826112258860016128a1565b6001600160801b03166001600160801b03168152602001908152602001600020546112509190612844565b90506000670de0b6b3a7640000846112688486612801565b611272908d61282d565b61127c9190612844565b6112869190612844565b9750505050505050505b92915050565b60025460408051630fdb11cf60e01b815290516000926001600160a01b031691630fdb11cf916004808301926020929190829003018187875af11580156112e1573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113059190612814565b90506000600860009054906101000a90046001600160a01b03166001600160a01b0316634d6228316040518163ffffffff1660e01b8152600401602060405180830381865afa15801561135c573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061138091906128c8565b600654604051630d293c7160e41b81529192506000916001600160a01b039091169063d293c710906113b89085908790600401612866565b602060405180830381865afa1580156113d5573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906113f99190612814565b9050670f43fc2c04ee00008110156114875760405162461bcd60e51b8152602060048201526044602482018190527f53746162696c697479506f6f6c3a2043616e6e6f742077697468647261772077908201527f68696c65207468657265206172652074726f766573207769746820494352203c6064820152631026a1a960e11b608482015260a401611177565b505050565b600081116111895760405162461bcd60e51b815260206004820152603060248201527f53746162696c697479506f6f6c3a2055736572206d757374206861766520612060448201526f1b9bdb8b5e995c9bc819195c1bdcda5d60821b6064820152608401611177565b6000816001600160a01b031663586653e16040518163ffffffff1660e01b81526004016020604051808303816000875af1158015611537573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061155b9190612814565b905061156681612406565b5050565b6000818310611579578161157b565b825b9392505050565b600061158d82610b85565b60405163602820c160e11b81529091506001600160a01b0384169063c0504182906115be9085908590600401612866565b600060405180830381600087803b1580156115d857600080fd5b505af11580156115ec573d6000803e3d6000fd5b50505050816001600160a01b03167f3e278324444258dcdfa19e5252aeb99227e0f9992625af636bd7d24c19765fce8260405161162b91815260200190565b60405180910390a2505050565b80600003611644575050565b600754604051631062c15f60e11b81526001600160a01b03909116906320c582be90611678903090869086906004016128e5565b600060405180830381600087803b15801561169257600080fd5b505af11580156116a6573d6000803e3d6000fd5b5050505061156681612511565b6001600160a01b0382166000908152600c60205260408120829055819003611749576001600160a01b0382166000818152600d60209081526040808320838155600181018490556002810184905560030183905580518381529182018390528101919091527f2d6cc0bcdf72c9486f6451bde6b80f44066f4558f77f44dbfedbe7d8b295225a9060600160405180910390a25050565b600f54600e546001600160801b03600160801b808404821660008181526010602090815260408083209590971680835294815286822054838352601182528783208684528252878320546001600160a01b038b16808552600d84529389902060018101899055828155600281018290559585028717600390960195909555875187815291820181905296810184905293959194939192917f2d6cc0bcdf72c9486f6451bde6b80f44066f4558f77f44dbfedbe7d8b295225a9060600160405180910390a250505050505050565b806000036118215750565b600081600a5461183191906127ee565b600a8190556040518181529091506000805160206129808339815191529060200160405180910390a17ff20b16d543af92c697dee44db5345454068c1fffc7d371ebcc767da894b82b1b338360405161188b929190612866565b60405180910390a16004805460405163a9059cbb60e01b81526001600160a01b039091169163a9059cbb916118c4913391879101612866565b6020604051808303816000875af11580156118e3573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190611907919061287f565b61156657600080fd5b6006546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820152602960248201527f53746162696c697479506f6f6c3a2043616c6c6572206973206e6f742054726f6044820152683b32a6b0b730b3b2b960b91b6064820152608401611177565b6000806000601354670de0b6b3a764000087611998919061282d565b6119a29190612801565b9050838511156119b4576119b4612909565b8385036119d0576000601455670de0b6b3a76400009150611a25565b6014546000906119e8670de0b6b3a76400008861282d565b6119f291906127ee565b90506119fe8582612844565b611a09906001612801565b925080611a16868561282d565b611a2091906127ee565b601455505b611a2f8482612844565b9250611a3b848461282d565b611a4590826127ee565b60135550935093915050565b600e546000670de0b6b3a7640000831115611a6e57611a6e612909565b6000611a8284670de0b6b3a76400006127ee565b600f546001600160801b03600160801b820481166000818152601060209081526040808320949095168083529390529283205493945090929091611ac6878a61282d565b90506000611ad48284612801565b6001600160801b038581166000818152601060209081526040808320948b16808452948252918290208590558151858152908101929092528101919091529091507fe12e2cd2c9afa8069203ca07e7eff1edce4a075686d0736a8e7e0d593597b2079060600160405180910390a185600003611bfe57611b558460016128a1565b600f80546001600160801b03908116600160801b93821684021791829055604051929091041681527fb50f0f59e7cb5b421dc77581c3a9919e3806e076e5fa78a874c3f120cb7d874d9060200160405180910390a1600f80546001600160801b0319169055604051600081527f1f9dfc70cd666adb18a39d60a797518f7b4febf4b6e24ef37d44f6e1e7219fbe9060200160405180910390a1670de0b6b3a76400009650611cd6565b633b9aca00670de0b6b3a7640000611c16888b61282d565b611c209190612844565b1015611cb657670de0b6b3a7640000633b9aca00611c3e888b61282d565b611c48919061282d565b611c529190612844565b9650611c5f8560016128a1565b600f80546001600160801b0319166001600160801b039290921691821790556040519081527f1f9dfc70cd666adb18a39d60a797518f7b4febf4b6e24ef37d44f6e1e7219fbe9060200160405180910390a1611cd6565b670de0b6b3a7640000611cc9878a61282d565b611cd39190612844565b96505b60008711611ce657611ce6612909565b600e8790556040518781527fc1a9618cb59ebca77cbdbc2949f126823c407ff13edb285fd0262519a9c18e8c9060200160405180910390a150505050505050505050565b600054604051636bfc0b7960e01b8152600481018390526001600160a01b03909116908190636bfc0b7990602401600060405180830381600087803b158015611d7257600080fd5b505af1158015611d86573d6000803e3d6000fd5b50505050611d9382612511565b600754604051632770a7eb60e21b81526001600160a01b0390911690639dc29fac90611dc59030908690600401612866565b600060405180830381600087803b158015611ddf57600080fd5b505af1158015611df3573d6000803e3d6000fd5b50506040516303570deb60e61b81526001600160a01b038416925063d5c37ac09150611e259030908790600401612866565b600060405180830381600087803b158015611e3f57600080fd5b505af1158015611e53573d6000803e3d6000fd5b50505050505050565b600081116111895760405162461bcd60e51b815260206004820152602660248201527f53746162696c697479506f6f6c3a20416d6f756e74206d757374206265206e6f6044820152656e2d7a65726f60d01b6064820152608401611177565b600754604051632ee65eeb60e21b81526001600160a01b039091169063bb997bac90611eef908590309086906004016128e5565b600060405180830381600087803b158015611f0957600080fd5b505af1158015611f1d573d6000803e3d6000fd5b50505050600081600b54611f319190612801565b600b8190556040518181529091507fd6f74bcc5370b4a9c7158c1e641f02563ccbe9f2e69f7eb20a80312a9378c1ac9060200160405180910390a1505050565b6003546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401611177565b600380546001600160a01b038381166001600160a01b0319831681179093556040519116919082907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a35050565b602081015160608201516080830151600f546000939291906001600160801b03600160801b9091048116908216101561205c5760009350505050611290565b600f5460009081906120789085906001600160801b031661291f565b9050806001600160801b03166000036120ab5784600e548961209a919061282d565b6120a49190612844565b91506120df565b806001600160801b03166001036120da57633b9aca0085600e548a6120d0919061282d565b61209a9190612844565b600091505b6120ed633b9aca0089612844565b82101561210257600095505050505050611290565b509695505050505050565b608081015160608201516040808401516020808601516001600160801b038087166000908152601184528581209187168152925292812054909493929085906121579084906127ee565b6001600160801b038616600090815260116020526040812091925090633b9aca0090826112258860016128a1565b6006546040516321e3780160e01b81526001600160a01b03909116906321e37801906121b590849060040161266f565b602060405180830381865afa1580156121d2573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906121f69190612814565b6001146111895760405162461bcd60e51b815260206004820152604960248201527f53746162696c697479506f6f6c3a2063616c6c6572206d75737420686176652060448201527f616e206163746976652074726f766520746f207769746864726177205753544560648201526854484761696e20746f60b81b608482015260a401611177565b600061228882610647565b9050600081116115665760405162461bcd60e51b815260206004820152603460248201527f53746162696c697479506f6f6c3a2063616c6c6572206d7573742068617665206044820152733737b716bd32b937902ba9aa22aa241023b0b4b760611b6064820152608401611177565b6001600160a01b03811661234d5760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f206164647265737300006044820152606401611177565b803b806115665760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f6044820152606401611177565b6000546001600160a01b0316331461092d5760405162461bcd60e51b815260206004820152602760248201527f53746162696c697479506f6f6c3a2043616c6c6572206973206e6f74204163746044820152661a5d99541bdbdb60ca1b6064820152608401611177565b600b54801580612414575081155b1561241d575050565b60006124298383612560565b90506000600e548261243b919061282d565b600f546001600160801b03600160801b82048116600090815260116020908152604080832093909416825291909152205490915061247a908290612801565b600f8054600160801b8082046001600160801b0390811660009081526011602081815260408084209685168452958152858320979097559454928304821680825294865283812092909116808252918552829020548251908152938401929092528201527f2d6127771b164a9cc8827d24b5955db2a77e7a81dac389107ebb8bce9fb649689060600160405180910390a150505050565b600081600b5461252191906127ee565b600b8190556040518181529091507fd6f74bcc5370b4a9c7158c1e641f02563ccbe9f2e69f7eb20a80312a9378c1ac9060200160405180910390a15050565b600080601254670de0b6b3a76400008561257a919061282d565b6125849190612801565b905060006125928483612844565b905061259e848261282d565b6125a890836127ee565b601255949350505050565b6001600160a01b038116811461118957600080fd5b6000602082840312156125da57600080fd5b813561157b816125b3565b80356001600160801b03811681146125fc57600080fd5b919050565b6000806040838503121561261457600080fd5b61261d836125e5565b915061262b602084016125e5565b90509250929050565b60006020828403121561264657600080fd5b5035919050565b6000806040838503121561266057600080fd5b50508035926020909101359150565b6001600160a01b0391909116815260200190565b6000806040838503121561269657600080fd5b8235915060208301356126a8816125b3565b809150509250929050565b600060208083528351808285015260005b818110156126e0578581018301518582016040015282016126c4565b506000604082860101526040601f19601f8301168501019250505092915050565b6000806040838503121561271457600080fd5b823561271f816125b3565b915060208301356126a8816125b3565b600080600080600080600080610100898b03121561274c57600080fd5b8835612757816125b3565b97506020890135612767816125b3565b96506040890135612777816125b3565b95506060890135612787816125b3565b94506080890135612797816125b3565b935060a08901356127a7816125b3565b925060c08901356127b7816125b3565b915060e08901356127c7816125b3565b809150509295985092959890939650565b634e487b7160e01b600052601160045260246000fd5b81810381811115611290576112906127d8565b80820180821115611290576112906127d8565b60006020828403121561282657600080fd5b5051919050565b8082028115828204841417611290576112906127d8565b60008261286157634e487b7160e01b600052601260045260246000fd5b500490565b6001600160a01b03929092168252602082015260400190565b60006020828403121561289157600080fd5b8151801515811461157b57600080fd5b6001600160801b038181168382160190808211156128c1576128c16127d8565b5092915050565b6000602082840312156128da57600080fd5b815161157b816125b3565b6001600160a01b039384168152919092166020820152604081019190915260600190565b634e487b7160e01b600052600160045260246000fd5b6001600160801b038281168282160390808211156128c1576128c16127d856fe5c4f8ecf7e676bbff1c4d48e979695d8266c95edc6aa6dd97512e13bfff42782bce78369dccab09eec1986f4d409ab09ffbb47d65423e5148fcf98411c5111c943c19c995f21be78ced6c13f0363f00ce5a7ef773cac2ff15f3095617ad98fd1a2646970667358221220939ca917f61f55c88107339ab4a938de0d60d9200492acd1ef1e2560bf64857c64736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 21034,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "activePool",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_contract(IActivePool)23133"
+      },
+      {
+        "astId": 21037,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "defaultPool",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(IDefaultPool)23462"
+      },
+      {
+        "astId": 21041,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "priceFeed",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(IPriceFeed)23597"
+      },
+      {
+        "astId": 590,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_address"
+      },
+      {
+        "astId": 9448,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "WSTETHAddress",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_address"
+      },
+      {
+        "astId": 9451,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "borrowerOperations",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_contract(IBorrowerOperations)23318"
+      },
+      {
+        "astId": 9454,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "troveManager",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_contract(ITroveManager)24470"
+      },
+      {
+        "astId": 9457,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "simToken",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_contract(ISIMToken)23682"
+      },
+      {
+        "astId": 9460,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "sortedTroves",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_contract(ISortedTroves)23818"
+      },
+      {
+        "astId": 9463,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "communityIssuance",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_contract(IIssuance)23496"
+      },
+      {
+        "astId": 9465,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "WSTETH",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9467,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "totalSIMDeposits",
+        "offset": 0,
+        "slot": "11",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9488,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "deposits",
+        "offset": 0,
+        "slot": "12",
+        "type": "t_mapping(t_address,t_struct(Deposit)9472_storage)"
+      },
+      {
+        "astId": 9493,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "depositSnapshots",
+        "offset": 0,
+        "slot": "13",
+        "type": "t_mapping(t_address,t_struct(Snapshots)9483_storage)"
+      },
+      {
+        "astId": 9496,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "P",
+        "offset": 0,
+        "slot": "14",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9501,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "currentScale",
+        "offset": 0,
+        "slot": "15",
+        "type": "t_uint128"
+      },
+      {
+        "astId": 9503,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "currentEpoch",
+        "offset": 16,
+        "slot": "15",
+        "type": "t_uint128"
+      },
+      {
+        "astId": 9509,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "epochToScaleToSum",
+        "offset": 0,
+        "slot": "16",
+        "type": "t_mapping(t_uint128,t_mapping(t_uint128,t_uint256))"
+      },
+      {
+        "astId": 9515,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "epochToScaleToG",
+        "offset": 0,
+        "slot": "17",
+        "type": "t_mapping(t_uint128,t_mapping(t_uint128,t_uint256))"
+      },
+      {
+        "astId": 9517,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "lastSHADYError",
+        "offset": 0,
+        "slot": "18",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9519,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "lastWSTETHError_Offset",
+        "offset": 0,
+        "slot": "19",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 9521,
+        "contract": "contracts/StabilityPool.sol:StabilityPool",
+        "label": "lastSIMLossError_Offset",
+        "offset": 0,
+        "slot": "20",
+        "type": "t_uint256"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IActivePool)23133": {
+        "encoding": "inplace",
+        "label": "contract IActivePool",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IBorrowerOperations)23318": {
+        "encoding": "inplace",
+        "label": "contract IBorrowerOperations",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IDefaultPool)23462": {
+        "encoding": "inplace",
+        "label": "contract IDefaultPool",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IIssuance)23496": {
+        "encoding": "inplace",
+        "label": "contract IIssuance",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IPriceFeed)23597": {
+        "encoding": "inplace",
+        "label": "contract IPriceFeed",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ISIMToken)23682": {
+        "encoding": "inplace",
+        "label": "contract ISIMToken",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ISortedTroves)23818": {
+        "encoding": "inplace",
+        "label": "contract ISortedTroves",
+        "numberOfBytes": "20"
+      },
+      "t_contract(ITroveManager)24470": {
+        "encoding": "inplace",
+        "label": "contract ITroveManager",
+        "numberOfBytes": "20"
+      },
+      "t_mapping(t_address,t_struct(Deposit)9472_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct StabilityPool.Deposit)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Deposit)9472_storage"
+      },
+      "t_mapping(t_address,t_struct(Snapshots)9483_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct StabilityPool.Snapshots)",
+        "numberOfBytes": "32",
+        "value": "t_struct(Snapshots)9483_storage"
+      },
+      "t_mapping(t_uint128,t_mapping(t_uint128,t_uint256))": {
+        "encoding": "mapping",
+        "key": "t_uint128",
+        "label": "mapping(uint128 => mapping(uint128 => uint256))",
+        "numberOfBytes": "32",
+        "value": "t_mapping(t_uint128,t_uint256)"
+      },
+      "t_mapping(t_uint128,t_uint256)": {
+        "encoding": "mapping",
+        "key": "t_uint128",
+        "label": "mapping(uint128 => uint256)",
+        "numberOfBytes": "32",
+        "value": "t_uint256"
+      },
+      "t_struct(Deposit)9472_storage": {
+        "encoding": "inplace",
+        "label": "struct StabilityPool.Deposit",
+        "members": [
+          {
+            "astId": 9469,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "initialValue",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9471,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "frontEndTag",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_address"
+          }
+        ],
+        "numberOfBytes": "64"
+      },
+      "t_struct(Snapshots)9483_storage": {
+        "encoding": "inplace",
+        "label": "struct StabilityPool.Snapshots",
+        "members": [
+          {
+            "astId": 9474,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "S",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9476,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "P",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9478,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "G",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 9480,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "scale",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint128"
+          },
+          {
+            "astId": 9482,
+            "contract": "contracts/StabilityPool.sol:StabilityPool",
+            "label": "epoch",
+            "offset": 16,
+            "slot": "3",
+            "type": "t_uint128"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_uint128": {
+        "encoding": "inplace",
+        "label": "uint128",
+        "numberOfBytes": "16"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

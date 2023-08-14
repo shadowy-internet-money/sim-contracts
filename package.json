@@ -10,8 +10,11 @@
     "coverage": "hardhat coverage",
     "deploy": "hardhat deploy",
     "deploy:zkevmtestnet": "hardhat deploy --network zkevmtestnet",
+    "deploy:goerli": "hardhat deploy --network goerli",
     "verify-generate-inputs:zkevmtestnet": "hardhat run scripts/verify.ts --network zkevmtestnet",
-    "verify:zkevmtestnet": "hardhat etherscan-verify --network zkevmtestnet --api-url https://api-testnet-zkevm.polygonscan.com"
+    "verify-generate-inputs:goerli": "hardhat run scripts/verify.ts --network goerli",
+    "verify:zkevmtestnet": "hardhat etherscan-verify --network zkevmtestnet --api-url https://api-testnet-zkevm.polygonscan.com",
+    "verify:goerli": "hardhat etherscan-verify --network goerli --api-url https://api-goerli.etherscan.io"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-network-helpers": "^1.0.8",

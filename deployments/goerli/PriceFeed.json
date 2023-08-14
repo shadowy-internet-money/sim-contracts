@@ -1,0 +1,463 @@
+{
+  "address": "0xcF05bE25600286AB922c4Ea4cf160Af2d4916470",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_lastGoodPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "LastGoodPriceUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "enum PriceFeed.Status",
+          "name": "newStatus",
+          "type": "uint8"
+        }
+      ],
+      "name": "PriceFeedStatusChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "DECIMAL_PRECISION",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_PRICE_DIFFERENCE_BETWEEN_ORACLES",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "NAME",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TARGET_DIGITS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "TIMEOUT",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "api3Proxy",
+      "outputs": [
+        {
+          "internalType": "contract IProxy",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "borrowerOperationsAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fetchPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "lastGoodPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pyth",
+      "outputs": [
+        {
+          "internalType": "contract IPyth",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pythFeedId",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "rateReceiver",
+      "outputs": [
+        {
+          "internalType": "contract ICrossChainRateReceiver",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "api3Proxy_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "pyth_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "rateReceiver_",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "pythFeedId_",
+          "type": "bytes32"
+        }
+      ],
+      "name": "setAddresses",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "status",
+      "outputs": [
+        {
+          "internalType": "enum PriceFeed.Status",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "troveManagerAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x7e95a2a2c4ae54d4586c3ec807cfea7edc4a7ce48b9ff9033461253627c8fb17",
+  "receipt": {
+    "to": null,
+    "from": "0x88888887C3ebD4a33E34a15Db4254C74C75E5D4A",
+    "contractAddress": "0xcF05bE25600286AB922c4Ea4cf160Af2d4916470",
+    "transactionIndex": 17,
+    "gasUsed": "968516",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000100800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000001000000000000000000000000000000000000020000000000000000000800000000000000000000000000000000400000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000001000001000000000000000000",
+    "blockHash": "0x366699ff4a8a80fbe8475eb6b9545374375dafd3a851e0c417c7ff32fd1aa0bf",
+    "transactionHash": "0x7e95a2a2c4ae54d4586c3ec807cfea7edc4a7ce48b9ff9033461253627c8fb17",
+    "logs": [
+      {
+        "transactionIndex": 17,
+        "blockNumber": 9518035,
+        "transactionHash": "0x7e95a2a2c4ae54d4586c3ec807cfea7edc4a7ce48b9ff9033461253627c8fb17",
+        "address": "0xcF05bE25600286AB922c4Ea4cf160Af2d4916470",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000088888887c3ebd4a33e34a15db4254c74c75e5d4a"
+        ],
+        "data": "0x",
+        "logIndex": 31,
+        "blockHash": "0x366699ff4a8a80fbe8475eb6b9545374375dafd3a851e0c417c7ff32fd1aa0bf"
+      }
+    ],
+    "blockNumber": 9518035,
+    "cumulativeGasUsed": "3395200",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "66a0f7be4f01c27a4eec5bc8ef6aeaa8",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"_lastGoodPrice\",\"type\":\"uint256\"}],\"name\":\"LastGoodPriceUpdated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"enum PriceFeed.Status\",\"name\":\"newStatus\",\"type\":\"uint8\"}],\"name\":\"PriceFeedStatusChanged\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"DECIMAL_PRECISION\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MAX_PRICE_DIFFERENCE_BETWEEN_ORACLES\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"NAME\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TARGET_DIGITS\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"TIMEOUT\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"api3Proxy\",\"outputs\":[{\"internalType\":\"contract IProxy\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"borrowerOperationsAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fetchPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lastGoodPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pyth\",\"outputs\":[{\"internalType\":\"contract IPyth\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"pythFeedId\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"rateReceiver\",\"outputs\":[{\"internalType\":\"contract ICrossChainRateReceiver\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"api3Proxy_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"pyth_\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"rateReceiver_\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"pythFeedId_\",\"type\":\"bytes32\"}],\"name\":\"setAddresses\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"status\",\"outputs\":[{\"internalType\":\"enum PriceFeed.Status\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"troveManagerAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/PriceFeed.sol\":\"PriceFeed\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":100},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.9.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * By default, the owner account will be the one that deploys the contract. This\\n * can later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the deployer as the initial owner.\\n     */\\n    constructor() {\\n        _transferOwnership(_msgSender());\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        require(owner() == _msgSender(), \\\"Ownable: caller is not the owner\\\");\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        require(newOwner != address(0), \\\"Ownable: new owner is the zero address\\\");\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xba43b97fba0d32eb4254f6a5a297b39a19a247082a02d6e69349e071e2946218\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts v4.4.1 (utils/Context.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n}\\n\",\"keccak256\":\"0xe2e337e6dde9ef6b680e07338c493ebea1b5fd09b43424112868e9cc1706bca7\",\"license\":\"MIT\"},\"contracts/PriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\nimport \\\"./interfaces/IPriceFeed.sol\\\";\\nimport \\\"./interfaces/IProxy.sol\\\";\\nimport \\\"./interfaces/IPyth.sol\\\";\\nimport \\\"./interfaces/ICrossChainRateReceiver.sol\\\";\\nimport \\\"./dependencies/CheckContract.sol\\\";\\nimport \\\"./dependencies/BaseMath.sol\\\";\\nimport \\\"./dependencies/LiquityMath.sol\\\";\\n\\n/*\\n* https://github.com/liquity/dev/blob/main/packages/contracts/contracts/PriceFeed.sol\\n* PriceFeed for zkEVM deployment, to be connected to:\\n* - API3 ETH/USD https://market.api3.org/dapis/polygon-zkevm/ETH-USD (Contract zkevm 0x26690F9f17FdC26D419371315bc17950a0FC90eD)\\n* - Pyth ETH/USD https://pyth.network/price-feeds/crypto-eth-usd (Contract zkevm 0xC5E56d6b40F3e3B5fbfa266bCd35C37426537c65, testnet 0xd54bf1758b1C932F86B178F8b1D5d1A7e2F62C2E, Price Feed ID 0xff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace, testnet ID 0xca80ba6dc32e08d06f1aa886011eed1d77c77be9eb761cc10d72b7d0a2fd57a6)\\n* - LayerZero wstETH/ETH CrossChainRateReceiver (zkEVM contract 0x00346D2Fd4B2Dc3468fA38B857409BC99f832ef8)\\n*\\n* The PriceFeed uses API3 as primary oracle, and Pyth as fallback. It contains logic for\\n* switching oracles based on oracle failures, timeouts, and conditions for returning to the primary\\n* API3 oracle.\\n*/\\ncontract PriceFeed is Ownable, CheckContract, BaseMath, IPriceFeed {\\n    string constant public NAME = \\\"PriceFeed\\\";\\n\\n    // Use to convert a price answer to an 18-digit precision uint\\n    uint constant public TARGET_DIGITS = 18;\\n\\n    // Maximum time period allowed since oracle's latest round data timestamp, beyond which oracle is considered frozen.\\n    uint constant public TIMEOUT = 14400;  // 4 hours: 60 * 60 * 4\\n\\n    /*\\n    * The maximum relative price difference between two oracle responses allowed in order for the PriceFeed\\n    * to return to using the API3 oracle. 18-digit precision.\\n    */\\n    uint constant public MAX_PRICE_DIFFERENCE_BETWEEN_ORACLES = 5e16; // 5%\\n\\n\\n    IProxy public api3Proxy;\\n    IPyth public pyth;\\n    ICrossChainRateReceiver public rateReceiver;\\n    bytes32 public pythFeedId;\\n\\n    address public borrowerOperationsAddress;\\n    address public troveManagerAddress;\\n\\n    // The last good price seen from an oracle by Liquity\\n    uint public lastGoodPrice;\\n\\n    enum Status {\\n        api3Working,\\n        usingPythAPI3Untrusted,\\n        usingPythAPI3Frozen,\\n        bothOraclesUntrusted,\\n        usingAPI3PythUntrusted\\n    }\\n\\n    // The current status of the PriceFeed, which determines the conditions for the next price fetch attempt\\n    Status public status;\\n\\n    event PriceFeedStatusChanged(Status newStatus);\\n\\n    // --- Dependency setters ---\\n    \\n    function setAddresses(\\n        address api3Proxy_,\\n        address pyth_,\\n        address rateReceiver_,\\n        bytes32 pythFeedId_\\n    )\\n        external\\n        onlyOwner\\n    {\\n        _checkContract(api3Proxy_);\\n        _checkContract(pyth_);\\n        _checkContract(rateReceiver_);\\n\\n        api3Proxy = IProxy(api3Proxy_);\\n        pyth = IPyth(pyth_);\\n        rateReceiver = ICrossChainRateReceiver(rateReceiver_);\\n        pythFeedId = pythFeedId_;\\n\\n        // Explicitly set initial system status\\n        status = Status.api3Working;\\n\\n        // Get an initial price from API3 to serve as first reference for lastGoodPrice\\n        (int224 value, uint32 timestamp) = _getAPI3Response();\\n\\n        require(!_api3IsBroken(value, timestamp) && !_api3IsFrozen(timestamp),\\n            \\\"PriceFeed: API3 must be working and current\\\");\\n\\n        _storeAPI3Price(value);\\n\\n        renounceOwnership();\\n    }\\n\\n    // --- Functions ---\\n\\n    /*\\n    * fetchPrice():\\n    * Returns the latest price obtained from the Oracle. Called by SIM functions that require a current price.\\n    *\\n    * Also callable by anyone externally.\\n    *\\n    * Non-view function - it stores the last good price seen by SIM.\\n    *\\n    * Uses a main oracle (API3) and a fallback oracle (Pyth) in case API3 fails. If both fail,\\n    * it uses the last good price seen by SIM.\\n    *\\n    */\\n    function fetchPrice() external override returns (uint price) {\\n        (int224 api3Value, uint32 api3Timestamp) = _getAPI3Response();\\n        PythStructs.Price memory pythPrice = _getPythResponse();\\n\\n        // --- CASE 1: System fetched last price from API3  ---\\n        if (status == Status.api3Working) {\\n            // If API3 is broken, try Pyth\\n            if (_api3IsBroken(api3Value, api3Timestamp)) {\\n                // If Pyth is broken then both oracles are untrusted, so return the last good price\\n                if (_pythIsBroken(pythPrice)) {\\n                    _changeStatus(Status.bothOraclesUntrusted);\\n                    return lastGoodPrice; \\n                }\\n                /*\\n                * If Pyth is only frozen but otherwise returning valid data, return the last good price.\\n                */\\n                if (_pythIsFrozen(pythPrice)) {\\n                    _changeStatus(Status.usingPythAPI3Untrusted);\\n                    return lastGoodPrice;\\n                }\\n                \\n                // If API3 is broken and Pyth is working, switch to Pyth and return current Pyth price\\n                _changeStatus(Status.usingPythAPI3Untrusted);\\n                return _storePythPrice(pythPrice);\\n            }\\n\\n            // If API3 is frozen, try Pyth\\n            if (_api3IsFrozen(api3Timestamp)) {\\n                // If Pyth is broken too, remember Pyth broke, and return last good price\\n                if (_pythIsBroken(pythPrice)) {\\n                    _changeStatus(Status.usingAPI3PythUntrusted);\\n                    return lastGoodPrice;     \\n                }\\n\\n                // If Pyth is frozen or working, remember API3 froze, and switch to Pyth\\n                _changeStatus(Status.usingPythAPI3Frozen);\\n               \\n                if (_pythIsFrozen(pythPrice)) {\\n                    return lastGoodPrice;\\n                }\\n\\n                // If Pyth is working, use it\\n                return _storePythPrice(pythPrice);\\n            }\\n\\n            // If API3 is working and Pyth is broken, remember Pyth is broken\\n            if (_pythIsBroken(pythPrice)) {\\n                _changeStatus(Status.usingAPI3PythUntrusted);\\n            }   \\n\\n            // If API3 is working, return API3 current price (no status change)\\n            return _storeAPI3Price(api3Value);\\n        }\\n\\n        // --- CASE 2: The system fetched last price from Pyth ---\\n        if (status == Status.usingPythAPI3Untrusted) {\\n            // If both Pyth and API3 are live, unbroken, and reporting similar prices, switch back to API3\\n            if (_bothOraclesLiveAndUnbrokenAndSimilarPrice(api3Value, api3Timestamp, pythPrice)) {\\n                _changeStatus(Status.api3Working);\\n                return _storeAPI3Price(api3Value);\\n            }\\n\\n            if (_pythIsBroken(pythPrice)) {\\n                _changeStatus(Status.bothOraclesUntrusted);\\n                return lastGoodPrice; \\n            }\\n\\n            /*\\n            * If Pyth is only frozen but otherwise returning valid data, just return the last good price.\\n            * Pyth may need to be tipped to return current data.\\n            */\\n            if (_pythIsFrozen(pythPrice)) {\\n                return lastGoodPrice;\\n            }\\n            \\n            // Otherwise, use Pyth price\\n            return _storePythPrice(pythPrice);\\n        }\\n\\n        // --- CASE 3: Both oracles were untrusted at the last price fetch ---\\n        if (status == Status.bothOraclesUntrusted) {\\n            /*\\n            * If both oracles are now live, unbroken and similar price, we assume that they are reporting\\n            * accurately, and so we switch back to API3.\\n            */\\n            if (_bothOraclesLiveAndUnbrokenAndSimilarPrice(api3Value, api3Timestamp, pythPrice)) {\\n                _changeStatus(Status.api3Working);\\n                return _storeAPI3Price(api3Value);\\n            } \\n\\n            // Otherwise, return the last good price - both oracles are still untrusted (no status change)\\n            return lastGoodPrice;\\n        }\\n\\n        // --- CASE 4: Using Pyth, and API3 is frozen ---\\n        if (status == Status.usingPythAPI3Frozen) {\\n            if (_api3IsBroken(api3Value, api3Timestamp)) {\\n                // If both Oracles are broken, return last good price\\n                if (_pythIsBroken(pythPrice)) {\\n                    _changeStatus(Status.bothOraclesUntrusted);\\n                    return lastGoodPrice;\\n                }\\n\\n                // If API3 is broken, remember it and switch to using Pyth\\n                _changeStatus(Status.usingPythAPI3Untrusted);\\n\\n                if (_pythIsFrozen(pythPrice)) {\\n                    return lastGoodPrice;\\n                }\\n\\n                // If Pyth is working, return Pyth current price\\n                return _storePythPrice(pythPrice);\\n            }\\n\\n            if (_api3IsFrozen(api3Timestamp)) {\\n                // if API3 is frozen and Pyth is broken, remember Pyth broke, and return last good price\\n                if (_pythIsBroken(pythPrice)) {\\n                    _changeStatus(Status.usingAPI3PythUntrusted);\\n                    return lastGoodPrice;\\n                }\\n\\n                // If both are frozen, just use lastGoodPrice\\n                if (_pythIsFrozen(pythPrice)) {\\n                    return lastGoodPrice;\\n                }\\n\\n                // if API3 is frozen and Pyth is working, keep using Pyth (no status change)\\n                return _storePythPrice(pythPrice);\\n            }\\n\\n            // if API3 is live and Pyth is broken, remember Pyth broke, and return API3 price\\n            if (_pythIsBroken(pythPrice)) {\\n                _changeStatus(Status.usingAPI3PythUntrusted);\\n                return _storeAPI3Price(api3Value);\\n            }\\n\\n            // If API3 is live and Pyth is frozen, just use last good price (no status change) since we have no basis for comparison\\n            if (_pythIsFrozen(pythPrice)) {\\n                return lastGoodPrice;\\n            }\\n\\n            // If API3 is live and Pyth is working, compare prices. Switch to API3\\n            // if prices are within 5%, and return API3 price.\\n            if (_bothOraclesSimilarPrice(api3Value, pythPrice)) {\\n                _changeStatus(Status.api3Working);\\n                return _storeAPI3Price(api3Value);\\n            }\\n\\n            // Otherwise if API3 is live but price not within 5% of Pyth, distrust API3, and return Pyth price\\n            _changeStatus(Status.usingPythAPI3Untrusted);\\n            return _storePythPrice(pythPrice);\\n        }\\n\\n        // --- CASE 5: Using API3, Pyth is untrusted ---\\n         if (status == Status.usingAPI3PythUntrusted) {\\n            // If API3 breaks, now both oracles are untrusted\\n            if (_api3IsBroken(api3Value, api3Timestamp)) {\\n                _changeStatus(Status.bothOraclesUntrusted);\\n                return lastGoodPrice;\\n            }\\n\\n            // If API3 is frozen, return last good price (no status change)\\n            if (_api3IsFrozen(api3Timestamp)) {\\n                return lastGoodPrice;\\n            }\\n\\n            // If API3 and Pyth are both live, unbroken and similar price, switch back to API3 working and return API3 price\\n            if (_bothOraclesLiveAndUnbrokenAndSimilarPrice(api3Value, api3Timestamp, pythPrice)) {\\n                _changeStatus(Status.api3Working);\\n                return _storeAPI3Price(api3Value);\\n            }\\n\\n            // Otherwise if API3 is live and deviated <50% from it's previous price and Pyth is still untrusted,\\n            // return API3 price (no status change)\\n            return _storeAPI3Price(api3Value);\\n        }\\n    }\\n\\n    // --- Helper functions ---\\n\\n    function _api3IsBroken(int224 value, uint32 timestamp) internal view returns (bool) {\\n        return value <= 0 || timestamp == 0 || timestamp > block.timestamp;\\n    }\\n\\n    function _api3IsFrozen(uint32 timestamp) internal view returns (bool) {\\n        return block.timestamp - timestamp > TIMEOUT;\\n    }\\n\\n    function _pythIsBroken(PythStructs.Price memory price) internal view returns (bool) {\\n        return price.price <= 0 || price.publishTime == 0 || price.publishTime > block.timestamp;\\n    }\\n\\n    function _pythIsFrozen(PythStructs.Price memory price) internal view returns (bool) {\\n        return block.timestamp - price.publishTime > TIMEOUT;\\n    }\\n\\n    function _bothOraclesLiveAndUnbrokenAndSimilarPrice(int224 api3Value, uint32 api3Timestamp, PythStructs.Price memory pythPrice) internal view returns (bool) {\\n        // Return false if either oracle is broken or frozen\\n        if (\\n            _pythIsBroken(pythPrice) ||\\n            _pythIsFrozen(pythPrice) ||\\n            _api3IsBroken(api3Value, api3Timestamp) ||\\n            _api3IsFrozen(api3Timestamp)\\n        ) {\\n            return false;\\n        }\\n\\n        return _bothOraclesSimilarPrice(api3Value, pythPrice);\\n    }\\n\\n    function _bothOraclesSimilarPrice(int224 api3Value, PythStructs.Price memory pythPrice) internal pure returns (bool) {\\n        uint scaledAPI3Price = _scaleAPI3PriceByDigits(api3Value);\\n        uint scaledPythPrice = _scalePythPriceByDigits(pythPrice);\\n\\n        // Get the relative price difference between the oracles. Use the lower price as the denominator, i.e. the reference for the calculation.\\n        uint minPrice = LiquityMath._min(scaledPythPrice, scaledAPI3Price);\\n        uint maxPrice = LiquityMath._max(scaledPythPrice, scaledAPI3Price);\\n        uint percentPriceDifference = (maxPrice - minPrice) * DECIMAL_PRECISION / minPrice;\\n\\n        /*\\n        * Return true if the relative price difference is <= 3%: if so, we assume both oracles are probably reporting\\n        * the honest market price, as it is unlikely that both have been broken/hacked and are still in-sync.\\n        */\\n        return percentPriceDifference <= MAX_PRICE_DIFFERENCE_BETWEEN_ORACLES;\\n    }\\n\\n    function _scaleAPI3PriceByDigits(int224 price_) internal pure returns (uint) {\\n        return uint(uint224(price_));\\n    }\\n\\n    function _scalePythPriceByDigits(PythStructs.Price memory price_) internal pure returns (uint) {\\n        return uint(uint64(price_.price)) * 10**(TARGET_DIGITS - uint(uint32(-price_.expo)));\\n    }\\n\\n    function _changeStatus(Status _status) internal {\\n        status = _status;\\n        emit PriceFeedStatusChanged(_status);\\n    }\\n\\n    function _storePrice(uint _currentPrice) internal {\\n        uint WSTETHPrice = _currentPrice * rateReceiver.rate() / 1e18;\\n        lastGoodPrice = WSTETHPrice;\\n\\n        emit LastGoodPriceUpdated(WSTETHPrice);\\n    }\\n\\n     function _storeAPI3Price(int224 price_) internal returns (uint) {\\n        uint scaledPrice = _scaleAPI3PriceByDigits(price_);\\n        _storePrice(scaledPrice);\\n\\n        return scaledPrice;\\n    }\\n\\n    function _storePythPrice(PythStructs.Price memory price_) internal returns (uint) {\\n        uint scaledPrice = _scalePythPriceByDigits(price_);\\n        _storePrice(scaledPrice);\\n\\n        return scaledPrice;\\n    }\\n\\n    // --- Oracle response wrapper functions ---\\n\\n    function _getAPI3Response() internal view returns (int224 value, uint32 timestamp) {\\n        try api3Proxy.read() returns (int224 value_, uint32 timestamp_)\\n        {\\n            return (value_, timestamp_);\\n        } catch {\\n            return (0, 0);\\n        }\\n    }\\n\\n    function _getPythResponse() internal view returns (PythStructs.Price memory price) {\\n        // First, try to get current decimal precision:\\n        try pyth.getPriceUnsafe(pythFeedId) returns (\\n            PythStructs.Price memory price_\\n        ) {\\n            return price_;\\n        } catch {\\n            return price;\\n        }\\n    }\\n\\n}\\n\\n\",\"keccak256\":\"0xb046a687c3042be54da88f44c42679bbd0ae28a69e79f5900a07d26c15b71ca8\",\"license\":\"MIT\"},\"contracts/dependencies/BaseMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ncontract BaseMath {\\n    uint constant public DECIMAL_PRECISION = 1e18;\\n}\\n\",\"keccak256\":\"0xfbd2340d208377996fc6305a28a939c849d7337e8fa1789e3130b73106de1d9f\",\"license\":\"MIT\"},\"contracts/dependencies/CheckContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ncontract CheckContract {\\n    /**\\n     * Check that the account is an already deployed non-destroyed contract.\\n     */\\n    function _checkContract(address account_) internal view {\\n        require(account_ != address(0), \\\"Account cannot be zero address\\\");\\n\\n        uint256 size;\\n        // solhint-disable-next-line no-inline-assembly\\n        assembly { size := extcodesize(account_) }\\n        require(size > 0, \\\"Account code size cannot be zero\\\");\\n    }\\n}\\n\",\"keccak256\":\"0x6282e853a7b31ee8bbbb4008869300bf900f7f43610f5b4be9499d40549b207a\",\"license\":\"MIT\"},\"contracts/dependencies/LiquityMath.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\nlibrary LiquityMath {\\n    uint internal constant DECIMAL_PRECISION = 1e18;\\n\\n    /* Precision for Nominal ICR (independent of price). Rationale for the value:\\n     *\\n     * - Making it \\u201ctoo high\\u201d could lead to overflows.\\n     * - Making it \\u201ctoo low\\u201d could lead to an ICR equal to zero, due to truncation from Solidity floor division. \\n     *\\n     * This value of 1e20 is chosen for safety: the NICR will only overflow for numerator > ~1e39 ETH,\\n     * and will only truncate to 0 if the denominator is at least 1e20 times greater than the numerator.\\n     *\\n     */\\n    uint internal constant NICR_PRECISION = 1e20;\\n\\n    function _min(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a < _b) ? _a : _b;\\n    }\\n\\n    function _max(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a >= _b) ? _a : _b;\\n    }\\n\\n    /* \\n    * Multiply two decimal numbers and use normal rounding rules:\\n    * -round product up if 19'th mantissa digit >= 5\\n    * -round product down if 19'th mantissa digit < 5\\n    *\\n    * Used only inside the exponentiation, _decPow().\\n    */\\n    function decMul(uint x, uint y) internal pure returns (uint decProd) {\\n        uint prod_xy = x * y;\\n\\n        decProd = (prod_xy + DECIMAL_PRECISION / 2) / DECIMAL_PRECISION;\\n    }\\n\\n    /* \\n    * _decPow: Exponentiation function for 18-digit decimal base, and integer exponent n.\\n    * \\n    * Uses the efficient \\\"exponentiation by squaring\\\" algorithm. O(log(n)) complexity. \\n    * \\n    * Called by two functions that represent time in units of minutes:\\n    * 1) TroveManager._calcDecayedBaseRate\\n    * 2) CommunityIssuance._getCumulativeIssuanceFraction \\n    * \\n    * The exponent is capped to avoid reverting due to overflow. The cap 525600000 equals\\n    * \\\"minutes in 1000 years\\\": 60 * 24 * 365 * 1000\\n    * \\n    * If a period of > 1000 years is ever used as an exponent in either of the above functions, the result will be\\n    * negligibly different from just passing the cap, since: \\n    *\\n    * In function 1), the decayed base rate will be 0 for 1000 years or > 1000 years\\n    * In function 2), the difference in tokens issued at 1000 years and any time > 1000 years, will be negligible\\n    */\\n    function _decPow(uint _base, uint _minutes) internal pure returns (uint) {\\n        // cap to avoid overflow\\n        if (_minutes > 525600000) {\\n            _minutes = 525600000;\\n        }\\n    \\n        if (_minutes == 0) {return DECIMAL_PRECISION;}\\n\\n        uint y = DECIMAL_PRECISION;\\n        uint x = _base;\\n        uint n = _minutes;\\n\\n        // Exponentiation-by-squaring\\n        while (n > 1) {\\n            if (n % 2 == 0) {\\n                x = decMul(x, x);\\n                n = n / 2;\\n            } else { // if (n % 2 != 0)\\n                y = decMul(x, y);\\n                x = decMul(x, x);\\n                n = (n - 1) / 2;\\n            }\\n        }\\n\\n        return decMul(x, y);\\n  }\\n\\n    function _getAbsoluteDifference(uint _a, uint _b) internal pure returns (uint) {\\n        return (_a >= _b) ? _a - _b : _b - _a;\\n    }\\n\\n    function _computeNominalCR(uint _coll, uint _debt) internal pure returns (uint) {\\n        if (_debt > 0) {\\n            return _coll * NICR_PRECISION / _debt;\\n        }\\n        // Return the maximal value for uint256 if the Trove has a debt of 0. Represents \\\"infinite\\\" CR.\\n        else { // if (_debt == 0)\\n            return 2**256 - 1;\\n        }\\n    }\\n\\n    function _computeCR(uint _coll, uint _debt, uint _price) internal pure returns (uint) {\\n        if (_debt > 0) {\\n            uint newCollRatio = _coll * _price / _debt;\\n            return newCollRatio;\\n        }\\n        // Return the maximal value for uint256 if the Trove has a debt of 0. Represents \\\"infinite\\\" CR.\\n        else { // if (_debt == 0)\\n            return 2**256 - 1; \\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xdb9ed155e8331948da867a6e089052dff0a667e25119ff602c6b88099f53b0ba\",\"license\":\"MIT\"},\"contracts/dependencies/PythStructs.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.19;\\n\\ncontract PythStructs {\\n    // A price with a degree of uncertainty, represented as a price +- a confidence interval.\\n    //\\n    // The confidence interval roughly corresponds to the standard error of a normal distribution.\\n    // Both the price and confidence are stored in a fixed-point numeric representation,\\n    // `x * (10^expo)`, where `expo` is the exponent.\\n    //\\n    // Please refer to the documentation at https://docs.pyth.network/consumers/best-practices for how\\n    // to how this price safely.\\n    struct Price {\\n        // Price\\n        int64 price;\\n        // Confidence interval around the price\\n        uint64 conf;\\n        // Price exponent\\n        int32 expo;\\n        // Unix timestamp describing when the price was published\\n        uint publishTime;\\n    }\\n\\n    // PriceFeed represents a current aggregate price from pyth publisher feeds.\\n    struct PriceFeed {\\n        // The price ID.\\n        bytes32 id;\\n        // Latest available price\\n        Price price;\\n        // Latest available exponentially-weighted moving average price\\n        Price emaPrice;\\n    }\\n}\",\"keccak256\":\"0xe17de352c5aa29b5eb99ecc594dec765fb8608a7484ff5e2d0c5f0de46b3857c\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/ICrossChainRateReceiver.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n\\ninterface ICrossChainRateReceiver {\\n    function rate() external view returns (uint);\\n    function lastUpdated() external view returns (uint);\\n}\\n\",\"keccak256\":\"0x48c71d2335327c6ee25123c271f316d200153f9ad2a8bd59574854019811a990\",\"license\":\"MIT\"},\"contracts/interfaces/IPriceFeed.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\ninterface IPriceFeed {\\n\\n    // --- Events ---\\n    event LastGoodPriceUpdated(uint _lastGoodPrice);\\n   \\n    // --- Function ---\\n    function fetchPrice() external returns (uint);\\n}\\n\",\"keccak256\":\"0xd48e100d585578b5eec065f625881aa4539745a125c8a7052481b75fbc934901\",\"license\":\"MIT\"},\"contracts/interfaces/IProxy.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.19;\\n\\n/// @dev https://github.com/api3dao/airnode-protocol-v1/blob/main/contracts/api3-server-v1/proxies/interfaces/IProxy.sol\\ninterface IProxy {\\n    function read() external view returns (int224 value, uint32 timestamp);\\n\\n//    function api3ServerV1() external view returns (address);\\n}\\n\",\"keccak256\":\"0x05f67bfe483ddc2e94fbf966bbdb789fbc3287e645e6d0ad479527bcbe5044cc\",\"license\":\"MIT\"},\"contracts/interfaces/IPyth.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.19;\\n\\nimport \\\"../dependencies/PythStructs.sol\\\";\\nimport \\\"./IPythEvents.sol\\\";\\n\\n/// @title Consume prices from the Pyth Network (https://pyth.network/).\\n/// @dev Please refer to the guidance at https://docs.pyth.network/consumers/best-practices for how to consume prices safely.\\n/// @author Pyth Data Association\\ninterface IPyth is IPythEvents {\\n    /// @notice Returns the period (in seconds) that a price feed is considered valid since its publish time\\n    /*function getValidTimePeriod() external view returns (uint validTimePeriod);*/\\n\\n    /// @notice Returns the price and confidence interval.\\n    /// @dev Reverts if the price has not been updated within the last `getValidTimePeriod()` seconds.\\n    /// @param id The Pyth Price Feed ID of which to fetch the price and confidence interval.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    /*function getPrice(\\n        bytes32 id\\n    ) external view returns (PythStructs.Price memory price);*/\\n\\n    /// @notice Returns the exponentially-weighted moving average price and confidence interval.\\n    /// @dev Reverts if the EMA price is not available.\\n    /// @param id The Pyth Price Feed ID of which to fetch the EMA price and confidence interval.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    /*function getEmaPrice(\\n        bytes32 id\\n    ) external view returns (PythStructs.Price memory price);*/\\n\\n    /// @notice Returns the price of a price feed without any sanity checks.\\n    /// @dev This function returns the most recent price update in this contract without any recency checks.\\n    /// This function is unsafe as the returned price update may be arbitrarily far in the past.\\n    ///\\n    /// Users of this function should check the `publishTime` in the price to ensure that the returned price is\\n    /// sufficiently recent for their application. If you are considering using this function, it may be\\n    /// safer / easier to use either `getPrice` or `getPriceNoOlderThan`.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    function getPriceUnsafe(\\n        bytes32 id\\n    ) external view returns (PythStructs.Price memory price);\\n\\n    /// @notice Returns the price that is no older than `age` seconds of the current time.\\n    /// @dev This function is a sanity-checked version of `getPriceUnsafe` which is useful in\\n    /// applications that require a sufficiently-recent price. Reverts if the price wasn't updated sufficiently\\n    /// recently.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    /*function getPriceNoOlderThan(\\n        bytes32 id,\\n        uint age\\n    ) external view returns (PythStructs.Price memory price);*/\\n\\n    /// @notice Returns the exponentially-weighted moving average price of a price feed without any sanity checks.\\n    /// @dev This function returns the same price as `getEmaPrice` in the case where the price is available.\\n    /// However, if the price is not recent this function returns the latest available price.\\n    ///\\n    /// The returned price can be from arbitrarily far in the past; this function makes no guarantees that\\n    /// the returned price is recent or useful for any particular application.\\n    ///\\n    /// Users of this function should check the `publishTime` in the price to ensure that the returned price is\\n    /// sufficiently recent for their application. If you are considering using this function, it may be\\n    /// safer / easier to use either `getEmaPrice` or `getEmaPriceNoOlderThan`.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    /*function getEmaPriceUnsafe(\\n        bytes32 id\\n    ) external view returns (PythStructs.Price memory price);*/\\n\\n    /// @notice Returns the exponentially-weighted moving average price that is no older than `age` seconds\\n    /// of the current time.\\n    /// @dev This function is a sanity-checked version of `getEmaPriceUnsafe` which is useful in\\n    /// applications that require a sufficiently-recent price. Reverts if the price wasn't updated sufficiently\\n    /// recently.\\n    /// @return price - please read the documentation of PythStructs.Price to understand how to use this safely.\\n    /*function getEmaPriceNoOlderThan(\\n        bytes32 id,\\n        uint age\\n    ) external view returns (PythStructs.Price memory price);*/\\n\\n    /// @notice Update price feeds with given update messages.\\n    /// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n    /// `getUpdateFee` with the length of the `updateData` array.\\n    /// Prices will be updated if they are more recent than the current stored prices.\\n    /// The call will succeed even if the update is not the most recent.\\n    /// @dev Reverts if the transferred fee is not sufficient or the updateData is invalid.\\n    /// @param updateData Array of price update data.\\n    /*function updatePriceFeeds(bytes[] calldata updateData) external payable;*/\\n\\n    /// @notice Wrapper around updatePriceFeeds that rejects fast if a price update is not necessary. A price update is\\n    /// necessary if the current on-chain publishTime is older than the given publishTime. It relies solely on the\\n    /// given `publishTimes` for the price feeds and does not read the actual price update publish time within `updateData`.\\n    ///\\n    /// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n    /// `getUpdateFee` with the length of the `updateData` array.\\n    ///\\n    /// `priceIds` and `publishTimes` are two arrays with the same size that correspond to senders known publishTime\\n    /// of each priceId when calling this method. If all of price feeds within `priceIds` have updated and have\\n    /// a newer or equal publish time than the given publish time, it will reject the transaction to save gas.\\n    /// Otherwise, it calls updatePriceFeeds method to update the prices.\\n    ///\\n    /// @dev Reverts if update is not needed or the transferred fee is not sufficient or the updateData is invalid.\\n    /// @param updateData Array of price update data.\\n    /// @param priceIds Array of price ids.\\n    /// @param publishTimes Array of publishTimes. `publishTimes[i]` corresponds to known `publishTime` of `priceIds[i]`\\n    /*function updatePriceFeedsIfNecessary(\\n        bytes[] calldata updateData,\\n        bytes32[] calldata priceIds,\\n        uint64[] calldata publishTimes\\n    ) external payable;*/\\n\\n    /// @notice Returns the required fee to update an array of price updates.\\n    /// @param updateData Array of price update data.\\n    /// @return feeAmount The required fee in Wei.\\n    /*function getUpdateFee(\\n        bytes[] calldata updateData\\n    ) external view returns (uint feeAmount);*/\\n\\n    /// @notice Parse `updateData` and return price feeds of the given `priceIds` if they are all published\\n    /// within `minPublishTime` and `maxPublishTime`.\\n    ///\\n    /// You can use this method if you want to use a Pyth price at a fixed time and not the most recent price;\\n    /// otherwise, please consider using `updatePriceFeeds`. This method does not store the price updates on-chain.\\n    ///\\n    /// This method requires the caller to pay a fee in wei; the required fee can be computed by calling\\n    /// `getUpdateFee` with the length of the `updateData` array.\\n    ///\\n    ///\\n    /// @dev Reverts if the transferred fee is not sufficient or the updateData is invalid or there is\\n    /// no update for any of the given `priceIds` within the given time range.\\n    /// @param updateData Array of price update data.\\n    /// @param priceIds Array of price ids.\\n    /// @param minPublishTime minimum acceptable publishTime for the given `priceIds`.\\n    /// @param maxPublishTime maximum acceptable publishTime for the given `priceIds`.\\n    /// @return priceFeeds Array of the price feeds corresponding to the given `priceIds` (with the same order).\\n    /*function parsePriceFeedUpdates(\\n        bytes[] calldata updateData,\\n        bytes32[] calldata priceIds,\\n        uint64 minPublishTime,\\n        uint64 maxPublishTime\\n    ) external payable returns (PythStructs.PriceFeed[] memory priceFeeds);*/\\n}\\n\",\"keccak256\":\"0xa0e7261ae5f0f67dbf1bc9a561f76c1b413fb27b8f2ecb5cd65ea2f627ff9be9\",\"license\":\"Apache-2.0\"},\"contracts/interfaces/IPythEvents.sol\":{\"content\":\"// SPDX-License-Identifier: Apache-2.0\\npragma solidity ^0.8.19;\\n\\n/// @title IPythEvents contains the events that Pyth contract emits.\\n/// @dev This interface can be used for listening to the updates for off-chain and testing purposes.\\ninterface IPythEvents {\\n    /// @dev Emitted when the price feed with `id` has received a fresh update.\\n    /// @param id The Pyth Price Feed ID.\\n    /// @param publishTime Publish time of the given price update.\\n    /// @param price Price of the given price update.\\n    /// @param conf Confidence interval of the given price update.\\n    event PriceFeedUpdate(\\n        bytes32 indexed id,\\n        uint64 publishTime,\\n        int64 price,\\n        uint64 conf\\n    );\\n\\n    /// @dev Emitted when a batch price update is processed successfully.\\n    /// @param chainId ID of the source chain that the batch price update comes from.\\n    /// @param sequenceNumber Sequence number of the batch price update.\\n    event BatchPriceFeedUpdate(uint16 chainId, uint64 sequenceNumber);\\n}\",\"keccak256\":\"0xfc2012cf9f06e6a8cb5bd6f92628e7baa4befb90167e860aaf647497bef85114\",\"license\":\"Apache-2.0\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061001a3361001f565b61006f565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b6110188061007e6000396000f3fe608060405234801561001057600080fd5b50600436106100f65760003560e01c80638409c02d116100925780638409c02d146101aa5780638da5cb5b146101bd578063a20baee6146101ce578063a3f4df7e146101dd578063b7f8cf9b14610212578063f2fde38b14610225578063f56f48f214610238578063f98d06f014610241578063fa20ade11461025457600080fd5b80630490be83146100fb5780630fdb11cf146101175780630fea2c541461011f5780631be5c92f14610134578063200d2ed21461013c5780632f400b291461015657806345079cb4146101815780635a4d28bb1461018f578063715018a6146101a2575b600080fd5b61010460075481565b6040519081526020015b60405180910390f35b61010461025d565b61013261012d366004610c5f565b61051e565b005b610104601281565b6008546101499060ff1681565b60405161010e9190610cc0565b600154610169906001600160a01b031681565b6040516001600160a01b03909116815260200161010e565b61010466b1a2bc2ec5000081565b600654610169906001600160a01b031681565b610132610638565b600354610169906001600160a01b031681565b6000546001600160a01b0316610169565b610104670de0b6b3a764000081565b61020560405180604001604052806009815260200168141c9a58d95199595960ba1b81525081565b60405161010e9190610ce8565b600554610169906001600160a01b031681565b610132610233366004610d36565b61064c565b61010461384081565b600254610169906001600160a01b031681565b61010460045481565b600080600061026a6106c5565b915091506000610278610741565b9050600060085460ff16600481111561029357610293610caa565b03610367576102a283836107d7565b156102fd576102b081610808565b156102ca576102bf6003610832565b600754935050505090565b6102d381610890565b156102e2576102bf6001610832565b6102ec6001610832565b6102f5816108ac565b935050505090565b610306826108c3565b156103465761031481610808565b15610323576102bf6004610832565b61032d6002610832565b61033681610890565b156102ec57600754935050505090565b61034f81610808565b1561035e5761035e6004610832565b6102f5836108d8565b600160085460ff16600481111561038057610380610caa565b036103b7576103908383836108ea565b1561039f5761035e6000610832565b6103a881610808565b1561032d576102bf6003610832565b600360085460ff1660048111156103d0576103d0610caa565b036103ef576103e08383836108ea565b156102bf5761035e6000610832565b600260085460ff16600481111561040857610408610caa565b036104ae5761041783836107d7565b1561043e5761042581610808565b15610434576102bf6003610832565b61032d6001610832565b610447826108c3565b156104645761045581610808565b1561032d576102bf6004610832565b61046d81610808565b1561047c5761035e6004610832565b61048581610890565b1561049557600754935050505090565b61049f8382610944565b156102e25761035e6000610832565b600460085460ff1660048111156104c7576104c7610caa565b03610518576104d683836107d7565b156104e5576102bf6003610832565b6104ee826108c3565b156104fe57600754935050505090565b6105098383836108ea565b1561035e5761035e6000610832565b50505090565b6105266109b8565b61052f84610a12565b61053883610a12565b61054182610a12565b600180546001600160a01b038681166001600160a01b03199283161790925560028054868416908316179055600380549285169290911691909117905560048190556008805460ff191690556000806105986106c5565b915091506105a682826107d7565b1580156105b957506105b7816108c3565b155b61061e5760405162461bcd60e51b815260206004820152602b60248201527f5072696365466565643a2041504933206d75737420626520776f726b696e672060448201526a185b990818dd5c9c995b9d60aa1b60648201526084015b60405180910390fd5b610627826108d8565b50610630610638565b505050505050565b6106406109b8565b61064a6000610abb565b565b6106546109b8565b6001600160a01b0381166106b95760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152608401610615565b6106c281610abb565b50565b600154604080516315f789a960e21b8152815160009384936001600160a01b03909116926357de26a492600480830193928290030181865afa92505050801561072b575060408051601f3d908101601f1916820190925261072891810190610d51565b60015b6107385750600091829150565b90939092509050565b604080516080810182526000808252602082018190529181018290526060810191909152600254600480546040516396834ad360e01b8152918201526001600160a01b03909116906396834ad390602401608060405180830381865afa9250505080156107cb575060408051601f3d908101601f191682019092526107c891810190610dc4565b60015b6107d25790565b919050565b60008083601b0b1315806107ef575063ffffffff8216155b806107ff5750428263ffffffff16115b90505b92915050565b600080826000015160070b13158061082257506060820151155b8061080257505060600151421090565b6008805482919060ff1916600183600481111561085157610851610caa565b02179055507f5c57579a8214fe4f710c1c56fa829f045b9fa6d225a744225a30c32188064d4e816040516108859190610cc0565b60405180910390a150565b60006138408260600151426108a59190610e6a565b1192915050565b6000806108b883610b0b565b905061080281610b4d565b60006138406108a563ffffffff841642610e6a565b6000806001600160e01b0383166108b8565b60006108f582610808565b80610904575061090482610890565b80610914575061091484846107d7565b806109235750610923836108c3565b156109305750600061093d565b61093a8483610944565b90505b9392505050565b60006001600160e01b0383168161095a84610b0b565b905060006109688284610c22565b905060006109768385610c38565b9050600082670de0b6b3a764000061098e8285610e6a565b6109989190610e7d565b6109a29190610e94565b66b1a2bc2ec50000101598975050505050505050565b6000546001600160a01b0316331461064a5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610615565b6001600160a01b038116610a685760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f206164647265737300006044820152606401610615565b803b80610ab75760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f6044820152606401610615565b5050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60008160400151610b1b90610eb6565b610b2c9063ffffffff166012610e6a565b610b3790600a610fbd565b8251610802919067ffffffffffffffff16610e7d565b6000670de0b6b3a7640000600360009054906101000a90046001600160a01b03166001600160a01b0316632c4e722e6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610bab573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bcf9190610fc9565b610bd99084610e7d565b610be39190610e94565b60078190556040518181529091507f4d29de21de555af78a62fc82dd4bc05e9ae5b0660a37f04729527e0f22780cd39060200160405180910390a15050565b6000818310610c3157816107ff565b5090919050565b600081831015610c3157816107ff565b80356001600160a01b03811681146107d257600080fd5b60008060008060808587031215610c7557600080fd5b610c7e85610c48565b9350610c8c60208601610c48565b9250610c9a60408601610c48565b9396929550929360600135925050565b634e487b7160e01b600052602160045260246000fd5b6020810160058310610ce257634e487b7160e01b600052602160045260246000fd5b91905290565b600060208083528351808285015260005b81811015610d1557858101830151858201604001528201610cf9565b506000604082860101526040601f19601f8301168501019250505092915050565b600060208284031215610d4857600080fd5b6107ff82610c48565b60008060408385031215610d6457600080fd5b825180601b0b8114610d7557600080fd5b602084015190925063ffffffff81168114610d8f57600080fd5b809150509250929050565b805167ffffffffffffffff811681146107d257600080fd5b8051600381900b81146107d257600080fd5b600060808284031215610dd657600080fd5b6040516080810181811067ffffffffffffffff82111715610e0757634e487b7160e01b600052604160045260246000fd5b6040528251600781900b8114610e1c57600080fd5b8152610e2a60208401610d9a565b6020820152610e3b60408401610db2565b6040820152606083015160608201528091505092915050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561080257610802610e54565b808202811582820484141761080257610802610e54565b600082610eb157634e487b7160e01b600052601260045260246000fd5b500490565b60008160030b637fffffff198103610ed057610ed0610e54565b60000392915050565b600181815b80851115610f14578160001904821115610efa57610efa610e54565b80851615610f0757918102915b93841c9390800290610ede565b509250929050565b600082610f2b57506001610802565b81610f3857506000610802565b8160018114610f4e5760028114610f5857610f74565b6001915050610802565b60ff841115610f6957610f69610e54565b50506001821b610802565b5060208310610133831016604e8410600b8410161715610f97575081810a610802565b610fa18383610ed9565b8060001904821115610fb557610fb5610e54565b029392505050565b60006107ff8383610f1c565b600060208284031215610fdb57600080fd5b505191905056fea264697066735822122042290c0ed7fff97461836d8135d652d66d0526ed9add6c35b57d1f44735ff52964736f6c63430008130033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100f65760003560e01c80638409c02d116100925780638409c02d146101aa5780638da5cb5b146101bd578063a20baee6146101ce578063a3f4df7e146101dd578063b7f8cf9b14610212578063f2fde38b14610225578063f56f48f214610238578063f98d06f014610241578063fa20ade11461025457600080fd5b80630490be83146100fb5780630fdb11cf146101175780630fea2c541461011f5780631be5c92f14610134578063200d2ed21461013c5780632f400b291461015657806345079cb4146101815780635a4d28bb1461018f578063715018a6146101a2575b600080fd5b61010460075481565b6040519081526020015b60405180910390f35b61010461025d565b61013261012d366004610c5f565b61051e565b005b610104601281565b6008546101499060ff1681565b60405161010e9190610cc0565b600154610169906001600160a01b031681565b6040516001600160a01b03909116815260200161010e565b61010466b1a2bc2ec5000081565b600654610169906001600160a01b031681565b610132610638565b600354610169906001600160a01b031681565b6000546001600160a01b0316610169565b610104670de0b6b3a764000081565b61020560405180604001604052806009815260200168141c9a58d95199595960ba1b81525081565b60405161010e9190610ce8565b600554610169906001600160a01b031681565b610132610233366004610d36565b61064c565b61010461384081565b600254610169906001600160a01b031681565b61010460045481565b600080600061026a6106c5565b915091506000610278610741565b9050600060085460ff16600481111561029357610293610caa565b03610367576102a283836107d7565b156102fd576102b081610808565b156102ca576102bf6003610832565b600754935050505090565b6102d381610890565b156102e2576102bf6001610832565b6102ec6001610832565b6102f5816108ac565b935050505090565b610306826108c3565b156103465761031481610808565b15610323576102bf6004610832565b61032d6002610832565b61033681610890565b156102ec57600754935050505090565b61034f81610808565b1561035e5761035e6004610832565b6102f5836108d8565b600160085460ff16600481111561038057610380610caa565b036103b7576103908383836108ea565b1561039f5761035e6000610832565b6103a881610808565b1561032d576102bf6003610832565b600360085460ff1660048111156103d0576103d0610caa565b036103ef576103e08383836108ea565b156102bf5761035e6000610832565b600260085460ff16600481111561040857610408610caa565b036104ae5761041783836107d7565b1561043e5761042581610808565b15610434576102bf6003610832565b61032d6001610832565b610447826108c3565b156104645761045581610808565b1561032d576102bf6004610832565b61046d81610808565b1561047c5761035e6004610832565b61048581610890565b1561049557600754935050505090565b61049f8382610944565b156102e25761035e6000610832565b600460085460ff1660048111156104c7576104c7610caa565b03610518576104d683836107d7565b156104e5576102bf6003610832565b6104ee826108c3565b156104fe57600754935050505090565b6105098383836108ea565b1561035e5761035e6000610832565b50505090565b6105266109b8565b61052f84610a12565b61053883610a12565b61054182610a12565b600180546001600160a01b038681166001600160a01b03199283161790925560028054868416908316179055600380549285169290911691909117905560048190556008805460ff191690556000806105986106c5565b915091506105a682826107d7565b1580156105b957506105b7816108c3565b155b61061e5760405162461bcd60e51b815260206004820152602b60248201527f5072696365466565643a2041504933206d75737420626520776f726b696e672060448201526a185b990818dd5c9c995b9d60aa1b60648201526084015b60405180910390fd5b610627826108d8565b50610630610638565b505050505050565b6106406109b8565b61064a6000610abb565b565b6106546109b8565b6001600160a01b0381166106b95760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b6064820152608401610615565b6106c281610abb565b50565b600154604080516315f789a960e21b8152815160009384936001600160a01b03909116926357de26a492600480830193928290030181865afa92505050801561072b575060408051601f3d908101601f1916820190925261072891810190610d51565b60015b6107385750600091829150565b90939092509050565b604080516080810182526000808252602082018190529181018290526060810191909152600254600480546040516396834ad360e01b8152918201526001600160a01b03909116906396834ad390602401608060405180830381865afa9250505080156107cb575060408051601f3d908101601f191682019092526107c891810190610dc4565b60015b6107d25790565b919050565b60008083601b0b1315806107ef575063ffffffff8216155b806107ff5750428263ffffffff16115b90505b92915050565b600080826000015160070b13158061082257506060820151155b8061080257505060600151421090565b6008805482919060ff1916600183600481111561085157610851610caa565b02179055507f5c57579a8214fe4f710c1c56fa829f045b9fa6d225a744225a30c32188064d4e816040516108859190610cc0565b60405180910390a150565b60006138408260600151426108a59190610e6a565b1192915050565b6000806108b883610b0b565b905061080281610b4d565b60006138406108a563ffffffff841642610e6a565b6000806001600160e01b0383166108b8565b60006108f582610808565b80610904575061090482610890565b80610914575061091484846107d7565b806109235750610923836108c3565b156109305750600061093d565b61093a8483610944565b90505b9392505050565b60006001600160e01b0383168161095a84610b0b565b905060006109688284610c22565b905060006109768385610c38565b9050600082670de0b6b3a764000061098e8285610e6a565b6109989190610e7d565b6109a29190610e94565b66b1a2bc2ec50000101598975050505050505050565b6000546001600160a01b0316331461064a5760405162461bcd60e51b815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e65726044820152606401610615565b6001600160a01b038116610a685760405162461bcd60e51b815260206004820152601e60248201527f4163636f756e742063616e6e6f74206265207a65726f206164647265737300006044820152606401610615565b803b80610ab75760405162461bcd60e51b815260206004820181905260248201527f4163636f756e7420636f64652073697a652063616e6e6f74206265207a65726f6044820152606401610615565b5050565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b60008160400151610b1b90610eb6565b610b2c9063ffffffff166012610e6a565b610b3790600a610fbd565b8251610802919067ffffffffffffffff16610e7d565b6000670de0b6b3a7640000600360009054906101000a90046001600160a01b03166001600160a01b0316632c4e722e6040518163ffffffff1660e01b8152600401602060405180830381865afa158015610bab573d6000803e3d6000fd5b505050506040513d601f19601f82011682018060405250810190610bcf9190610fc9565b610bd99084610e7d565b610be39190610e94565b60078190556040518181529091507f4d29de21de555af78a62fc82dd4bc05e9ae5b0660a37f04729527e0f22780cd39060200160405180910390a15050565b6000818310610c3157816107ff565b5090919050565b600081831015610c3157816107ff565b80356001600160a01b03811681146107d257600080fd5b60008060008060808587031215610c7557600080fd5b610c7e85610c48565b9350610c8c60208601610c48565b9250610c9a60408601610c48565b9396929550929360600135925050565b634e487b7160e01b600052602160045260246000fd5b6020810160058310610ce257634e487b7160e01b600052602160045260246000fd5b91905290565b600060208083528351808285015260005b81811015610d1557858101830151858201604001528201610cf9565b506000604082860101526040601f19601f8301168501019250505092915050565b600060208284031215610d4857600080fd5b6107ff82610c48565b60008060408385031215610d6457600080fd5b825180601b0b8114610d7557600080fd5b602084015190925063ffffffff81168114610d8f57600080fd5b809150509250929050565b805167ffffffffffffffff811681146107d257600080fd5b8051600381900b81146107d257600080fd5b600060808284031215610dd657600080fd5b6040516080810181811067ffffffffffffffff82111715610e0757634e487b7160e01b600052604160045260246000fd5b6040528251600781900b8114610e1c57600080fd5b8152610e2a60208401610d9a565b6020820152610e3b60408401610db2565b6040820152606083015160608201528091505092915050565b634e487b7160e01b600052601160045260246000fd5b8181038181111561080257610802610e54565b808202811582820484141761080257610802610e54565b600082610eb157634e487b7160e01b600052601260045260246000fd5b500490565b60008160030b637fffffff198103610ed057610ed0610e54565b60000392915050565b600181815b80851115610f14578160001904821115610efa57610efa610e54565b80851615610f0757918102915b93841c9390800290610ede565b509250929050565b600082610f2b57506001610802565b81610f3857506000610802565b8160018114610f4e5760028114610f5857610f74565b6001915050610802565b60ff841115610f6957610f69610e54565b50506001821b610802565b5060208310610133831016604e8410600b8410161715610f97575081810a610802565b610fa18383610ed9565b8060001904821115610fb557610fb5610e54565b029392505050565b60006107ff8383610f1c565b600060208284031215610fdb57600080fd5b505191905056fea264697066735822122042290c0ed7fff97461836d8135d652d66d0526ed9add6c35b57d1f44735ff52964736f6c63430008130033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 506,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 11093,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "api3Proxy",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_contract(IProxy)23488"
+      },
+      {
+        "astId": 11096,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "pyth",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_contract(IPyth)23523"
+      },
+      {
+        "astId": 11099,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "rateReceiver",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_contract(ICrossChainRateReceiver)23314"
+      },
+      {
+        "astId": 11101,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "pythFeedId",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_bytes32"
+      },
+      {
+        "astId": 11103,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "borrowerOperationsAddress",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_address"
+      },
+      {
+        "astId": 11105,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "troveManagerAddress",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_address"
+      },
+      {
+        "astId": 11107,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "lastGoodPrice",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 11116,
+        "contract": "contracts/PriceFeed.sol:PriceFeed",
+        "label": "status",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_enum(Status)11113"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_contract(ICrossChainRateReceiver)23314": {
+        "encoding": "inplace",
+        "label": "contract ICrossChainRateReceiver",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IProxy)23488": {
+        "encoding": "inplace",
+        "label": "contract IProxy",
+        "numberOfBytes": "20"
+      },
+      "t_contract(IPyth)23523": {
+        "encoding": "inplace",
+        "label": "contract IPyth",
+        "numberOfBytes": "20"
+      },
+      "t_enum(Status)11113": {
+        "encoding": "inplace",
+        "label": "enum PriceFeed.Status",
+        "numberOfBytes": "1"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

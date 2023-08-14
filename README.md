@@ -30,6 +30,30 @@ stablecoin tokens (SIM).
 | WSTETHMock                 | [0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F](https://testnet-zkevm.polygonscan.com/address/0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F#code) |
 | Ve                         | [0xDFd33dF050c85B9efB3D3601456e2BdD4659ABCC](https://testnet-zkevm.polygonscan.com/address/0xDFd33dF050c85B9efB3D3601456e2BdD4659ABCC#code) |
 
+### Goerli testnet
+
+|                            |                                                                                                                                             |
+|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| TroveManager               | [0x67952505E536A83C4916a3F44728DE92e0E3EBBc](https://goerli.etherscan.io/address/0x67952505E536A83C4916a3F44728DE92e0E3EBBc#code) |
+| StabilityPool              | [0x74bBa28c13771FB32eD08e5522dfEc71ea8De48c](https://goerli.etherscan.io/address/0x74bBa28c13771FB32eD08e5522dfEc71ea8De48c#code) |
+| ActivePool                 | [0x4A38a264c26cA27FB1cca3cBfEC56067a3404BB7](https://goerli.etherscan.io/address/0x4A38a264c26cA27FB1cca3cBfEC56067a3404BB7#code) |
+| BorrowerOperations         | [0x960FdE8a92d5Ad1245E7AD267641F230d9a39Df1](https://goerli.etherscan.io/address/0x960FdE8a92d5Ad1245E7AD267641F230d9a39Df1#code) |
+| CollSurplusPool            | [0x1329Ea1d522714Ae9Cd18543e78926F71EbC0Aa0](https://goerli.etherscan.io/address/0x1329Ea1d522714Ae9Cd18543e78926F71EbC0Aa0#code) |
+| DefaultPool                | [0x6BaF629618551Cb7454013F67f5d4A9119A61627](https://goerli.etherscan.io/address/0x6BaF629618551Cb7454013F67f5d4A9119A61627#code) |
+| HintHelpers                | [0x57Fc539b66bdc081e19bd828e6C668B249867959](https://goerli.etherscan.io/address/0x57Fc539b66bdc081e19bd828e6C668B249867959#code) |
+| SortedTroves               | [0xbf2da16f66a21f0AFF8365b98C19eD73D7f11da4](https://goerli.etherscan.io/address/0xbf2da16f66a21f0AFF8365b98C19eD73D7f11da4#code) |
+| CommunityIssuance          | [0xc7d1EDF33946D65995208128F1aAFB324eFF48ec](https://goerli.etherscan.io/address/0xc7d1EDF33946D65995208128F1aAFB324eFF48ec#code) |
+| Controller                 | [0xA839029F90F1eebFEAbe1b96ff226FDa3B5388Af](https://goerli.etherscan.io/address/0xA839029F90F1eebFEAbe1b96ff226FDa3B5388Af#code) |
+| CrossChainRateReceiverMock | [0x498427B7062529adB0EdcAfD7304767711F44611](https://goerli.etherscan.io/address/0x498427B7062529adB0EdcAfD7304767711F44611#code) |
+| LiquidityRewardsIssuance   | [0x7c0d6747738d341ba28dc9475FE0e7ffc25B7fdb](https://goerli.etherscan.io/address/0x7c0d6747738d341ba28dc9475FE0e7ffc25B7fdb#code) |
+| LockupContractFactory      | [0xaE8afcd6cB936E65DA62e405c624BE59B1FE47EE](https://goerli.etherscan.io/address/0xaE8afcd6cB936E65DA62e405c624BE59B1FE47EE#code) |
+| PriceFeed                  | [0xcF05bE25600286AB922c4Ea4cf160Af2d4916470](https://goerli.etherscan.io/address/0xcF05bE25600286AB922c4Ea4cf160Af2d4916470#code) |
+| SHADYToken                 | [0x63B67715cc4B1556dD99a89BB9507669CF48705b](https://goerli.etherscan.io/address/0x63B67715cc4B1556dD99a89BB9507669CF48705b#code) |
+| SIMToken                   | [0x3c6715B3c5Ecd82e2dBbF08018C9440B36609757](https://goerli.etherscan.io/address/0x3c6715B3c5Ecd82e2dBbF08018C9440B36609757#code) |
+| WSTETHMock                 | [0xd5dE2Ef0ef986026435EEFD7143A398cD2328E27](https://goerli.etherscan.io/address/0xd5dE2Ef0ef986026435EEFD7143A398cD2328E27#code) |
+| Ve                         | [0xB8876314f368868a2302eC95d78A623c926C5c61](https://goerli.etherscan.io/address/0xB8876314f368868a2302eC95d78A623c926C5c61#code) |
+
+
 ## Differences from Liquity
 
 * ETH -> wstETH
@@ -65,4 +89,6 @@ yarn deploy:zkevmtestnet
 yarn verify-generate-inputs:zkevmtestnet
 # verify other contracts by API
 yarn verify:zkevmtestnet
+yarn verify-generate-inputs:goerli
+yarn verify:goerli
 ```
