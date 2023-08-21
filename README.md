@@ -29,6 +29,7 @@ stablecoin tokens (SIM).
 | SIMToken                   | [0x29353bB4c9010c6112a77d702Ac890e70CD73d53](https://testnet-zkevm.polygonscan.com/address/0x29353bB4c9010c6112a77d702Ac890e70CD73d53#code) |
 | WSTETHMock                 | [0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F](https://testnet-zkevm.polygonscan.com/address/0x29E4d6c08e3AD060Dc2fC8DCE70AaB8C8c57563F#code) |
 | Ve                         | [0xDFd33dF050c85B9efB3D3601456e2BdD4659ABCC](https://testnet-zkevm.polygonscan.com/address/0xDFd33dF050c85B9efB3D3601456e2BdD4659ABCC#code) |
+| MultiTroveGetter           | [0xb3Edebd5BF7c34EbB2dbDA5487C7A0Ad2987C56f](https://testnet-zkevm.polygonscan.com/address/0xb3Edebd5BF7c34EbB2dbDA5487C7A0Ad2987C56f#code) |
 
 ### Goerli testnet
 
