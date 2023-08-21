@@ -52,6 +52,7 @@ stablecoin tokens (SIM).
 | SIMToken                   | [0x3c6715B3c5Ecd82e2dBbF08018C9440B36609757](https://goerli.etherscan.io/address/0x3c6715B3c5Ecd82e2dBbF08018C9440B36609757#code) |
 | WSTETHMock                 | [0xd5dE2Ef0ef986026435EEFD7143A398cD2328E27](https://goerli.etherscan.io/address/0xd5dE2Ef0ef986026435EEFD7143A398cD2328E27#code) |
 | Ve                         | [0xB8876314f368868a2302eC95d78A623c926C5c61](https://goerli.etherscan.io/address/0xB8876314f368868a2302eC95d78A623c926C5c61#code) |
+| MultiTroveGetter           | [0xF4fcD9079b7c96b8365e4CA80D696ee697dC2757](https://goerli.etherscan.io/address/0xF4fcD9079b7c96b8365e4CA80D696ee697dC2757#code) |
 
 
 ## Differences from Liquity
